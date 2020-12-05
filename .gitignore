@@ -3,9 +3,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-# It's my ignore files
-/SourceCode
-
 # User-specific files
 *.rsuser
 *.suo
@@ -363,3 +360,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# My igonore file
+SourceCode/
