@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ej4PAnIpODlsLIdq+FLNocpm2hgk0aClww9eFvWXrVsXHbaUKbBcvK5i0SridXxgao6qCSVjAwTQXkkZ/3sJsg==",
+  "success": true,
+  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Domain\\Wby.Domain\\Wby.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Wby\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\Wby\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Wby\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

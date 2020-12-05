@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "ybK0EecGy8nn9XaYpWMrekm/eX+8whdbwkxiJQRM16UAToeyu0FJnP+lfCxQD5FZBK1iE032Ux1BCVgULQ9GJA==",
+  "success": true,
+  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\FileProviderDemo\\FileProviderDemo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Wby\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Wby\\.nuget\\packages\\microsoft.extensions.fileproviders.composite\\5.0.0\\microsoft.extensions.fileproviders.composite.5.0.0.nupkg.sha512",
+    "C:\\Users\\Wby\\.nuget\\packages\\microsoft.extensions.fileproviders.embedded\\5.0.0\\microsoft.extensions.fileproviders.embedded.5.0.0.nupkg.sha512",
+    "C:\\Users\\Wby\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\5.0.0\\microsoft.extensions.fileproviders.physical.5.0.0.nupkg.sha512",
+    "C:\\Users\\Wby\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0\\microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
+    "C:\\Users\\Wby\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

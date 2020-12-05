@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <OutputInRepoRoot>true</OutputInRepoRoot>
+    <ToolSharedSourceRoot>$(MSBuildThisFileDirectory)Shared\</ToolSharedSourceRoot>
+  </PropertyGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+
+</Project>

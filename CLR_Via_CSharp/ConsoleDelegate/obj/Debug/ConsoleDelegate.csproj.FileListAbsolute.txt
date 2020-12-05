@@ -1,0 +1,14 @@
+D:\My Code\ConsoleApp1\ConsoleDelegate\bin\Debug\ConsoleDelegate.exe.config
+D:\My Code\ConsoleApp1\ConsoleDelegate\bin\Debug\ConsoleDelegate.exe
+D:\My Code\ConsoleApp1\ConsoleDelegate\bin\Debug\ConsoleDelegate.pdb
+D:\My Code\ConsoleApp1\ConsoleDelegate\obj\Debug\ConsoleDelegate.csproj.CoreCompileInputs.cache
+D:\My Code\ConsoleApp1\ConsoleDelegate\obj\Debug\ConsoleDelegate.exe
+D:\My Code\ConsoleApp1\ConsoleDelegate\obj\Debug\ConsoleDelegate.pdb
+D:\My Code\ConsoleApp1\ConsoleDelegate\obj\Debug\ConsoleDelegate.csprojAssemblyReference.cache
+D:\My Code\CLR_Via_CSharp\ConsoleDelegate\bin\Debug\ConsoleDelegate.exe.config
+D:\My Code\CLR_Via_CSharp\ConsoleDelegate\bin\Debug\ConsoleDelegate.exe
+D:\My Code\CLR_Via_CSharp\ConsoleDelegate\bin\Debug\ConsoleDelegate.pdb
+D:\My Code\CLR_Via_CSharp\ConsoleDelegate\obj\Debug\ConsoleDelegate.csprojAssemblyReference.cache
+D:\My Code\CLR_Via_CSharp\ConsoleDelegate\obj\Debug\ConsoleDelegate.csproj.CoreCompileInputs.cache
+D:\My Code\CLR_Via_CSharp\ConsoleDelegate\obj\Debug\ConsoleDelegate.exe
+D:\My Code\CLR_Via_CSharp\ConsoleDelegate\obj\Debug\ConsoleDelegate.pdb

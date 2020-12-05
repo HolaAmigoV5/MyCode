@@ -1,0 +1,7 @@
+D:\My Code\MyTestCode\ConsoleLinkList\bin\Debug\ConsoleLinkList.exe.config
+D:\My Code\MyTestCode\ConsoleLinkList\bin\Debug\ConsoleLinkList.exe
+D:\My Code\MyTestCode\ConsoleLinkList\bin\Debug\ConsoleLinkList.pdb
+D:\My Code\MyTestCode\ConsoleLinkList\obj\Debug\ConsoleLinkList.csprojAssemblyReference.cache
+D:\My Code\MyTestCode\ConsoleLinkList\obj\Debug\ConsoleLinkList.csproj.CoreCompileInputs.cache
+D:\My Code\MyTestCode\ConsoleLinkList\obj\Debug\ConsoleLinkList.exe
+D:\My Code\MyTestCode\ConsoleLinkList\obj\Debug\ConsoleLinkList.pdb

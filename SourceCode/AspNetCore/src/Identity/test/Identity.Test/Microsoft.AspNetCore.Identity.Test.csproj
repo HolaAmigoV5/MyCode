@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="$(IdentityTestSharedSourceRoot)**\*.cs" />
+    <Compile Include="$(SharedSourceRoot)test\SkipOnHelixAttribute.cs" />
+    <HelixContent Include="..\..\UI\src\Areas\Identity\Pages\**\*.*" LinkBase="UI\src\Areas\Identity\Pages" />
+    <HelixContent Include="..\..\UI\src\wwwroot\**\*.*" LinkBase="UI\src\wwwroot" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AngleSharp" />
+    <Reference Include="Microsoft.AspNetCore.Hosting" />
+    <Reference Include="Microsoft.AspNetCore.Http" />
+    <Reference Include="Microsoft.AspNetCore.Identity.Specification.Tests" />
+    <Reference Include="Microsoft.AspNetCore.Identity" />
+    <Reference Include="Microsoft.Extensions.Configuration" />
+    <Reference Include="Microsoft.Extensions.Options.ConfigurationExtensions" />
+  </ItemGroup>
+
+</Project>

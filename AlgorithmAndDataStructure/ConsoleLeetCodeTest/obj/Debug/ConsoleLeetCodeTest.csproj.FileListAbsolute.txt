@@ -1,0 +1,7 @@
+D:\My Code\MyTestCode\ConsoleLeetCodeTest\bin\Debug\ConsoleLeetCodeTest.exe.config
+D:\My Code\MyTestCode\ConsoleLeetCodeTest\bin\Debug\ConsoleLeetCodeTest.exe
+D:\My Code\MyTestCode\ConsoleLeetCodeTest\bin\Debug\ConsoleLeetCodeTest.pdb
+D:\My Code\MyTestCode\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.csproj.CoreCompileInputs.cache
+D:\My Code\MyTestCode\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.exe
+D:\My Code\MyTestCode\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.pdb
+D:\My Code\MyTestCode\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.csprojAssemblyReference.cache

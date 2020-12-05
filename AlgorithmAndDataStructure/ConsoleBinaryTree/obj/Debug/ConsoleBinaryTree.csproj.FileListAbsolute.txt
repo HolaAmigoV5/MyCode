@@ -1,0 +1,7 @@
+D:\My Code\MyTestCode\ConsoleBinaryTree\obj\Debug\ConsoleBinaryTree.csprojAssemblyReference.cache
+D:\My Code\MyTestCode\ConsoleBinaryTree\obj\Debug\ConsoleBinaryTree.csproj.CoreCompileInputs.cache
+D:\My Code\MyTestCode\ConsoleBinaryTree\bin\Debug\ConsoleBinaryTree.exe.config
+D:\My Code\MyTestCode\ConsoleBinaryTree\bin\Debug\ConsoleBinaryTree.exe
+D:\My Code\MyTestCode\ConsoleBinaryTree\bin\Debug\ConsoleBinaryTree.pdb
+D:\My Code\MyTestCode\ConsoleBinaryTree\obj\Debug\ConsoleBinaryTree.exe
+D:\My Code\MyTestCode\ConsoleBinaryTree\obj\Debug\ConsoleBinaryTree.pdb

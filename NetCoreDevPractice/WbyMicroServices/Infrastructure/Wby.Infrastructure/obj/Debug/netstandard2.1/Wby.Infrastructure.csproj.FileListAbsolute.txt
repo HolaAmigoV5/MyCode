@@ -1,0 +1,16 @@
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\bin\Debug\netstandard2.1\Wby.Infrastructure.deps.json
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\bin\Debug\netstandard2.1\Wby.Infrastructure.dll
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\bin\Debug\netstandard2.1\Wby.Infrastructure.pdb
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\bin\Debug\netstandard2.1\Wby.Domain.Abstractions.dll
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\bin\Debug\netstandard2.1\Wby.Domain.dll
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\bin\Debug\netstandard2.1\Wby.Infrastructure.Core.dll
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\bin\Debug\netstandard2.1\Wby.Domain.pdb
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\bin\Debug\netstandard2.1\Wby.Infrastructure.Core.pdb
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\bin\Debug\netstandard2.1\Wby.Domain.Abstractions.pdb
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\obj\Debug\netstandard2.1\Wby.Infrastructure.csprojAssemblyReference.cache
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\obj\Debug\netstandard2.1\Wby.Infrastructure.AssemblyInfoInputs.cache
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\obj\Debug\netstandard2.1\Wby.Infrastructure.AssemblyInfo.cs
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\obj\Debug\netstandard2.1\Wby.Infrastructure.csproj.CoreCompileInputs.cache
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\obj\Debug\netstandard2.1\Wby.Infrastructure.csproj.CopyComplete
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\obj\Debug\netstandard2.1\Wby.Infrastructure.dll
+D:\My Code\NetCoreDevPractice\WbyMicroServices\Infrastructure\Wby.Infrastructure\obj\Debug\netstandard2.1\Wby.Infrastructure.pdb

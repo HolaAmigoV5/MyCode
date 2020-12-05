@@ -1,0 +1,7 @@
+D:\My Code\MyTestCode\ConsoleBinaryHeap\bin\Debug\ConsoleBinaryHeap.exe.config
+D:\My Code\MyTestCode\ConsoleBinaryHeap\bin\Debug\ConsoleBinaryHeap.exe
+D:\My Code\MyTestCode\ConsoleBinaryHeap\bin\Debug\ConsoleBinaryHeap.pdb
+D:\My Code\MyTestCode\ConsoleBinaryHeap\obj\Debug\ConsoleBinaryHeap.csprojAssemblyReference.cache
+D:\My Code\MyTestCode\ConsoleBinaryHeap\obj\Debug\ConsoleBinaryHeap.csproj.CoreCompileInputs.cache
+D:\My Code\MyTestCode\ConsoleBinaryHeap\obj\Debug\ConsoleBinaryHeap.exe
+D:\My Code\MyTestCode\ConsoleBinaryHeap\obj\Debug\ConsoleBinaryHeap.pdb

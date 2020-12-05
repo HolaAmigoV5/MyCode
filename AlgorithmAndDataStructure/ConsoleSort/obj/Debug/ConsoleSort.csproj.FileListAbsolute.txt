@@ -1,0 +1,7 @@
+D:\My Code\MyTestCode\ConsoleSort\bin\Debug\ConsoleSort.exe.config
+D:\My Code\MyTestCode\ConsoleSort\bin\Debug\ConsoleSort.exe
+D:\My Code\MyTestCode\ConsoleSort\bin\Debug\ConsoleSort.pdb
+D:\My Code\MyTestCode\ConsoleSort\obj\Debug\ConsoleSort.csprojAssemblyReference.cache
+D:\My Code\MyTestCode\ConsoleSort\obj\Debug\ConsoleSort.csproj.CoreCompileInputs.cache
+D:\My Code\MyTestCode\ConsoleSort\obj\Debug\ConsoleSort.exe
+D:\My Code\MyTestCode\ConsoleSort\obj\Debug\ConsoleSort.pdb

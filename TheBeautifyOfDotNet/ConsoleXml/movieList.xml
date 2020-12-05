@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<!DOCTYPE movieList [<!ENTITY Bruce "布鲁斯·威利斯"><!ENTITY Jai "杰·科特尼">]>
+<movieList>
+  <!--近期上映电影信息-->
+  <movie id="1" titile="魔境仙踪" director="山姆·雷米" release="2013-3-29">
+    <starring>詹姆斯·弗兰科/米拉·库妮丝</starring>
+    <genreList>
+      <genre>冒险</genre>
+      <genre>家庭</genre>
+      <genre>奇幻</genre>
+    </genreList>
+  </movie>
+  <movie id="2" title="虎胆龙威5" director="约翰·摩尔" release="2013-3-14">
+    <starring>詹姆斯·卡梅隆</starring>
+    <genreList>
+      <genre>动作</genre>
+      <genre>犯罪</genre>
+      <genre>惊悚</genre>
+    </genreList>
+  </movie>
+</movieList>
