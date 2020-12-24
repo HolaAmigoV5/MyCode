@@ -5,3 +5,10 @@ D:\My Code\MyTestCode\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.csproj.C
 D:\My Code\MyTestCode\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.exe
 D:\My Code\MyTestCode\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.pdb
 D:\My Code\MyTestCode\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.csprojAssemblyReference.cache
+D:\GitHub\MyCode\AlgorithmAndDataStructure\ConsoleLeetCodeTest\bin\Debug\ConsoleLeetCodeTest.exe.config
+D:\GitHub\MyCode\AlgorithmAndDataStructure\ConsoleLeetCodeTest\bin\Debug\ConsoleLeetCodeTest.exe
+D:\GitHub\MyCode\AlgorithmAndDataStructure\ConsoleLeetCodeTest\bin\Debug\ConsoleLeetCodeTest.pdb
+D:\GitHub\MyCode\AlgorithmAndDataStructure\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.csprojAssemblyReference.cache
+D:\GitHub\MyCode\AlgorithmAndDataStructure\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.csproj.CoreCompileInputs.cache
+D:\GitHub\MyCode\AlgorithmAndDataStructure\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.exe
+D:\GitHub\MyCode\AlgorithmAndDataStructure\ConsoleLeetCodeTest\obj\Debug\ConsoleLeetCodeTest.pdb

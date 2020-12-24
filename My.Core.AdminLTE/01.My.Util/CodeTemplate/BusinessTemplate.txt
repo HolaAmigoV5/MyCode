@@ -1,0 +1,68 @@
+﻿/**
+*┌──────────────────────────────────────────────────────────────┐
+*│　描    述：{Comment}                                                  
+*│　作    者：{Author}                                              
+*│　版    本：1.0                                             
+*│　创建时间：{GeneratorTime}               
+*└──────────────────────────────────────────────────────────────┘
+*/
+
+using My.Entity.{areaName};
+using My.Util;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+
+namespace My.Business.{areaName}
+{
+    public class {className} : BaseBusiness<{entityName}>, I{className}, IDependency
+    {
+        #region 外部接口
+
+        public List<{entityName}> GetDataList(Pagination pagination, string condition, string keyword)
+        {
+            var q = GetIQueryable();
+            //筛选
+            if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
+                q = q.Where($@""{{condition}}.Contains(@0)"", keyword);
+
+            return q.GetPagination(pagination).ToList();
+        }
+
+        public {entityName} GetTheData(string id)
+        {
+            return GetEntity(id);
+        }
+
+        public AjaxResult AddData({entityName} newData)
+        {
+            Insert(newData);
+
+            return Success();
+        }
+
+        public AjaxResult UpdateData({entityName} theData)
+        {
+            Update(theData);
+
+            return Success();
+        }
+
+        public AjaxResult DeleteData(List<string> ids)
+        {
+            Delete(ids);
+
+            return Success();
+        }
+
+        #endregion
+
+        #region 私有成员
+
+        #endregion
+
+        #region 数据模型
+
+        #endregion
+    }
+}

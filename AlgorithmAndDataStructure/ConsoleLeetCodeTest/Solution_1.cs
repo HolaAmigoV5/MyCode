@@ -593,32 +593,78 @@ namespace ConsoleLeetCodeTest
 
         public int[] RelativeSortArray(int[] arr1, int[] arr2)
         {
-            int[] arr = new int[20];
-            int[] res = new int[arr1.Length];
+            //int[] arr = new int[20];
+            //int[] res = new int[arr1.Length];
+
+            //int index = 0;
+            ////将arr1中的数记录下来
+            //foreach (var item in arr1)
+            //    arr[item]++;
+
+            ////先安排arr2中的数
+            //foreach (var item in arr2)
+            //{
+            //    while (arr[item]-- > 0)
+            //    {
+            //        res[index++] = item;
+            //    }
+            //}
+
+            ////再安排剩下的元素
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    while (arr[i]-- > 0)
+            //    {
+            //        res[index++] = i;
+            //    }
+            //}
+            //return res;
+
+            // var arr=new int[1001];
+            // foreach(var num in arr1)
+            //     arr[num]++;
+
+            // int index=0;
+            // foreach(var num in arr2){
+            //     while(arr[num]-->0){
+            //         arr1[index++]=num;
+            //     }
+            // }
+
+            // for(int i=0; i<1001; i++){
+            //     while(arr[i]-->0)
+            //         arr1[index++]=i;
+            // }
+            // return arr1;
+
+            var dic = new Dictionary<int, int>();
+            Array.Sort(arr1);
+
+            foreach (var num in arr1)
+            {
+                if (dic.ContainsKey(num))
+                    dic[num]++;
+                else
+                    dic[num] = 1;
+            }
 
             int index = 0;
-            //将arr1中的数记录下来
-            foreach (var item in arr1)
-                arr[item]++;
-
-            //先安排arr2中的数
-            foreach (var item in arr2)
+            foreach (var num in arr2)
             {
-                while (arr[item]-- > 0)
-                {
-                    res[index++] = item;
-                }
+                while (dic[num]-- > 0)
+                    arr1[index++] = num;
             }
 
-            //再安排剩下的元素
-            for (int i = 0; i < 20; i++)
+            foreach (var num in dic.Keys)
             {
-                while (arr[i]-- > 0)
-                {
-                    res[index++] = i;
-                }
+                int n = dic[num];
+                while (n-- > 0)
+                    arr1[index++] = num;
+
+                //while (dic[num]-- > 0)  //这里不能修改集合值，修改后，无法遍历了
+                //    arr1[index++] = num;
             }
-            return res;
+            return arr1;
         }
 
         public string ReverseOnlyLetters(string S)

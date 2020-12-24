@@ -1,0 +1,23 @@
+﻿/**
+*┌──────────────────────────────────────────────────────────────┐
+*│　描    述：{Comment}                                                  
+*│　作    者：{Author}                                              
+*│　版    本：1.0                                             
+*│　创建时间：{GeneratorTime}               
+*└──────────────────────────────────────────────────────────────┘
+*/
+using My.Entity.{areaName}
+using My.Util;
+using System.Collections.Generic
+
+namespace My.Business.{areaName}
+{
+    public interface {className}
+    {
+        List<{entityName}> GetDataList(Pagination pagination, string condition, string keyword);
+        {entityName} GetTheData(string id);
+        AjaxResult AddData({entityName} newData);
+        AjaxResult UpdateData({entityName} theData);
+        AjaxResult DeleteData(List<string> ids);
+    }
+}

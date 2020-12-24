@@ -52,7 +52,7 @@ namespace ConsoleLeetCodeTest
             //solution.FindLadders("hit", "cog", wordlist);
             //solution.FindLadders2("red", "tax", new List<string>() { "ted", "tex", "red", "tax", "tad", "den", "rex", "pee" });
             //var res= solution.MyPow(2, -2147483648);
-            solution.Rotate(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3);
+            //solution.Rotate(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3);
             //solution.MoveZeroes(new int[] { 0, 1, 0, 3, 12 });
             //solution.SolveNQueens(4);
             //solution.MajorityElement(new int[] { 2, 2, 1, 1, 1, 2, 2 });
@@ -103,9 +103,9 @@ namespace ConsoleLeetCodeTest
             //Console.WriteLine((char)(1 + '0'));
             //Console.WriteLine('1' - '0');
             //solution.CountBits(2);
-            int[] a1 = { 474, 83, 404, 3 };
+            int[] a1 = { 2, 3, 1, 3, 2, 4, 6, 7, 9, 2, 19 };
             int[] a2 = { 2, 1, 4, 3, 9, 6 };
-            //solution.RelativeSortArray(a1, a2);
+            solution.RelativeSortArray(a1, a2);
             //solution.ReverseOnlyLetters("a-bC-dEf-ghIj");
             //solution.IsIsomorphic("ab", "aa");
             //solution.NumSquares(12);
