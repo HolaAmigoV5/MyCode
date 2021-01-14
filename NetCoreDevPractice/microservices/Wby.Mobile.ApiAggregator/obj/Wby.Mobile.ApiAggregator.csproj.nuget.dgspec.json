@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\My Code\\NetCoreDevPractice\\src\\microservices\\Wby.Mobile.ApiAggregator\\Wby.Mobile.ApiAggregator.csproj": {}
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\microservices\\Wby.Mobile.ApiAggregator\\Wby.Mobile.ApiAggregator.csproj": {}
   },
   "projects": {
-    "D:\\My Code\\NetCoreDevPractice\\src\\microservices\\Wby.Mobile.ApiAggregator\\Wby.Mobile.ApiAggregator.csproj": {
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\microservices\\Wby.Mobile.ApiAggregator\\Wby.Mobile.ApiAggregator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\src\\microservices\\Wby.Mobile.ApiAggregator\\Wby.Mobile.ApiAggregator.csproj",
+        "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\microservices\\Wby.Mobile.ApiAggregator\\Wby.Mobile.ApiAggregator.csproj",
         "projectName": "Wby.Mobile.ApiAggregator",
-        "projectPath": "D:\\My Code\\NetCoreDevPractice\\src\\microservices\\Wby.Mobile.ApiAggregator\\Wby.Mobile.ApiAggregator.csproj",
+        "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\microservices\\Wby.Mobile.ApiAggregator\\Wby.Mobile.ApiAggregator.csproj",
         "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-        "outputPath": "D:\\My Code\\NetCoreDevPractice\\src\\microservices\\Wby.Mobile.ApiAggregator\\obj\\",
+        "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\microservices\\Wby.Mobile.ApiAggregator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

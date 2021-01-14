@@ -19,6 +19,8 @@ namespace MiddlewareDemo.Middlewares
             _logger = logger;
         }
 
+        //类中有InvokeAsync方法返回Task。即可作为一个中间件注册进去
+
         public async Task InvokeAsync(HttpContext context)
         {
             using (_logger.BeginScope("TraceIdentifier:{TraceIdentifier}", context.TraceIdentifier))

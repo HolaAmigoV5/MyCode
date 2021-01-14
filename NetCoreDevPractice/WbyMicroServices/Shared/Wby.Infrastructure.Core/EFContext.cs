@@ -23,7 +23,7 @@ namespace Wby.Infrastructure.Core
         public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
         {
             var result = await base.SaveChangesAsync(cancellationToken);
-            await _mediator.DispatchDomainEventsAsync(this);
+            await _mediator.DispatchDomainEventsAsync(this); //发送领域事件
             return true;
         }
         #endregion

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iKOoWC3dJP7/rD84A7uPj8TIpUrFLoVxiDLs/0NI1T42Zpo8+gWR4PBBJ7WIHgO1v58aCAr2Nix9ubVRD8b5Zw==",
+  "dgSpecHash": "r5Zqq49LzkfuNIXd7meH/pL8H6l/PpyuVhESwucYgtshIo92gfdqKmAXBKKv2MtU6wQ+tUO9wNi5KbZ/V7z6PQ==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\OptionsDemo\\OptionsDemo.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\OptionsDemo\\OptionsDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

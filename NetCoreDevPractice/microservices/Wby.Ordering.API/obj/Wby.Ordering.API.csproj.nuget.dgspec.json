@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\My Code\\NetCoreDevPractice\\src\\microservices\\Wby.Ordering.API\\Wby.Ordering.API.csproj": {}
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\microservices\\Wby.Ordering.API\\Wby.Ordering.API.csproj": {}
   },
   "projects": {
-    "D:\\My Code\\NetCoreDevPractice\\src\\microservices\\Wby.Ordering.API\\Wby.Ordering.API.csproj": {
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\microservices\\Wby.Ordering.API\\Wby.Ordering.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\src\\microservices\\Wby.Ordering.API\\Wby.Ordering.API.csproj",
+        "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\microservices\\Wby.Ordering.API\\Wby.Ordering.API.csproj",
         "projectName": "Wby.Ordering.API",
-        "projectPath": "D:\\My Code\\NetCoreDevPractice\\src\\microservices\\Wby.Ordering.API\\Wby.Ordering.API.csproj",
+        "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\microservices\\Wby.Ordering.API\\Wby.Ordering.API.csproj",
         "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-        "outputPath": "D:\\My Code\\NetCoreDevPractice\\src\\microservices\\Wby.Ordering.API\\obj\\",
+        "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\microservices\\Wby.Ordering.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

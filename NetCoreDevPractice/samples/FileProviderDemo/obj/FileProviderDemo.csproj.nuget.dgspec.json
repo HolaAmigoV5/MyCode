@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\FileProviderDemo\\FileProviderDemo.csproj": {}
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\FileProviderDemo\\FileProviderDemo.csproj": {}
   },
   "projects": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\FileProviderDemo\\FileProviderDemo.csproj": {
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\FileProviderDemo\\FileProviderDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\FileProviderDemo\\FileProviderDemo.csproj",
+        "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\FileProviderDemo\\FileProviderDemo.csproj",
         "projectName": "FileProviderDemo",
-        "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\FileProviderDemo\\FileProviderDemo.csproj",
+        "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\FileProviderDemo\\FileProviderDemo.csproj",
         "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-        "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\FileProviderDemo\\obj\\",
+        "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\FileProviderDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

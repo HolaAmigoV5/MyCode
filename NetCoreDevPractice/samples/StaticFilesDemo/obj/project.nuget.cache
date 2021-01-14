@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tnYWhtybn62hhCp6c4xXNe9QFDRONIHtAYJpPJrplXasasGFwnqVuDcsUOGQgti/0lg1ETEwg5KKM6Uqtnm4rg==",
+  "dgSpecHash": "6O4MKfQjvzmDcKdoMIZRVxnCPjLwshp/3jTcyn7u0CyplC3BuszFYkvbeZXE5nDTC3jupwuCcdksVWA50IOdLA==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\StaticFilesDemo\\StaticFilesDemo.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\StaticFilesDemo\\StaticFilesDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

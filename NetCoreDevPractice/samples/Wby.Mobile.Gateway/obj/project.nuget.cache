@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JWR/Jpl2ztXxTaJR1k/F4xKzyJdRQRCBd+prNn9S2CfVBlPYyVCQlOz74HVisME1cpPkdErR6Y5enPVOFEPVJg==",
+  "dgSpecHash": "Qs5RROC47yjHjN00n2D4JUpUj7E1B65BQklLAbsTCvvLGfqPreGB3xkBHjhfljk2s0cQ7pEnC/KpbnqFlBRLsA==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\Wby.Mobile.Gateway\\Wby.Mobile.Gateway.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\Wby.Mobile.Gateway\\Wby.Mobile.Gateway.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wby\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
     "C:\\Users\\Wby\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.10\\microsoft.aspnetcore.authentication.jwtbearer.3.1.10.nupkg.sha512",

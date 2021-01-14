@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N9muE5Vwh4McbiC+ngoVYvC4gGn0JoJE3DDfly46UL9PY2kjluKFcdSCN9FESWKqgNrVrhkqqMxNhaS+N+FCtA==",
+  "dgSpecHash": "wkYjvKq4sGcCGfkEZKjjByB7cujEcmp05LX0IXuCW3FB1YFQe/sBW/N5LifvxKJXDySyP2VB4cHVFUhDVWyssQ==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Core\\Wby.Core.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Core\\Wby.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wby\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Wby\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

@@ -22,12 +22,14 @@ namespace Wby.API.Controllers
         [HttpPost]
         public async Task<long> CreateOrder([FromBody]CreateOrderCommand cmd)
         {
+            //使用MediaR实现命令的构造和命令的处理分离开
             return await _mediator.Send(cmd, HttpContext.RequestAborted);
         }
         
         [HttpGet]
         public async Task<List<string>> QueryOrder([FromQuery]MyOrderQuery myOrderQuery)
         {
+            //使用MediaR实现查询和查理处理分离
             return await _mediator.Send(myOrderQuery);
         }
     }

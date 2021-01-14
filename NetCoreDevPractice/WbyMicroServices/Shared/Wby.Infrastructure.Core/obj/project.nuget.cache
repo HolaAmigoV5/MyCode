@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "K3PY8KXWFGtYOk29MtgWPPbe49A5xNX87z/YtF6zVxvDDu0qYBnY5tzQIl4dpr2LglAN2Jt4Jdjy+W72pYRu5g==",
+  "dgSpecHash": "cyiR/YUKQ18a9K/2bF9zH0YtlpcDU4VCxEIIVchvNmj/rxbmnCw169BWZRJyjWpBkrADhVfKb4l2IjgrwIf2JQ==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\Wby.Infrastructure.Core.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\Wby.Infrastructure.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wby\\.nuget\\packages\\dapper\\2.0.30\\dapper.2.0.30.nupkg.sha512",
     "C:\\Users\\Wby\\.nuget\\packages\\dotnetcore.cap\\3.1.1\\dotnetcore.cap.3.1.1.nupkg.sha512",

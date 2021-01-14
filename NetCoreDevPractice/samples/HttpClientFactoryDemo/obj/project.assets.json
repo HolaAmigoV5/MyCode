@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\HttpClientFactoryDemo\\HttpClientFactoryDemo.csproj",
+      "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\HttpClientFactoryDemo\\HttpClientFactoryDemo.csproj",
       "projectName": "HttpClientFactoryDemo",
-      "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\HttpClientFactoryDemo\\HttpClientFactoryDemo.csproj",
+      "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\HttpClientFactoryDemo\\HttpClientFactoryDemo.csproj",
       "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-      "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\HttpClientFactoryDemo\\obj\\",
+      "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\HttpClientFactoryDemo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

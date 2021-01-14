@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace DependencyInjectionDemo.Services
 {
     public interface IMySingletonService { }
-    public class MySingletonService:IMySingletonService
+    public class MySingletonService : IMySingletonService
     {
     }
 }

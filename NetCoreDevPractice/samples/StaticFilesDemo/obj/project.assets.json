@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\StaticFilesDemo\\StaticFilesDemo.csproj",
+      "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\StaticFilesDemo\\StaticFilesDemo.csproj",
       "projectName": "StaticFilesDemo",
-      "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\StaticFilesDemo\\StaticFilesDemo.csproj",
+      "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\StaticFilesDemo\\StaticFilesDemo.csproj",
       "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-      "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\StaticFilesDemo\\obj\\",
+      "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\StaticFilesDemo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

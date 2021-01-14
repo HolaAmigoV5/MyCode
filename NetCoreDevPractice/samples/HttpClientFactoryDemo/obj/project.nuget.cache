@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sX+O6Pii1LITU495AlE39Prl6iAmAz6/qJCFCVwmvIMlUsdoR7Es6gEJfWMMfMaNfzVotxYsmP7iPhZEb80kLQ==",
+  "dgSpecHash": "R6N+PK0GX4Mb+i5/MFb0/AQ5zVE8dpMfv/3ZYPU9MM7aF6GAkqTk6nF7Z97E/lPXk8RKVMYZeEkhICPwtPWEwg==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\HttpClientFactoryDemo\\HttpClientFactoryDemo.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\HttpClientFactoryDemo\\HttpClientFactoryDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

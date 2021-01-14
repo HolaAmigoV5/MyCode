@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SQG1YBD+BeRzL+mUDuu2aOOzatx/yRQ7kDZOpJKWaAvAAYOj3VsBuVKaaHFV5uchccWiU861gB5Pth5Ax6Bl+A==",
+  "dgSpecHash": "BljO2no5IJqvaYUAihXtGyZaFAciXcuzoFAdJ5syxU53kgnNVenPn6ddr/cHqAs3uyo/LQqaqAokozvkCoD2Gw==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\RemoteSite\\RemoteSite.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\RemoteSite\\RemoteSite.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

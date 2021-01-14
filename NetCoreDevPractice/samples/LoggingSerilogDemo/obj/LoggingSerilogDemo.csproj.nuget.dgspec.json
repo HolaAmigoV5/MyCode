@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\LoggingSerilogDemo.csproj": {}
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\LoggingSerilogDemo.csproj": {}
   },
   "projects": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\LoggingSerilogDemo.csproj": {
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\LoggingSerilogDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\LoggingSerilogDemo.csproj",
+        "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\LoggingSerilogDemo.csproj",
         "projectName": "LoggingSerilogDemo",
-        "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\LoggingSerilogDemo.csproj",
+        "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\LoggingSerilogDemo.csproj",
         "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-        "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\obj\\",
+        "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

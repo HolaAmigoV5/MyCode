@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "W5VxQqYht2k87V1WEANOv+6KiUeXkqG3usWmT/eBzJZtF9/BdsReUKTlNLv+sY6OCRifunW1G6NLsUz7zoIVaA==",
+  "dgSpecHash": "RggjymisAxHCrBUZguGliB0vkT1orC+fK2dWY2kyOGOL1V6rvtN79tfpOOiNKbdy/iHUgUVOPO2/u/9GbTWVVw==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\MiddlewareDemo\\MiddlewareDemo.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\MiddlewareDemo\\MiddlewareDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -10,26 +10,30 @@ namespace MediatorDemo
     {
         async static Task Main(string[] args)
         {
+            //注册MediatR
             var services = new ServiceCollection();
             services.AddMediatR(typeof(Program).Assembly);
 
+            //获取MediaR
             var serviceProvider = services.BuildServiceProvider();
             var mediator = serviceProvider.GetService<IMediator>();
 
 
-            await mediator.Publish(new MyEvent { EventName = "event01" });
-            //await mediator.Send(new MyCommand { CommandName = "cmd01" });
+            //使用MediaR实现命令的构造和命令的处理分离开
+            //await mediator.Publish(new MyEvent { EventName = "event01" });
+            await mediator.Send(new MyCommand { CommandName = "cmd01" });
 
             Console.ReadLine();
         }
     }
 
-    #region MediatR实现CRPS模式
+    #region MediatR实现CQRS模式
     internal class MyCommand : IRequest<long>
     {
         public string CommandName { get; set; }
     }
 
+    //对于多个Handler，只会处理最后一个注册的IRequestHandler
     internal class MyCommandHandlerV2 : IRequestHandler<MyCommand, long>
     {
         public Task<long> Handle(MyCommand request, CancellationToken cancellationToken)
@@ -49,7 +53,7 @@ namespace MediatorDemo
     }
     #endregion
 
-    #region MeddiatR处理领域事件
+    #region MediatR处理领域事件
     internal class MyEvent : INotification
     {
         public string EventName { get; set; }
@@ -73,7 +77,7 @@ namespace MediatorDemo
             Console.WriteLine($"MyEventHandlerV2执行：{notification.EventName}");
             return Task.CompletedTask;
         }
-    } 
+    }
     #endregion
 
 }

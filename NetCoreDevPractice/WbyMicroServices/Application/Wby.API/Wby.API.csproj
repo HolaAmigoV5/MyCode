@@ -22,5 +22,10 @@
     <ProjectReference Include="..\..\Infrastructure\Wby.Infrastructure\Wby.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Infrastructure\Auth\" />
+    <Folder Include="Infrastructure\Caching\" />
+  </ItemGroup>
+
 
 </Project>

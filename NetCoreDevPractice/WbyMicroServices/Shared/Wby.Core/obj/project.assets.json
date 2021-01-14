@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Core\\Wby.Core.csproj",
+      "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Core\\Wby.Core.csproj",
       "projectName": "Wby.Core",
-      "projectPath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Core\\Wby.Core.csproj",
+      "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Core\\Wby.Core.csproj",
       "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-      "outputPath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Core\\obj\\",
+      "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

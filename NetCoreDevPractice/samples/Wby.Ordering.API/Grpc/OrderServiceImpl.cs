@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Wby.Ordering.API.Grpc
 {
-    public class OrderServiceImpl: OrderService.OrderServiceBase
+    public class OrderServiceImpl : OrderService.OrderServiceBase
     {
         ILogger _logger;
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uRz7+sCvhh6zwpZ5VMU8y+D+HQqpDcabIH5vEGF2wcQIV2RkUfb7fyAxS09ZkKPwcp/tkY9Jl0SHB/h0qUdvFg==",
+  "dgSpecHash": "Zq7/udZS1LpPUm8Q+8kKUZ8xm0rtX0dFIsmZtO0NtMTtyr/00wpWxqPycKqC5xRLWHpzweSjVeWGt9FiANczMg==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\src\\microservices\\Wby.BadSite\\Wby.BadSite.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\microservices\\Wby.BadSite\\Wby.BadSite.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -748,11 +748,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\GrpcClientDemo\\GrpcClientDemo.csproj",
+      "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\GrpcClientDemo\\GrpcClientDemo.csproj",
       "projectName": "GrpcClientDemo",
-      "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\GrpcClientDemo\\GrpcClientDemo.csproj",
+      "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\GrpcClientDemo\\GrpcClientDemo.csproj",
       "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-      "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\GrpcClientDemo\\obj\\",
+      "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\GrpcClientDemo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

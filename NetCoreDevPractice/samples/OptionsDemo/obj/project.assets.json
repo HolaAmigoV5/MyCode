@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\OptionsDemo\\OptionsDemo.csproj",
+      "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\OptionsDemo\\OptionsDemo.csproj",
       "projectName": "OptionsDemo",
-      "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\OptionsDemo\\OptionsDemo.csproj",
+      "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\OptionsDemo\\OptionsDemo.csproj",
       "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-      "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\OptionsDemo\\obj\\",
+      "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\OptionsDemo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

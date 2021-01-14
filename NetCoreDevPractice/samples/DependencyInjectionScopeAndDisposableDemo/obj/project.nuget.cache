@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WGS6cbBP9EyVSeY+3DrOI6liBH0RagAwZb4jgVeqAMhf8+BabizjJQP21FOToq+rYS/7QGXcPzCEOFLeH9VE6Q==",
+  "dgSpecHash": "D05yb4nep33gbH4bOAX071m/LTw4w0fbqV4lNHlXROjIrbyrntBf4VF2yrRscZUeRTdc2hFjyHS6mJtPotlCQw==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\DependencyInjectionScopeAndDisposableDemo\\DependencyInjectionScopeAndDisposableDemo.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\DependencyInjectionScopeAndDisposableDemo\\DependencyInjectionScopeAndDisposableDemo.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jh0v7kCh20kNZaZoOzPe3pktvvFTrtzvipFEhg0VcNOPF0zZbT2cv2xc+0Fh/O9mM9RxZWZA5tvrhrrhzO67RA==",
+  "dgSpecHash": "M/jXyJRTwmz8ohkdUnYXYsAFbMWFf68Td/Nr97HeXoPEA42hh02nWhEQnhKBABGBRUWHWTaIN/2bLja7rY5m5w==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\LoggingSerilogDemo.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingSerilogDemo\\LoggingSerilogDemo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wby\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\Wby\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\2.0.4\\microsoft.dotnet.platformabstractions.2.0.4.nupkg.sha512",

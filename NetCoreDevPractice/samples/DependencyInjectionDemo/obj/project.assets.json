@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\DependencyInjectionDemo\\DependencyInjectionDemo.csproj",
+      "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\DependencyInjectionDemo\\DependencyInjectionDemo.csproj",
       "projectName": "DependencyInjectionDemo",
-      "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\DependencyInjectionDemo\\DependencyInjectionDemo.csproj",
+      "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\DependencyInjectionDemo\\DependencyInjectionDemo.csproj",
       "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-      "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\DependencyInjectionDemo\\obj\\",
+      "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\DependencyInjectionDemo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -25,3 +25,42 @@ D:\My Code\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\Grp
 D:\My Code\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.pdb
 D:\My Code\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.genruntimeconfig.cache
 D:\My Code\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Polly.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\appsettings.json
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\GrpcClientDemo.exe
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\GrpcClientDemo.deps.json
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\GrpcClientDemo.runtimeconfig.json
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\GrpcClientDemo.runtimeconfig.dev.json
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\GrpcClientDemo.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\GrpcClientDemo.pdb
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Grpc.AspNetCore.Server.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Grpc.AspNetCore.Server.ClientFactory.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Grpc.Core.Api.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Grpc.Net.Client.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Grpc.Net.ClientFactory.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Grpc.Net.Common.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Http.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Http.Polly.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Polly.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\Polly.Extensions.Http.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.csprojAssemblyReference.cache
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.AssemblyInfoInputs.cache
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.AssemblyInfo.cs
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.csproj.CoreCompileInputs.cache
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.MvcApplicationPartsAssemblyInfo.cache
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.RazorTargetAssemblyInfo.cache
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.csproj.CopyComplete
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\staticwebassets\GrpcClientDemo.StaticWebAssets.Manifest.cache
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\staticwebassets\GrpcClientDemo.StaticWebAssets.xml
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.dll
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.pdb
+D:\GitHub\MyCode\NetCoreDevPractice\samples\GrpcClientDemo\obj\Debug\netcoreapp3.1\GrpcClientDemo.genruntimeconfig.cache

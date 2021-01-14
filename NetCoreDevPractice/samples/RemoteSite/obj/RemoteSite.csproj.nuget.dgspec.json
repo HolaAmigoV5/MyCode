@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\RemoteSite\\RemoteSite.csproj": {}
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\RemoteSite\\RemoteSite.csproj": {}
   },
   "projects": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\RemoteSite\\RemoteSite.csproj": {
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\RemoteSite\\RemoteSite.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\RemoteSite\\RemoteSite.csproj",
+        "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\RemoteSite\\RemoteSite.csproj",
         "projectName": "RemoteSite",
-        "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\RemoteSite\\RemoteSite.csproj",
+        "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\RemoteSite\\RemoteSite.csproj",
         "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-        "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\RemoteSite\\obj\\",
+        "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\RemoteSite\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -12,7 +12,7 @@ namespace ExceptionDemo.Controllers
         [Route("/error")]
         public IActionResult Index()
         {
-            //通过Features。Get()方法获取上下文错误信息
+            //通过Features.Get()方法获取上下文错误信息
             var exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
             var ex = exceptionHandlerPathFeature?.Error;
 

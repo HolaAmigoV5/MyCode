@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\DependencyInjectionScopeAndDisposableDemo\\DependencyInjectionScopeAndDisposableDemo.csproj",
+      "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\DependencyInjectionScopeAndDisposableDemo\\DependencyInjectionScopeAndDisposableDemo.csproj",
       "projectName": "DependencyInjectionScopeAndDisposableDemo",
-      "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\DependencyInjectionScopeAndDisposableDemo\\DependencyInjectionScopeAndDisposableDemo.csproj",
+      "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\DependencyInjectionScopeAndDisposableDemo\\DependencyInjectionScopeAndDisposableDemo.csproj",
       "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-      "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\DependencyInjectionScopeAndDisposableDemo\\obj\\",
+      "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\DependencyInjectionScopeAndDisposableDemo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

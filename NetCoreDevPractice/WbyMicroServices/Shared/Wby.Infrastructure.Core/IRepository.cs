@@ -4,7 +4,7 @@ using Wby.Domain;
 
 namespace Wby.Infrastructure.Core
 {
-    public interface IRepository<TEntity> where TEntity:Entity, IAggregateRoot
+    public interface IRepository<TEntity> where TEntity : Entity, IAggregateRoot
     {
         IUnitOfWork UnitOfWork { get; }
         TEntity Add(TEntity entity);
@@ -15,7 +15,7 @@ namespace Wby.Infrastructure.Core
         Task<bool> RemoveAsync(TEntity entity);
     }
 
-    public interface IRepository<TEntity, TKey>:IRepository<TEntity> where TEntity:Entity<TKey>, IAggregateRoot
+    public interface IRepository<TEntity, TKey> : IRepository<TEntity> where TEntity : Entity<TKey>, IAggregateRoot
     {
         bool Delete(TKey id);
         Task<bool> DeleteAsync(TKey id, CancellationToken cancellationToken = default);

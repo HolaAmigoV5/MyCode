@@ -1522,11 +1522,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\Wby.Infrastructure.Core.csproj",
+      "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\Wby.Infrastructure.Core.csproj",
       "projectName": "Wby.Infrastructure.Core",
-      "projectPath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\Wby.Infrastructure.Core.csproj",
+      "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\Wby.Infrastructure.Core.csproj",
       "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-      "outputPath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\obj\\",
+      "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1542,8 +1542,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Domain.Abstractions\\Wby.Domain.Abstractions.csproj": {
-              "projectPath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Domain.Abstractions\\Wby.Domain.Abstractions.csproj"
+            "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Domain.Abstractions\\Wby.Domain.Abstractions.csproj": {
+              "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Domain.Abstractions\\Wby.Domain.Abstractions.csproj"
             }
           }
         }

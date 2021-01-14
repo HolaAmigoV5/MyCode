@@ -105,17 +105,20 @@ namespace ConfigurationDemo
             //Console.WriteLine($"Key2:{configurationRoot["Key2"]}");
             //Console.WriteLine($"Key3:{configurationRoot["Key3"]}");
             //Console.ReadKey();
+            #endregion
 
+            #region 使用强类型对象承载配置数据
             //var config = new Config() { Key1 = "config key1", Key5 = false };
             //configurationRoot.Bind(config);
+
+            //分组后，分别绑定
             ////configurationRoot.GetSection("OrderService").Bind(config, 
-            ////    binderOptions => { binderOptions.BindNonPublicProperties = true; });
+            ////    binderOptions => { binderOptions.BindNonPublicProperties = true; }); //让私有属性生效
 
 
             //Console.WriteLine($"Key1:{config.Key1}");
             //Console.WriteLine($"Key5:{config.Key5}");
-            //Console.WriteLine($"Key6:{config.Key6}");
-
+            //Console.WriteLine($"Key6:{config.Key6}"); 
             #endregion
 
             #region 自定义配置数据源

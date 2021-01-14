@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MEIsVsC7AVSPPTaNib3L04u0qua/RZlZVlQ/PBvI3p5pgyrXZSTsNPEat7bNsNnY8m95UC9z08m6HxbhjsGbcg==",
+  "dgSpecHash": "xiiAnbtiCfDIbFrsEeEogyUXdjkSYUaGG5257+cdMfXQNI05VA5Zk0v2Y4A4H6q97fuN2gC97LG2YFZYmF4hPw==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Domain.Abstractions\\Wby.Domain.Abstractions.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Domain.Abstractions\\Wby.Domain.Abstractions.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wby\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\Wby\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\RoutingDemo\\RoutingDemo.csproj": {}
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\RoutingDemo\\RoutingDemo.csproj": {}
   },
   "projects": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\RoutingDemo\\RoutingDemo.csproj": {
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\RoutingDemo\\RoutingDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\RoutingDemo\\RoutingDemo.csproj",
+        "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\RoutingDemo\\RoutingDemo.csproj",
         "projectName": "RoutingDemo",
-        "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\RoutingDemo\\RoutingDemo.csproj",
+        "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\RoutingDemo\\RoutingDemo.csproj",
         "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-        "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\RoutingDemo\\obj\\",
+        "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\RoutingDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

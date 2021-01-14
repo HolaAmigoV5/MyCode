@@ -11,12 +11,12 @@ service OrderGrpc {
 
 message CreateOrderCommand {
 	string buyerId = 1;
-    int32 productId = 2;
-    double unitPrice = 3;
-    double discount = 4;
-    int32 units = 5;
+	int32 productId = 2;
+	double unitPrice = 3;
+	double discount = 4;
+	int32 units = 5;
 }
 
 message CreateOrderResult {
-    int32 orderId = 1;
+	int32 orderId = 1;
 }

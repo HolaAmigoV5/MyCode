@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AkGHekWhVJv9mgZlj940+XJDsoqhokpHyOoZashKO48npTAsOCCqzoMOPH/7fghbnJjZD1yf9oTanr4/szQgjg==",
+  "dgSpecHash": "ZRwe4A1S3ZmxKaexQ6DtPCLg7WOthNk6tlz3H8TjXUKspUVv7RKihP/lSepZdNKGPbub+ue5xmIGSM2iLRJF+g==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\Wby.Mobile.ApiAggregator\\Wby.Mobile.ApiAggregator.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\Wby.Mobile.ApiAggregator\\Wby.Mobile.ApiAggregator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wby\\.nuget\\packages\\google.protobuf\\3.13.0\\google.protobuf.3.13.0.nupkg.sha512",
     "C:\\Users\\Wby\\.nuget\\packages\\grpc.aspnetcore\\2.33.1\\grpc.aspnetcore.2.33.1.nupkg.sha512",

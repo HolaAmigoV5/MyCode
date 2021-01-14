@@ -46,7 +46,7 @@ namespace Wby.API
         {
             services.AddTransient<ISubscriberService, SubscriberService>();
             services.AddCap(options => {
-                //EventBus和OrderingContext共享
+                //EventBus和OrderingContext共享数据库连接
                 options.UseEntityFramework<OrderingContext>();
                 options.UseRabbitMQ(options =>
                 {

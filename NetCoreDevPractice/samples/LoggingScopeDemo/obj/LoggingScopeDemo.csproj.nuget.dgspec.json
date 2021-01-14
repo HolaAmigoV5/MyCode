@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\LoggingScopeDemo.csproj": {}
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\LoggingScopeDemo.csproj": {}
   },
   "projects": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\LoggingScopeDemo.csproj": {
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\LoggingScopeDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\LoggingScopeDemo.csproj",
+        "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\LoggingScopeDemo.csproj",
         "projectName": "LoggingScopeDemo",
-        "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\LoggingScopeDemo.csproj",
+        "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\LoggingScopeDemo.csproj",
         "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-        "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\obj\\",
+        "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

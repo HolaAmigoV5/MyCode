@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0zgHluoGtENtnVrqqPJzeXKr3unhTbepmOMmb9Gu1yBsRcNY2SgX3IygN6DCaWHaYduM9T/3h0eT0IBkBkZTog==",
+  "dgSpecHash": "vSJQjZH8gJYBnfD+IlrjQaVY8alcMZpzFQv4vPrtgbm1iEzUFTXwJUyZh6B+n+znECxplAIkb4RZucuC/Ds6ag==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\Wby.GoodSite\\Wby.GoodSite.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\Wby.GoodSite\\Wby.GoodSite.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wby\\.nuget\\packages\\easycaching.core\\1.1.0\\easycaching.core.1.1.0.nupkg.sha512",
     "C:\\Users\\Wby\\.nuget\\packages\\easycaching.redis\\1.1.0\\easycaching.redis.1.1.0.nupkg.sha512",

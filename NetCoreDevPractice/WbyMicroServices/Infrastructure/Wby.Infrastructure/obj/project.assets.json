@@ -1314,11 +1314,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Infrastructure\\Wby.Infrastructure\\Wby.Infrastructure.csproj",
+      "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Infrastructure\\Wby.Infrastructure\\Wby.Infrastructure.csproj",
       "projectName": "Wby.Infrastructure",
-      "projectPath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Infrastructure\\Wby.Infrastructure\\Wby.Infrastructure.csproj",
+      "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Infrastructure\\Wby.Infrastructure\\Wby.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-      "outputPath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Infrastructure\\Wby.Infrastructure\\obj\\",
+      "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Infrastructure\\Wby.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1334,11 +1334,11 @@
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Domain\\Wby.Domain\\Wby.Domain.csproj": {
-              "projectPath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Domain\\Wby.Domain\\Wby.Domain.csproj"
+            "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Domain\\Wby.Domain\\Wby.Domain.csproj": {
+              "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Domain\\Wby.Domain\\Wby.Domain.csproj"
             },
-            "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\Wby.Infrastructure.Core.csproj": {
-              "projectPath": "D:\\My Code\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\Wby.Infrastructure.Core.csproj"
+            "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\Wby.Infrastructure.Core.csproj": {
+              "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\WbyMicroServices\\Shared\\Wby.Infrastructure.Core\\Wby.Infrastructure.Core.csproj"
             }
           }
         }

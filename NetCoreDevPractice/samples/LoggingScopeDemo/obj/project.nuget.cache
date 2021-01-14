@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nZwfvdjbd9aIBPJ+q9EEi9B7Qx8NnJoNga4Gk9gaXEiO6hS0KAMpNaJF6sPwab7LTe+6Mw9L1cP93spROPpOxA==",
+  "dgSpecHash": "mtMZnJ54ae19Uoz2LCMYgQ3cOI8IVaKtOfE2sYTPBRGzMOgQqpC3120yHpquMvKqN5lqHZ2AtBN/5Xaf1QwqZA==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\LoggingScopeDemo.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\LoggingScopeDemo\\LoggingScopeDemo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wby\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "C:\\Users\\Wby\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",

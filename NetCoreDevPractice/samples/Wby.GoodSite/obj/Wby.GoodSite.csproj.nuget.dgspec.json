@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\Wby.GoodSite\\Wby.GoodSite.csproj": {}
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\Wby.GoodSite\\Wby.GoodSite.csproj": {}
   },
   "projects": {
-    "D:\\My Code\\NetCoreDevPractice\\samples\\Wby.GoodSite\\Wby.GoodSite.csproj": {
+    "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\Wby.GoodSite\\Wby.GoodSite.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\My Code\\NetCoreDevPractice\\samples\\Wby.GoodSite\\Wby.GoodSite.csproj",
+        "projectUniqueName": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\Wby.GoodSite\\Wby.GoodSite.csproj",
         "projectName": "Wby.GoodSite",
-        "projectPath": "D:\\My Code\\NetCoreDevPractice\\samples\\Wby.GoodSite\\Wby.GoodSite.csproj",
+        "projectPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\Wby.GoodSite\\Wby.GoodSite.csproj",
         "packagesPath": "C:\\Users\\Wby\\.nuget\\packages\\",
-        "outputPath": "D:\\My Code\\NetCoreDevPractice\\samples\\Wby.GoodSite\\obj\\",
+        "outputPath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\Wby.GoodSite\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wby\\AppData\\Roaming\\NuGet\\NuGet.Config",

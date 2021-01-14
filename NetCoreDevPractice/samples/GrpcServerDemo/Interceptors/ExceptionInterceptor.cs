@@ -16,9 +16,9 @@ namespace GrpcServerDemo.Interceptors
             }
             catch (Exception ex)
             {
-                var data = new Metadata();
-                data.Add("message", ex.Message);
+                var data = new Metadata { { "message", ex.Message } };
                 throw new RpcException(new Status(StatusCode.Unknown, "Unknon"), data);
+
             }
         }
     }

@@ -4,10 +4,10 @@ using System.Timers;
 
 namespace ConfigurationDemo
 {
-    class MyConfigurationProvider:ConfigurationProvider
+    class MyConfigurationProvider : ConfigurationProvider
     {
         Timer timer;
-        public MyConfigurationProvider():base()
+        public MyConfigurationProvider() : base()
         {
             timer = new Timer();
             timer.Elapsed += Timer_Elapsed;

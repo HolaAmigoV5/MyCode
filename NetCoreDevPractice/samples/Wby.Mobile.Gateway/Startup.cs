@@ -32,7 +32,7 @@ namespace Wby.Mobile.Gateway
         public void ConfigureServices(IServiceCollection services)
         {
             //注册Ocelot
-            services.AddOcelot();
+            services.AddOcelot(Configuration);
 
             #region 身份认证
             //读取secrityKey注入到容器中，然后启用身份认证

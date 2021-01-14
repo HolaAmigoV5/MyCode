@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xP6JCcLhZ3Lr7fXvOHyn54QsAsEimN0VR6oMGq3AYdjF0J7EDkOSL138s+G7Fx6PaFvRCYSK7D12v4delvd81w==",
+  "dgSpecHash": "DrfA6TrdJJdx/WFKTuGI1sfAr3DRemAo7UaVo6nF+TUmIq3XhTn9jtStcAh9LBS0//7Y/HF2Ect4ZqdFD0s5bw==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\DependencyInjectionAutofacDemo\\DependencyInjectionAutofacDemo.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\DependencyInjectionAutofacDemo\\DependencyInjectionAutofacDemo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wby\\.nuget\\packages\\autofac\\6.0.0\\autofac.6.0.0.nupkg.sha512",
     "C:\\Users\\Wby\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.1.0\\autofac.extensions.dependencyinjection.7.1.0.nupkg.sha512",

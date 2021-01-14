@@ -18,9 +18,10 @@ namespace GrpcServerDemo
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //注册gRPC。
             services.AddGrpc(options=> {
-                options.EnableDetailedErrors = false;
-                options.Interceptors.Add<ExceptionInterceptor>();
+                options.EnableDetailedErrors = false;  //内部错误信息输出关闭
+                options.Interceptors.Add<ExceptionInterceptor>();  //添加异常拦截器
             });
         }
 
@@ -36,6 +37,7 @@ namespace GrpcServerDemo
 
             app.UseEndpoints(endpoints =>
             {
+                //将OrderService发布出去
                 endpoints.MapGrpcService<OrderService>();
 
                 endpoints.MapGet("/", async context =>

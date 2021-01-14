@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ybK0EecGy8nn9XaYpWMrekm/eX+8whdbwkxiJQRM16UAToeyu0FJnP+lfCxQD5FZBK1iE032Ux1BCVgULQ9GJA==",
+  "dgSpecHash": "n4ynA43jX+uTzZ9utWJmtiC0y4g7CbC9x7nHU6A9Bzc2z1UfSA5eRroMk3lnqrn1VDRAMVlK25QSoflHd+ItcQ==",
   "success": true,
-  "projectFilePath": "D:\\My Code\\NetCoreDevPractice\\samples\\FileProviderDemo\\FileProviderDemo.csproj",
+  "projectFilePath": "D:\\GitHub\\MyCode\\NetCoreDevPractice\\samples\\FileProviderDemo\\FileProviderDemo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wby\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Wby\\.nuget\\packages\\microsoft.extensions.fileproviders.composite\\5.0.0\\microsoft.extensions.fileproviders.composite.5.0.0.nupkg.sha512",
