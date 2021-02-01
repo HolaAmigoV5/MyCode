@@ -35,6 +35,7 @@ namespace Wby.Mobile.Gateway
             services.AddOcelot(Configuration);
 
             #region 身份认证
+            //这里模拟在网关层配置身份验证
             //读取secrityKey注入到容器中，然后启用身份认证
             var secrityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SecurityKey"]));
             services.AddSingleton(secrityKey);
@@ -46,9 +47,9 @@ namespace Wby.Mobile.Gateway
                 //设置Cookie验证方案
                 //options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
             })
+            //设置JWT验证方案
             .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
             {
-                //设置JWT验证方案
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true, //是否验证签发者
@@ -88,7 +89,7 @@ namespace Wby.Mobile.Gateway
                 endpoints.MapControllers();
             });
 
-            //使用Ocelot
+            //使用Ocelot。要放在最后，希望网关内置的API任然生效，只有内置生效才映射我们的网关配置
             app.UseOcelot().Wait();
         }
     }

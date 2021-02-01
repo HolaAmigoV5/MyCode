@@ -26,6 +26,8 @@ namespace Wby.Mobile.Gateway.Controllers
             return Content(User.FindFirst("Name").Value);
         }
 
+        
+        //这里可以用JWT身份认证，也可以用cookie身份认证
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme + "," + 
             CookieAuthenticationDefaults.AuthenticationScheme)]
         public IActionResult AnyOne()

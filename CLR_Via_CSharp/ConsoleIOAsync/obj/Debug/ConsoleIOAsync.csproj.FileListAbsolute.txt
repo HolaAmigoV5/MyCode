@@ -1,7 +1,0 @@
-D:\My Code\CLR_Via_CSharp\ConsoleIOAsync\bin\Debug\ConsoleIOAsync.exe.config
-D:\My Code\CLR_Via_CSharp\ConsoleIOAsync\bin\Debug\ConsoleIOAsync.exe
-D:\My Code\CLR_Via_CSharp\ConsoleIOAsync\bin\Debug\ConsoleIOAsync.pdb
-D:\My Code\CLR_Via_CSharp\ConsoleIOAsync\obj\Debug\ConsoleIOAsync.csprojAssemblyReference.cache
-D:\My Code\CLR_Via_CSharp\ConsoleIOAsync\obj\Debug\ConsoleIOAsync.csproj.CoreCompileInputs.cache
-D:\My Code\CLR_Via_CSharp\ConsoleIOAsync\obj\Debug\ConsoleIOAsync.exe
-D:\My Code\CLR_Via_CSharp\ConsoleIOAsync\obj\Debug\ConsoleIOAsync.pdb

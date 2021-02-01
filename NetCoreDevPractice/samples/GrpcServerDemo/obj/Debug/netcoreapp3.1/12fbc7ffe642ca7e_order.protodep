@@ -1,2 +1,0 @@
-obj\Debug\netcoreapp3.1\Protos/Order.cs \
-obj\Debug\netcoreapp3.1\Protos/OrderGrpc.cs: Protos/order.proto

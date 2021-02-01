@@ -34,8 +34,10 @@ namespace Wby.Mobile.Gateway.Controllers
         public IActionResult JwtLogin([FromServices] SymmetricSecurityKey securityKey, string userName)
         {
             //使用JWT登录。获取securityKey去加密token
-            List<Claim> claims = new List<Claim>();
-            claims.Add(new Claim("Name", userName));
+            List<Claim> claims = new List<Claim>
+            {
+                new Claim("Name", userName)
+            };
 
             //加密securityKey
             var creds = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);

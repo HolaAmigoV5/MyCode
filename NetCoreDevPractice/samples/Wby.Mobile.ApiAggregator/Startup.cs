@@ -50,6 +50,7 @@ namespace Wby.Mobile.ApiAggregator
             //});
 
             #region 身份验证
+            //这里模拟微服务API进行身份验证。
             var secrityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SecurityKey"]));
             services.AddSingleton(secrityKey);
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      //聚合服务路由策略
+      //聚合服务路由策略：将上游聚合服务"/mobileAgg/api/{everything}"路由到下游localhost:5004/api/{everying}处理
       //转发下游(业务服务器)的匹配规则
       "DownstreamPathTemplate": "/api/{everything}",
 
@@ -23,7 +23,7 @@
       "UpstreamHttpMethod": []
     },
     {
-      //Order.API路由策略
+      //Order.API路由策略：将上游"/mobile/api/{everything}"路由到下游的http://localhost:500/api/{everying}处理
       "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

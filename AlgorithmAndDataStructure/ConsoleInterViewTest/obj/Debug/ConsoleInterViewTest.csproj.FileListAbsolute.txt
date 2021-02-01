@@ -1,7 +1,0 @@
-D:\My Code\MyTestCode\ConsoleInterViewTest\bin\Debug\ConsoleInterViewTest.exe.config
-D:\My Code\MyTestCode\ConsoleInterViewTest\bin\Debug\ConsoleInterViewTest.exe
-D:\My Code\MyTestCode\ConsoleInterViewTest\bin\Debug\ConsoleInterViewTest.pdb
-D:\My Code\MyTestCode\ConsoleInterViewTest\obj\Debug\ConsoleInterViewTest.csproj.CoreCompileInputs.cache
-D:\My Code\MyTestCode\ConsoleInterViewTest\obj\Debug\ConsoleInterViewTest.exe
-D:\My Code\MyTestCode\ConsoleInterViewTest\obj\Debug\ConsoleInterViewTest.pdb
-D:\My Code\MyTestCode\ConsoleInterViewTest\obj\Debug\ConsoleInterViewTest.csprojAssemblyReference.cache

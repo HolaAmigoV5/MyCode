@@ -1,7 +1,0 @@
-D:\My Code\CLR_Via_CSharp\ConsoleCharsAndStrings\bin\Debug\ConsoleCharsAndStrings.exe.config
-D:\My Code\CLR_Via_CSharp\ConsoleCharsAndStrings\bin\Debug\ConsoleCharsAndStrings.exe
-D:\My Code\CLR_Via_CSharp\ConsoleCharsAndStrings\bin\Debug\ConsoleCharsAndStrings.pdb
-D:\My Code\CLR_Via_CSharp\ConsoleCharsAndStrings\obj\Debug\ConsoleCharsAndStrings.csprojAssemblyReference.cache
-D:\My Code\CLR_Via_CSharp\ConsoleCharsAndStrings\obj\Debug\ConsoleCharsAndStrings.csproj.CoreCompileInputs.cache
-D:\My Code\CLR_Via_CSharp\ConsoleCharsAndStrings\obj\Debug\ConsoleCharsAndStrings.exe
-D:\My Code\CLR_Via_CSharp\ConsoleCharsAndStrings\obj\Debug\ConsoleCharsAndStrings.pdb

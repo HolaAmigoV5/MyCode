@@ -1,7 +1,0 @@
-D:\My Code\CLR_Via_CSharp\ConsoleReflection\bin\Debug\ConsoleReflection.exe.config
-D:\My Code\CLR_Via_CSharp\ConsoleReflection\bin\Debug\ConsoleReflection.exe
-D:\My Code\CLR_Via_CSharp\ConsoleReflection\bin\Debug\ConsoleReflection.pdb
-D:\My Code\CLR_Via_CSharp\ConsoleReflection\obj\Debug\ConsoleReflection.csprojAssemblyReference.cache
-D:\My Code\CLR_Via_CSharp\ConsoleReflection\obj\Debug\ConsoleReflection.csproj.CoreCompileInputs.cache
-D:\My Code\CLR_Via_CSharp\ConsoleReflection\obj\Debug\ConsoleReflection.exe
-D:\My Code\CLR_Via_CSharp\ConsoleReflection\obj\Debug\ConsoleReflection.pdb

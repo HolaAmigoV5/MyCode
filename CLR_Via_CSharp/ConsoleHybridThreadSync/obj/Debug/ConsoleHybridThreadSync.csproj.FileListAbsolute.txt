@@ -1,7 +1,0 @@
-D:\My Code\CLR_Via_CSharp\ConsoleHybridThreadSync\bin\Debug\ConsoleHybridThreadSync.exe.config
-D:\My Code\CLR_Via_CSharp\ConsoleHybridThreadSync\bin\Debug\ConsoleHybridThreadSync.exe
-D:\My Code\CLR_Via_CSharp\ConsoleHybridThreadSync\bin\Debug\ConsoleHybridThreadSync.pdb
-D:\My Code\CLR_Via_CSharp\ConsoleHybridThreadSync\obj\Debug\ConsoleHybridThreadSync.csprojAssemblyReference.cache
-D:\My Code\CLR_Via_CSharp\ConsoleHybridThreadSync\obj\Debug\ConsoleHybridThreadSync.csproj.CoreCompileInputs.cache
-D:\My Code\CLR_Via_CSharp\ConsoleHybridThreadSync\obj\Debug\ConsoleHybridThreadSync.exe
-D:\My Code\CLR_Via_CSharp\ConsoleHybridThreadSync\obj\Debug\ConsoleHybridThreadSync.pdb

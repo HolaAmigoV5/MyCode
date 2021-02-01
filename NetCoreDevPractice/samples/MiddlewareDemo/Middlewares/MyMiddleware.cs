@@ -10,9 +10,8 @@ namespace MiddlewareDemo.Middlewares
 {
     public class MyMiddleware
     {
-        RequestDelegate _next;
         ILogger _logger;
-
+        RequestDelegate _next;
         public MyMiddleware(RequestDelegate next, ILogger<MyMiddleware> logger)
         {
             _next = next;

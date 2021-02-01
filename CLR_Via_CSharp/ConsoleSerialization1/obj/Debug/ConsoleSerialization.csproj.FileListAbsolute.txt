@@ -1,7 +1,0 @@
-D:\My Code\CLR_Via_CSharp\ConsoleSerialization1\bin\Debug\ConsoleSerialization1.exe.config
-D:\My Code\CLR_Via_CSharp\ConsoleSerialization1\bin\Debug\ConsoleSerialization1.exe
-D:\My Code\CLR_Via_CSharp\ConsoleSerialization1\bin\Debug\ConsoleSerialization1.pdb
-D:\My Code\CLR_Via_CSharp\ConsoleSerialization1\obj\Debug\ConsoleSerialization.csprojAssemblyReference.cache
-D:\My Code\CLR_Via_CSharp\ConsoleSerialization1\obj\Debug\ConsoleSerialization.csproj.CoreCompileInputs.cache
-D:\My Code\CLR_Via_CSharp\ConsoleSerialization1\obj\Debug\ConsoleSerialization1.exe
-D:\My Code\CLR_Via_CSharp\ConsoleSerialization1\obj\Debug\ConsoleSerialization1.pdb
