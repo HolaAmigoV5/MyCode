@@ -40,6 +40,7 @@
 * 循环：for, while loop —— iteration
 * 递归：Recursion(Divide & Conquer, Backtrace)
 * 搜索：Search，深度优先搜索 Depth first search，广度优先搜索 Breadth first search，A*，etc
+* 排序：Sort. 冒泡，选择，插入，快速，归并，堆排序
 * 动态规划：Dynamic Programing
 * 二分查找：Binary Search
 * 贪心：Greedy
@@ -81,7 +82,7 @@ Master Theorem
 
 ​	主定理：递归中判定时间复杂度的推理方法。判定递归的时间复杂度，记住下面四种即可。
 
-![Master Theorem](https://github.com/HolaAmigoV5/Images/raw/master/RunTime.png)
+![RunTime](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/RunTime.png)
 
 * 二分查找(Binary Search)：O(log n)
 * 二叉树遍历(Binary tree traversal)：O(n)，每个节点有且访问一次，故时间复杂度为O(n)
@@ -95,7 +96,7 @@ Master Theorem
 
 ### 数组、链表、跳表
 
-数组(Array)：申请数组时，内存管理器分配一段连续的地址。访问元素时间复杂度O(1)，可以随机访问任意一个元素，访问很快。增加和删除时由于要移位，变成O(n)时间复杂度。ArrayList。时间复杂度如下：
+**数组(Array)**：申请数组时，内存管理器分配一段连续的地址。访问元素时间复杂度O(1)，可以随机访问任意一个元素，访问很快。增加和删除时由于要移位，变成O(n)时间复杂度。ArrayList。时间复杂度如下：
 
 * prepend 	    O(1)   **注意：**正常时prepend操作时间复杂度O(n)，这里在头部预留空间处理，变为O(1)复杂度
 * append  		O(1)
@@ -103,7 +104,7 @@ Master Theorem
 * insert 			 O(n)
 * delete  		   O(n)
 
-链表(LinkedList)：一个Value和一个指针。单链表，双链表，循环链表 。添加和删除节点，不需要移位，时间复杂度O(1)，查询一个元素时间复杂度是O(n)，因为需要循环查找。**DotNet中提供泛型LinkedList，提供Add, Remove, Find等操作。Array.Sort()方法，在最坏的情况下，时间复杂度为O(nlogn)** 工程应用LRU Cache.时间复杂度如下：
+**链表(LinkedList)**：一个Value和一个指针。单链表，双链表，循环链表 。添加和删除节点，不需要移位，时间复杂度O(1)，查询一个元素时间复杂度是O(n)，因为需要循环查找。**DotNet中提供泛型LinkedList，提供Add, Remove, Find等操作。Array.Sort()方法，在最坏的情况下，时间复杂度为O(nlogn)** 工程应用LRU Cache.时间复杂度如下：
 
 * prepend 	    O(1)
 * append  		 O(1)
@@ -111,9 +112,9 @@ Master Theorem
 * insert 			 O(1)
 * delete  			O(1)
 
-跳表(skip List)：1989年代出现，对标的是平衡树(AVL Tree)和二分查找，是一种**插入/删除/搜索时，时间复杂度都是O(log n)**的数据结构，。最大的优势是原理简单、容易实现、方便扩展、效率更高。因此热门项目如Redis、LevelDB等用跳表替代平衡树。**注意：只能用于元素有序的情况。**现实中跳表增加和删除时，因为要维护索引，所以成本比较高。**空间复杂度O(n)**。工程上应用Redis。
+**跳表(skip List)**：1989年代出现，对标的是平衡树(AVL Tree)和二分查找，是一种**插入/删除/搜索时，时间复杂度都是O(log n)**的数据结构，。最大的优势是原理简单、容易实现、方便扩展、效率更高。因此热门项目如Redis、LevelDB等用跳表替代平衡树。**注意：只能用于元素有序的情况。**现实中跳表增加和删除时，因为要维护索引，所以成本比较高。**空间复杂度O(n)**。工程上应用Redis。
 
-### 栈、队列、双端队列、优先队列
+### 栈、队列
 
 栈(Stack)：先入后出容器结构，主要提供入栈和出栈操作；添加删除皆为O(1)，查询O(n)，因为无序，查询需要遍历。用数组实现的栈叫顺序栈，用链表实现的栈叫链式栈。**DotNet中的栈实质内部用数组Array实现，提供Peek, Pop, Push, Contains, Clone, ToArray等操作。提供泛型和非泛型两种Stack**。栈可以类比一摞叠在一起的盘子，我们放的时候从上往下一个个放，取的时候从上往下一个个取——先进后出。
 
@@ -125,14 +126,20 @@ Master Theorem
 
 ## 第二周
 
-### 哈希表、映射、集合
+### 哈希表
 
 ​	哈希表(Hash table)，也叫**散列表**，根据关键码值(key value)而直接进行访问的数据结构，其实是数组的一种扩展，由数组演化而来。它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。这个映射函数叫做散列函数(Hash Function)，存放记录的数组叫做哈希表。**实质是通过哈希函数把值映射到一个位置(index)。查询，添加和删除都是O(1)。**  可能会出现哈希碰撞。**散列表通常和链表(或跳表)结合使用。**
 
 散列冲突解决办法：
 
-1. 开放寻址法：如果出现冲突，重新探测一个空闲位置，将其插入。探测空闲位置方法(①线性探测 ②二次探测 ③双重散列)。优点，可以利用CPU缓存加快查询速度，序列化比较简单；缺点，删除数据比较麻烦(需要标记已经删掉的数据)，更浪费内存空间。当数据量小，装载因子小的时候，适合使用此方法。
+1. 开放寻址法：如果出现冲突，重新探测一个空闲位置，将其插入。探测空闲位置方法(① 线性探测 ②二 次探测 ③ 双重散列)。优点，可以利用CPU缓存加快查询速度，序列化比较简单；缺点，删除数据比较麻烦(需要标记已经删掉的数据)，更浪费内存空间。当数据量小，装载因子小的时候，适合使用此方法。
 2. 拉链法：将散列值相同的元素放到相同槽位对应的链表中。优点，内存利用率高，对装载因子容忍度更高。存储大对象，大数据量的散列表更适合。
+
+装载因子的计算公式：
+
+散列表的装载因子=填入表中元素个数/散列表的长度
+
+装载因子越大，说明空闲位置越少，冲突越多，散列表性能会下降。
 
 ​	DotNet中，hashtable内部实现依靠一个叫**private struct bucket（成员有key, val, hash_coll）的数组(private bucket[] buckets)**维护。由于会出现装箱或拆箱等耗时操作，**微软建议使用Dictionary<Tkey, TValue>泛型**替代hashtable使用。Dictionary<Tkey, TValue>内部实现依靠一个叫**private struct Entry(成员有next, key, value)的数组实现 。提供Add, Clear, ContainsKey, ContainsValue等方法。通过拉链法解决哈希冲突** 哈希函数是**GetHashCode()** 。
 
@@ -143,21 +150,19 @@ Master Theorem
   * 扩容的两种情况：① buckets，entries两个数组满了会扩容； ② Dictionary发生碰撞次数太多，会严重影响性能，也会触发扩容。HashCollisionThreshold=100。
   * 扩容步骤：① buckets, entries翻倍 ② 元素拷贝到新entries ③ Hash碰撞扩容时，用新哈希函数重写计算Hash值 ④对entries每个元素确定新buckets位置 ⑤ 重建hash链。
 
-### 树、二叉树，二叉搜索树
+### 二叉树和二叉搜索树
 
-![tree1](https://github.com/HolaAmigoV5/Images/raw/master/Tree1.png)
+![Tree1](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/Tree1.png)
 
-#### 树
-
-**树**的高度，深度，层：
+**树的高度，深度，层：**
 
 1. 高度：从下往上度量，比如度量第10层楼的高度，起点是地面。从底部计算，从0开始；
 2. 深度：从上往下度量，比如水中鱼的深度，从水平面开始度量。从根开始度量，从0开始；
 3. 层数：根深度计算类似，计数起点是1，也就是说根节点位于第一层。
 
-​	链表(Linked List)是特殊化的树(Tree)，树(Tree)是特殊化的图(Graph)。链表生枝即是树，树中套环变成图。二叉树的遍历：① 前序(pre-order)：根-左-右； ②中序(In-order)：左-根-右；③ 后序(Post-order)：左-右-根
+​	链表(Linked List)是特殊化的树(Tree)，树(Tree)是特殊化的图(Graph)。链表生枝即是树，树中套环变成图。
 
-![tree4](https://github.com/HolaAmigoV5/Images/raw/master/Tree4.png)
+
 
 #### 二叉树
 
@@ -165,9 +170,17 @@ Master Theorem
 
 ​	二叉树存储：①基于指针或者引用的二叉链式存储法（左指针，右指针，数据）②基于数组的顺序存储法(根节点存储在下标i=1位置，左节点存储在下标2\*i，右节点下标2\*i+1位置)。
 
-![tree2](https://github.com/HolaAmigoV5/Images/raw/master/Tree2.png)
+二叉链式存储法：
 
-![tree3](https://github.com/HolaAmigoV5/Images/raw/master/Tree3.png)
+![Tree3](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/Tree3.png)
+
+顺序存储法
+
+![Tree2](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/Tree2.png)
+
+二叉树的遍历：① 前序(pre-order)：根-左-右； ②中序(In-order)：左-根-右；③ 后序(Post-order)：左-右-根
+
+![Tree4](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/Tree4.png)
 
 #### 二叉搜索树
 
@@ -179,7 +192,7 @@ Master Theorem
 
 中序遍历：升序排序。
 
-**散列表和二叉树比较**
+**散列表和二叉查找树比较**
 
 ​	散列表的插入、删除、查找操作的时间复杂度可以做到常量级的O(1)，非常高效。而二叉查找树在比较平衡的情况下，插入、删除、查找操作时间复杂度才是O(logn)，相对散列表，好像并没有什么优势，那我们为什么还要用二叉查找树呢？
 我认为有下面几个原因：
@@ -187,7 +200,7 @@ Master Theorem
 ​	第二，散列表扩容耗时很多，而且当遇到散列冲突时，**性能不稳定**，尽管二叉查找树的性能不稳定，但是在工程中，我们最常用的平衡二叉查找树的性能非常稳定，时间复杂度稳定在O(logn)。
 ​	第三，笼统地来说，尽管散列表的查找等操作的时间复杂度是常量级的，但因为哈希冲突的存在，这个常量不一定比logn小，所以实际的查找速度可能不一定比O(logn)快。加上哈希函数的耗时，也**不一定就比平衡二叉查找树的效率高**。
 ​	第四，散列表的**构造**比二叉查找树要**复杂**，需要考虑的东西很多。比如散列函数的设计、冲突解决办法、扩容、缩容等。平衡二叉查找树只需要考虑平衡性这一个问题，而且这个问题的解决方案比较成熟、固定。
-最后，为了避免过多的散列冲突，散列表装载因子不能太大，特别是基于开放寻址法解决冲突的散列表，不然会浪费一定的存储空间。
+​	最后，为了避免过多的散列冲突，散列表装载因子不能太大，特别是基于开放寻址法解决冲突的散列表，不然会浪费一定的存储空间。
 ​	综合这几点，平衡二叉查找树在某些方面还是优于散列表的，所以，这两者的存在并不冲突。我们在实际的开发过程中，需要结合具体的需求来选择使用哪一个。
 
 ### AVL树和红黑树
@@ -212,22 +225,30 @@ Master Theorem
   4. 不能有相邻接的两个红色节点，红色节点被黑色节点隔开；
   5. 从任一结点到其每个叶子的所有路径都包含相同数目的黑色节点
 
-**SortedSet<T>就是红黑树实现**，相比HashSet<T>，该对象内部对象通过红黑树排序，且不重复。
+**SortedSet\<T>就是红黑树实现**，相比HashSet\<T>，该对象内部对象通过红黑树排序，且不重复。
 
 #### 对比(重点)
 
-      	1. AVL trees provide **faster lookups** than Read Black Trees because they are **more strictly balanced**.
-          - AVL树查询更快，因为是严格平衡树
-                  	2. Red Black Trees provide **faster insertion and removal**  operations than AVL trees as fewer rotations are done due to relatively relaxed balancing.
-          - 红黑树插入和删除更快，因为不用频繁进行旋转操作
-                  	3. AVL trees store **balance factors or heights** with each node, thus requires storage for an integer per node whereas Red Black Tree requires only 1 bit of information per node.
-          - AVL树每个节点会存储平衡因子或高度，因而每个节点需要存储一个整数， 而红黑树每个节点只用1位。
-                  	4. Red Black Trees are used in most of the **language libraries** like map, multimap, multiset in C++ whereas AVL trees are used in **databases** where faster retrievals are required.
-          - 红黑树在大多数语言库（例如C ++中的map，multimap，multiset）中使用，而AVL树用在需要更快检索的databases 中。
+   1. AVL trees provide **faster lookups** than Read Black Trees because they are **more strictly balanced**.
 
-### 堆、二叉堆
+      AVL树查询更快，因为是严格平衡树
 
-​	堆(Heap)：可以迅速找到一堆数中最大或最小的数据结构。将根节点最大的堆叫做大顶堆或大根堆，根节点最小的堆叫小顶堆或小根堆。常见的堆有二叉堆、斐波那契堆，严格斐波那契堆(性能最好)等。
+   2. Red Black Trees provide **faster insertion and removal**  operations than AVL trees as fewer rotations are done due to relatively relaxed balancing.
+
+      红黑树插入和删除更快，因为不用频繁进行旋转操作
+
+3. AVL trees store **balance factors or heights** with each node, thus requires storage for an integer per node whereas Red Black Tree requires only 1 bit of information per node.
+
+   AVL树每个节点会存储平衡因子或高度，因而每个节点需要存储一个整数， 而红黑树每个节点只用1位。
+       	
+
+4. Red Black Trees are used in most of the **language libraries** like map, multimap, multiset in C++ whereas AVL trees are used in **databases** where faster retrievals are required.
+
+   红黑树在大多数语言库（例如C ++中的map，multimap，multiset）中使用，而AVL树用在需要更快检索的databases 中。
+
+### 堆和二叉堆
+
+​	**堆(Heap)**：可以迅速找到一堆数中最大或最小的数据结构。将根节点最大的堆叫做大顶堆或大根堆，根节点最小的堆叫小顶堆或小根堆。常见的堆有二叉堆、斐波那契堆，严格斐波那契堆(性能最好)等。
 
 - 堆是一个完全二叉树(除最后一层，其他层都是满的，最后一层节点靠左排列)
 - 堆中每一个节点的值都必须大于等于（或小于等于）其子树中每个节点的值
@@ -238,7 +259,7 @@ Master Theorem
 2. delete-max: O(logN)
 3. insert(create): O(logN) or O(1)
 
-二叉堆性质：通过完全二叉树来实现（注意：不是二叉搜索树）；二叉堆(大顶)它满足的性质(① 是一棵完全树，② 树中任意节点的值总是>=其子节点的值)。**二叉堆实现相对容易，时间复杂度刚刚及格** 
+**二叉堆**：通过完全二叉树来实现（注意：不是二叉搜索树）；二叉堆(大顶)它满足的性质(① 是一棵完全树，② 树中任意节点的值总是>=其子节点的值)。**二叉堆实现相对容易，时间复杂度刚刚及格** 
 
 二叉堆实现细节
 
@@ -253,29 +274,26 @@ Insert 插入操作—O(logN)
 Delete Max 删除堆顶操作——O(logN)
 
 1. 将堆尾元素替换到顶部（即堆顶被替代删除掉）
-2. 依次从根部向下调整整个堆的结构(一直到堆尾即可)——heapifyDown
+2. 依次从根部向下调整整个堆的结构(一直到堆尾即可)——HeapifyDown
 
 ### 图的实现和特性
 
-​		图(Graph)，和树比起来，这是一种更加复杂的非线性表结构。树中的元素我们称为节点，图中的元素我们就叫作顶点(vertex)。图中的一个顶点可以与任意其他顶点建立连接关系。我们把这种建立的关系叫作边（edge）.跟顶点相连接的边的条数，叫作顶点的度（degree）。在有向图中，我们把度分为入度（In-degree）和出度（Out-degree）。顶点的入度，表示有多少条边指向这个顶点；顶点的出度，表示有多少条边是以这个顶点为起点指向其他顶点。在带权图中，每条边都有一个权重（weight）。使用邻接矩阵或邻接表存储图。用邻接矩阵来表示一个图，虽然简单、直观，但是比较浪费存储空间。邻接表存储起来比较节省空间，但是使用起来就比较耗时间。
+​		图(Graph)，和树比起来，这是一种更加复杂的非线性表结构。树中的元素我们称为节点，图中的元素我们就叫作顶点(vertex)。图中的一个顶点可以与任意其他顶点建立连接关系。我们把这种建立的关系叫作边（edge）。跟顶点相连接的边的条数，叫作顶点的度（degree）。在有向图中，我们把度分为入度（In-degree）和出度（Out-degree）。顶点的入度，表示有多少条边指向这个顶点；顶点的出度，表示有多少条边是以这个顶点为起点指向其他顶点。在带权图中，每条边都有一个权重（weight）。使用邻接矩阵或邻接表存储图。用邻接矩阵来表示一个图，虽然简单、直观，但是比较浪费存储空间。邻接表存储起来比较节省空间，但是使用起来就比较耗时间。
 
 ​	图的属性：Graph(V,E)
 
 * V-vertex 点
-
   1. 度-入度和出度
   2. 点与点之间：连通与否
-
 * E-edge 边
-
   1. 有向和无向(单行线)
   2. 权重(边长)
 
-  **无向图中搜索最短路径，首先想到广度优先遍历**
+**无向图中搜索最短路径，首先想到广度优先遍历**
 
 ## 第三周
 
-### 泛型递归、树的递归
+### 递归
 
 递归(Recursion)：本质是循环，通过循环体进行的循环。一层层下，一层层回来。一种非常高效、简洁的编码技巧。方法或函数调用称为递，返回称为归。
 
@@ -319,9 +337,7 @@ public void recursion(int level, int param) {
 1. 优点：代码表达力很强，写起来简洁
 2. 缺点：空间复杂度高，有堆栈溢出风险，存在重复计算，过多的函数调用会耗时较多。
 
-
-
-### 分治、回溯
+### 分治和回溯
 
 分治：问题拆机成小问题处理后，组合结果后返回。
 
@@ -346,8 +362,6 @@ def backtrack(路径, 选择列表):
 ```
 
 回溯算法框架：**核心是for循环里面的递归，在递归调用之前【做选择】，递归调用后【撤销选择】。写backtrack函数时，需要维护走过的【路径】和当前可以走的【选择列表】，当触发【结束条件】时，将【路径】记入结果集中。**
-
-
 
 ## 第四周
 
@@ -433,7 +447,7 @@ private void BFS(Node node) {
 
 ​	二分查找：每次查找中间值，然后依次左右移动收缩，最终可以把O(n)的算法优化到O(logn)，但对应的限制就是数组需要`单调性`。
 
-**数组的二分查找：① 数组单调递增或递减少 ②数组nums[left]<=nums[mid]或者nums[mid]<nums[right]，当nums[mid]=nums[right]时，仅当数组只有一个元素，此时left=mid=right=0**
+**数组的二分查找：① 数组单调递增或递减少 ② 数组nums[left]<=nums[mid]或者nums[mid]<nums[right]，当nums[mid]=nums[right]时，仅当数组只有一个元素，此时left=mid=right=0**
 
 **注意越界：**当两个int数字无限接近Int.MaxValue时，两个int数`相加`或者`相乘`时肯定越界，此时可以将int数转变为long或者double类型，然后继续后面操作即可。
 
@@ -562,7 +576,6 @@ public int search(int[] nums, int target) {
    }
    ```
 
-   
 
 ## 第六周
 
@@ -570,7 +583,7 @@ public int search(int[] nums, int target) {
 
 #### 相关概念
 
-​	动态规划(Dynamic Programming)=分治+剪枝，用递归实现。动态规划的一般形式就是**求最值**，比如求最长递增子序列，最小编辑距离等。求解动态规划的**核心问题是穷举**，因为要求最值，肯定要吧所有可能的答案穷举出来，然后在其中找最值。因为这类问题存在**重叠子问题**，如果暴力穷举的话，效率低下，所以需要**备忘录**或者**DP table**来优化穷举过程，避免不必要的计算。动态规划一定会具备**最优子结构**，才能通过子问题的最值得到原问题的最值。动态规划的核心思想是穷举求最值，但是问题可以千变万化，穷举所有可行解其实并不是一件容易的事，只有列出正确的**状态转移方程**才能正确的穷举。
+​	动态规划(Dynamic Programming)=分治+剪枝，用递归实现。动态规划的一般形式就是**求最值**，比如求最长递增子序列，最小编辑距离等。求解动态规划的**核心问题是穷举**，因为要求最值，肯定要把所有可能的答案穷举出来，然后在其中找最值。因为这类问题存在**重叠子问题**，如果暴力穷举的话，效率低下，所以需要**备忘录**或者**DP table**来优化穷举过程，避免不必要的计算。动态规划一定会具备**最优子结构**，才能通过子问题的最值得到原问题的最值。动态规划的核心思想是穷举求最值，但是问题可以千变万化，穷举所有可行解其实并不是一件容易的事，只有列出正确的**状态转移方程**才能正确的穷举。
 
 **解题思路：** ①确定base case， ②分解子问题， ③归纳DP方程， ④ 迭代/递归，⑤剪枝
 
@@ -578,13 +591,13 @@ public int search(int[] nums, int target) {
 
 **三要素 ：** ①重叠子问题 ② 最优子结构 ③ 状态转移方程(DP方程)。
 
-- **重叠子问题：** 很多时候动态规划的穷举存在很多重叠，比如斐波那契树中，存在大量的重复计算。此时就需要剪枝，实现每个子问题不再重叠。
+- **重叠子问题：** 很多时候动态规划的穷举存在很多重叠，比如斐波那契树中。此时就需要剪枝，实现每个子问题不再重叠。
 
 - **最优子结构：** 分解的子问题必须相互独立，互不影响。所有独立的子问题就是最优子结构。
 
 - **状态转移方程（DP方程）** ：如下图的斐波那契数列，f(n)相当于`状态n`，这个n是由`状态n-1`和`状态n-2`相加转移而来，这就叫状态转移。
 
-![fib](https://github.com/HolaAmigoV5/Images/raw/master/fib.png)
+![fib](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/fib.png)
 
 ​	
 
@@ -600,7 +613,7 @@ for 状态1 in 状态1的所有取值：
             dp[状态1][状态2][...] = 求最值(选择1，选择2...)
 ```
 
-> **状态压缩** ：如果我们发现每次状态转移只需要DP table中的一部分，那么可以尝试用状态压缩来缩小DP table的大小，只记录必要的数据。一般来说是把一个二维的DP table压缩成一维，即把空间复杂度从O(n²)压缩到O(n)。比如斐波那契的状态只和之前的两个状态相关，不需要用一个数组DP table来存储所有的状态只要想办法存储之前的两个状态就行了。	
+> **状态压缩** ：如果我们发现每次状态转移只需要DP table中的一部分，那么可以尝试用状态压缩来缩小DP table的大小，只记录必要的数据。一般来说是把一个二维的DP table压缩成一维，即把空间复杂度从O(n²)压缩到O(n)。比如斐波那契的状态只和之前的两个状态相关，不需要用一个数组DP table来存储所有的状态只要想办法存储之前的两个状态就行了。
 
 > PS：但凡遇到需要递归的问题，最好都画出递归树，这对你分析算法的复杂度，寻找算法低效的原因都有巨大帮助。递归算法的时间复杂度=子问题个数×子问题需要的时间。迭代是自底向上，递归是自顶向下。
 
@@ -616,7 +629,7 @@ for 状态1 in 状态1的所有取值：
 
 4. 迭代/递归：使用迭代（自底向上）或者递归（自顶向下）方式确定写代码思路；
 
-   <img src="https://github.com/HolaAmigoV5/Images/raw/master/coinchange1.png" style="zoom:70%;" />
+   ![coinchange1](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/coinchange1.png)
 
 5. 剪枝：对于重复进行删除。通过**备忘录**或者**dp数组**消除重复。
 
@@ -630,7 +643,7 @@ for 状态1 in 状态1的所有取值：
 
 4. **明确 `dp`函数/数组的定义：** 递归解题时需要一个递归的dp函数，一般来说函数的参数就是状态转移中会变化的量，也就是上面说到的「选择」；函数的返回值就是题目要求我们计算的量。就凑领钱来说，**`dp(n)`的定义：输入一个目标金额`n`，返回凑出目标金额`n`的最少硬币数量**。迭代解题时需要明确dp数组的定义，把「状态」也就是目标金额作为变量，不过`dp函数`体现在函数参数，而`dp数组`体现在数组索引。就凑领钱来说，**dp数组的定义：当目标金额为i时，至少需要dp[i]枚硬币凑出**。
 
-   <img src="https://github.com/HolaAmigoV5/Images/raw/master/coinchange.png" alt="coinchange" style="zoom:70%;" />
+   ![coinchange](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/coinchange.png)
 
    **凑硬币解法：**
 
@@ -933,6 +946,14 @@ Class UnionFind{
 
 **基础补充**
 
+**二进制转换为十进制：** 二进制从低位到高位计算，第0位权值2的0次方，第1位的权值2的1次方....把最后的值相加即可。如下：
+
+![BToTen](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/BinaryToTen.png)
+
+**十进制转换为二进制：** 不断除2取余法，直到商为0为止。读数时，从最后一个余数读起，一直到最前面的余数。如下：
+
+![TenToB](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/TenToBinary.png)
+
 计算机机器数真正的值称为真值。因为机器数最高位是符号位，计算真值要区分。如`10000101`不表示133， 表示-5。
 
 原码=符号位+真值
@@ -969,7 +990,7 @@ Class UnionFind{
 
 ​	LRU缓存(Least recently used cache)，最少最近被使用的元素会被淘汰。大小和替换策略，使用Hash Table+Double LinkedList实现，能在O(1)的时间复杂度实现查询，修改和更新。
 
-![LRU_Cache](https://github.com/HolaAmigoV5/Images/raw/master/LRU_Cache.png)
+![LRU_Cache](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/LRU_Cache.png)
 
 ​	链表中的每个结点处理存储数据（data）、前驱指针（prev）、后继指针（next）之外，还新增了一个特殊的字段hnext。我们的散列表是通过链表法解决散列冲突的，所以每个结点会在两条链中。一个链是刚刚我们提到的双向链表，另一个链是散列表中的拉链。前驱和后继指针是为了将结点串在双向链表中，hnext指针是为了将结点串在散列表的拉链中。
 
@@ -981,9 +1002,9 @@ Class UnionFind{
 
 ### 排序算法
 
-![Allsort](https://github.com/HolaAmigoV5/Images/raw/master/All_Sort.png)
+![Allsort](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/All_Sort.png)
 
-​	比较类排序：通过比较来决定元素的相对次序，由于其时间复杂度不能突破O(nlogn)，因此也称为非线性时间比较类排序。
+​	 比较类排序：通过比较来决定元素的相对次序，由于其时间复杂度不能突破O(nlogn)，因此也称为非线性时间比较类排序。
 
 ​	非比较类排序：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，以线性时间运行，因此也称为线性时间比较类排序。
 
@@ -1064,7 +1085,7 @@ Class UnionFind{
    }
    ```
 
-   ![sort](https://github.com/HolaAmigoV5/Images/raw/master/sort.png)
+   ![sort](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/sort.png)
 
 **高级排序——O(N*logN)——重点，手写，原理**
 
@@ -1165,12 +1186,6 @@ Class UnionFind{
 
 ## 第九周
 
-### 高级动态规划
-
-1. 复杂问题分解
-2. 最优子结构
-3. 状态顺推
-
 ### 字符串算法
 
 ​	C#中字符串是不可变的，每次操作字符串都会生成新的字符串。C#中字符串比较“\==”和Equals是一样，对于值类型，两者没有区别，对于引用类型来说，“\==”比较的是引用地址，Equals比较的是内容。
@@ -1182,8 +1197,6 @@ Class UnionFind{
 3. KMP(Knuth-Morris-Pratt)算法，最长公共前后缀个数+字母=前缀表。通过前缀表进行匹配。
 4. BM(Boyer-Moore)算法：各种编辑器查找功能大多采用此算法。德克萨斯大学的Robert S. Boyer教授和J Strother Moore教授发明了这种算法。
 5. Sunday算法
-
-
 
 ## 优质代码
 
