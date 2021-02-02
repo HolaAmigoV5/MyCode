@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ListBoxBinding"
         mc:Ignorable="d"
-        Title="MainWindow" Height="857" Width="1450">
+        Title="MainWindow" Height="857" Width="1450" WindowStyle="None" AllowsTransparency="True">
     <Window.Resources>
         <Style x:Key="RadioButtonStyle" TargetType="{x:Type RadioButton}">
             <Setter Property="FontSize" Value="26"/>
