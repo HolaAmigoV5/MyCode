@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="fonts\iconfont.ttf" />
+    <None Remove="images\buttonImage.png" />
+    <None Remove="images\img3d.png" />
+    <None Remove="images\leftback.png" />
+    <None Remove="images\leftImage.png" />
+    <None Remove="images\leftImageSub.png" />
+    <None Remove="images\rightImage.png" />
+    <None Remove="images\timeback.png" />
+    <None Remove="images\topback.png" />
+    <None Remove="images\topImage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="fonts\iconfont.ttf" />
+    <Resource Include="images\buttonImage.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\img3d.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\leftback.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\leftImage.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\leftImageSub.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\rightImage.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\timeback.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\topback.png" />
+    <Resource Include="images\topImage.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>
