@@ -1,0 +1,362 @@
+﻿<Window x:Class="DataGridBinding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataGridBinding"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1300" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="RadioButtonStyle" TargetType="{x:Type RadioButton}">
+            <Setter Property="Foreground" Value="#959595"/>
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <!--<Setter Property="HorizontalAlignment" Value="Stretch"/>-->
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#959595"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="MinHeight" Value="50"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                            <Border x:Name="border" Margin="30 5 50 5" BorderBrush="#3DD0FB" CornerRadius="10" SnapsToDevicePixels="True"/>
+
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Content="{TemplateBinding Content}" Grid.Column="1" Focusable="False"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3DD0FB" TargetName="border"/>
+                                <Setter Property="Opacity" Value="0.5" TargetName="border"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Background" Value="#3DD0FB" TargetName="border"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#959595"/>
+            <Setter Property="FontFamily" Value="/Fonts/#iconfont"/>
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
+            <!--<Setter Property="Background" Value="Transparent"/>-->
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <RadioButton VerticalContentAlignment="Center" Style="{StaticResource RadioButtonStyle}" 
+                                     IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}, Mode=TwoWay}">
+                                        <StackPanel Orientation="Horizontal" Margin="40 0 0 0">
+                                            <TextBlock Text="{Binding IconFont}" FontFamily="/Fonts/#iconfont" HorizontalAlignment="Right"/>
+                                            <TextBlock Margin="15 0 0 0" Text="{Binding Title}" VerticalAlignment="Center" FontSize="15"/>
+                                        </StackPanel>
+                                    </RadioButton>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <!--<Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="Blue"/>
+                            </Trigger>
+                        </Style.Triggers>-->
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="tBStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10 0 0 0"/>
+        </Style>
+
+        <Style x:Key="BorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="110"/>
+            <Setter Property="Height" Value="110"/>
+            <Setter Property="CornerRadius" Value="100"/>
+            <Setter Property="Background" Value="#ffffff"/>
+            <Setter Property="Opacity" Value="0.2"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+
+        <Style x:Key="ContentStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style x:Key="DataGridStyle" TargetType="DataGrid">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="WhiteSmoke"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="ColumnHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="#959595"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Height" Value="35"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="RowStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Height" Value="40"/>
+                        <Setter Property="Foreground" Value="#959595"/>
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="BlueBox" FontSize="33" FontWeight="Bold" Foreground="#3DD0FB" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="15 0 0 0">
+            <TextBlock Text="🔍" FontSize="18" Foreground="#959595" VerticalAlignment="Center"/>
+            <TextBox Name="inpuText" Grid.Column="1" Width="300" Margin="15 0 0 0">
+                <TextBox.Resources>
+                    <VisualBrush x:Key="hintText" TileMode="None" AlignmentX="Left" Stretch="None">
+                        <VisualBrush.Visual>
+                            <TextBlock FontStyle="Normal" Foreground="#76CBD2" Text="Search Project"/>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </TextBox.Resources>
+
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background" Value="{StaticResource hintText}"/>
+                            </Trigger>
+
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource hintText}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 15 0">
+            <Image Source="Images/image4.jpg" Height="40" Width="40">
+                <Image.Clip>
+                    <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20"/>
+                </Image.Clip>
+            </Image>
+            <TextBlock Text="&#xe62f;" Style="{StaticResource TextBlockStyle}" Margin="15 0 0 0"/>
+            <TextBlock Text="&#xea97;" Style="{StaticResource TextBlockStyle}" Margin="15 0 15 0"/>
+            <TextBlock Text="&#xe607;" Style="{StaticResource TextBlockStyle}"/>
+        </StackPanel>
+
+        <!--左侧ListBox-->
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Margin="30 10 0 20">
+                <Image Source="/Images/image4.jpg" Height="40" Width="40">
+                    <Image.Clip>
+                        <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20"/>
+                    </Image.Clip>
+                </Image>
+                <StackPanel Margin="15 0 0 0" VerticalAlignment="Center">
+                    <TextBlock Text="Naved Mirza"/>
+                    <TextBlock Text="Admin" Foreground="LightGray"/>
+                </StackPanel>
+            </StackPanel>
+
+            <ListBox ItemsSource="{Binding Modules}" Style="{StaticResource ListBoxStyle}"/>
+
+            <Button Content="Add Project" FontSize="16" Foreground="White" Background="#3DD0FB" BorderBrush="#3DD0FB" 
+                    Height="40" Width="200"  Margin="-30 20 0 0" />
+        </StackPanel>
+
+        <!--右侧主体内容-->
+        <Grid Grid.Row="1" Grid.Column="1" Background="#F5F6FA">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Dashboard" FontSize="28" VerticalAlignment="Bottom" Foreground="#959595" Margin="15 0 0 0"/>
+
+            <UniformGrid Grid.Row="1" Columns="3">
+                <Border Margin="15" CornerRadius="5">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                            <GradientStop Offset="0" Color="#FF8C69"/>
+                            <GradientStop Offset="1" Color="#FF7000"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="&#xe6cf;" Style="{StaticResource tBStyle}" FontFamily="Fonts/#iconfont" FontSize="50"/>
+                        <TextBlock Text="Stock Total" Grid.Row="1" Style="{StaticResource tBStyle}" FontSize="16" />
+                        <TextBlock Text="$150000" Grid.Row="2" Style="{StaticResource tBStyle}" FontWeight="Bold" FontSize="22"/>
+                        <TextBlock Text="Incrased by 60%" Grid.Row="3" FontSize="20" Style="{StaticResource tBStyle}"/>
+
+                        <Canvas ClipToBounds="True" Grid.RowSpan="4">
+                            <Border Canvas.Right="-40" Canvas.Top="10"  Style="{StaticResource BorderStyle}"/>
+                            <Border Canvas.Right="-10" Canvas.Top="100" Style="{StaticResource BorderStyle}"/>
+                        </Canvas>
+                    </Grid>
+                </Border>
+
+                <Border Margin="15" CornerRadius="5">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                            <GradientStop Offset="0" Color="#FFD700"/>
+                            <GradientStop Offset="1" Color="#FFC100"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="&#xe602;" Style="{StaticResource tBStyle}" FontFamily="Fonts/#iconfont" FontSize="50"/>
+                        <TextBlock Text="Total Proflt" Grid.Row="1" Style="{StaticResource tBStyle}" FontSize="16" />
+                        <TextBlock Text="$350000" Grid.Row="2" Style="{StaticResource tBStyle}" FontWeight="Bold" FontSize="22"/>
+                        <TextBlock Text="Incrased by 35%" Grid.Row="3" FontSize="20" Style="{StaticResource tBStyle}"/>
+
+                        <Canvas ClipToBounds="True" Grid.RowSpan="4">
+                            <Border Canvas.Right="-40" Canvas.Top="10"  Style="{StaticResource BorderStyle}"/>
+                            <Border Canvas.Right="-10" Canvas.Top="100" Style="{StaticResource BorderStyle}"/>
+                        </Canvas>
+                    </Grid>
+                </Border>
+
+                <Border Margin="15" CornerRadius="5">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
+                            <GradientStop Offset="0" Color="#00CED1"/>
+                            <GradientStop Offset="1" Color="#59E6B5"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="&#xe634;" Style="{StaticResource tBStyle}" FontFamily="Fonts/#iconfont" FontSize="50"/>
+                        <TextBlock Text="Unique Visitors" Grid.Row="1" Style="{StaticResource tBStyle}" FontSize="16" />
+                        <TextBlock Text="$450000" Grid.Row="2" Style="{StaticResource tBStyle}" FontWeight="Bold" FontSize="22"/>
+                        <TextBlock Text="Incrased by 80%" Grid.Row="3" FontSize="20" Style="{StaticResource tBStyle}"/>
+
+                        <Canvas ClipToBounds="True" Grid.RowSpan="4">
+                            <Border Canvas.Right="-40" Canvas.Top="10"  Style="{StaticResource BorderStyle}"/>
+                            <Border Canvas.Right="-10" Canvas.Top="100" Style="{StaticResource BorderStyle}"/>
+                        </Canvas>
+                    </Grid>
+                </Border>
+            </UniformGrid>
+
+            <Grid Grid.Row="2" Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Standard Table Design" Margin="15 0 0 0" FontSize="22" Foreground="#959595" VerticalAlignment="Center"/>
+
+                <DataGrid Grid.Row="1" ItemsSource="{Binding GridModelList}" Style="{StaticResource DataGridStyle}">
+                    <!--<DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="BorderThickness" Value="0 0 0 1"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="#959595"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Height" Value="35"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>-->
+
+                    <!--<DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Header" Value="40"/>
+                            <Setter Property="Foreground" Value="#959595"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.RowStyle>-->
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="名称" Width="*" Binding="{Binding Name}" ElementStyle="{StaticResource ContentStyle}"/>
+                        <DataGridTextColumn Header="邮件" Width="*" Binding="{Binding Email}" ElementStyle="{StaticResource ContentStyle}"/>
+                        <DataGridTextColumn Header="地址" Width="*"  Binding="{Binding Address}"  ElementStyle="{StaticResource ContentStyle}"/>
+                        <DataGridTextColumn Header="用户类型" Width="*" Binding="{Binding UserType}"  ElementStyle="{StaticResource ContentStyle}" />
+
+                        <DataGridTemplateColumn Header="Level" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Width="75" Height="25" BorderThickness="0" Content="{Binding Status}" Foreground="White" Background="{Binding BackColor}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

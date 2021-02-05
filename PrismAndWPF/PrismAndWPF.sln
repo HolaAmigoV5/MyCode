@@ -3,11 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWPFNetEasyCloudMusic", "MyWPFNetEasyCloudMusic\MyWPFNetEasyCloudMusic.csproj", "{92D950D6-1F92-4E6E-B12E-EBA37A30FB84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetEasyCloudMusic", "MyWPFNetEasyCloudMusic\NetEasyCloudMusic.csproj", "{92D950D6-1F92-4E6E-B12E-EBA37A30FB84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialWPF", "IndustrialWPF\IndustrialWPF.csproj", "{B62B97E4-5F02-4740-9C0F-1C565C1CA06C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpanderStyleDemo", "IndustrialWPF\ExpanderStyleDemo.csproj", "{B62B97E4-5F02-4740-9C0F-1C565C1CA06C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListBoxBinding", "ListBoxBinding\ListBoxBinding.csproj", "{99268AAB-4F0C-40E9-992C-5157A0756B34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListBoxBinding", "ListBoxBinding\ListBoxBinding.csproj", "{99268AAB-4F0C-40E9-992C-5157A0756B34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCharsDemo", "LiveCharsDemo\LiveCharsDemo.csproj", "{3D21AC0B-DDBD-4B2C-B040-E6DD7F411B55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsControlBinding", "ItemsControlBinding\ItemsControlBinding.csproj", "{857A3CEB-C72E-4B94-B2E0-280D7C2342B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridBinding", "DataGridBinding\DataGridBinding.csproj", "{5B8F8C32-0B0F-40FA-818F-0BC5AE53CC80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandDemo", "CommandDemo\CommandDemo.csproj", "{9EE000DA-28A3-434A-83B0-4921A82FAB66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +35,22 @@ Global
 		{99268AAB-4F0C-40E9-992C-5157A0756B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99268AAB-4F0C-40E9-992C-5157A0756B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99268AAB-4F0C-40E9-992C-5157A0756B34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D21AC0B-DDBD-4B2C-B040-E6DD7F411B55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D21AC0B-DDBD-4B2C-B040-E6DD7F411B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D21AC0B-DDBD-4B2C-B040-E6DD7F411B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D21AC0B-DDBD-4B2C-B040-E6DD7F411B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{857A3CEB-C72E-4B94-B2E0-280D7C2342B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{857A3CEB-C72E-4B94-B2E0-280D7C2342B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{857A3CEB-C72E-4B94-B2E0-280D7C2342B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{857A3CEB-C72E-4B94-B2E0-280D7C2342B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B8F8C32-0B0F-40FA-818F-0BC5AE53CC80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B8F8C32-0B0F-40FA-818F-0BC5AE53CC80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B8F8C32-0B0F-40FA-818F-0BC5AE53CC80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B8F8C32-0B0F-40FA-818F-0BC5AE53CC80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EE000DA-28A3-434A-83B0-4921A82FAB66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EE000DA-28A3-434A-83B0-4921A82FAB66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EE000DA-28A3-434A-83B0-4921A82FAB66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EE000DA-28A3-434A-83B0-4921A82FAB66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

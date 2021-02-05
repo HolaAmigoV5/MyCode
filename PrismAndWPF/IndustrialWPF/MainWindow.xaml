@@ -1,16 +1,16 @@
-﻿<Window x:Class="IndustrialWPF.MainWindow"
+﻿<Window x:Class="ExpanderStyleDemo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:IndustrialWPF"
+        xmlns:local="clr-namespace:ExpanderStyleDemo"
         mc:Ignorable="d"
         Title="上海特斯拉超级工厂" Height="900" Width="1520">
     <Window.Resources>
         <!--静态资源-->
-        <ImageBrush x:Key="leftImage" ImageSource="/IndustrialWPF;component/images/leftImage.png"/>
-        <ImageBrush x:Key="leftImageSub" ImageSource="/IndustrialWPF;component/images/leftImageSub.png"/>
-        <ImageBrush x:Key="topImage" ImageSource="/IndustrialWPF;component/images/topImage.png"/>
+        <ImageBrush x:Key="leftImage" ImageSource="/ExpanderStyleDemo;component/images/leftImage.png"/>
+        <ImageBrush x:Key="leftImageSub" ImageSource="/ExpanderStyleDemo;component/images/leftImageSub.png"/>
+        <ImageBrush x:Key="topImage" ImageSource="/ExpanderStyleDemo;component/images/topImage.png"/>
 
         <!--右侧不合格因素-->
         <Style x:Key="CustomButton" TargetType="{x:Type Button}">
