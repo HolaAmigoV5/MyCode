@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ListBoxBinding"
         mc:Ignorable="d"
-        Title="MainWindow" Height="857" Width="1450">
+        Title="ListBoxBinding" Height="857" Width="1450">
     <Window.Resources>
         <Style x:Key="RadioButtonStyle" TargetType="{x:Type RadioButton}">
             <Setter Property="FontSize" Value="26"/>
@@ -35,7 +35,6 @@
                     <ControlTemplate TargetType="{x:Type RadioButton}">
                         <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
                             <Border x:Name="border" BorderBrush="Red" BorderThickness="0" CornerRadius="10" SnapsToDevicePixels="True"/>
-                            <Border x:Name="bd2"/>
                             <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"
                                               Content="{TemplateBinding Content}" Grid.Column="1"
                                               ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False"
@@ -89,19 +88,35 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <RadioButton Style="{StaticResource RadioButtonStyle}" Margin="30 10 30 0" 
-                                                 IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}, Mode=TwoWay}">
-
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Grid.Column="0" Text="{Binding IconFont}" FontFamily="./Fonts/#iconfont" FontSize="28"
-                                               Margin="10 0 0 0" Foreground="White"/>
-                                            <TextBlock Margin="15 0 0 0" Text="{Binding Title}" FontSize="18" VerticalAlignment="Center" Foreground="White"/>
-                                        </StackPanel>
-                                    </RadioButton>
+                                    <Grid>
+                                        <Border x:Name="border"/>
+                                        <ContentPresenter/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
                     </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <RadioButton Style="{StaticResource RadioButtonStyle}" Margin="30 10 30 0" 
+                                     IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}, Mode=TwoWay}">
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Grid.Column="0" Text="{Binding IconFont}" FontFamily="./Fonts/#iconfont" FontSize="28"
+                                               Margin="10 0 0 0" Foreground="White"/>
+                                <TextBlock Margin="15 0 0 0" Text="{Binding Title}" FontSize="18" VerticalAlignment="Center" Foreground="White"/>
+                            </StackPanel>
+                        </RadioButton>
+                    </DataTemplate>
                 </Setter.Value>
             </Setter>
         </Style>

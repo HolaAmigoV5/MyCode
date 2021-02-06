@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyWPFNetEasyCloudMusic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="770" Width="1175" WindowStyle="None" AllowsTransparency="True">
+        Title="NetEasyCloudMusic" Height="770" Width="1175" WindowStyle="None" AllowsTransparency="True">
     <Window.Resources>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="FontFamily" Value="/#iconfont"/>

@@ -1,0 +1,385 @@
+﻿<Window x:Class="WbyToDo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WbyToDo"
+         xmlns:cv="clr-namespace:WbyToDo.Converters"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="Wby ToDo" Height="600" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" ResizeMode="CanResizeWithGrip">
+    <Window.Resources>
+        <Style x:Key="IconTextStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="/Fonts/#iconfont"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Foreground" Value="#8f8f8f"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20 0 20 0"/>
+        </Style>
+
+        <Style x:Key="TextStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+
+        <Style x:Key="RadioButtonStyle" TargetType="{x:Type RadioButton}">
+            <Setter Property="Margin" Value="0 2 0 0"/>
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="MinHeight" Value="45"/>
+            <!--<Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <Style>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                            <Border x:Name="border" BorderBrush="Red" BorderThickness="0"  SnapsToDevicePixels="True"
+                                    CornerRadius="10"/>
+                            <Border x:Name="bd2"/>
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Content="{TemplateBinding Content}" Grid.Column="1" 
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <!--<Trigger Property="HasContent" Value="True">
+                                <Setter Property="FocusVisualStyle">
+                                    <Setter.Value>
+                                        <Style>
+                                            <Setter Property="Control.Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate>
+                                                        <Rectangle Margin="14,0,0,0" SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Padding" Value="4,-1,0,0"/>
+                            </Trigger>-->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="red" TargetName="border"/>
+                                <Setter Property="Opacity" Value="0.15" TargetName="border"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground"  Value="{Binding BackColor}"/>
+                                <Setter Property="BorderThickness" Value="4 0 0 0" TargetName="bd2"/>
+                                <Setter Property="BorderBrush" Value="{Binding BackColor}" TargetName="bd2"/>
+                                <Setter Property="Background" Value="{Binding BackColor}" TargetName="border"/>
+                                <Setter Property="Opacity" Value="0.05" TargetName="border"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="{x:Null}"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Grid>
+                                        <Border x:Name="border"/>
+                                        <ContentPresenter/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <RadioButton Style="{DynamicResource RadioButtonStyle }"  Margin="30 0 30 0" CommandParameter="{Binding}"
+                                     Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type local:MainWindow}}, 
+                            Path=DataContext.SelectedCommand, Mode=TwoWay}"
+                                     IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected, Mode=TwoWay}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Grid.Column="0" Text="{Binding IconFont}" FontFamily="/Fonts/#iconfont" FontSize="22"
+                                           Margin="10 0 0 0" Foreground="{Binding BackColor}"/>
+                                <TextBlock Margin="10 0 0 0" Text="{Binding Title}" FontSize="14" VerticalAlignment="Center"
+                                           Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1,
+                                    AncestorType={x:Type RadioButton}}}"/>
+                                <TextBlock Grid.Column="1" Margin="10 0 0 0" Text="(" FontSize="15" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Margin="5 0 5 0" Text="{Binding TaskInfos.Count}" FontSize="15" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text=")" FontSize="15" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </RadioButton>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="45"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+
+        <cv:DisplayConverters x:Key="discv"/>
+        <cv:DisplayMultiConverters x:Key="dismulti"/>
+    </Window.Resources>
+    <Grid x:Name="grc">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="0"/>
+        </Grid.ColumnDefinitions>
+
+        <!--左侧区域-->
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Microsoft ToDo" FontSize="20" Foreground="#8F8F8F" VerticalAlignment="Center" Margin="20 0 0 0"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20 0 10 0" VerticalAlignment="Center">
+                <Image Source="/Images/image1.jpg" Width="40" Height="40">
+                    <Image.Clip>
+                        <EllipseGeometry RadiusX="20" RadiusY="20" Center="20, 20"/>
+                    </Image.Clip>
+                </Image>
+                <TextBlock Text="五哥" FontSize="15" Margin="10 0 0 0" VerticalAlignment="Center"/>
+            </StackPanel>
+            <TextBlock Grid.Row="1" Text="&#xe64b;" Style="{StaticResource IconTextStyle}" HorizontalAlignment="Right"/>
+
+            <ListBox Grid.Row="2" ItemsSource="{Binding MenuModels}" Style="{StaticResource ListBoxStyle}"/>
+            
+        </Grid>
+
+        <!--中间区域-->
+        <Grid Grid.Column="1" Background="{Binding MenuModel.BackColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="controlSizePanel" Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Top">
+                <Button Content="─"  Click="btnMinClick" Style="{StaticResource ButtonStyle}"/>
+                <Button Content="☐" Click="btnmaxclick" Style="{StaticResource ButtonStyle}"/>
+                <Button Content="✕" Click="btncloseclick" Style="{StaticResource ButtonStyle}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Margin="30 0 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Name="ico" Text="{Binding MenuModel.IconFont}" Visibility="{Binding MenuModel.Display, Converter={StaticResource discv}}"
+                           Style="{StaticResource IconTextStyle}" FontSize="30" Foreground="White" Margin="0 0 20 0"/>
+                    <TextBlock x:Name="txt" Text="{Binding MenuModel.Title}" Style="{StaticResource TextStyle}" Foreground="White"/>
+                </StackPanel>
+
+                <TextBlock FontSize="15" Foreground="White" Margin="5 0 0 0" VerticalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource dismulti}">
+                            <Binding Path="Visibility" ElementName="ico"/>
+                            <Binding Path="Text" ElementName="txt"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
+           
+
+            <ItemsControl Grid.Row="2" ItemsSource="{Binding MenuModel.TaskInfos}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Height="50" Margin="30 20 30 0" CornerRadius="5" VerticalAlignment="Center" Background="White">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}},
+                                        Path=DataContext.SelectedTaskCommand, Mode=TwoWay}" CommandParameter="{Binding}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border BorderThickness="2" CornerRadius="20" Width="20" Height="20" BorderBrush="Black"/>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock  Text="{Binding Content}" FontSize="15"/>
+                                    <TextBlock  Text="任务" FontSize="15"/>
+                                </StackPanel>
+
+                                <TextBlock Grid.Column="2" Text="☆" Style="{StaticResource TextStyle}" FontSize="20"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            
+            <Border Grid.Row="3" Background="Black" Height="50" Margin="30 0 30 0" CornerRadius="10" Opacity="0.1" />
+            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="30 0 30 0">
+                <TextBlock Text="+" FontSize="30" VerticalAlignment="Center" Margin="20 0 0 0" Foreground="White"/>
+
+                <TextBox Name="inputText" Width="400" KeyDown="InputText_KeyDown">
+                    <TextBox.Resources>
+                        <VisualBrush x:Key="hintText" TileMode="None" AlignmentX="Left" Stretch="None">
+                            <VisualBrush.Visual>
+                                <TextBlock Text="添加任务"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </TextBox.Resources>
+
+                    <TextBox.Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontSize" Value="15"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Margin" Value="15 0 0 0"/>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Background" Value="{StaticResource hintText}"/>
+                                </Trigger>
+
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource hintText}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+
+            </StackPanel>
+        </Grid>
+
+
+        <!--右侧区域-->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition />
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Button Content="─" x:Name="btnmin" Click="btnMinClick" Style="{StaticResource ButtonStyle}"/>
+                <Button Content="☐" x:Name="btnmax" Click="btnmaxclick" Style="{StaticResource ButtonStyle}"/>
+                <Button Content="✕" x:Name="btnclose" Click="btncloseclick" Style="{StaticResource ButtonStyle}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Margin="20 0 20 0" VerticalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="○"  FontSize="40" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="{Binding TaskInfo.Content}" FontWeight="Bold" VerticalAlignment="Center" FontSize="16"/>
+                    <TextBlock Grid.Column="2" Text="&#xe635;" FontFamily="/Fonts/#iconfont" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xe600;" Style="{StaticResource IconTextStyle}" Foreground="#7b9cff" Margin="0 0 10 0"/>
+                    <TextBlock Text="添加步骤" Foreground="#7b9cff" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Margin="20 0 20 0" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="&#xe635;" FontFamily="/Fonts/#iconfont" Foreground="#7b9cff" FontSize="30" />
+                    <TextBlock Grid.Column="1" Text="已添加到'我的一天'" Foreground="#7b9cff" VerticalAlignment="Center" FontSize="15"/>
+                    <TextBlock Grid.Column="2" Text="✕" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5 10 0 10">
+                    <TextBlock Text="&#xe624;" Style="{StaticResource IconTextStyle}" Foreground="#7b9cff" FontSize="30" Margin="5 0 10 0"/>
+                    <TextBlock Text="提醒我" Foreground="#7b9cff" VerticalAlignment="Center" FontSize="15"/>
+                </StackPanel>
+
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5 10 0 10">
+                    <TextBlock Text="&#xe6e1;" Style="{StaticResource IconTextStyle}" Foreground="#7b9cff" FontSize="30"  Margin="5 0 10 0"/>
+                    <TextBlock Text="今天到期" Foreground="#7b9cff" VerticalAlignment="Center" FontSize="15"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5 10 0 10">
+                    <TextBlock Text="&#xe623;" Style="{StaticResource IconTextStyle}" Foreground="#7b9cff" FontSize="22"  Margin="10 0 10 0"/>
+                    <TextBlock Text="工作日" Foreground="#7b9cff" VerticalAlignment="Center" FontSize="15"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" TextBlock.Foreground="#636363" Margin="0 10 0 10">
+                    <TextBlock Text="&#xe628;" Style="{StaticResource IconTextStyle}" FontSize="30"  Margin="5 0 10 0"/>
+                    <TextBlock Text="添加文件" VerticalAlignment="Center" FontSize="15"/>
+                </StackPanel>
+
+                <TextBlock Text="添加备注" Foreground="#636363" FontSize="18" Margin="5 20 0 0"/>
+            </StackPanel>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Content="&#xe60a;" Background="Transparent" FontSize="14"  BorderThickness="0" 
+                        FontFamily="./Fonts/#iconfont" Width="40" Height="40" Click="btnUnExpand"/>
+                <TextBlock Grid.Column="1" Text="创建于xx小时前"  VerticalAlignment="Center" HorizontalAlignment="Center"
+                           FontSize="14" Foreground="#636363"/>
+                <Button Grid.Column="2" Content="&#xe610;" Background="Transparent" Foreground="#636363"  FontSize="20" 
+                        BorderThickness="0" FontFamily="./Fonts/#iconfont" Width="40" Height="40"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

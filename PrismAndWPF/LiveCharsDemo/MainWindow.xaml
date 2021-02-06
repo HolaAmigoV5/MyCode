@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LiveCharsDemo"
         mc:Ignorable="d" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-        Title="MainWindow" Height="750" Width="1050">
+        Title="LiveCharsDemo" Height="750" Width="1050">
     <Window.Resources>
         <Style x:Key="defaultRadioStyle" TargetType="RadioButton">
             <Setter Property="Background" Value="Transparent"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataGridBinding"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1300" WindowStartupLocation="CenterScreen">
+        Title="DataGridBinding" Height="800" Width="1300" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="RadioButtonStyle" TargetType="{x:Type RadioButton}">
             <Setter Property="Foreground" Value="#959595"/>
@@ -64,22 +64,33 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <RadioButton VerticalContentAlignment="Center" Style="{StaticResource RadioButtonStyle}" 
-                                     IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}, Mode=TwoWay}">
-                                        <StackPanel Orientation="Horizontal" Margin="40 0 0 0">
-                                            <TextBlock Text="{Binding IconFont}" FontFamily="/Fonts/#iconfont" HorizontalAlignment="Right"/>
-                                            <TextBlock Margin="15 0 0 0" Text="{Binding Title}" VerticalAlignment="Center" FontSize="15"/>
-                                        </StackPanel>
-                                    </RadioButton>
+                                    <Grid>
+                                        <Border x:Name="border"/>
+                                        <ContentPresenter/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
-                        <!--<Style.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="Blue"/>
-                            </Trigger>
-                        </Style.Triggers>-->
                     </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <RadioButton VerticalContentAlignment="Center" Style="{StaticResource RadioButtonStyle}" 
+                                     IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}, Mode=TwoWay}">
+                            <StackPanel Orientation="Horizontal" Margin="40 0 0 0">
+                                <TextBlock Text="{Binding IconFont}" FontFamily="/Fonts/#iconfont" HorizontalAlignment="Right"/>
+                                <TextBlock Margin="15 0 0 0" Text="{Binding Title}" VerticalAlignment="Center" FontSize="15"/>
+                            </StackPanel>
+                        </RadioButton>
+                    </DataTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
