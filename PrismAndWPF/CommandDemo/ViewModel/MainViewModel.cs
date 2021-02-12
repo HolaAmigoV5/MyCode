@@ -108,6 +108,7 @@ namespace CommandDemo.ViewModel
               });
         }
 
+
         public RelayCommand RefCommand { get; set; }
         public List<TransitionEffectKind> kinds;
         public List<string> colors;

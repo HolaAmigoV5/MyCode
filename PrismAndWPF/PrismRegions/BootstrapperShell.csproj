@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>BootstrapperShell</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BasicNavigation\BasicNavigation.csproj" />
+    <ProjectReference Include="..\ModuleA\ModuleA.csproj" />
+    <ProjectReference Include="..\ModuleC\ModuleC.csproj" />
+    <ProjectReference Include="..\ModuleD\ModuleD.csproj" />
+    <ProjectReference Include="..\ModulePerson\ModulePerson.csproj" />
+    <ProjectReference Include="..\UsingCompositeCommands.Core\PrismAndWPF.Core.csproj" />
+  </ItemGroup>
+</Project>

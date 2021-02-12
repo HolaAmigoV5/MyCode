@@ -1,0 +1,17 @@
+﻿<Window x:Class="CommandDemo.MiniView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CommandDemo" 
+        xmlns:local1="clr-namespace:CommandDemo.CustomCommand"
+        mc:Ignorable="d"
+        Title="Command" Height="300" Width="250" WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <local1:MyCommandSource x:Name="ctrlClear" Margin="10">
+            <TextBlock Text="清除" FontSize="16" TextAlignment="Center" Background="LightGreen" Width="80"/>
+        </local1:MyCommandSource>
+        
+        <local:MyView x:Name="miniView"/>
+    </StackPanel>
+</Window>

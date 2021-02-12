@@ -78,7 +78,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CommandDemoView.xaml.cs">
+      <DependentUpon>CommandDemoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomCommand\ClearCommand.cs" />
+    <Compile Include="CustomCommand\IView.cs" />
+    <Compile Include="CustomCommand\MyCommandSource.cs" />
+    <Compile Include="MiniView.xaml.cs">
+      <DependentUpon>MiniView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyView.xaml.cs">
+      <DependentUpon>MyView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Page Include="CommandDemoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -91,6 +107,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MiniView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
