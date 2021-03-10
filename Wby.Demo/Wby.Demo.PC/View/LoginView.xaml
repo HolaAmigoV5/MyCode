@@ -1,0 +1,81 @@
+﻿<Window x:Class="Wby.Demo.PC.View.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:Wby.Demo.PC.View"
+        mc:Ignorable="d"
+        Title="WELCOME" Height="430" Width="480" WindowStartupLocation="CenterScreen">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="-1" />
+    </WindowChrome.WindowChrome>
+    <materialDesign:DialogHost Identifier="Root">
+        <Grid>
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <StackPanel
+                    Margin="20,0,0,0"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="35"
+                        FontWeight="Bold"
+                        Text="WELCOME" />
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="35"
+                        Text="WPF" />
+                </StackPanel>
+
+                <Button
+                    Height="60"
+                    HorizontalAlignment="Right"
+                    Command="{Binding ExitCommand}"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+                    <materialDesign:PackIcon
+                        Width="50"
+                        Height="50"
+                        Kind="Close" />
+                </Button>
+
+                <TextBox
+                    Grid.Row="1"
+                    Margin="20,0,20,0"
+                    VerticalAlignment="Center"
+                    materialDesign:HintAssist.Hint="Account"
+                    FontSize="22"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    Text="{Binding UserName}" />
+
+                <PasswordBox></PasswordBox>
+
+                <Button
+                    Grid.Row="3"
+                    Height="55"
+                    Margin="20,0,20,0"
+                    materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding DialogIsOpen}"
+                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                    materialDesign:ButtonProgressAssist.Value="-1"
+                    Command="{Binding LoginCommand}"
+                    Content="LOGIN"
+                    FontSize="23"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+
+            </Grid>
+            <materialDesign:Snackbar
+                x:Name="SnackbarThree"
+                VerticalAlignment="Bottom"
+                MessageQueue="{materialDesign:MessageQueue}" />
+        </Grid>
+    </materialDesign:DialogHost>
+</Window>

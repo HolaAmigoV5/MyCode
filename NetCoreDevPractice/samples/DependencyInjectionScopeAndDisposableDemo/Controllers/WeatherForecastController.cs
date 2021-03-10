@@ -34,13 +34,13 @@ namespace DependencyInjectionScopeAndDisposableDemo.Controllers
             [FromQuery] bool stop=false)
         {
             ////创建子容器获取服务
-            //Console.WriteLine("===============1=============");
-            //using (IServiceScope scope = HttpContext.RequestServices.CreateScope())
-            //{
-            //    var service = scope.ServiceProvider.GetService<IOrderService>();
-            //    var service2 = scope.ServiceProvider.GetService<IOrderService>();
-            //}
-            //Console.WriteLine("===============2=============");
+            Console.WriteLine("===============1=============");
+            using (IServiceScope scope = HttpContext.RequestServices.CreateScope())
+            {
+                var service = scope.ServiceProvider.GetService<IOrderService>();
+                var service2 = scope.ServiceProvider.GetService<IOrderService>();
+            }
+            Console.WriteLine("===============2=============");
 
             if (stop)
             {

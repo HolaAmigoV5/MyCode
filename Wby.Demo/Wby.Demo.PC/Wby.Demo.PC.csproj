@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
+    <PackageReference Include="MaterialDesignColors" Version="2.0.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+    <PackageReference Include="NLog" Version="4.7.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wby.Demo.Service\Wby.Demo.Service.csproj" />
+    <ProjectReference Include="..\Wby.Demo.ViewModel\Wby.Demo.ViewModel.csproj" />
+  </ItemGroup>
+
+</Project>

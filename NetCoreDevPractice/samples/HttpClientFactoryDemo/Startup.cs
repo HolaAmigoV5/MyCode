@@ -22,8 +22,8 @@ namespace HttpClientFactoryDemo
             services.AddControllers();
 
             //工厂模式
-            services.AddHttpClient(); //HttpClientFactory注册
-            services.AddScoped<OrderServiceClient>();  //注册OrderServiceClient
+            services.AddHttpClient();                   //HttpClientFactory注册
+            services.AddScoped<OrderServiceClient>();   //注册OrderServiceClient
 
 
             //命名客户端

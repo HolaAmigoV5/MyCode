@@ -34,7 +34,6 @@ namespace DependencyInjectionScopeAndDisposableDemo
             //var service = new OrderService();
             //services.AddSingleton<IOrderService>(p => service);
 
-
             services.AddControllers();
         }
 
@@ -43,7 +42,7 @@ namespace DependencyInjectionScopeAndDisposableDemo
         {
             //从根容器获取瞬时服务
             var s = app.ApplicationServices.GetService<IOrderService>();
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

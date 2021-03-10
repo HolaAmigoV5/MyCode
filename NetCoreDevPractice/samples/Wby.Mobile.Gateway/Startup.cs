@@ -89,7 +89,7 @@ namespace Wby.Mobile.Gateway
                 endpoints.MapControllers();
             });
 
-            //使用Ocelot。要放在最后，希望网关内置的API任然生效，只有内置生效才映射我们的网关配置
+            //使用Ocelot。要放在最后，希望网关内置的API仍然生效，只有内置生效才映射我们的网关配置
             app.UseOcelot().Wait();
         }
     }

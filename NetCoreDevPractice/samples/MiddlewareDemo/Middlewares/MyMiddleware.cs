@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MiddlewareDemo.Middlewares
 {
-    public class MyMiddleware
+    public class MyMiddleware : IMiddleware
     {
         ILogger _logger;
         RequestDelegate _next;
@@ -28,6 +28,13 @@ namespace MiddlewareDemo.Middlewares
                 await _next(context);
                 _logger.LogDebug("执行结束");
             }
+        }
+
+
+        //这里实现IMiddleware接口
+        public Task InvokeAsync(HttpContext context, RequestDelegate next)
+        {
+            throw new NotImplementedException();
         }
     }
 }

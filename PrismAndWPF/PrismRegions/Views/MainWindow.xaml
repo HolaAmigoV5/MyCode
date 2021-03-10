@@ -41,7 +41,7 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <Button Content="Save" Margin="10" Command="{Binding ApplicationCommands.SaveCommand}"/>
+                        <Button Content="Save" Margin="10" Command="{Binding ApplicationCommands.SaveCommand}" />
                         <TabControl Grid.Row="1" Margin="10" prism:RegionManager.RegionName="DRegion"/>
                     </Grid>
                 </UniformGrid>

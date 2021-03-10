@@ -11,7 +11,7 @@ namespace My.Repository
     /// 描述：SqlServer的实现
     /// 作者：wby 2019/11/15 13:16:12
     /// </summary>
-    public class SqlServerRepository:DbRepository
+    public class SqlServerRepository : DbRepository
     {
         public SqlServerRepository() : base(null, DatabaseType.SqlServer) { }
         public SqlServerRepository(string conStr) : base(conStr, DatabaseType.SqlServer) { }
@@ -37,9 +37,9 @@ namespace My.Repository
 
                 SqlBulkCopy sqlBC = new SqlBulkCopy(conn)
                 {
-                    BatchSize=100000,
-                    BulkCopyTimeout=0,
-                    DestinationTableName=tableName
+                    BatchSize = 100000,
+                    BulkCopyTimeout = 0,
+                    DestinationTableName = tableName
                 };
 
                 using (sqlBC)

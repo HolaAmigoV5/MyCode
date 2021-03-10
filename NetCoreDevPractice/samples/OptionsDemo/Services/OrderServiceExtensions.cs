@@ -32,6 +32,8 @@ namespace OptionsDemo.Services
 
             //接口注入验证方式
             services.Configure<OrderServiceOptions>(configuration);
+
+
             //注入验证接口
             services.AddSingleton<IValidateOptions<OrderServiceOptions>, OrderServiceValidateOptions>();
 
