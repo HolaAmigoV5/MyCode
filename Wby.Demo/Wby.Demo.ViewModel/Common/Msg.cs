@@ -12,12 +12,12 @@ namespace Wby.Demo.ViewModel.Common
     public class Msg
     {
         /// <summary>
-        /// 信息提示
+        /// Snackbar 显示信息提示
         /// </summary>
         /// <param name="msg"></param>
-        public static void SendMsgInfo(string msg, Notify typeOfMsg)
+        public static void SendMsgInfo(string msg)
         {
-            WeakReferenceMessenger.Default.Send(msg, typeOfMsg.ToString());
+            WeakReferenceMessenger.Default.Send(msg, "Snackbar");
         }
 
         public async static Task<bool> Question(string msg)

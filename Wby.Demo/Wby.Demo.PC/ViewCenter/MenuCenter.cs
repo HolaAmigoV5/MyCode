@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Wby.Demo.PC.Common;
 using Wby.Demo.PC.View;
 using Wby.Demo.Shared.Attributes;
 using Wby.Demo.Shared.Common.Enums;
@@ -15,5 +16,14 @@ namespace Wby.Demo.PC.ViewCenter
     [Module("菜单管理", ModuleType.系统配置)]
     public class MenuCenter : ModuleCenter<MenuView, MenuDto>, IMenuCenter
     {
+        public MenuCenter(IMenuViewModel viewModel):base(viewModel)
+        {
+
+        }
+
+        public override void BindDataGridColumns()
+        {
+            VisualHelper.SetDataGridColumns(view, "Grid", typeof(MenuDto));
+        }
     }
 }

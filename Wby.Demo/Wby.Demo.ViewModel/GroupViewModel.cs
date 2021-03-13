@@ -68,7 +68,7 @@ namespace Wby.Demo.ViewModel
             var g = await groupRepository.GetGroupAsync(GridModel.Id);
             if (g.StatusCode != 200)
             {
-                Msg.SendMsgInfo(g.Message,Notify.Warning);
+                Msg.SendMsgInfo(g.Message);
                 return;
             }
             //其实这一步操作就是把当前用户组包含的权限,
@@ -100,7 +100,7 @@ namespace Wby.Demo.ViewModel
                 if (string.IsNullOrWhiteSpace(GroupDto.Group.GroupCode) ||
                     string.IsNullOrWhiteSpace(GroupDto.Group.GroupName))
                 {
-                    Msg.SendMsgInfo("组代码和名称为必填项！",Notify.Warning);
+                    Msg.SendMsgInfo("组代码和名称为必填项！");
                     return;
                 };
 
@@ -122,7 +122,7 @@ namespace Wby.Demo.ViewModel
                 var r = await groupRepository.SaveGroupAsync(GroupDto);
                 if (r.StatusCode != 200)
                 {
-                    Msg.SendMsgInfo(r.Message, Notify.Error);
+                    Msg.SendMsgInfo(r.Message);
                     return;
                 }
                 await GetPageData(0);
@@ -131,12 +131,14 @@ namespace Wby.Demo.ViewModel
             }
             catch (Exception ex)
             {
-                Msg.SendMsgInfo(ex.Message,Notify.Error);
+                Msg.SendMsgInfo(ex.Message);
             }
         }
         #endregion
 
         #region Property
+        public string SelectPageTitle { get; } = "权限管理";
+
         /// <summary>
         /// 切换检索用户列表的页索引
         /// </summary>

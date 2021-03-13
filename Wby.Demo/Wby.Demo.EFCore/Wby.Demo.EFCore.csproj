@@ -4,4 +4,14 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.AutoHistory" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wby.Demo.Shared\Wby.Demo.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

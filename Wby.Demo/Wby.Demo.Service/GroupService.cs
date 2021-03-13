@@ -8,7 +8,7 @@ using Wby.Demo.Shared.HttpContact.Request;
 
 namespace Wby.Demo.Service
 {
-    public partial class GroupService:BaseService<GroupDto>, IGroupRepository
+    public partial class GroupService : BaseService<GroupDto>, IGroupRepository
     {
         public async Task<BaseResponse<List<MenuModuleGroupDto>>> GetMenuModuleListAsync()
         {

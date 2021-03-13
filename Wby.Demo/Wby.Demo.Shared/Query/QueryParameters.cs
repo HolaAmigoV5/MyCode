@@ -5,21 +5,8 @@
     /// </summary>
     public class QueryParameters
     {
-        private int _pageIndex = 0;
-
-        public int PageIndex
-        {
-            get { return _pageIndex; }
-            set { _pageIndex = value; }
-        }
-
-        private int _pageSize = 10;
-
-        public virtual int PageSize
-        {
-            get { return _pageSize; }
-            set { _pageSize = value; }
-        }
+        public int PageIndex { get; set; } = 0;
+        public int PageSize { get; set; } = 10;
 
         public string Search { get; set; }
     }

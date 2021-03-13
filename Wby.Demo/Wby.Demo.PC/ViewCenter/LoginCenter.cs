@@ -23,6 +23,8 @@ namespace Wby.Demo.PC.ViewCenter
                     messageQueue.Enqueue(arg);
                 }));
             });
+
+            //登陆成功后，调用MainCenter，显示主窗体
             WeakReferenceMessenger.Default.Register<string, string>(view, "NavigationPage", async (sender, arg) =>
             {
                 var dialog = NetCoreProvider.ResolveNamed<IMainCenter>("MainCenter");

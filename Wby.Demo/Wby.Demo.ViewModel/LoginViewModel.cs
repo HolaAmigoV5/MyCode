@@ -1,8 +1,6 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Wby.Demo.Shared.Common;
 using Wby.Demo.Shared.DataInterfaces;
@@ -12,6 +10,7 @@ namespace Wby.Demo.ViewModel
 {
     public class LoginViewModel : BaseDialogViewModel, ILoginViewModel
     {
+        private readonly IUserRepository repository;
         public LoginViewModel(IUserRepository repository)
         {
             this.repository = repository;
@@ -43,7 +42,7 @@ namespace Wby.Demo.ViewModel
             get { return isCancel; }
             set { SetProperty(ref isCancel, value); }
         }
-        private readonly IUserRepository repository;
+        
         #endregion
 
         #region Command

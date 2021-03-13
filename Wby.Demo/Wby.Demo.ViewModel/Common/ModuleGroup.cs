@@ -18,10 +18,12 @@ namespace Wby.Demo.ViewModel.Common
             set { SetProperty(ref groupName, value); }
         }
 
+
+        private bool contractionTemplate = true;
+
         /// <summary>
-        /// 收缩面板-模板
+        /// 是否是收缩面板-模板
         /// </summary>
-        private bool contractionTemplate;
         public bool ContractionTemplate
         {
             get { return contractionTemplate; }

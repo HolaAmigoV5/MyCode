@@ -9,6 +9,7 @@ namespace Wby.Demo.ViewModel
     /// </summary>
     public class MenuViewModel : BaseRepository<MenuDto>, IMenuViewModel
     {
+        public string SelectPageTitle { get; } = "菜单管理";
         public MenuViewModel(IMenuRepository repository) : base(repository)
         {
 

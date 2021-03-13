@@ -1,4 +1,5 @@
-﻿using Wby.Demo.PC.View;
+﻿using Wby.Demo.PC.Common;
+using Wby.Demo.PC.View;
 using Wby.Demo.Shared.Attributes;
 using Wby.Demo.Shared.Common.Enums;
 using Wby.Demo.Shared.Dto;
@@ -12,5 +13,14 @@ namespace Wby.Demo.PC.ViewCenter
     [Module("权限管理", ModuleType.系统配置)]
     public class GroupCenter : ModuleCenter<GroupView, GroupDto>, IGroupCenter
     {
+        public GroupCenter(IGroupViewModel viewModel) : base(viewModel)
+        {
+
+        }
+
+        public override void BindDataGridColumns()
+        {
+            VisualHelper.SetDataGridColumns(view, "Grid", typeof(GroupDto));
+        }
     }
 }

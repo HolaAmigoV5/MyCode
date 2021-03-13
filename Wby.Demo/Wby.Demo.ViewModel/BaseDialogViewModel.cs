@@ -1,9 +1,6 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Wby.Demo.ViewModel
 {
@@ -30,7 +27,7 @@ namespace Wby.Demo.ViewModel
         }
 
         /// <summary>
-        /// 通知异常
+        /// 消息通知
         /// </summary>
         /// <param name="msg"></param>
         public void SnackBar(string msg)

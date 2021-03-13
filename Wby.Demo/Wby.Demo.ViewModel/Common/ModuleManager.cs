@@ -91,7 +91,6 @@ namespace Wby.Demo.ViewModel.Common
             }
             catch (Exception ex)
             {
-                //Log.Error(ex.Message);
                 throw ex;
             }
         }

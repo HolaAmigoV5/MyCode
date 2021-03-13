@@ -1,17 +1,31 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\test_user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\test_user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.1.0" />
+    <PackageReference Include="Dragablz" Version="0.0.3.223" />
     <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
     <PackageReference Include="MaterialDesignColors" Version="2.0.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
-    <PackageReference Include="NLog" Version="4.7.7" />
+    <PackageReference Include="NLog" Version="4.7.8" />
+    <PackageReference Include="ShowMeTheXAML" Version="2.0.0" />
+    <PackageReference Include="ShowMeTheXAML.AvalonEdit" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

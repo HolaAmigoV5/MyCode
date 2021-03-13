@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
+using System;
 using System.Threading.Tasks;
 using Wby.Demo.Shared.Common.Aop;
 using Wby.Demo.Shared.HttpContact;
@@ -25,42 +26,46 @@ namespace Wby.Demo.Service
         public async Task<Response> RequestBehavior<Response>(string url, Method method, string pms,
             bool isToken = true, bool isJson = true) where Response : class
         {
-            RestClient client = new RestClient(url);
-            RestRequest request = new RestRequest(method);
-            if (isToken)
-                client.AddDefaultHeader("token", "");
-
-            request.AddHeader("Content-Type", "application/json");
-            switch (method)
+            try
             {
-                case Method.GET:
-                    break;
-                case Method.POST:
-                    request.AddHeader("Content-Type", "application/json");
-                    if (isJson)
-                        request.AddJsonBody(pms);
-                    else
-                        request.AddParameter("application/x-www-form-urlencoded",
-                           pms, ParameterType.RequestBody);
-                    break;
-                case Method.PUT:
-                    break;
-                case Method.DELETE:
-                    break;
-                default:
-                    break;
-            }
-            var response = await client.ExecuteAsync(request);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                return JsonConvert.DeserializeObject<Response>(response.Content);
-            else
-                return new BaseResponse()
+                RestClient client = new RestClient(url);
+                RestRequest request = new RestRequest(method);
+                if (isToken)
+                    client.AddDefaultHeader("token", "");
+
+                request.AddHeader("Content-Type", "application/json");
+                switch (method)
                 {
-                    StatusCode = (int)response.StatusCode,
-                    Message = response.StatusDescription ?? response.ErrorMessage
-                } as Response;
-
-
+                    case Method.GET:
+                        break;
+                    case Method.POST:
+                        if (isJson)
+                            request.AddJsonBody(pms);
+                        else
+                            request.AddParameter("application/x-www-form-urlencoded",
+                               pms, ParameterType.RequestBody);
+                        break;
+                    case Method.PUT:
+                        break;
+                    case Method.DELETE:
+                        break;
+                    default:
+                        break;
+                }
+                var response = await client.ExecuteAsync(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    return JsonConvert.DeserializeObject<Response>(response.Content);
+                else
+                    return new BaseResponse()
+                    {
+                        StatusCode = (int)response.StatusCode,
+                        Message = response.StatusDescription ?? response.ErrorMessage
+                    } as Response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

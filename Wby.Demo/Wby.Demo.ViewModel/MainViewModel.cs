@@ -82,15 +82,7 @@ namespace Wby.Demo.ViewModel
             OpenPageCommand = new AsyncRelayCommand<string>(OpenPage);
             ClosePageCommand = new RelayCommand<string>(ClosePage);
             GoHomeCommand = new RelayCommand(InitHomeView);
-            ExpandMenuCommand = new RelayCommand(() =>
-            {
-                for (int i = 0; i < ModuleManager.ModuleGroups.Count; i++)
-                {
-                    var arg = ModuleManager.ModuleGroups[i];
-                    arg.ContractionTemplate = !arg.ContractionTemplate;
-                }
-                WeakReferenceMessenger.Default.Send("", "ExpandMenu");
-            });
+            ExpandMenuCommand = new RelayCommand(ExpandMenu);
         }
 
         /// <summary>
@@ -116,16 +108,29 @@ namespace Wby.Demo.ViewModel
             InitHomeView();
         }
 
+        private void ExpandMenu()
+        {
+            for (int i = 0; i < ModuleManager.ModuleGroups.Count; i++)
+            {
+                var arg = ModuleManager.ModuleGroups[i];
+                arg.ContractionTemplate = !arg.ContractionTemplate;
+            }
+            WeakReferenceMessenger.Default.Send("", "ExpandMenu");
+        }
+
         /// <summary>
         /// 初始化首页
         /// </summary>
-        void InitHomeView()
+        private void InitHomeView()
         {
             var dialog = NetCoreProvider.ResolveNamed<IHomeCenter>("HomeCenter");
             dialog.BindDefaultModel();
-            ModuleUIComponent component = new ModuleUIComponent();
-            component.Name = "首页";
-            component.Body = dialog.GetView();
+            ModuleUIComponent component = new ModuleUIComponent
+            {
+                Name = "首页",
+                Code="Home",
+                Body = dialog.GetView()
+            };
             ModuleList.Add(component);
             ModuleManager.Modules.Add(component);
             CurrentModule = ModuleList.Last();
@@ -164,7 +169,7 @@ namespace Wby.Demo.ViewModel
             }
             catch (Exception ex)
             {
-                Msg.SendMsgInfo(ex.Message, Notify.Error);
+                Msg.SendMsgInfo(ex.Message);
             }
         }
 

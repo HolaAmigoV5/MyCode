@@ -113,7 +113,7 @@ namespace Wby.Demo.ViewModel
                     if (r.StatusCode == 200)
                         await GetPageData(0);
                     else
-                        Msg.SendMsgInfo(r.Message, Notify.Error);
+                        Msg.SendMsgInfo(r.Message);
                 }
             }
         }
@@ -132,16 +132,24 @@ namespace Wby.Demo.ViewModel
         [GlobalProgress]
         public virtual async void UpdateAsync()
         {
-            if (GridModel == null) return;
-            var baseResponse = await Repository.GetAsync(GridModel.Id);
-            if (baseResponse.StatusCode == 200)
+            try
             {
-                GridModel = baseResponse.Result;
-                this.CreateDefaultCommand();
-                SelectPageIndex = 1;
+                if (GridModel == null) return;
+                var baseResponse = await Repository.GetAsync(GridModel.Id);
+                if (baseResponse.StatusCode == 200)
+                {
+                    GridModel = baseResponse.Result;
+                    this.CreateDefaultCommand();
+                    SelectPageIndex = 1;
+                }
+                else
+                    Msg.SendMsgInfo("Get data exception!");
             }
-            else
-                Msg.SendMsgInfo("Get data exception!", Notify.Error);
+            catch (Exception ex)
+            {
+                Msg.SendMsgInfo(ex.Message);
+            }
+            
         }
 
         #endregion

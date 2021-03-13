@@ -1,8 +1,5 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Wby.Demo.Shared.Common;
 using Wby.Demo.Shared.HttpContact;

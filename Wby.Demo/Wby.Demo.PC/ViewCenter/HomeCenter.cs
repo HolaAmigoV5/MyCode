@@ -2,7 +2,9 @@
 using LiveCharts.Wpf;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System;
+using System.Collections.ObjectModel;
 using Wby.Demo.PC.View;
+using Wby.Demo.Shared.Common;
 using Wby.Demo.ViewModel.Interfaces;
 
 namespace Wby.Demo.PC.ViewCenter
@@ -50,5 +52,12 @@ namespace Wby.Demo.PC.ViewCenter
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
+
+        private ObservableCollection<CommandStruct> toolBarCommandList;
+        public ObservableCollection<CommandStruct> ToolBarCommandList
+        {
+            get { return toolBarCommandList; }
+            set { SetProperty(ref toolBarCommandList, value); }
+        }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using Wby.Demo.Shared.Collections;
+using Wby.Demo.Shared.Common.Collections;
 using Wby.Demo.Shared.HttpContact;
 using Wby.Demo.Shared.Query;
 

@@ -13,54 +13,53 @@ namespace Wby.Demo.PC.View
         {
             InitializeComponent();
         }
+    }
 
-        public static class PasswordBoxHelper
+    public static class PasswordBoxHelper
+    {
+        //Password附加属性
+        public static readonly DependencyProperty PasswordProperty =
+            DependencyProperty.RegisterAttached("Password", typeof(string), typeof(PasswordBoxHelper),
+            new FrameworkPropertyMetadata(string.Empty, OnPasswordPropertyChanged));
+
+        private static void OnPasswordPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            public static readonly DependencyProperty PasswordProperty =
-                DependencyProperty.RegisterAttached("Password",
-                typeof(string), typeof(PasswordBoxHelper),
-                new FrameworkPropertyMetadata(string.Empty, OnPasswordPropertyChanged));
-
-            private static void OnPasswordPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-            {
-                PasswordBox passwordBox = sender as PasswordBox;
-                string password = (string)e.NewValue;
-                if (passwordBox != null && passwordBox.Password != password)
-                    passwordBox.Password = password;
-            }
-
-            public static string GetPassword(DependencyObject dp)
-            {
-                return (string)dp.GetValue(PasswordProperty);
-            }
-
-            public static void SetPassword(DependencyObject dp, string value)
-            {
-                dp.SetValue(PasswordProperty, value);
-            }
+            string password = (string)e.NewValue;
+            if (sender is PasswordBox passwordBox && passwordBox.Password != password)
+                passwordBox.Password = password;
         }
 
-        public class PasswordBoxBehavior : Behavior<PasswordBox>
+        public static string GetPassword(DependencyObject dp)
         {
-            protected override void OnAttached()
-            {
-                base.OnAttached();
-                AssociatedObject.PasswordChanged += OnPasswordChanged;
-            }
+            return (string)dp.GetValue(PasswordProperty);
+        }
 
-            private static void OnPasswordChanged(object sender, RoutedEventArgs e)
-            {
-                PasswordBox passwordBox = sender as PasswordBox;
-                string password = PasswordBoxHelper.GetPassword(passwordBox);
-                if (passwordBox != null && passwordBox.Password != password)
-                    PasswordBoxHelper.SetPassword(passwordBox, passwordBox.Password);
-            }
+        public static void SetPassword(DependencyObject dp, string value)
+        {
+            dp.SetValue(PasswordProperty, value);
+        }
+    }
 
-            protected override void OnDetaching()
-            {
-                base.OnDetaching();
-                AssociatedObject.PasswordChanged -= OnPasswordChanged;
-            }
+    public class PasswordBoxBehavior : Behavior<PasswordBox>
+    {
+        protected override void OnAttached()
+        {
+            base.OnAttached();
+            AssociatedObject.PasswordChanged += OnPasswordChanged;
+        }
+
+        private static void OnPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            PasswordBox passwordBox = sender as PasswordBox;
+            string password = PasswordBoxHelper.GetPassword(passwordBox);
+            if (passwordBox != null && passwordBox.Password != password)
+                PasswordBoxHelper.SetPassword(passwordBox, passwordBox.Password);
+        }
+
+        protected override void OnDetaching()
+        {
+            base.OnDetaching();
+            AssociatedObject.PasswordChanged -= OnPasswordChanged;
         }
     }
 }
