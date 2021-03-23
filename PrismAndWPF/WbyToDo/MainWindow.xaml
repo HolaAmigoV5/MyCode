@@ -197,9 +197,9 @@
             </Grid.RowDefinitions>
 
             <StackPanel x:Name="controlSizePanel" Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Top">
-                <Button Content="─"  Click="btnMinClick" Style="{StaticResource ButtonStyle}"/>
-                <Button Content="☐" Click="btnmaxclick" Style="{StaticResource ButtonStyle}"/>
-                <Button Content="✕" Click="btncloseclick" Style="{StaticResource ButtonStyle}"/>
+                <Button Content="─"  Click="BtnMinClick" Style="{StaticResource ButtonStyle}"/>
+                <Button Content="☐" Click="Btnmaxclick" Style="{StaticResource ButtonStyle}"/>
+                <Button Content="✕" Click="Btncloseclick" Style="{StaticResource ButtonStyle}"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Margin="30 0 0 0">
@@ -305,9 +305,9 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
-                <Button Content="─" x:Name="btnmin" Click="btnMinClick" Style="{StaticResource ButtonStyle}"/>
-                <Button Content="☐" x:Name="btnmax" Click="btnmaxclick" Style="{StaticResource ButtonStyle}"/>
-                <Button Content="✕" x:Name="btnclose" Click="btncloseclick" Style="{StaticResource ButtonStyle}"/>
+                <Button Content="─" x:Name="btnmin" Click="BtnMinClick" Style="{StaticResource ButtonStyle}"/>
+                <Button Content="☐" x:Name="btnmax" Click="Btnmaxclick" Style="{StaticResource ButtonStyle}"/>
+                <Button Content="✕" x:Name="btnclose" Click="Btncloseclick" Style="{StaticResource ButtonStyle}"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Margin="20 0 20 0" VerticalAlignment="Center">
@@ -374,7 +374,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Content="&#xe60a;" Background="Transparent" FontSize="14"  BorderThickness="0" 
-                        FontFamily="./Fonts/#iconfont" Width="40" Height="40" Click="btnUnExpand"/>
+                        FontFamily="./Fonts/#iconfont" Width="40" Height="40" Click="BtnUnExpand"/>
                 <TextBlock Grid.Column="1" Text="创建于xx小时前"  VerticalAlignment="Center" HorizontalAlignment="Center"
                            FontSize="14" Foreground="#636363"/>
                 <Button Grid.Column="2" Content="&#xe610;" Background="Transparent" Foreground="#636363"  FontSize="20" 

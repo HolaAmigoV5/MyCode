@@ -64,22 +64,22 @@ namespace WbyToDo
             
         }
 
-        private void btnMinClick(object sender, RoutedEventArgs e)
+        private void BtnMinClick(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
 
-        private void btnmaxclick(object sender, RoutedEventArgs e)
+        private void Btnmaxclick(object sender, RoutedEventArgs e)
         {
             this.WindowState = this.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
         }
 
-        private void btncloseclick(object sender, RoutedEventArgs e)
+        private void Btncloseclick(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void btnUnExpand(object sender, RoutedEventArgs e)
+        private void BtnUnExpand(object sender, RoutedEventArgs e)
         {
             var cdf = grc.ColumnDefinitions;
             cdf[2].Width = new GridLength(0);
