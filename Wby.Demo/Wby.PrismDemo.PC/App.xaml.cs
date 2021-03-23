@@ -38,6 +38,7 @@ namespace Wby.PrismDemo.PC
             containerRegistry.RegisterForNavigation<UserView>();
             containerRegistry.RegisterForNavigation<MenuView>();
             containerRegistry.RegisterForNavigation<GroupView>();
+            containerRegistry.RegisterForNavigation<DashboardView>();
 
             //注册对话
             //这里依赖ViewModelLocator找到对应的ViewModel。

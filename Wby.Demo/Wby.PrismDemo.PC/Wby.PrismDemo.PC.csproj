@@ -6,7 +6,26 @@
     <AssemblyName>Wby.PrismDemo.PC</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Fonts\iconfont.ttf" />
+    <None Remove="Infrastructure\Images\background.png" />
+    <None Remove="Infrastructure\Images\buttonImage.png" />
+    <None Remove="Infrastructure\Images\drop.png" />
     <None Remove="Infrastructure\Images\Image1.jpg" />
+    <None Remove="Infrastructure\Images\Image2.jpg" />
+    <None Remove="Infrastructure\Images\Image3.jpg" />
+    <None Remove="Infrastructure\Images\Image4.jpg" />
+    <None Remove="Infrastructure\Images\Image5.jpg" />
+    <None Remove="Infrastructure\Images\Image6.jpg" />
+    <None Remove="Infrastructure\Images\Image7.jpg" />
+    <None Remove="Infrastructure\Images\Image8.jpg" />
+    <None Remove="Infrastructure\Images\img3d.png" />
+    <None Remove="Infrastructure\Images\leftback.png" />
+    <None Remove="Infrastructure\Images\leftImage.png" />
+    <None Remove="Infrastructure\Images\leftImageSub.png" />
+    <None Remove="Infrastructure\Images\rightImage.png" />
+    <None Remove="Infrastructure\Images\timeback.png" />
+    <None Remove="Infrastructure\Images\topback.png" />
+    <None Remove="Infrastructure\Images\topImage.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Infrastructure\Images\Image1.jpg">
@@ -23,5 +42,16 @@
   <ItemGroup>
     <ProjectReference Include="..\Wby.Demo.Service\Wby.Demo.Service.csproj" />
     <ProjectReference Include="..\Wby.Demo.Shared\Wby.Demo.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Fonts\iconfont.ttf" />
+    <Resource Include="Infrastructure\Images\background.png" />
+    <Resource Include="Infrastructure\Images\Image2.jpg" />
+    <Resource Include="Infrastructure\Images\Image3.jpg" />
+    <Resource Include="Infrastructure\Images\Image4.jpg" />
+    <Resource Include="Infrastructure\Images\Image5.jpg" />
+    <Resource Include="Infrastructure\Images\Image6.jpg" />
+    <Resource Include="Infrastructure\Images\Image7.jpg" />
+    <Resource Include="Infrastructure\Images\Image8.jpg" />
   </ItemGroup>
 </Project>

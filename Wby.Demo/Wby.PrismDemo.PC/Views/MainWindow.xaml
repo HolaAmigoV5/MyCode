@@ -14,7 +14,7 @@
         Background="{DynamicResource MaterialDesignPaper}" ResizeMode="CanResizeWithGrip"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}" 
         WindowStartupLocation="CenterScreen" WindowStyle="None"
-        Height="768" Width="1280" MinWidth="1020" MinHeight="700" >
+        Height="900" Width="1280" MinWidth="1020" MinHeight="800" >
 
     <Window.Resources>
         <DataTemplate x:Key="groupTemplate">
