@@ -1,5 +1,6 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
 using System.Threading.Tasks;
+using Wby.Demo.Shared.Common;
 using Wby.Demo.Shared.DataInterfaces;
 using Wby.Demo.Shared.Dto;
 
@@ -42,7 +43,7 @@ namespace Wby.Demo.ViewModel.Interfaces
 
     public interface IMsgCenter
     {
-        Task<bool> Show(object obj);
+        Task<bool> Show(MsgInfo msgInfo);
     }
 
     public interface IUserCenter : IBaseCenter { }

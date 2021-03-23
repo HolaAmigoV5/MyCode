@@ -9,7 +9,14 @@ namespace Wby.Demo.Shared.Attributes
     [AttributeUsage(AttributeTargets.Class)]
     public class ModuleAttribute : Attribute
     {
+        /// <summary>
+        /// 模块名称
+        /// </summary>
         public string Name { get; }
+        
+        /// <summary>
+        /// 模块组名称
+        /// </summary>
         public ModuleType ModuleType { get; }
 
         public ModuleAttribute(string name, ModuleType moduleType)

@@ -32,13 +32,16 @@ namespace Wby.Demo.Shared.Dto
         /// <summary>
         /// 命名空间
         /// </summary>
+        [Description("命名空间")]
         [Required]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
         public string MenuNameSpace { get; set; }
 
         /// <summary>
-        /// 所属权限值
+        /// 权限值
         /// </summary>
+        [Description("权限值")]
+        [Required]
         public int MenuAuth { get; set; }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace Wby.Demo.Shared.DataModel
 {
@@ -23,9 +20,9 @@ namespace Wby.Demo.Shared.DataModel
         public string MenuName { get; set; }
 
         /// <summary>
-        /// 菜单标题
+        /// 模块图标代码
         /// </summary>
-        [Description("菜单标题")]
+        [Description("模块图标代码")]
         public string MenuCaption { get; set; }
 
         /// <summary>

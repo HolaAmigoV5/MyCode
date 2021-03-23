@@ -1,6 +1,7 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.ObjectModel;
 using Wby.Demo.PC.View;
@@ -52,6 +53,8 @@ namespace Wby.Demo.PC.ViewCenter
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
+
+        public AsyncRelayCommand<string> ExecuteCommand { get; }
 
         private ObservableCollection<CommandStruct> toolBarCommandList;
         public ObservableCollection<CommandStruct> ToolBarCommandList

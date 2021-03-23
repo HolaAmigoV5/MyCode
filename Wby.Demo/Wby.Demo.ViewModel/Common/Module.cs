@@ -7,40 +7,48 @@ namespace Wby.Demo.ViewModel.Common
     /// </summary>
     public class Module : ObservableObject
     {
+        
+        private string code;
+
         /// <summary>
         /// 模块图标代码
         /// </summary>
-        private string code;
         public string Code
         {
             get { return code; }
             set { SetProperty(ref code, value); }
         }
 
+        
+        private string name;
+
         /// <summary>
         /// 模块名称
         /// </summary>
-        private string name;
         public string Name
         {
             get { return name; }
             set { SetProperty(ref name, value); }
         }
 
+        
+        private int auth;
+
         /// <summary>
         /// 权限值
         /// </summary>
-        private int auth;
         public int Auth
         {
             get { return auth; }
             set { SetProperty(ref auth, value); }
         }
 
+       
+        private string typeName;
+
         /// <summary>
         /// 模块命名空间
         /// </summary>
-        private string typeName;
         public string TypeName
         {
             get { return typeName; }

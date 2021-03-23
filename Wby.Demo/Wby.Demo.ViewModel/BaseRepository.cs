@@ -2,6 +2,7 @@
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Wby.Demo.Shared.Common;
@@ -25,7 +26,7 @@ namespace Wby.Demo.ViewModel
             Repository = repository;
         }
 
-        #region 增删改查
+        #region IOrdinary<TEntity>
         private int selectPageIndex;
         public int SelectPageIndex
         {
@@ -176,7 +177,7 @@ namespace Wby.Demo.ViewModel
             set { SetProperty(ref pageIndex, value); }
         }
 
-        private int pageCount = 0;
+        private int pageCount = 1;
         public int PageCount
         {
             get { return pageCount; }
@@ -276,6 +277,8 @@ namespace Wby.Demo.ViewModel
             ToolBarCommandList = new ObservableCollection<CommandStruct>();
             Contract.AuthItems.ForEach(arg =>
             {
+                //Debug.WriteLine($"Value1:{AuthValue & arg.AuthValue}, Value2:{arg.AuthValue}");
+                //这里使用位运算实现权限管理。比如authValue=7,则有添加，删除，修改权限，authValue=15,则有小于16之前的所有权限。实质是所有权限值之和
                 if ((AuthValue & arg.AuthValue) == arg.AuthValue)
                 {
                     ToolBarCommandList.Add(new CommandStruct()

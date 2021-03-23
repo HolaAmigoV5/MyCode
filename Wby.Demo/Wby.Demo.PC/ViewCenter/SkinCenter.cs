@@ -4,10 +4,12 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Media;
 using Wby.Demo.PC.Common;
 using Wby.Demo.PC.View;
 using Wby.Demo.Shared.Attributes;
+using Wby.Demo.Shared.Common;
 using Wby.Demo.Shared.Common.Enums;
 using Wby.Demo.ViewModel.Interfaces;
 
@@ -31,6 +33,14 @@ namespace Wby.Demo.PC.ViewCenter
 
         public string SelectPageTitle { get; } = "个性化设置";
 
+        private ObservableCollection<CommandStruct> toolBarCommandList;
+        public ObservableCollection<CommandStruct> ToolBarCommandList
+        {
+            get { return toolBarCommandList; }
+            set { SetProperty(ref toolBarCommandList, value); }
+        }
+
+
         //可选颜色集合-分组
         public IEnumerable<ISwatch> Swatches { get; } = SwatchHelper.Swatches;
 
@@ -39,6 +49,8 @@ namespace Wby.Demo.PC.ViewCenter
 
         //改变主题
         public RelayCommand<object> ToggleBaseCommand { get; } = new RelayCommand<object>(o => ApplyBase((bool)o));
+
+        public AsyncRelayCommand<string> ExecuteCommand { get; }
 
         private static void ApplyBase(bool isDark)
         {

@@ -10,20 +10,22 @@ namespace Wby.Demo.ViewModel.Common
 {
     public class ModuleManager : ObservableObject
     {
+        private ObservableCollection<Module> modules;
+
         /// <summary>
         /// 已加载模块
         /// </summary>
-        private ObservableCollection<Module> modules;
         public ObservableCollection<Module> Modules
         {
             get { return modules; }
             set { SetProperty(ref modules, value); }
         }
 
+        private ObservableCollection<ModuleGroup> moduleGroups;
+
         /// <summary>
         /// 已加载模块-分组
         /// </summary>
-        private ObservableCollection<ModuleGroup> moduleGroups;
         public ObservableCollection<ModuleGroup> ModuleGroups
         {
             get { return moduleGroups; }
@@ -44,6 +46,8 @@ namespace Wby.Demo.ViewModel.Common
                 var emMt = Enum.GetValues(typeof(ModuleType));
                 for (int i = 0; i < emMt.Length; i++)
                     ModuleGroups.Add(new ModuleGroup() { GroupName = emMt.GetValue(i).ToString(), Modules = new ObservableCollection<Module>() });
+                
+                //查找程序集下所有带有ModuleAttribute的对象
                 var ms = await new ModuleComponent().GetAssemblyModules();
                 foreach (var i in ms)
                 {
@@ -59,32 +63,14 @@ namespace Wby.Demo.ViewModel.Common
                                 GroupName = i.ModuleType.ToString(),
                                 Modules = new ObservableCollection<Module>()
                             };
-                            newgroup.Modules.Add(new Module()
-                            {
-                                Name = i.Name,
-                                Code = m.MenuCaption,
-                                TypeName = m.MenuNameSpace,
-                                Auth = m.MenuAuth
-                            });
+                            newgroup.Modules.Add(MapMenuToModule(i.Name, m.MenuCaption, m.MenuNameSpace, m.MenuAuth));
                             ModuleGroups.Add(newgroup);
                         }
                         else
                         {
-                            group.Modules.Add(new Module()
-                            {
-                                Name = i.Name,
-                                Code = m.MenuCaption,
-                                TypeName = m.MenuNameSpace,
-                                Auth = m.MenuAuth
-                            });
+                            group.Modules.Add(MapMenuToModule(i.Name, m.MenuCaption, m.MenuNameSpace, m.MenuAuth));
                         }
-                        Modules.Add(new Module()
-                        {
-                            Name = i.Name,
-                            Code = m.MenuCaption,
-                            TypeName = m.MenuNameSpace,
-                            Auth = m.MenuAuth
-                        });
+                        Modules.Add(MapMenuToModule(i.Name, m.MenuCaption, m.MenuNameSpace, m.MenuAuth));
                     }
                 }
                 GC.Collect();
@@ -93,6 +79,17 @@ namespace Wby.Demo.ViewModel.Common
             {
                 throw ex;
             }
+        }
+
+        private Module MapMenuToModule(string moduleName, string code, string typeName, int auth)
+        {
+            return new Module()
+            {
+                Name = moduleName,
+                Code = code,
+                TypeName = typeName,
+                Auth = auth
+            };
         }
     }
 }

@@ -7,16 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\test_user.png" />
+    <None Remove="Images\Image1.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\test_user.png">
+    <Content Include="Images\Image1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.1.0" />
     <PackageReference Include="AvalonEdit" Version="6.1.0" />
     <PackageReference Include="Dragablz" Version="0.0.3.223" />
     <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />

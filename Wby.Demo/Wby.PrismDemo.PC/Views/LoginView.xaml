@@ -1,0 +1,50 @@
+﻿<Window x:Class="Wby.PrismDemo.PC.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wby.PrismDemo.PC.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Background="{StaticResource MaterialDesignPaper}"
+             mc:Ignorable="d" 
+             Height="430" Width="480" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <materialDesign:DialogHost Identifier="Root">
+        <Grid>
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <StackPanel Margin="20,0,0,0" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Text="欢迎" />
+                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" FontSize="35" Text="光临" />
+                </StackPanel>
+
+                <Button Height="60" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFlatButton}" Click="Btn_close">
+                    <materialDesign:PackIcon Width="50" Height="50" Kind="Close" />
+                </Button>
+
+                <TextBox Grid.Row="1" Margin="20,0,20,0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="用户名" FontSize="22"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding UserName}" />
+
+                <PasswordBox x:Name="password" Grid.Row="2" Margin="20 0 20 0" VerticalAlignment="Center"
+                             materialDesign:HintAssist.Hint="密码" FontSize="22" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+
+
+                <Button Grid.Row="3" Height="55" Margin="20,0,20,0"
+                    materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding DialogIsOpen}"
+                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.Value="-1" 
+                        Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=password}" Content="登录" FontSize="23"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+
+            </Grid>
+            <materialDesign:Snackbar x:Name="SnackbarThree" VerticalAlignment="Bottom" MessageQueue="{materialDesign:MessageQueue}"/>
+        </Grid>
+    </materialDesign:DialogHost>
+</Window>

@@ -15,7 +15,7 @@ using Wby.Demo.ViewModel.Interfaces;
 namespace Wby.Demo.ViewModel
 {
     /// <summary>
-    /// 部门管理
+    /// 权限管理
     /// </summary>
     public class GroupViewModel : BaseRepository<GroupDto>, IGroupViewModel
     {
@@ -139,21 +139,24 @@ namespace Wby.Demo.ViewModel
         #region Property
         public string SelectPageTitle { get; } = "权限管理";
 
+        
+        private int selectCardIndex=0;
+
         /// <summary>
         /// 切换检索用户列表的页索引
         /// </summary>
-        private int selectCardIndex=0;
         public int SelectCardIndex
         {
             get { return selectCardIndex; }
             set { SetProperty(ref selectCardIndex, value); }
         }
 
+       
+        private string userSearch=string.Empty;
 
         /// <summary>
         /// 检索用户条件
         /// </summary>
-        private string userSearch=string.Empty;
         public string UserSearch
         {
             get { return userSearch; }
@@ -161,21 +164,22 @@ namespace Wby.Demo.ViewModel
         }
 
 
+        private GroupDataDto groupDto;
+
         /// <summary>
         /// 操作实体
         /// </summary>
-        private GroupDataDto groupDto;
         public GroupDataDto GroupDto
         {
             get { return groupDto; }
             set { SetProperty(ref groupDto, value); }
         }
-
+       
+        private ObservableCollection<UserDto> gridUserModelList;
 
         /// <summary>
         /// 所有的用户列表
         /// </summary>
-        private ObservableCollection<UserDto> gridUserModelList;
         public ObservableCollection<UserDto> GridUserModelList
         {
             get { return gridUserModelList; }
@@ -199,7 +203,7 @@ namespace Wby.Demo.ViewModel
         /// <summary>
         /// 获取用户列表
         /// </summary>
-        async void GetUserData()
+        private async void GetUserData()
         {
             var r = await userRepository.GetAllListAsync(new QueryParameters()
             {
@@ -216,7 +220,7 @@ namespace Wby.Demo.ViewModel
         /// <summary>
         /// 添加所有选中用户
         /// </summary>
-        void AddAllUser()
+        private void AddAllUser()
         {
             for (int i = 0; i < GridUserModelList.Count; i++)
             {
@@ -232,7 +236,7 @@ namespace Wby.Demo.ViewModel
         /// <summary>
         /// 删除所有用户
         /// </summary>
-        void DeleteAllUser()
+        private void DeleteAllUser()
         {
             for (int i = GroupDto.GroupUsers.Count - 1; i >= 0; i--)
             {
@@ -246,7 +250,7 @@ namespace Wby.Demo.ViewModel
         /// 刷新菜单列表
         /// </summary>
         /// <returns></returns>
-        async Task UpdateMenuModules()
+        private async Task UpdateMenuModules()
         {
             if (MenuModules != null && MenuModules.Count > 0)
             {

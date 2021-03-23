@@ -15,7 +15,7 @@ namespace Wby.Demo.PC.ViewCenter
     public class MainCenter : BaseDialogCenter<MaterialDesignMainWindow>, IMainCenter
     {
         private new readonly IMainViewModel viewModel;
-
+        
         public MainCenter(IMainViewModel viewModel):base(viewModel)
         {
             this.viewModel = viewModel;

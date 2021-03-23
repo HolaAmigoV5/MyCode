@@ -29,10 +29,11 @@ namespace Wby.Demo.ViewModel.Common
         {
             string icon = string.Empty;
             string color = string.Empty;
+
             switch (notify)
             {
                 case Notify.Error:
-                    icon = "CommentWarning";
+                    icon = "Error";
                     color = "#FF4500";
                     break;
                 case Notify.Warning:
@@ -49,7 +50,7 @@ namespace Wby.Demo.ViewModel.Common
                     break;
             }
             var dialog = NetCoreProvider.ResolveNamed<IMsgCenter>("MsgCenter");
-            var result = await dialog.Show(new { Msg = msg, color, icon });
+            var result = await dialog.Show(new MsgInfo { Msg = msg, Color = color, Icon = icon });
             return result;
         }
     }

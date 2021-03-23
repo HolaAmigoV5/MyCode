@@ -6,8 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
              xmlns:local="clr-namespace:Wby.Demo.PC.Template"
-             mc:Ignorable="d" 
-             d:DesignHeight="280" d:DesignWidth="450">
+             mc:Ignorable="d" Height="280" Width="450">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -16,10 +15,11 @@
         </Grid.RowDefinitions>
 
         <materialDesign:ColorZone Padding="27" Mode="PrimaryMid"/>
+
         <TextBlock Text="消息窗口" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <materialDesign:PackIcon Kind="{Binding obj.Icon}" Foreground="{Binding obj.Color}" VerticalAlignment="Center" Width="30" Height="30"/>
-            <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="15" MaxWidth="300" Text="{Binding ojb.Msg}"/>
+            <materialDesign:PackIcon Kind="{Binding Icon}" Foreground="{Binding Color}" VerticalAlignment="Center" Width="30" Height="30"/>
+            <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="15" MaxWidth="300" Text="{Binding Msg}"/>
         </StackPanel>
 
         <UniformGrid Grid.Row="2" Columns="2" Margin="8 0 8 8">
@@ -30,10 +30,10 @@
                 </Button.CommandParameter>
             </Button>
             <Button Content="取消" Background="White" Foreground="Black" Margin="5" Height="45" Style="{StaticResource MaterialDesignFlatLightBgButton}"
-                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandParameter="False">
-                <!--<Button.CommandParameter>
+                    Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" >
+                <Button.CommandParameter>
                     <system:Boolean>False</system:Boolean>
-                </Button.CommandParameter>-->
+                </Button.CommandParameter>
             </Button>
         </UniformGrid>
     </Grid>

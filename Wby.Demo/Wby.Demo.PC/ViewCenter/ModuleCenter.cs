@@ -6,10 +6,10 @@ using Wby.Demo.ViewModel.Interfaces;
 namespace Wby.Demo.PC.ViewCenter
 {
     /// <summary>
-    /// View/ViewModel 控制基类(模块)
+    /// View/ViewModel 控制基类
     /// </summary>
     /// <typeparam name="TView"></typeparam>
-    /// <typeparam name="TViewModel"></typeparam>
+    /// <typeparam name="TEntity"></typeparam>
     public class ModuleCenter<TView, TEntity> where TView : UserControl, new() where TEntity : BaseDto
     {
         public ModuleCenter() { }

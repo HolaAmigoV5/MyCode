@@ -10,6 +10,7 @@ namespace Wby.Demo.ViewModel
     public class BaseDialogViewModel : ObservableObject
     {
         public RelayCommand ExitCommand { get; private set; }
+
         private bool dialogIsOpen;
         public bool DialogIsOpen
         {

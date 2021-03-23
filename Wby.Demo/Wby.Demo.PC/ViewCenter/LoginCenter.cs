@@ -34,10 +34,5 @@ namespace Wby.Demo.PC.ViewCenter
             });
             base.SubscribeMessenger();
         }
-
-        public override void UnsubscribeMessenger()
-        {
-            base.UnsubscribeMessenger();
-        }
     }
 }

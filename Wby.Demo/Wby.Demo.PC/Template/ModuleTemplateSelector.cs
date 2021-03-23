@@ -12,17 +12,17 @@ namespace Wby.Demo.PC.Template
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             ModuleGroup group = (ModuleGroup)item;
-            if (group != null)
-            {
-                if (!group.ContractionTemplate)
-                    return ExpanderTemplate;
-                else
-                    return GroupTemplate;
-            }
             //if (group != null)
             //{
-            //    return !group.ContractionTemplate ? ExpanderTemplate : GroupTemplate;
+            //    if (!group.ContractionTemplate)
+            //        return ExpanderTemplate;
+            //    else
+            //        return GroupTemplate;
             //}
+            if (group != null)
+            {
+                return !group.ContractionTemplate ? ExpanderTemplate : GroupTemplate;
+            }
             return ExpanderTemplate;
         }
     }

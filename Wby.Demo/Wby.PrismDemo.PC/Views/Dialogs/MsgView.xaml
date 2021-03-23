@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Wby.PrismDemo.PC.Views.Dialogs.MsgView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"  Height="280" Width="450" >
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen" />
+            <Setter Property="ShowInTaskbar" Value="False"/>
+            <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+            <Setter Property="WindowStyle" Value="None"/>
+            <Setter Property="ResizeMode" Value="CanMinimize"/>
+        </Style>
+    </prism:Dialog.WindowStyle>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <materialDesign:ColorZone Padding="27" Mode="PrimaryMid"/>
+
+        <TextBlock Text="{Binding Title}"  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <materialDesign:PackIcon Kind="{Binding Icon}" Foreground="{Binding Color}" VerticalAlignment="Center" Width="30" Height="30"/>
+            <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="15" MaxWidth="300" Text="{Binding Msg}"/>
+        </StackPanel>
+
+        <UniformGrid Grid.Row="2" Columns="2" Margin="8 0 8 8">
+            <Button Content="确定" Margin="5" Height="45" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                    Command="{Binding CloseDialogCommand}" CommandParameter="True" >
+            </Button>
+            <Button Content="取消" Background="White" Foreground="Black" Margin="5" Height="45" Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                    Command="{Binding CloseDialogCommand}"  CommandParameter="False">
+            </Button>
+        </UniformGrid>
+    </Grid>
+</UserControl>

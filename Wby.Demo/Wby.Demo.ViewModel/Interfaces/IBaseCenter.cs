@@ -19,7 +19,10 @@ namespace Wby.Demo.ViewModel.Interfaces
         /// <returns></returns>
         Task BindDefaultModel(int AuthValue = 0);
 
-
+        /// <summary>
+        /// 获取View对象
+        /// </summary>
+        /// <returns></returns>
         object GetView();
 
         

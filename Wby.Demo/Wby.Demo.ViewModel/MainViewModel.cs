@@ -16,20 +16,23 @@ namespace Wby.Demo.ViewModel
     public class MainViewModel : BaseDialogViewModel, IMainViewModel
     {
         #region Property
+        private ModuleUIComponent currentModule;
+
         /// <summary>
         /// 当前选中模块
         /// </summary>
-        private ModuleUIComponent currentModule;
         public ModuleUIComponent CurrentModule
         {
             get { return currentModule; }
             set { SetProperty(ref currentModule, value); }
         }
 
+        
+        private ObservableCollection<ModuleUIComponent> moduleList;
+
         /// <summary>
         /// 所有展开的模块
         /// </summary>
-        private ObservableCollection<ModuleUIComponent> moduleList;
         public ObservableCollection<ModuleUIComponent> ModuleList
         {
             get { return moduleList; }
@@ -85,6 +88,16 @@ namespace Wby.Demo.ViewModel
             ExpandMenuCommand = new RelayCommand(ExpandMenu);
         }
 
+        private void ExpandMenu()
+        {
+            for (int i = 0; i < ModuleManager.ModuleGroups.Count; i++)
+            {
+                var arg = ModuleManager.ModuleGroups[i];
+                arg.ContractionTemplate = !arg.ContractionTemplate;
+            }
+            WeakReferenceMessenger.Default.Send("", "ExpandMenu");
+        }
+
         /// <summary>
         /// 初始化页面上下文内容
         /// </summary>
@@ -106,16 +119,6 @@ namespace Wby.Demo.ViewModel
             //加载自身的程序集模块
             await ModuleManager.LoadAssemblyModule();
             InitHomeView();
-        }
-
-        private void ExpandMenu()
-        {
-            for (int i = 0; i < ModuleManager.ModuleGroups.Count; i++)
-            {
-                var arg = ModuleManager.ModuleGroups[i];
-                arg.ContractionTemplate = !arg.ContractionTemplate;
-            }
-            WeakReferenceMessenger.Default.Send("", "ExpandMenu");
         }
 
         /// <summary>
@@ -149,11 +152,16 @@ namespace Wby.Demo.ViewModel
                 var pageModule = this.ModuleManager.Modules.FirstOrDefault(t => t.Name.Equals(pageName));
                 if (pageModule == null) return;
 
+                //查找已经展开的View。如果存在，直接展示，不存在则新建
                 var module = this.ModuleList.FirstOrDefault(t => t.Name == pageModule.Name);
                 if (module == null)
                 {
-                    var dialog = NetCoreProvider.ResolveNamed<IBaseCenter>(pageModule.TypeName);
+                    var centerName = pageModule.TypeName.Replace("View", "Center");
+                    var dialog = NetCoreProvider.ResolveNamed<IBaseCenter>(centerName);
+
+                    //设置权限按钮（如添加，删除，修改等Button。实质是设置ToolBarCommandList的值）
                     await dialog.BindDefaultModel(pageModule.Auth);
+
                     ModuleList.Add(new ModuleUIComponent()
                     {
                         Code = pageModule.Code,

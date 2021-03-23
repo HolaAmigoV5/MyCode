@@ -14,7 +14,7 @@ namespace Wby.Demo.PC.ViewCenter
     /// <typeparam name="TView"></typeparam>
     public class BaseDialogCenter<TView> where TView : Window, new()
     {
-        public TView view = new TView();
+        public TView view = new();
         public IBaseDialog viewModel;
 
         public BaseDialogCenter(IBaseDialog viewModel)

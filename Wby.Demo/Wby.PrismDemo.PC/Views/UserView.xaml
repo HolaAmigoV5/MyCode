@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="Wby.PrismDemo.PC.Views.UserView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:v="clr-namespace:Wby.PrismDemo.PC.Infrastructure.Converters"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:template="clr-namespace:Wby.PrismDemo.PC.Views.Template"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:local="clr-namespace:Wby.PrismDemo.PC.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <v:BoolConverter x:Key="vbool"/>
+        <DataTemplate x:Key="DetailTemplate">
+            <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                <StackPanel  VerticalAlignment="Top">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                        <Image Width="150" Height="150" Source="pack://application:,,,/wby.PrismDemo.PC;Component/Infrastructure/Images/image1.jpg"/>
+                        <Button Width="150" Margin="5 0 0 0" VerticalAlignment="Bottom" Background="#00CC99" BorderBrush="#00CC99" Content="上传头像"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="5 20 0 0" Orientation="Horizontal">
+                        <TextBlock Text="管理员"/>
+                        <ToggleButton Margin="10 0 0 0" IsChecked="{Binding GridModel.FlagAdmin, Converter={StaticResource vbool}}"
+                                  Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="管理员"/>
+                        <TextBlock Margin="20 0 0 0" Text="锁定该账号："/>
+                    </StackPanel>
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="账号" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Text="{Binding GridModel.Account}"/>
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="密码"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding GridModel.Password}"/>
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="真实姓名"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding GridModel.UserName}"/>
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="家庭住址"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding GridModel.Address}" />
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="联系电话"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding GridModel.Tel}" />
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="邮箱地址"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding GridModel.Email}" />
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <template:BaseBodyView  ContentTemplate="{StaticResource DetailTemplate}"/>
+</UserControl>

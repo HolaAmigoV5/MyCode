@@ -23,7 +23,7 @@ namespace Wby.Demo.Shared.DataInterfaces
         int PageIndex { get; set; }
 
         /// <summary>
-        /// 总行数
+        /// 页数
         /// </summary>
         int PageCount { get; set; }
 

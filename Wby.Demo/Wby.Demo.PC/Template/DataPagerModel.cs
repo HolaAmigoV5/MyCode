@@ -72,15 +72,15 @@ namespace Wby.Demo.PC.Template
 
 
 
-        public RelayCommand GoOnPageCommand
+        public RelayCommand GoPrePageCommand
         {
-            get { return (RelayCommand)GetValue(GoOnPageCommandProperty); }
-            set { SetValue(GoOnPageCommandProperty, value); }
+            get { return (RelayCommand)GetValue(GoPrePageCommandProperty); }
+            set { SetValue(GoPrePageCommandProperty, value); }
         }
 
         
-        public static readonly DependencyProperty GoOnPageCommandProperty =
-            DependencyProperty.Register("GoOnPageCommand", typeof(RelayCommand), typeof(DataPagerModel));
+        public static readonly DependencyProperty GoPrePageCommandProperty =
+            DependencyProperty.Register("GoPrePageCommand", typeof(RelayCommand), typeof(DataPagerModel));
 
 
         public RelayCommand GoNextPageCommand

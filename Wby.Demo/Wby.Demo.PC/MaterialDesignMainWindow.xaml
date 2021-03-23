@@ -21,7 +21,7 @@
         
         <DataTemplate x:Key="groupTemplate">
             <Grid>
-                <!--  动画拉满, 效果好看  -->
+                <!--  收缩时显示模板  -->
                 <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.5}">
                     <Button
                         Width="60"
@@ -35,7 +35,7 @@
                             Height="30"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Kind="StorefrontOutline" />
+                            Kind="Menu" />
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Template">
@@ -92,7 +92,7 @@
         </DataTemplate>
         
         <DataTemplate x:Key="expanderTemplate">
-            <!--  动画拉满, 效果好看  -->
+            <!--  展开时显示模板  -->
             <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.5}">
                 <Expander Foreground="{DynamicResource PrimaryHueDarkBrush}">
                     <Expander.Header>
@@ -151,7 +151,7 @@
                     Height="36"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Source="pack://application:,,,/wby.Demo.PC;Component/Images/test_user.png">
+                    Source="pack://application:,,,/wby.Demo.PC;Component/Images/image1.jpg">
                     <Image.Clip>
                         <EllipseGeometry
                             Center="18,18"
@@ -396,6 +396,7 @@
                         </dragablz:DragablzItemsControl>
                     </Grid>
                 </materialDesign:ColorZone>
+                
                 <!--  工具栏(显示标签和功能清单)  -->
                 <materialDesign:ColorZone Grid.Row="1" CornerRadius="3">
                     <DockPanel>

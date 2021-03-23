@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="Wby.PrismDemo.PC.Views.UserView1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:v="clr-namespace:Wby.PrismDemo.PC.Infrastructure.Converters"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:template="clr-namespace:Wby.PrismDemo.PC.Views.Template"
+             xmlns:local="clr-namespace:Wby.PrismDemo.PC.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <v:BoolConverter x:Key="vbool"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!--  工具栏(显示标签和功能清单)  -->
+        <materialDesign:ColorZone CornerRadius="3">
+            <DockPanel>
+                <TextBlock Padding="15" FontSize="26" FontWeight="Bold" Text="{Binding MenuName}"/>
+
+                <ItemsControl ItemsSource="{Binding OperationBtns}" HorizontalAlignment="Right">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid}, Path=DataContext.ExecuteCommand}" 
+                                        CommandParameter="{Binding CommandName}" Background="{Binding CommandColor}" BorderThickness="0" Margin="0 0 8 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="{Binding CommandKind, FallbackValue=BorderOutside}" Margin="0 0 3 0" Width="20" Height="20"/>
+                                    <TextBlock Text="{Binding CommandName}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </DockPanel>
+        </materialDesign:ColorZone>
+
+        <!--  主体内容  -->
+        <materialDesign:Transitioner SelectedIndex="{Binding SelectedPageIndex}" Grid.Row="1">
+            <Grid Margin="10 0 10 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Width="25" Height="25" VerticalAlignment="Center" Kind="Magnify" Opacity="0.56"/>
+                    <TextBox MinWidth="200" Margin="5 0 0 0" VerticalAlignment="Center" 
+                         materialDesign:HintAssist.Hint="请输入检索条件" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                         BorderThickness="0" FontSize="18" Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Return" Command="{Binding QueryCommand}"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+                </StackPanel>
+
+                <DataGrid x:Name="Grid" Grid.Row="1" AutoGenerateColumns="False" Background="Transparent" IsReadOnly="True"
+                      ItemsSource="{Binding GridModelList}" SelectedItem="{Binding GridModel}" SelectionMode="Extended">
+                    <DataGrid.InputBindings>
+                        <MouseBinding Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}, 
+                        Path=DataContext.ExecuteCommand}" CommandParameter="修改" MouseAction="LeftDoubleClick"/>
+                    </DataGrid.InputBindings>
+                </DataGrid>
+
+                <!--  分页信息  -->
+                <StackPanel Grid.Row="2"  VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0 5 20 20"  Orientation="Horizontal" >
+                    <TextBlock Text="共 " Margin="10 0 0 0"  FontSize="18" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding TotalCount}" Foreground="#5CACEE" FontSize="18" Margin="4,0" VerticalAlignment="Center"  />
+                    <TextBlock  Text=" 条，每页 "    FontSize="18" VerticalAlignment="Center"  />
+                    <TextBlock Text="{Binding PageSize}" Foreground="#5CACEE" FontSize="18" Margin="4,0" VerticalAlignment="Center"  />
+                    <TextBlock Text=" 条，当前 "   FontSize="18" VerticalAlignment="Center"  />
+                    <TextBlock Text="{Binding PageIndex}" Foreground="#5CACEE"  FontSize="18"  Margin="4,0,2,0" VerticalAlignment="Center"  />
+                    <TextBlock Text=" / "     FontSize="18" VerticalAlignment="Center"  />
+                    <TextBlock Text="{Binding PageCount}" Foreground="#5CACEE"  FontSize="18"  Margin="4,0,2,0" VerticalAlignment="Center"  />
+                    <TextBlock Text="页 "    FontSize="18" VerticalAlignment="Center" Margin="2,0,0,0"  />
+
+                    <Button Content="首页" Command="{Binding GoHomePageCommand}"  Style="{StaticResource MaterialDesignFlatAccentBgButton}"/>
+                    <Button  Content="上一页"  Command="{Binding GoPrePageCommand}" Margin="8 0 8 0"  Style="{StaticResource MaterialDesignFlatAccentBgButton}" />
+                    <Button  Content="下一页" Command="{Binding GoNextPageCommand}"   Style="{StaticResource MaterialDesignFlatAccentBgButton}"/>
+                    <Button Content="尾页" Command="{Binding GoEndPageCommand}" Margin="8 0 8 0"  Style="{StaticResource  MaterialDesignFlatAccentBgButton}"/>
+                </StackPanel>
+                
+            </Grid>
+
+            <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                <StackPanel  VerticalAlignment="Top">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                        <Image Width="150" Height="150" Source="pack://application:,,,/wby.PrismDemo.PC;Component/Infrastructure/Images/image1.jpg"/>
+                        <Button Width="150" Margin="5 0 0 0" VerticalAlignment="Bottom" Background="#00CC99" BorderBrush="#00CC99" Content="上传头像"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="5 20 0 0" Orientation="Horizontal">
+                        <TextBlock Text="管理员"/>
+                        <ToggleButton Margin="10 0 0 0" IsChecked="{Binding GridModel.FlagAdmin, Converter={StaticResource vbool}}"
+                                  Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="管理员"/>
+                        <TextBlock Margin="20 0 0 0" Text="锁定该账号："/>
+                    </StackPanel>
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="账号" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Text="{Binding GridModel.Account}"/>
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="密码"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding GridModel.Password}"/>
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="真实姓名"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding GridModel.UserName}"/>
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="家庭住址"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding GridModel.Address}" />
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="联系电话"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding GridModel.Tel}" />
+
+                    <TextBox Margin="5" materialDesign:HintAssist.Hint="邮箱地址"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding GridModel.Email}" />
+                </StackPanel>
+            </StackPanel>
+        </materialDesign:Transitioner>
+    </Grid>
+
+</UserControl>

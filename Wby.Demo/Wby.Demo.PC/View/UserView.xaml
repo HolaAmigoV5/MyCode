@@ -45,7 +45,7 @@
         <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
             <StackPanel VerticalAlignment="Top">
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                    <Image Width="150" Height="150" Source="pack://application:,,,/Wby.Demo.PC;Component/Images/test_user.png"/>
+                    <Image Width="150" Height="150" Source="pack://application:,,,/Wby.Demo.PC;Component/Images/image1.jpg"/>
                     <Button Width="150" Margin="5 0 0 0" VerticalAlignment="Bottom" Background="#00CC99" BorderBrush="#00CC99" Content="上传头像"/>
                 </StackPanel>
 

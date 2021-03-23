@@ -16,6 +16,7 @@ namespace Wby.Demo.ViewModel
             this.repository = repository;
             LoginCommand = new RelayCommand(Login);
         }
+
         #region Property
         private string userName;
         public string UserName
@@ -29,18 +30,6 @@ namespace Wby.Demo.ViewModel
         {
             get { return password; }
             set { SetProperty(ref password, value); }
-        }
-        private string report;
-        public string Report
-        {
-            get { return report; }
-            set { SetProperty(ref report, value); }
-        }
-        private string isCancel;
-        public string IsCancel
-        {
-            get { return isCancel; }
-            set { SetProperty(ref isCancel, value); }
         }
         
         #endregion
@@ -77,7 +66,7 @@ namespace Wby.Demo.ViewModel
                 Contract.Account = loginResult.Result.User.Account;
                 Contract.UserName = loginResult.Result.User.UserName;
                 Contract.IsAdmin = loginResult.Result.User.FlagAdmin == 1;
-                Contract.Menus = loginResult.Result.Menus; //用户包含的权限信息
+                Contract.Menus = loginResult.Result.Menus; //用户包含的菜单信息
                 Contract.AuthItems = authResult.Result;
                 #endregion
 
