@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Wby.Demo.EFCore;
 using Wby.Demo.Shared.DataModel;
@@ -17,12 +15,14 @@ namespace Wby.Demo.Api.ApiManager
         private readonly ILogger<MenuManager> logger;
         private readonly IUnitOfWork work;
         private readonly IMapper mapper;
+        private readonly IRepository<Menu> menuRepository;
 
         public MenuManager(ILogger<MenuManager> logger, IUnitOfWork work, IMapper mapper)
         {
             this.logger = logger;
             this.work = work;
             this.mapper = mapper;
+            menuRepository = work?.GetRepository<Menu>();
         }
 
         /// <summary>
@@ -123,9 +123,33 @@ namespace Wby.Demo.Api.ApiManager
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public Task<ApiResponse> Save(MenuDto param)
+        public async Task<ApiResponse> Save(MenuDto param)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var menu = mapper.Map<Menu>(param);
+                if (param.Id == 0)
+                {
+                    menuRepository.Insert(menu);
+                    if (await work.SaveChangesAsync() > 0)
+                        return new ApiResponse(200, "");
+                }
+                else
+                {
+                    var dbMenu = await menuRepository.GetFirstOrDefaultAsync(predicate: x => x.Id == param.Id);
+                    if (dbMenu == null)
+                        return new ApiResponse(201, "该菜单已不存在！");
+                    menuRepository.Update(menu);
+                    if (await work.SaveChangesAsync() > 0)
+                        return new ApiResponse(200, "");
+                }
+                return new ApiResponse(201, "保存菜单错误!");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "修改菜单错误!");
+                return new ApiResponse(201, "修改菜单错误!");
+            }
         }
     }
 }

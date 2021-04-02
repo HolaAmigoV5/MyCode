@@ -34,6 +34,14 @@ namespace Wby.Demo.Service
             return result;
         }
 
+        /// <summary>
+        /// 请求
+        /// </summary>
+        /// <typeparam name="Response"></typeparam>
+        /// <param name="route">路由</param>
+        /// <param name="obj"></param>
+        /// <param name="method"></param>
+        /// <returns></returns>
         public async Task<Response> GetRequest<Response>(string route, object obj, Method method) where Response : class
         {
             string pms = string.Empty;

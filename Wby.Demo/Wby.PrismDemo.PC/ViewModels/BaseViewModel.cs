@@ -303,9 +303,9 @@ namespace Wby.PrismDemo.PC.ViewModels
             var r = await Repository.GetAllListAsync(new QueryParameters()
             {
 
-                PageIndex = this.PageIndex,
-                PageSize = this.PageSize,
-                Search = this.Search
+                PageIndex = PageIndex,
+                PageSize = PageSize,
+                Search = Search
             });
             if (r.StatusCode == 200)
             {

@@ -99,7 +99,7 @@ namespace Wby.Demo.Api.ApiManager
                 var g = await work.GetRepository<Group>().GetFirstOrDefaultAsync(predicate: x => x.Id == id);
                 if (g != null)
                 {
-                    GroupDataDto header = new GroupDataDto();
+                    GroupDataDto header = new();
                     header.Group = g;
                     var groupUserList = work.GetRepository<GroupUser>()
                           .GetAll(predicate: x => x.GroupCode == g.GroupCode).ToList();
@@ -132,11 +132,11 @@ namespace Wby.Demo.Api.ApiManager
 
                 if (menuItmes.Count > 0)
                 {
-                    List<MenuModuleGroup> menuGroups = new List<MenuModuleGroup>();
+                    List<MenuModuleGroup> menuGroups = new();
                     for (int i = 0; i < menuItmes.Count; i++)
                     {
                         var m = menuItmes[i];
-                        MenuModuleGroup group = new MenuModuleGroup();
+                        MenuModuleGroup group = new();
                         group.MenuCode = m.MenuCode;
                         group.MenuName = m.MenuName;
                         group.Modules = new ObservableCollection<MenuModule>();
