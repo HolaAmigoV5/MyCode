@@ -363,3 +363,9 @@ FodyWeavers.xsd
 
 # My igonore file
 SourceCode/
+node_modules/
+.vscode/
+validate-commit-msg.js
+package-lock.json
+package.json
+CHANGELOG.md
