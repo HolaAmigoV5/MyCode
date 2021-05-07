@@ -14,7 +14,7 @@
 
 **TheBeautifyOfDotNet**，也是一本不错的书籍《.Net之美》，值得学习。
 
-**CLR Via C#详情**：[CLR Via C#](CLR_Via_CSharp\CLRviaCSharp.md)
+**CLR Via C#详情**：[CLR Via C#](CLR_Via_CSharp/CLRviaCSharp.md)
 
 ![CLRViaCharp](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DotNet/CLRviaCSharp.png)
 
@@ -24,7 +24,7 @@
 
 说到面向对象少不了要说到3623——3大特性（继承，封装，多态），6种设计原则（Solidd原则），23种设计模式。
 
-**设计模式**： [设计相关](DesignPatterns\README.md)
+**设计模式**： [设计相关](DesignPatterns/README.md)
 
 ![Design](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/Design/Design.png)
 
@@ -32,7 +32,7 @@
 
 DotNetCore作为全新一套.Net框架，众多优点不必多说。跟着学就是。NetCoreDevPractice是学习DotNetCore的实战练习，也尝试实战了DotNetCore下微服务架构学习。
 
-**DotNetCore详情**：[Asp.Net Core](NetCoreDevPractice\ASP.Net Core.md)
+**DotNetCore详情**：[Asp.Net Core](NetCoreDevPractice/ASP.Net Core.md)
 
 ## PrismAndWPF
 
