@@ -32,7 +32,7 @@
 
 DotNetCore作为全新一套.Net框架，众多优点不必多说。跟着学就是。NetCoreDevPractice是学习DotNetCore的实战练习，也尝试实战了DotNetCore下微服务架构学习。
 
-**DotNetCore详情**：[Asp.Net Core](NetCoreDevPractice/ASP.Net Core.md)
+**DotNetCore详情**：[Asp.Net Core](NetCoreDevPractice/ASP.NetCore.md)
 
 ## PrismAndWPF
 
