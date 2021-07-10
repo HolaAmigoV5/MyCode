@@ -11,10 +11,10 @@ namespace ConsoleReflection
     {
         static void Main(string[] args)
         {
-            //ExceptionTree.Go();
+            ExceptionTree.Go();
             //MemberDiscover.Go();
             //Invoker.Go();
-            TransferHandle.Go();
+            //TransferHandle.Go();
             Console.ReadLine();
         }
     }
