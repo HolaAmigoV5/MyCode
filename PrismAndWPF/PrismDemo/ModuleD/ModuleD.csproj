@@ -2,9 +2,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyName>BasicRegionNavigation</AssemblyName>
+    <AssemblyName>ModuleD</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PrismAndWPF.Core\PrismAndWPF.Core.csproj" />
   </ItemGroup>
 </Project>

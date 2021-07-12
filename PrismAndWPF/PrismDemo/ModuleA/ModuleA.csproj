@@ -5,12 +5,12 @@
     <AssemblyName>ModuleA</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>D:\GitHub\MyCode\PrismAndWPF\BootstrapperShell\bin\Debug\</OutputPath>
+    <OutputPath></OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UsingCompositeCommands.Core\PrismAndWPF.Core.csproj" />
+    <ProjectReference Include="..\PrismAndWPF.Core\PrismAndWPF.Core.csproj" />
   </ItemGroup>
 </Project>

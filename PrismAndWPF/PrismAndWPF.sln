@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetEasyCloudMusic", "MyWPFNetEasyCloudMusic\NetEasyCloudMusic.csproj", "{92D950D6-1F92-4E6E-B12E-EBA37A30FB84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetEasyCloudMusic", "NetEasyCloudMusic\NetEasyCloudMusic.csproj", "{92D950D6-1F92-4E6E-B12E-EBA37A30FB84}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpanderStyleDemo", "IndustrialWPF\ExpanderStyleDemo.csproj", "{B62B97E4-5F02-4740-9C0F-1C565C1CA06C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpanderStyleDemo", "ExpanderStyleDemo\ExpanderStyleDemo.csproj", "{B62B97E4-5F02-4740-9C0F-1C565C1CA06C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListBoxBinding", "ListBoxBinding\ListBoxBinding.csproj", "{99268AAB-4F0C-40E9-992C-5157A0756B34}"
 EndProject
@@ -23,21 +23,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTestDemo", "WPFTestDemo\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PrismDemo", "PrismDemo", "{B08FD1EC-0233-4D6C-809A-6F2FC748C79A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapperShell", "PrismRegions\BootstrapperShell.csproj", "{FDEC42BB-3FC0-4E80-89CA-EC88F3B17AAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootstrapperShell", "PrismDemo\BootstrapperShell\BootstrapperShell.csproj", "{FDEC42BB-3FC0-4E80-89CA-EC88F3B17AAD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleA", "ModuleA\ModuleA.csproj", "{7101CE38-4F94-4A8A-8B37-CBAFD2C20452}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleA", "PrismDemo\ModuleA\ModuleA.csproj", "{7101CE38-4F94-4A8A-8B37-CBAFD2C20452}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleB", "ModuleB\ModuleB.csproj", "{2422583F-AE19-4D01-BF70-04A7077CBA1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleB", "PrismDemo\ModuleB\ModuleB.csproj", "{2422583F-AE19-4D01-BF70-04A7077CBA1C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleC", "ModuleC\ModuleC.csproj", "{6A094795-DAF9-4070-90E2-387CDCF13033}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleC", "PrismDemo\ModuleC\ModuleC.csproj", "{6A094795-DAF9-4070-90E2-387CDCF13033}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleD", "ModuleD\ModuleD.csproj", "{0B0110E1-1C76-428A-98F0-3AAE71ED2E98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleD", "PrismDemo\ModuleD\ModuleD.csproj", "{0B0110E1-1C76-428A-98F0-3AAE71ED2E98}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrismAndWPF.Core", "UsingCompositeCommands.Core\PrismAndWPF.Core.csproj", "{0A67E11E-956D-4CC5-820F-83BF8208DD31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrismAndWPF.Core", "PrismDemo\PrismAndWPF.Core\PrismAndWPF.Core.csproj", "{0A67E11E-956D-4CC5-820F-83BF8208DD31}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModulePerson", "ModulePerson\ModulePerson.csproj", "{D4588BD6-6C2F-48FD-B29C-09A71B0CD772}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModulePerson", "PrismDemo\ModulePerson\ModulePerson.csproj", "{D4588BD6-6C2F-48FD-B29C-09A71B0CD772}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicNavigation", "BasicNavigation\BasicNavigation.csproj", "{5187967A-2CDF-43EE-9E90-49D89E6892D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicNavigation", "PrismDemo\BasicNavigation\BasicNavigation.csproj", "{5187967A-2CDF-43EE-9E90-49D89E6892D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfTestWithPrism", "WpfTestWithPrism\WpfTestWithPrism.csproj", "{62B39750-7931-4AE0-A78F-0504A9730910}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,6 +115,10 @@ Global
 		{5187967A-2CDF-43EE-9E90-49D89E6892D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5187967A-2CDF-43EE-9E90-49D89E6892D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5187967A-2CDF-43EE-9E90-49D89E6892D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B39750-7931-4AE0-A78F-0504A9730910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B39750-7931-4AE0-A78F-0504A9730910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B39750-7931-4AE0-A78F-0504A9730910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B39750-7931-4AE0-A78F-0504A9730910}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

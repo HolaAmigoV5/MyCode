@@ -1,0 +1,35 @@
+﻿<mah:MetroWindow x:Class="WpfTestWithPrism.Views.VideoForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"  
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" 
+             WindowStartupLocation="CenterScreen"
+             Width="800" Height="600"     
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="Black">
+            <MediaElement x:Name="MediaPlayer" LoadedBehavior="Manual" MediaOpened="MediaPlayer_MediaOpened" Stretch="Fill" MediaFailed="media_Failed"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button x:Name="ButtonOpen" Click="btnOpen_Click" Content="Open..." Width="100" Height="25" Margin="5"/>
+                <Button x:Name="ButtonPlay" Click="btnPlay_Click" Content="Play" Width="100" Height="25" Margin="5"/>
+                <Button x:Name="ButtonStop" Click="btnStop_Click" Content="Stop" Width="100" Height="25" Margin="5"/>
+                <Button x:Name="ButtonForward" Click="btnForward_Click" Content="Forward" Width="100" Height="25" Margin="5"/>
+                <Button x:Name="ButtonBack" Click="btnBack_Click" Content="Back" Width="100" Height="25" Margin="5"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</mah:MetroWindow>

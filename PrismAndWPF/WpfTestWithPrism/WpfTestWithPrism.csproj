@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>WpfTestWithPrism</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Images\playBackSpeed.png" />
+    <None Remove="Images\playBackTime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.4.6" />
+    <PackageReference Include="Prism.Unity" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\playBackSpeed.png" />
+    <Resource Include="Images\playBackTime.png" />
+  </ItemGroup>
+</Project>
