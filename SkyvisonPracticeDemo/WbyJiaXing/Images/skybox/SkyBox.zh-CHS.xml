@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ListView>
+	<item Code="14" Name="落日余晖" ImgPath="t-9_FR.bmp" TopImage="t-9_UP.jpg" BottomImage="t-9_DN.jpg" LeftImage="t-9_LF.jpg" RightImage="t-9_RT.jpg" FrontImage="t-9_BK.jpg" BackImage="t-9_FR.jpg" IsChecked="false" />
+	<item Code="15" Name="碧空蓝天" ImgPath="t-12_FR.bmp" TopImage="t-12_UP.jpg" BottomImage="t-12_DN.jpg" LeftImage="t-12_LF.jpg" RightImage="t-12_RT.jpg" FrontImage="t-12_BK.jpg" BackImage="t-12_FR.jpg" IsChecked="false" />
+	<item Code="16" Name="海天一色" ImgPath="t-22_FR.bmp" TopImage="t-22_UP.jpg" BottomImage="t-22_DN.jpg" LeftImage="t-22_LF.jpg" RightImage="t-22_RT.jpg" FrontImage="t-22_BK.jpg" BackImage="t-22_FR.jpg" IsChecked="true" />
+	<item Code="13" Name="金色晨曦" ImgPath="1_FR(128).bmp" TopImage="1_UP.jpg" BottomImage="1_DN.jpg" LeftImage="1_LF.jpg" RightImage="1_RT.jpg" FrontImage="1_FR.jpg" BackImage="1_BK.jpg" IsChecked="false" />
+	<item Code="2" Name="光暗之首" ImgPath="2_FR(128).bmp" TopImage="2_UP.jpg" BottomImage="2_DN.jpg" LeftImage="2_LF.jpg" RightImage="2_RT.jpg" FrontImage="2_FR.jpg" BackImage="2_BK.jpg" IsChecked="false" />
+	<item Code="4" Name="天马行空" ImgPath="04_RT(128).bmp" TopImage="04_UP.jpg" BottomImage="04_DN.jpg" LeftImage="04_LF.jpg" RightImage="04_RT.jpg" FrontImage="04_FR.jpg" BackImage="04_BK.jpg" IsChecked="false" />
+	<item Code="7" Name="飘絮人间" ImgPath="7_FR(128).bmp" TopImage="7_UP.jpg" BottomImage="7_DN.jpg" LeftImage="7_LF.jpg" RightImage="7_RT.jpg" FrontImage="7_FR.jpg" BackImage="7_BK.jpg" IsChecked="false" />
+	<item Code="9" Name="七彩紫罗" ImgPath="9_FR(128).bmp" TopImage="9_UP.jpg" BottomImage="9_DN.jpg" LeftImage="9_LF.jpg" RightImage="9_RT.jpg" FrontImage="9_FR.jpg" BackImage="9_BK.jpg" IsChecked="false" />
+	<item Code="10" Name="云中之触" ImgPath="10_BK(128).bmp" TopImage="10_UP.jpg" BottomImage="10_DN.jpg" LeftImage="10_LF.jpg" RightImage="10_RT.jpg" FrontImage="10_FR.jpg" BackImage="10_BK.jpg" IsChecked="false" />
+	<item Code="11" Name="鲲鹏万里" ImgPath="11_RT(128).bmp" TopImage="11_UP.jpg" BottomImage="11_DN.jpg" LeftImage="11_LF.jpg" RightImage="11_RT.jpg" FrontImage="11_FR.jpg" BackImage="11_BK.jpg" IsChecked="false" />
+	<item Code="12" Name="血色苍穹" ImgPath="12_RT(128).bmp" TopImage="12_UP.jpg" BottomImage="12_DN.jpg" LeftImage="12_LF.jpg" RightImage="12_RT.jpg" FrontImage="12_FR.jpg" BackImage="12_BK.jpg" IsChecked="false" />
+	<item Code="1" Name="白云旋天" ImgPath="13_UP(128).bmp" TopImage="13_UP.jpg" BottomImage="13_DN.jpg" LeftImage="13_LF.jpg" RightImage="13_RT.jpg" FrontImage="13_FR.jpg" BackImage="13_BK.jpg" IsChecked="false" />
+	<item Code="22" Name="长空破日" ImgPath="22_UP(128).bmp" TopImage="22_UP.jpg" BottomImage="22_DN.jpg" LeftImage="22_LF.jpg" RightImage="22_RT.jpg" FrontImage="22_FR.jpg" BackImage="22_BK.jpg" IsChecked="false" />
+	<item Code="44" Name="霞光掩影" ImgPath="44_BK(128).bmp" TopImage="44_UP.jpg" BottomImage="44_DN.jpg" LeftImage="44_LF.jpg" RightImage="44_RT.jpg" FrontImage="44_FR.jpg" BackImage="44_BK.jpg" IsChecked="false" />
+	<item Code="99" Name="混沌沧海" ImgPath="99_BK(128).bmp" TopImage="99_UP.jpg" BottomImage="99_DN.jpg" LeftImage="99_LF.jpg" RightImage="99_RT.jpg" FrontImage="99_FR.jpg" BackImage="99_BK.jpg" IsChecked="false" />
+	<item Code="100" Name="梦境之末" ImgPath="100_FR(128).bmp" TopImage="100_UP.jpg" BottomImage="100_DN.jpg" LeftImage="100_LF.jpg" RightImage="100_RT.jpg" FrontImage="100_FR.jpg" BackImage="100_BK.jpg" IsChecked="false" />
+	<item Code="120" Name="玄浑宇宙" ImgPath="120_UP(128).bmp" TopImage="120_UP.jpg" BottomImage="120_DN.jpg" LeftImage="120_LF.jpg" RightImage="120_RT.jpg" FrontImage="120_FR.jpg" BackImage="120_BK.jpg" IsChecked="false" />
+	<item Code="130" Name="月神之眼" ImgPath="130_UP(128).bmp" TopImage="130_UP.jpg" BottomImage="130_DN.jpg" LeftImage="130_LF.jpg" RightImage="130_RT.jpg" FrontImage="130_FR.jpg" BackImage="130_BK.jpg" IsChecked="false" />
+</ListView>

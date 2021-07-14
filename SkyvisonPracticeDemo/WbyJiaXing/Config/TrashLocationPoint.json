@@ -1,0 +1,38 @@
+﻿[
+  {
+    "X": -30076.19,
+    "Y": -9027.52,
+    "Color": "Green",
+    "ImgPath": "\\Images\\Trash\\GreenTrash.png"
+  },
+  {
+    "X": -30124.0498342177,
+    "Y": -8484.81002580694,
+    "Color": "Red",
+    "ImgPath": "\\Images\\Trash\\RedTrash.png"
+  },
+  {
+    "X": -30120.804323906,
+    "Y": -8263.22277913549,
+    "Color": "Red",
+    "ImgPath": "\\Images\\Trash\\RedTrash.png"
+  },
+  {
+    "X": -30123.3928413899,
+    "Y": -8111.31550444166,
+    "Color": "Green",
+    "ImgPath": "\\Images\\Trash\\GreenTrash.png"
+  },
+  {
+    "X": -30124.3429961156,
+    "Y": -7825.46696349323,
+    "Color": "Red",
+    "ImgPath": "\\Images\\Trash\\RedTrash.png"
+  },
+  {
+    "X": -30124.2205817805,
+    "Y": -7582.62689088582,
+    "Color": "Green",
+    "ImgPath": "\\Images\\Trash\\GreenTrash.png"
+  }
+]

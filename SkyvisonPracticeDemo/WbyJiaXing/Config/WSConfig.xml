@@ -1,0 +1,15 @@
+﻿<DataSourceConfig>
+	<CurrentPlanGroup>
+		<CurrentPlanLib Id="1" Type="FireBird" EnumType="3" Server="" Database=".\Data\Basics\嘉定服务中心.3DM" Port="" User="" Password="" Instance=""/>
+	</CurrentPlanGroup>
+
+	<TerrainLayerGroup>
+	</TerrainLayerGroup>
+
+	<TileLayerGroup>
+	</TileLayerGroup>
+	<TwoDimensionGroup>
+	
+	</TwoDimensionGroup>
+
+</DataSourceConfig>

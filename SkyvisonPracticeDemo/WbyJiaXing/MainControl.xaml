@@ -1,0 +1,278 @@
+﻿<UserControl x:Class="WbyJiaXing.MainControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WbyJiaXing"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             mc:Ignorable="d"
+             d:DesignHeight="800" d:DesignWidth="420">
+    <UserControl.Resources>
+        <ImageBrush x:Key="bg_rec_selected" ImageSource="Images/rectangle_selected.png"/>
+
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" ContentSource="Header" Focusable="False" 
+                                              HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" 
+                                              Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource bg_rec_selected}"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter Property="Background" TargetName="templateRoot" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Source="Images/标题bg.png"/>
+        <StackPanel Orientation="Horizontal">
+            <Image Source="Images/icon-能耗.png" Width="47" Height="50" Margin="0 0 0 12"/>
+            <TextBlock Text="能耗分布统计"  FontSize="26" Foreground="White" VerticalAlignment="Center" Margin="0 0 0 12"/>
+        </StackPanel>
+
+        <lvc:CartesianChart Grid.Row="1" LegendLocation="Top" DataTooltip="{x:Null}">
+            <lvc:CartesianChart.Series>
+                <lvc:StackedColumnSeries Values="3, 5, 3, 2, 5, 4, 2" Title="动力" Fill="#8A92FF" />
+                <lvc:StackedColumnSeries Values="4, 2, 3, 2, 3, 4, 2" Title="空调" Fill="#0096FF"/>
+                <lvc:StackedColumnSeries Values="4, 2, 3, 2, 3, 4, 2" Title="消防" Fill="#00F0FF"/>
+                <lvc:StackedColumnSeries Values="4, 2, 3, 2, 3, 4, 2" Title="照明及插座" Fill="#D3F6FF"/>
+                <lvc:StackedColumnSeries Values="4, 2, 3, 2, 3, 4, 2" Title="其他" Fill="#00CCFF"/>
+            </lvc:CartesianChart.Series>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis ShowLabels="True" Labels="1,2,3,4,5,6,7,8,9,10,11,12(月)">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator StrokeThickness="0.1" Stroke="White" StrokeDashArray="30" Step="1"/>
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis ShowLabels="True" Title="百万kwh" />
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+
+        <StackPanel Grid.Row="2">
+            <TabControl Background="Transparent" BorderThickness="0 2 0 0" BorderBrush="#1f4d76">
+                <TabItem Header="选项一">
+                    <UniformGrid Rows="3" Columns="2" Margin="0 10">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-动力.png" />
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="动力" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-空调.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="空调" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-消防.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="消防" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-照明.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="照明及插座" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-其他.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="其他" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </UniformGrid>
+                </TabItem>
+
+                <TabItem Header="选项一">
+                    <UniformGrid Rows="3" Columns="2" Margin="0 10">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-动力.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="动力" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1230,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-空调.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="空调" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1011,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-消防.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="消防" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-照明.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="照明及插座" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-其他.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="其他" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </UniformGrid>
+                </TabItem>
+
+                <TabItem Header="选项一">
+                    <UniformGrid Rows="3" Columns="2" Margin="0 10">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-动力.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="动力" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1200,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-空调.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="空调" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1300,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-消防.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="消防" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="2000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-照明.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="照明及插座" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1100,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-其他.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="其他" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1234,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </UniformGrid>
+                </TabItem>
+
+                <TabItem Header="选项一">
+                    <UniformGrid Rows="3" Columns="2" Margin="0 10">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-动力.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="动力" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="789,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-空调.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="空调" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-消防.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="消防" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-照明.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="照明及插座" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/icon-其他.png"/>
+                            <StackPanel Margin="3 0" VerticalAlignment="Center">
+                                <TextBlock Text="其他" FontSize="18" Foreground="White"/>
+                                <TextBlock Text="1000,000" FontSize="18" Foreground="White" FontWeight="Heavy"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </UniformGrid>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+
+        <Image Source="Images/标题bg.png" Grid.Row="3"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <Image Source="Images/icon-水箱.png" Width="48" Height="46" Margin="0 0 0 10"/>
+            <TextBlock Text="水箱实时监测"  FontSize="26"  Foreground="White" VerticalAlignment="Center" Margin="0 0 0 10"/>
+        </StackPanel>
+
+        <lvc:CartesianChart Grid.Row="4" LegendLocation="Top" DataTooltip="{x:Null}" BorderThickness="1 0 0 1" BorderBrush="LightCyan">
+            <lvc:CartesianChart.Series>
+                <lvc:LineSeries Values="2, 5, 3, 2, 5, 4, 2" Title="动力" Stroke="#00F0FF" Fill="#00F0FF"  StrokeThickness="1" Opacity="0.2"/>
+                <lvc:LineSeries Values="1, 2.5, 2, 2.3, 2, 1, 2" Title="空调" Stroke="#F39800" Fill="#F39800" StrokeThickness="1" Opacity="0.2" />
+            </lvc:CartesianChart.Series>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis ShowLabels="True" MinValue="1" MaxValue="7">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator Step="1" StrokeThickness="0.1" Stroke="White" StrokeDashArray="30"/>
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis ShowLabels="True" MaxValue="5"/>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+    </Grid>
+</UserControl>
