@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Click="btn_click" Width="50" Height="20" Content="点我啊"/>
+        <StackPanel>
+            <Button Click="btn_click" Width="50" Height="20" Content="点我啊"/>
+
+            <CheckBox Content="选我啊"/>
+        </StackPanel>
+        
     </Grid>
 </Window>
