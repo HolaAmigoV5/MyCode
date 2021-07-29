@@ -13,6 +13,16 @@ namespace I3DMapOperation
         void InitializationAxRenderControl(WindowsFormsHost host);
 
         /// <summary>
+        /// 直线测距
+        /// </summary>
+        void MeasureDistance();
+
+        /// <summary>
+        /// 漫游模式
+        /// </summary>
+        void Normal();
+
+        /// <summary>
         /// 设置飞行时间
         /// </summary>
         /// <param name="flyTime">时间</param>
@@ -41,7 +51,12 @@ namespace I3DMapOperation
         /// <param name="traceChanged">轨迹是否改变（默认true）</param>
         void RenderVehicleTrajectory(IList<Trajectory> traceInfo, int speedTimes, bool traceChanged = true);
 
-        void RenderTrajectory(IList<Trajectory> traceInfos);
+        void RenderTrajectory(List<Trajectory> traceInfos, uint pointColor = 0xAA90EE90, uint lineColor = 0xAA0CE6E5);
+
+        /// <summary>
+        /// 清除所有地图轨迹信息
+        /// </summary>
+        void ClearAllRenderObj();
 
         /// <summary>
         /// 停止播放车辆历史轨迹

@@ -19,6 +19,7 @@
     <PackageReference Include="Gdal.Core" Version="1.0.0" />
     <PackageReference Include="MahApps.Metro" Version="2.4.7" />
     <PackageReference Include="NetTopologySuite.IO.GeoJSON" Version="1.15.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NPOI" Version="2.5.3" />
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
     <PackageReference Include="Sandwych.MapMatchingKit" Version="0.1.5-alpha-128" />

@@ -110,11 +110,11 @@ namespace DaJuTestDemo
         /// <param name="sheet"></param>
         /// <param name="fields"></param>
         /// <returns></returns>
-        private async Task<IList<T>> ExportToListAsync<T>(ISheet sheet, string[] fields) where T : class, new()
+        private async Task<List<T>> ExportToListAsync<T>(ISheet sheet, string[] fields) where T : class, new()
         {
             try
             {
-                IList<T> list = new List<T>();
+                List<T> list = new List<T>();
                 await Task.Run(() =>
                 {
                     //遍历每一行数据
@@ -131,7 +131,7 @@ namespace DaJuTestDemo
                             {
                                 object cellValue = cell.CellType switch
                                 {
-                                    CellType.String => cell.StringCellValue,        //文本
+                                    CellType.String => cell.StringCellValue,       //文本
 
                                     CellType.Numeric => cell.NumericCellValue,     //数值
 
@@ -142,7 +142,10 @@ namespace DaJuTestDemo
                                     CellType.Blank => "",       //空白
                                     _ => "ERROR",
                                 };
-                                typeof(T).GetProperty(fields[j]).SetValue(t, cellValue, null);
+                                if (fields[j].ToLower() == "time")
+                                    typeof(T).GetProperty(fields[j]).SetValue(t, cell.DateCellValue.ToString("yyyy-MM-dd HH:mm:ss"), null);
+                                else
+                                    typeof(T).GetProperty(fields[j]).SetValue(t, cellValue, null);
                             }
                         }
                         list.Add(t);
@@ -218,7 +221,7 @@ namespace DaJuTestDemo
         /// </summary>
         /// <param name="fields">Excel各个列，依次要转换成为的对象字段名称</param>
         /// <returns></returns>
-        public async Task<IList<T>> ExcelToListAsync<T>(string[] fields) where T : class, new()
+        public async Task<List<T>> ExcelToListAsync<T>(string[] fields) where T : class, new()
         {
             return await ExportToListAsync<T>(_IWorkbook.GetSheetAt(0), fields);
         }

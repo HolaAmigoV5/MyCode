@@ -177,7 +177,10 @@
                     <Button x:Name="btnSpeed" Background="{StaticResource playBackSpeed}" Click="btn_click" Style="{StaticResource playBackBtn}"/>
                     <Button x:Name="btnStop" Background="{StaticResource btnStop}"  Command="{Binding PlayOrStopCommand}" CommandParameter="stop" Style="{StaticResource playBackBtn}" />
                     <Button x:Name="btnPlay" Background="{StaticResource btnPlay}"  Command="{Binding PlayOrStopCommand}" CommandParameter="play" Style="{StaticResource playBackBtn}" />
-                    
+
+                    <Button Background="{StaticResource btnPlay}"  Command="{Binding NormalCommand}" Style="{StaticResource playBackBtn}"  Content="漫游"/>
+                    <Button Background="{StaticResource btnPlay}"  Command="{Binding MeasureDistance}" Style="{StaticResource playBackBtn}"  Content="测距"/>
+
                     <Popup PopupAnimation="Scroll" Width="163" Height="220" PlacementTarget="{Binding ElementName=btnTime}" HorizontalOffset="10"
                            Placement="Right" AllowsTransparency="True" StaysOpen="False" x:Name="timePopup">
                         <Border Background="#090922"  Opacity="0.85" BorderThickness="2" BorderBrush="#CC0c5b79">

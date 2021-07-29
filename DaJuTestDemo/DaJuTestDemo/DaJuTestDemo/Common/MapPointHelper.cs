@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DaJuTestDemo.Common
 {
@@ -23,16 +24,13 @@ namespace DaJuTestDemo.Common
         private static readonly string s_dataDir = Environment.CurrentDirectory + "\\data\\";
         private IList<Trajectory> _trajectories;
 
-        public MapPointHelper()
-        {
-
-        }
+        public MapPointHelper() { }
 
         public MapPointHelper(IList<Trajectory> trajectories)
         {
             _trajectories = trajectories;
         }
-        public List<Trajectory> LoadDataAndTransfer()
+        public async Task<List<Trajectory>> LoadDataAndTransfer()
         {
             var spatial = new GeographySpatialOperation();
             var mapBuilder = new RoadMapBuilder(spatial);
@@ -52,7 +50,7 @@ namespace DaJuTestDemo.Common
             var matcher = new Matcher<MatcherCandidate, MatcherTransition, MatcherSample>(
                 map, router, Costs.TimePriorityCost, spatial);
             matcher.MaxDistance = 500; // set maximum searching distance between two GPS points to 1000 meters.
-            matcher.MaxRadius = 5; // sets maximum radius for candidate selection to 200 meters
+            matcher.MaxRadius = 20; // sets maximum radius for candidate selection to 200 meters
 
 
             Debug.WriteLine("Loading GPS samples...");
@@ -62,7 +60,7 @@ namespace DaJuTestDemo.Common
             Debug.WriteLine("GPS samples loaded. [count={0}]", samples.Count);
 
             Debug.WriteLine("Starting Offline map-matching...");
-            var res = OfflineMatch(matcher, samples);
+            var res = await OfflineMatch(matcher, samples);
             return res;
         }
 
@@ -88,23 +86,13 @@ namespace DaJuTestDemo.Common
             }
         }
 
-        public IList<Trajectory> ReadRoads()
+        public async Task<List<Trajectory>> ReadRoadsAndRender()
         {
-            var json = File.ReadAllText(Path.Combine(s_dataDir, @"road.geojson"));
+            var json = await File.ReadAllTextAsync(Path.Combine(s_dataDir, @"road.geojson"));
             var reader = new GeoJsonReader();
             var fc = reader.Read<FeatureCollection>(json);
             List<Trajectory> res = new List<Trajectory>();
             var time = DateTime.Now.AddDays(-3);
-
-            //var feature = fc.Features[1];
-            //var lineGeom = feature.Geometry as ILineString;
-            //var coordinates = lineGeom.Coordinates;
-            //foreach (var item in coordinates)
-            //{
-            //    var nextTime = time.AddSeconds(2);
-            //    res.Add(new Trajectory { Longitude = item.X, Latitude = item.Y, Altitude = item.Z, Speed = 30.0, Time = nextTime.ToString() });
-            //    time = nextTime;
-            //}
 
             foreach (var feature in fc.Features)
             {
@@ -151,20 +139,21 @@ namespace DaJuTestDemo.Common
             }
         }
 
-        private List<Trajectory> OfflineMatch(
-            Matcher<MatcherCandidate, MatcherTransition, MatcherSample> matcher,
-            IReadOnlyList<MatcherSample> samples)
+        private async Task<List<Trajectory>> OfflineMatch(Matcher<MatcherCandidate, MatcherTransition, MatcherSample> matcher, IReadOnlyList<MatcherSample> samples)
         {
             var kstate = new MatcherKState();
 
             //Do the offline map-matching
             Debug.WriteLine("Doing map-matching...");
             var startedOn = DateTime.Now;
-            foreach (var sample in samples)
+            await Task.Run(() =>
             {
-                var vector = matcher.Execute(kstate.Vector(), kstate.Sample, sample);
-                kstate.Update(vector, sample);
-            }
+                foreach (var sample in samples)
+                {
+                    var vector = matcher.Execute(kstate.Vector(), kstate.Sample, sample);
+                    kstate.Update(vector, sample);
+                }
+            });
 
             Debug.WriteLine("Fetching map-matching results...");
             var candidatesSequence = kstate.Sequence();
@@ -190,11 +179,11 @@ namespace DaJuTestDemo.Common
                     Longitude = coord.X,
                     Latitude = coord.Y
                 });
-                
+
                 if (cand.HasTransition)
                 {
                     var geom = cand.Transition.Route.ToGeometry(); // path geometry(LineString) from last matching candidate
-                    var edges = cand.Transition.Route.Edges; // Road segments between two GPS position
+                    //var edges = cand.Transition.Route.Edges; // Road segments between two GPS position
                 }
                 matchedCandidateCount++;
             }

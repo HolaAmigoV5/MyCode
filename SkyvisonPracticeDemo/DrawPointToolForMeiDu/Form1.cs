@@ -164,6 +164,9 @@ namespace DrawPointToolForMeiDu
                     var count = polyline.PointCount;
                     totalCount += count;
 
+                    if (count < 2)
+                        return;
+
                     UpdateLabelCount(count, totalCount);
                     UpdateStartPointAndEndPointValue();
 

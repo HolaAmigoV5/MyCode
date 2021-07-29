@@ -8,6 +8,7 @@ using i3dRenderEngine;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Windows.Forms.Integration;
 
 namespace I3DMapOperation
@@ -30,6 +31,8 @@ namespace I3DMapOperation
         ConnectionInfo _ci;
         ISpatialCRS _spatialCRS;
 
+        StringBuilder sb;
+
         //public event Action<(string, NotationType)> SelectNotationFinished;
         public MapOperation()
         {
@@ -42,6 +45,7 @@ namespace I3DMapOperation
             _geoFactory = new GeometryFactoryClass();
             px = _geoFactory.CreatePoint(i3dVertexAttribute.i3dVertexAttributeZ);
             px.SpatialCRS = _spatialCRS;
+            sb = new StringBuilder();
         }
 
         /// <summary>
@@ -268,6 +272,7 @@ namespace I3DMapOperation
                         traceDynamicObj.AutoRepeat = false;
                         traceDynamicObj.CrsWKT = WKT;
                         traceDynamicObj.TurnSpeed = 300;
+                        AppendGuidToStringBuilder(traceDynamicObj.Guid);
 
                         symbol = new SimplePointSymbolClass()
                         {
@@ -295,14 +300,15 @@ namespace I3DMapOperation
                             rPoint.MaxVisibleDistance = 12500;
                             rPoint.ViewingDistance = 50;
 
+                            AppendGuidToStringBuilder(rPoint.Guid);
                             _axRenderControl.Camera.FlyToObject(rPoint.Guid, i3dActionCode.i3dActionFollowBehindAndAbove);
                         }
-                        tracePolyline = _axRenderControl.ObjectManager.CreateRenderPolyline(line, new CurveSymbol { Color = 0xFF0CE6E5 });
-
-                        //tracePolyline = _axRenderControl.ObjectManager.CreateRenderPolyline(line, new CurveSymbol { Color = 0xFF0CE6E5, Width = 1 });
+                        tracePolyline = _axRenderControl.ObjectManager.CreateRenderPolyline(line, new CurveSymbol { Color = 0xFFFFFF00, Width = 0.5f });
                         tracePolyline.VisibleMask = i3dViewportMask.i3dViewAllNormalView;
                         tracePolyline.MaxVisibleDistance = 12500;
                         tracePolyline.HeightStyle = i3dHeightStyle.i3dHeightAbsolute;
+
+                        AppendGuidToStringBuilder(tracePolyline.Guid);
                         #endregion
                     }
                 }
@@ -329,13 +335,13 @@ namespace I3DMapOperation
             }
         }
 
-        public void RenderTrajectory(IList<Trajectory> traceInfos)
+        public void RenderTrajectory(List<Trajectory> traceInfos, uint pointColor = 0xAA90EE90, uint lineColor = 0xAA0CE6E5)
         {
             try
             {
                 symbol = new SimplePointSymbolClass()
                 {
-                    FillColor = 0xff0000ff,
+                    FillColor = pointColor,
                     Size = 10
                 };
 
@@ -352,15 +358,16 @@ namespace I3DMapOperation
 
                     line.AppendPoint(point);
                     var rPoint = _axRenderControl.ObjectManager.CreateRenderPoint(point, symbol);
-                    rPoint.MaxVisibleDistance = 12500;
+                    rPoint.MaxVisibleDistance = 1000;
                     rPoint.ViewingDistance = 50;
+                    AppendGuidToStringBuilder(rPoint.Guid);
                 }
-                tracePolyline = _axRenderControl.ObjectManager.CreateRenderPolyline(line, new CurveSymbol { Color = 0xFF0CE6E5 });
-
-                //tracePolyline = _axRenderControl.ObjectManager.CreateRenderPolyline(line, new CurveSymbol { Color = 0xFF0CE6E5, Width = 1 });
+                tracePolyline = _axRenderControl.ObjectManager.CreateRenderPolyline(line, new CurveSymbol { Color = lineColor, Width = -2 });
                 tracePolyline.VisibleMask = i3dViewportMask.i3dViewAllNormalView;
-                tracePolyline.MaxVisibleDistance = 12500;
+                tracePolyline.MaxVisibleDistance = 1000;
                 tracePolyline.HeightStyle = i3dHeightStyle.i3dHeightAbsolute;
+
+                AppendGuidToStringBuilder(tracePolyline.Guid);
                 #endregion
             }
             catch (Exception ex)
@@ -401,6 +408,17 @@ namespace I3DMapOperation
             }
         }
 
+        public void MeasureDistance()
+        {
+            _axRenderControl.InteractMode = i3dInteractMode.i3dInteractMeasurement;
+            _axRenderControl.MeasurementMode = i3dMeasurementMode.i3dMeasureAerialDistance;
+        }
+
+        public void Normal()
+        {
+            _axRenderControl.InteractMode = i3dInteractMode.i3dInteractNormal;
+        }
+
         /// <summary>
         /// 设置相机飞到或跟随模型的方式
         /// </summary>
@@ -424,6 +442,39 @@ namespace I3DMapOperation
                 }
                 _axRenderControl.Camera.FlyToObject(modelPoint.Guid, actionCode);
             }
+        }
+
+        public void ClearAllRenderObj()
+        {
+            if (!string.IsNullOrEmpty(sb.ToString()))
+            {
+                ResetDynamicObj();
+
+                string str = sb.ToString().Substring(0, sb.Length - 1);
+                if (!string.IsNullOrEmpty(str))
+                {
+                    string[] guids = str.Split(',');
+                    foreach (string guid in guids)
+                    {
+                        _axRenderControl.ObjectManager.DeleteObject(Guid.Parse(guid));
+                    }
+                }
+            }
+        }
+
+        private void ResetDynamicObj()
+        {
+            if (traceDynamicObj != null)
+            {
+                traceDynamicObj.Stop();
+                traceDynamicObj.ClearWaypoints();
+                traceDynamicObj = null;
+            }
+        }
+
+        private void AppendGuidToStringBuilder(Guid guid)
+        {
+            sb.Append($"{guid},");
         }
 
         #endregion

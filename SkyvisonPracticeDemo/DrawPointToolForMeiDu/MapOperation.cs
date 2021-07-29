@@ -137,7 +137,7 @@ namespace DrawPointToolForMeiDu
                 if (ci == null) return;
                 dsFactory = new DataSourceFactory();
                 IDataSource ds = dsFactory.OpenDataSource(ci);
-
+                
                 string[] setnames = (string[])ds.GetFeatureDatasetNames();
                 if (setnames == null || setnames.Length == 0) return;
 
