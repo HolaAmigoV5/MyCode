@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="DaJuTestDemo.Core.Layout.HomePageLayout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/" 
+             xmlns:core="clr-namespace:DaJuTestDemo.Core"
+             Width="1920" Height="970">
+    <Grid Margin="-15 -5 -15 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="366"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="366"/>
+        </Grid.ColumnDefinitions>
+
+        <!--左边区域-->
+        <Grid Background="#CC02266A">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.HomePageLeftTopRegion}" />
+            <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.HomePageLeftCenterRegion}" Grid.Row="1" />
+            <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.HomePageLeftBottomRegion}" Grid.Row="2"/>
+        </Grid>
+
+        <!--底部区域-->
+        <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.HomePageCenterBottomRegion}" Grid.Column="1" Height="252" VerticalAlignment="Bottom" />
+        <!--右边区域-->
+        <Grid Background="#CC02266A" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.HomePageRightTopRegion}" />
+            <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.HomePageRightCenterRegion}" Grid.Row="1" />
+            <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.HomePageRightBottomRegion}" Grid.Row="2" />
+        </Grid>
+    </Grid>
+</UserControl>

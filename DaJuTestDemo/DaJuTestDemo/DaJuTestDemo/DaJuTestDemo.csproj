@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+	<UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>DaJuTestDemo</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Images\btnPlay.png" />
+    <None Remove="Images\btnStop.png" />
+    <None Remove="Images\playBackSpeed.png" />
+    <None Remove="Images\playBackTime.png" />
+    <None Remove="Images\topBackground.png" />
+    <None Remove="Images\topDefault.png" />
+    <None Remove="Images\topSelected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Gdal.Core" Version="1.0.0" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.7" />
+    <PackageReference Include="NetTopologySuite.IO.GeoJSON" Version="1.15.4" />
+    <PackageReference Include="NPOI" Version="2.5.3" />
+    <PackageReference Include="Prism.Unity" Version="8.1.97" />
+    <PackageReference Include="Sandwych.MapMatchingKit" Version="0.1.5-alpha-128" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\I3DMapOperation\I3DMapOperation.csproj" />
+    <ProjectReference Include="..\DaJuTestDemo.Core\DaJuTestDemo.Core.csproj" />
+    <ProjectReference Include="..\Modules\DaJuTestDemo.Modules.ModuleName\DaJuTestDemo.Modules.ModuleName.csproj" />
+    <ProjectReference Include="..\Services\DaJuTestDemo.Services.Interfaces\DaJuTestDemo.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\Services\DaJuTestDemo.Services\DaJuTestDemo.Services.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\btnPlay.png" />
+    <Resource Include="Images\btnStop.png" />
+    <Resource Include="Images\playBackSpeed.png" />
+    <Resource Include="Images\playBackTime.png" />
+    <Resource Include="Images\topBackground.png" />
+    <Resource Include="Images\topDefault.png" />
+    <Resource Include="Images\topSelected.png" />
+  </ItemGroup>
+</Project>

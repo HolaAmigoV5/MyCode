@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{70C90E57-FF0F-4B09-9348-D61DCB3B12D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaJuTestDemo.Modules.ModuleName.Tests", "DaJuTestDemo\Tests\DaJuTestDemo.Modules.ModuleName.Tests\DaJuTestDemo.Modules.ModuleName.Tests.csproj", "{618403F9-CFEF-4B23-B873-8A18A2D5F30D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{ABC18FD4-BA82-40A4-8FE6-892D9028B9C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaJuTestDemo.Modules.ModuleName", "DaJuTestDemo\Modules\DaJuTestDemo.Modules.ModuleName\DaJuTestDemo.Modules.ModuleName.csproj", "{083E0AD3-F8AF-4FC5-8CCC-867A25F15BFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{12EDA4EA-0623-446C-A9C4-B35947D20317}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaJuTestDemo.Services", "DaJuTestDemo\Services\DaJuTestDemo.Services\DaJuTestDemo.Services.csproj", "{1671052E-78DE-4292-BE01-D6F88E9FA4B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaJuTestDemo.Services.Interfaces", "DaJuTestDemo\Services\DaJuTestDemo.Services.Interfaces\DaJuTestDemo.Services.Interfaces.csproj", "{F97818E3-91E3-43C8-B3F2-C0D09C97AB2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaJuTestDemo", "DaJuTestDemo\DaJuTestDemo\DaJuTestDemo.csproj", "{68174336-2A62-4193-977C-AC4D88EA9FBD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaJuTestDemo.Core", "DaJuTestDemo\DaJuTestDemo.Core\DaJuTestDemo.Core.csproj", "{B044228E-DC93-4121-8593-D9DD9D7FBD97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Map", "Map", "{8B802E82-35A0-4A7D-86CA-FBFAF50B24C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I3DMapOperation", "I3DMapOperation\I3DMapOperation.csproj", "{958C283F-B5EC-4DD5-91E6-1DB77BAD19CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{618403F9-CFEF-4B23-B873-8A18A2D5F30D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{618403F9-CFEF-4B23-B873-8A18A2D5F30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{618403F9-CFEF-4B23-B873-8A18A2D5F30D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{618403F9-CFEF-4B23-B873-8A18A2D5F30D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{083E0AD3-F8AF-4FC5-8CCC-867A25F15BFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{083E0AD3-F8AF-4FC5-8CCC-867A25F15BFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{083E0AD3-F8AF-4FC5-8CCC-867A25F15BFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{083E0AD3-F8AF-4FC5-8CCC-867A25F15BFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1671052E-78DE-4292-BE01-D6F88E9FA4B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1671052E-78DE-4292-BE01-D6F88E9FA4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1671052E-78DE-4292-BE01-D6F88E9FA4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1671052E-78DE-4292-BE01-D6F88E9FA4B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F97818E3-91E3-43C8-B3F2-C0D09C97AB2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97818E3-91E3-43C8-B3F2-C0D09C97AB2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97818E3-91E3-43C8-B3F2-C0D09C97AB2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97818E3-91E3-43C8-B3F2-C0D09C97AB2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68174336-2A62-4193-977C-AC4D88EA9FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68174336-2A62-4193-977C-AC4D88EA9FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68174336-2A62-4193-977C-AC4D88EA9FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68174336-2A62-4193-977C-AC4D88EA9FBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B044228E-DC93-4121-8593-D9DD9D7FBD97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B044228E-DC93-4121-8593-D9DD9D7FBD97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B044228E-DC93-4121-8593-D9DD9D7FBD97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B044228E-DC93-4121-8593-D9DD9D7FBD97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{958C283F-B5EC-4DD5-91E6-1DB77BAD19CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958C283F-B5EC-4DD5-91E6-1DB77BAD19CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958C283F-B5EC-4DD5-91E6-1DB77BAD19CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958C283F-B5EC-4DD5-91E6-1DB77BAD19CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{618403F9-CFEF-4B23-B873-8A18A2D5F30D} = {70C90E57-FF0F-4B09-9348-D61DCB3B12D1}
+		{083E0AD3-F8AF-4FC5-8CCC-867A25F15BFA} = {ABC18FD4-BA82-40A4-8FE6-892D9028B9C0}
+		{1671052E-78DE-4292-BE01-D6F88E9FA4B8} = {12EDA4EA-0623-446C-A9C4-B35947D20317}
+		{F97818E3-91E3-43C8-B3F2-C0D09C97AB2C} = {12EDA4EA-0623-446C-A9C4-B35947D20317}
+		{958C283F-B5EC-4DD5-91E6-1DB77BAD19CB} = {8B802E82-35A0-4A7D-86CA-FBFAF50B24C1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {42698C1A-5946-4EE1-9F53-9EF11E132B39}
+	EndGlobalSection
+EndGlobal

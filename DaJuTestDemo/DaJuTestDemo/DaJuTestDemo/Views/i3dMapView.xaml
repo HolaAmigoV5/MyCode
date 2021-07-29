@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="DaJuTestDemo.Views.I3dMapView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid Height="auto" Width="auto">
+        <WindowsFormsHost Name="MapControlHost"  Margin="-8"/>
+    </Grid>
+</UserControl>
