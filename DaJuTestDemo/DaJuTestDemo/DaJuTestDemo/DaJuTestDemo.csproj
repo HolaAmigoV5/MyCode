@@ -7,8 +7,11 @@
     <AssemblyName>DaJuTestDemo</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Images\btnMeasure.png" />
+    <None Remove="Images\btnNormal.png" />
     <None Remove="Images\btnPlay.png" />
     <None Remove="Images\btnStop.png" />
+    <None Remove="Images\btnTrace.png" />
     <None Remove="Images\playBackSpeed.png" />
     <None Remove="Images\playBackTime.png" />
     <None Remove="Images\topBackground.png" />
@@ -32,10 +35,24 @@
     <ProjectReference Include="..\Services\DaJuTestDemo.Services\DaJuTestDemo.Services.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\btnPlay.png" />
-    <Resource Include="Images\btnStop.png" />
-    <Resource Include="Images\playBackSpeed.png" />
-    <Resource Include="Images\playBackTime.png" />
+    <Resource Include="Images\btnMeasure.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\btnNormal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\btnPlay.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\btnStop.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\btnTrace.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\playBackSpeed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\topBackground.png" />
     <Resource Include="Images\topDefault.png" />
     <Resource Include="Images\topSelected.png" />

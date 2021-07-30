@@ -12,10 +12,13 @@
         <ImageBrush x:Key="top_background" ImageSource="/Images/topBackground.png"/>
         <ImageBrush x:Key="radioButtonImage" ImageSource="/Images/topDefault.png"/>
         <ImageBrush x:Key="radioButtonSelect" ImageSource="/Images/topSelected.png"/>
-        <ImageBrush x:Key="playBackTime" ImageSource="/Images/playBackTime.png"/>
+        
         <ImageBrush x:Key="playBackSpeed" ImageSource="/Images/playBackSpeed.png"/>
         <ImageBrush x:Key="btnPlay" ImageSource="/Images/btnPlay.png"/>
         <ImageBrush x:Key="btnStop" ImageSource="/Images/btnStop.png"/>
+        <ImageBrush x:Key="btnMeasure" ImageSource="/Images/btnMeasure.png"/>
+        <ImageBrush x:Key="btnNormal" ImageSource="/Images/btnNormal.png"/>
+        <ImageBrush x:Key="btnTrace" ImageSource="/Images/btnTrace.png"/>
 
         <Style TargetType="{x:Type RadioButton}">
             <Setter Property="Width" Value="160"/>
@@ -173,13 +176,13 @@
             <!--轨迹回放操作-->
             <Popup IsOpen="True" AllowsTransparency="True" Placement="Relative">
                 <StackPanel Margin="60 130 0 0">
-                    <Button x:Name="btnTime" Background="{StaticResource playBackTime}" Click="btn_click"  Style="{StaticResource playBackBtn}"/>
+                    <Button x:Name="btnTime" Background="{StaticResource btnTrace}" Click="btn_click"  Style="{StaticResource playBackBtn}"/>
                     <Button x:Name="btnSpeed" Background="{StaticResource playBackSpeed}" Click="btn_click" Style="{StaticResource playBackBtn}"/>
                     <Button x:Name="btnStop" Background="{StaticResource btnStop}"  Command="{Binding PlayOrStopCommand}" CommandParameter="stop" Style="{StaticResource playBackBtn}" />
                     <Button x:Name="btnPlay" Background="{StaticResource btnPlay}"  Command="{Binding PlayOrStopCommand}" CommandParameter="play" Style="{StaticResource playBackBtn}" />
 
-                    <Button Background="{StaticResource btnPlay}"  Command="{Binding NormalCommand}" Style="{StaticResource playBackBtn}"  Content="漫游"/>
-                    <Button Background="{StaticResource btnPlay}"  Command="{Binding MeasureDistance}" Style="{StaticResource playBackBtn}"  Content="测距"/>
+                    <Button Background="{StaticResource btnNormal}"  Command="{Binding NormalCommand}" Style="{StaticResource playBackBtn}" />
+                    <Button Background="{StaticResource btnMeasure}"  Command="{Binding MeasureDistance}" Style="{StaticResource playBackBtn}"/>
 
                     <Popup PopupAnimation="Scroll" Width="163" Height="220" PlacementTarget="{Binding ElementName=btnTime}" HorizontalOffset="10"
                            Placement="Right" AllowsTransparency="True" StaysOpen="False" x:Name="timePopup">
