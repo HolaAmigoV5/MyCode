@@ -12,7 +12,12 @@ namespace WPFTestDemo
         public MainWindow()
         {
             InitializeComponent();
+
+            //gg.LabelFormatter = val => val + "%";
         }
+
+
+        
 
         private void btn_click(object sender, RoutedEventArgs e)
         {
@@ -50,7 +55,13 @@ namespace WPFTestDemo
             }
             return list[0];
         }
-        
+
+        int count = 0;
+        private void TextBlock_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            count++;
+            MessageBox.Show(count.ToString());
+        }
     }
 
     class A

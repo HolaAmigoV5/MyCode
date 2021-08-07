@@ -3,15 +3,68 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFTestDemo"
+        xmlns:lvc="clr-namespace:WPFTestDemo"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <GeometryGroup x:Key="clipGeometry" FillRule="Nonzero">
+            <EllipseGeometry RadiusX="75" RadiusY="50" Center="100, 150"/>
+            <EllipseGeometry RadiusX="100" RadiusY="25" Center="200, 150"/>
+            <EllipseGeometry RadiusX="75" RadiusY="130" Center="140, 140"/>
+        </GeometryGroup>
+    </Window.Resources>
+    
     <Grid>
-        <StackPanel>
+        <!--<StackPanel>
             <Button Click="btn_click" Width="50" Height="20" Content="点我啊"/>
 
             <CheckBox Content="选我啊"/>
-        </StackPanel>
-        
+        </StackPanel>-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--<TextBlock Text="点我啊" MouseDown="TextBlock_MouseDown"/>-->
+        <!--<Button Clip="{StaticResource clipGeometry}">A Button</Button>-->
+        <Grid Background="Transparent" Width="100" Height="100">
+            <Ellipse Stroke="Gray" StrokeThickness="12"/>
+            <Ellipse StrokeThickness="12" StrokeDashArray="11.5, 10000" RenderTransformOrigin="0.5, 0.5">
+                <Ellipse.Stroke>
+                    <LinearGradientBrush StartPoint="0.5, 0.5" EndPoint="0,1">
+                        <GradientStop Offset="1" Color="#1CEAF9"/>
+                        <GradientStop Offset="0" Color="#0A96E4"/>
+                    </LinearGradientBrush>
+                </Ellipse.Stroke>
+                <Ellipse.Effect>
+                    <DropShadowEffect Color="WhiteSmoke" Opacity="1" BlurRadius="8" ShadowDepth="0"/>
+                </Ellipse.Effect>
+                <Ellipse.RenderTransform>
+                    <RotateTransform Angle="-90"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+            <TextBlock Foreground="Red" Text="50%" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="White" ShadowDepth="0" BlurRadius="6"/>
+                </TextBlock.Effect>
+            </TextBlock>
+        </Grid>
+
+        <Border Height="93" Width="100" Grid.Column="1">
+            <Grid>
+                <lvc:Gauge Uses360Mode="true" HighFontSize="32" InnerRadius="40" 
+                           GaugeBackground="#243544" From="0" To="100" Foreground="Red" 
+                           Value="70" x:Name="gg" Title="近5日工资完成率">
+                    <lvc:Gauge.GaugeActiveFill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="RoyalBlue" Offset="0.2" />
+                            <GradientStop Color="DeepSkyBlue" Offset="0.6" />
+                            <GradientStop Color="Cyan" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </lvc:Gauge.GaugeActiveFill>
+                </lvc:Gauge>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

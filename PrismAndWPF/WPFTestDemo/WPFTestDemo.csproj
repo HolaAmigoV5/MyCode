@@ -55,6 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="LiveCharts\DefaultLegend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LiveCharts\DefaultTooltip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,12 +71,143 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LiveCharts\AxesCollection.cs" />
+    <Compile Include="LiveCharts\Axis.cs" />
+    <Compile Include="LiveCharts\AxisCore.cs" />
+    <Compile Include="LiveCharts\AxisLimits.cs" />
+    <Compile Include="LiveCharts\AxisOrientation.cs" />
+    <Compile Include="LiveCharts\AxisPosition.cs" />
+    <Compile Include="LiveCharts\AxisSection.cs" />
+    <Compile Include="LiveCharts\AxisSectionCore.cs" />
+    <Compile Include="LiveCharts\CartesianChart.cs" />
+    <Compile Include="LiveCharts\CartesianChartCore.cs" />
+    <Compile Include="LiveCharts\CartesianMapper.cs" />
+    <Compile Include="LiveCharts\Chart.cs" />
+    <Compile Include="LiveCharts\ChartCore.cs" />
+    <Compile Include="LiveCharts\ChartFunctions.cs" />
+    <Compile Include="LiveCharts\Charting.cs" />
+    <Compile Include="LiveCharts\ChartPoint.cs" />
+    <Compile Include="LiveCharts\Charts\ISeparatorView.cs" />
+    <Compile Include="LiveCharts\Charts\PieChartCore.cs" />
+    <Compile Include="LiveCharts\MyChartUpdater.cs" />
+    <Compile Include="CustomerControl\Gauge.cs" />
+    <Compile Include="LiveCharts\ChartValues.cs" />
+    <Compile Include="LiveCharts\ColorsCollection.cs" />
+    <Compile Include="LiveCharts\Components\AxisSeparatorElement.cs" />
+    <Compile Include="LiveCharts\Components\ChartUpdater.cs" />
+    <Compile Include="LiveCharts\Components\DefaultXamlReader.cs" />
+    <Compile Include="LiveCharts\Components\IFondeable.cs" />
+    <Compile Include="LiveCharts\Components\ThreadAccess.cs" />
+    <Compile Include="LiveCharts\Converters\TypeConverters.cs" />
+    <Compile Include="LiveCharts\DataLabelViewModel.cs" />
+    <Compile Include="LiveCharts\DefaultAxes.cs" />
+    <Compile Include="LiveCharts\DefaultGeometries.cs" />
+    <Compile Include="LiveCharts\DefaultLegend.xaml.cs">
+      <DependentUpon>DefaultLegend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LiveCharts\DefaultTooltip.xaml.cs">
+      <DependentUpon>DefaultTooltip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LiveCharts\Dtos\BezierData.cs" />
+    <Compile Include="LiveCharts\Dtos\CoreColor.cs" />
+    <Compile Include="LiveCharts\Dtos\CoreGradientStop.cs" />
+    <Compile Include="LiveCharts\Dtos\CoreMargin.cs" />
+    <Compile Include="LiveCharts\Dtos\CorePoint.cs" />
+    <Compile Include="LiveCharts\Dtos\CoreRectangle.cs" />
+    <Compile Include="LiveCharts\Dtos\CoreSize.cs" />
+    <Compile Include="LiveCharts\DateTimePoint.cs" />
+    <Compile Include="LiveCharts\Delegates.cs" />
+    <Compile Include="LiveCharts\Dtos\CoreLimit.cs" />
+    <Compile Include="LiveCharts\Enums\PieLabelPosition.cs" />
+    <Compile Include="LiveCharts\Enums\ScrollMode.cs" />
+    <Compile Include="LiveCharts\Enums\StackMode.cs" />
+    <Compile Include="LiveCharts\Extentions.cs" />
+    <Compile Include="LiveCharts\FinancialMapper.cs" />
+    <Compile Include="LiveCharts\GanttMapper.cs" />
+    <Compile Include="LiveCharts\GanttPoint.cs" />
+    <Compile Include="LiveCharts\HeatPoint.cs" />
+    <Compile Include="LiveCharts\IAxisSectionView.cs" />
+    <Compile Include="LiveCharts\IAxisView.cs" />
+    <Compile Include="LiveCharts\ICartesianChart.cs" />
+    <Compile Include="LiveCharts\ICartesianVisualElement.cs" />
+    <Compile Include="LiveCharts\IChartLegend.cs" />
+    <Compile Include="LiveCharts\IChartPointView.cs" />
+    <Compile Include="LiveCharts\IChartTooltip.cs" />
+    <Compile Include="LiveCharts\IChartValues.cs" />
+    <Compile Include="LiveCharts\IChartView.cs" />
+    <Compile Include="LiveCharts\IPieChart.cs" />
+    <Compile Include="LiveCharts\IPointEvaluator.cs" />
+    <Compile Include="LiveCharts\ISeparatorElementView.cs" />
+    <Compile Include="LiveCharts\ISeriesView.cs" />
+    <Compile Include="LiveCharts\LabelEvaluation.cs" />
+    <Compile Include="LiveCharts\LegendLocation.cs" />
+    <Compile Include="LiveCharts\LineSegmentSplitter.cs" />
+    <Compile Include="LiveCharts\LineSeries.cs" />
+    <Compile Include="LiveCharts\LiveChartsException.cs" />
+    <Compile Include="LiveCharts\Mappers.cs" />
+    <Compile Include="LiveCharts\NoisyCollection.cs" />
+    <Compile Include="LiveCharts\ObservablePoint.cs" />
+    <Compile Include="LiveCharts\ObservableValue.cs" />
+    <Compile Include="LiveCharts\OhlcPoint.cs" />
+    <Compile Include="LiveCharts\PanningOptions.cs" />
+    <Compile Include="LiveCharts\PieChart.cs" />
+    <Compile Include="LiveCharts\PieMapper.cs" />
+    <Compile Include="LiveCharts\PieSeries.cs" />
+    <Compile Include="LiveCharts\Points\HorizontalBezierPointView.cs" />
+    <Compile Include="LiveCharts\Points\IBezierPointView.cs" />
+    <Compile Include="LiveCharts\Points\IPieSlicePointView.cs" />
+    <Compile Include="LiveCharts\Points\PiePointView.cs" />
+    <Compile Include="LiveCharts\Points\PointView.cs" />
+    <Compile Include="LiveCharts\PointTracker.cs" />
+    <Compile Include="LiveCharts\PolarMapper.cs" />
+    <Compile Include="LiveCharts\PolarPoint.cs" />
+    <Compile Include="LiveCharts\PreviewRangeChangedEventArgs.cs" />
+    <Compile Include="LiveCharts\RangeChangedEventArgs.cs" />
+    <Compile Include="LiveCharts\ScatterPoint.cs" />
+    <Compile Include="LiveCharts\SectionsCollection.cs" />
+    <Compile Include="LiveCharts\SeparationState.cs" />
+    <Compile Include="LiveCharts\Separator.cs" />
+    <Compile Include="LiveCharts\SeparatorConfigurationCore.cs" />
+    <Compile Include="LiveCharts\SeparatorElementCore.cs" />
+    <Compile Include="LiveCharts\Series.cs" />
+    <Compile Include="LiveCharts\SeriesAlgorithm.cs" />
+    <Compile Include="LiveCharts\SeriesAlgorithms\LineAlgorithm.cs" />
+    <Compile Include="LiveCharts\SeriesAlgorithms\PieAlgorithm.cs" />
+    <Compile Include="LiveCharts\SeriesCollection.cs" />
+    <Compile Include="LiveCharts\SeriesOrientation.cs" />
+    <Compile Include="LiveCharts\Series\IAreaPoint.cs" />
+    <Compile Include="LiveCharts\Series\ICartesianSeries.cs" />
+    <Compile Include="LiveCharts\Series\IColumnSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\IFinancialSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\IGroupedStackedSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\IHeatSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\ILineSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\IPieSeries.cs" />
+    <Compile Include="LiveCharts\Series\IPieSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\IRowSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\IScatterSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\IStackedAreaSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\IStackedColumnSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\IStackedRowSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\IStackModelableSeriesView.cs" />
+    <Compile Include="LiveCharts\Series\IVerticalStackedAreaSeriesView.cs" />
+    <Compile Include="LiveCharts\TooltipDataViewModel.cs" />
+    <Compile Include="LiveCharts\TooltipSelectionMode.cs" />
+    <Compile Include="LiveCharts\UpdaterState.cs" />
+    <Compile Include="LiveCharts\VisualElementsCollection.cs" />
+    <Compile Include="LiveCharts\WeightedMapper.cs" />
+    <Compile Include="LiveCharts\ZoomingOptions.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerControl\PieSlice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -93,6 +232,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Image1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
