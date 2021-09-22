@@ -86,7 +86,7 @@ namespace DaJuTestDemo.ViewModels
         {
             // todo: 清除地图上所有轨迹
             mapOperation.ClearAllRenderObj();
-
+            if (string.IsNullOrEmpty(name)) return;
             GetVehicleTraceInfo(name);
         }
 
@@ -120,11 +120,12 @@ namespace DaJuTestDemo.ViewModels
         #region Methods
         private void GenerateTrajectoryName()
         {
-            TrajectoryName = new ObservableCollection<string>();
-            for (int i = 0; i < 7; i++)
-            {
-                TrajectoryName.Add($"轨迹{i + 1}");
-            }
+            TrajectoryName = new ObservableCollection<string>() { "沪EA0838", "沪ET2601", "沪FA2377", "轨迹1" };
+
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    TrajectoryName.Add($"轨迹{i + 1}");
+            //}
         }
 
         private void GeneratePlayBackSpeed()
@@ -146,36 +147,68 @@ namespace DaJuTestDemo.ViewModels
         {
             try
             {
-                string excelName = Environment.CurrentDirectory + $"\\data\\{name}.xlsx";
-                if (!File.Exists(excelName))
+
+                #region 读取Excel原始轨迹
+                //string excelName = Environment.CurrentDirectory + $"\\data\\{name}.xlsx";
+                //if (!File.Exists(excelName))
+                //{
+                //    MessageBox.Show($"名称为【{name}】轨迹数据不存在!");
+                //    return;
+                //}
+
+                //ExcelHelper excelHelper = new ExcelHelper(excelName);
+                //string[] fields = { "GPSTime", "Location", "Velocity", "LongitudeWgs84", "LatitudeWgs84" };
+                //res = await excelHelper.ExcelToListAsync<Trajectory>(fields);
+
+                //var json = JsonConvert.SerializeObject(res);
+                //_ = Save(json, name);
+
+                //foreach (var item in res)
+                //{
+                //    item.LongitudeWgs84 -= 0.00092;
+                //    item.LatitudeWgs84 += 0.00001;
+                //}
+                #endregion
+
+                string originalJson = await ReadJson(Path.Combine(basePath, $"data\\{name}.json"));
+                if (string.IsNullOrEmpty(originalJson))
                 {
                     MessageBox.Show($"名称为【{name}】轨迹数据不存在!");
                     return;
                 }
 
-                ExcelHelper excelHelper = new ExcelHelper(excelName);
-                string[] fields = { "Time", "Location", "Speed", "Longitude", "Latitude" };
-                res = await excelHelper.ExcelToListAsync<Trajectory>(fields);
 
-                foreach (var item in res)
-                {
-                    item.Longitude -= 0.00092;
-                    item.Latitude += 0.00001;
-                }
+                //string originalJson = await ReadJson(Path.Combine(basePath, $"data\\轨迹1原始.geojson"));
+                //var res = JsonConvert.DeserializeObject<List<Trajectory>>(originalJson);
+
+                var res = JsonConvert.DeserializeObject<BaseResponse<VehicleTrajectoryDto>>(originalJson);
 
                 //显示原始轨迹
-                mapOperation.RenderTrajectory(res);
+                //mapOperation.RenderTrajectory(res);
 
-                string newJson = await ReadJson(Path.Combine(basePath, $"data\\{name}.geojson"));
+                if (res == null || res.Data == null || res.Data.List == null)
+                    return;
+
+                mapOperation.RenderTrajectory(res.Data.List);
+
+                string newJson = await ReadJson(Path.Combine(basePath, $"data\\RebuildGeoJson\\{name}.geojson"));
                 List<Trajectory> newTrajectory = new List<Trajectory>();
 
                 if (!string.IsNullOrEmpty(newJson))
                 {
                     newTrajectory = JsonConvert.DeserializeObject<List<Trajectory>>(newJson);
+                    //foreach (var item in newTrajectory)
+                    //{
+                    //    item.LongitudeWgs84 += 0.00092;
+                    //    item.LatitudeWgs84 -= 0.00001;
+                    //}
                 }
                 else
                 {
-                    newTrajectory = await (helper ?? new MapPointHelper(res)).LoadDataAndTransfer();
+                    // 开始纠偏，返回纠偏后轨迹并保存到本地
+                    //newTrajectory = await (helper ?? new MapPointHelper(res)).LoadDataAndTransfer();
+
+                    newTrajectory = await (helper ?? new MapPointHelper(res.Data.List)).LoadDataAndTransfer();
                     var json = JsonConvert.SerializeObject(newTrajectory);
                     _ = Save(json, name);
                 }
@@ -185,14 +218,16 @@ namespace DaJuTestDemo.ViewModels
                 else
                     MessageBox.Show("该车辆没有轨迹数据！");
 
-                // 读取路网图并显示
-                var roadData = await (helper ?? new MapPointHelper()).ReadRoadsAndRender();
-                if (roadData != null)
-                {
-                    mapOperation.RenderTrajectory(roadData, 0xAAFF0000, 0xAA000000);
-                    //mapOperation.RenderVehicleTrajectory(roadData, playBackSpeedTimes);
-                }
-                    
+                //读取路网图并显示
+                //var roadData = await (helper ?? new MapPointHelper()).ReadRoadsAndRender();
+                //if (roadData != null)
+                //{
+                //    mapOperation.RenderTrajectory(roadData, 0xAAFF0000, 0xAA000000);
+                //    //mapOperation.RenderVehicleTrajectory(roadData, playBackSpeedTimes);
+                //}
+
+                //mapOperation.RenderVehicleTrajectory(res, playBackSpeedTimes);
+
             }
             catch (Exception ex)
             {
@@ -204,7 +239,7 @@ namespace DaJuTestDemo.ViewModels
         {
             try
             {
-                savePath = Path.Combine(basePath, $"data\\{savaName}.geojson");
+                savePath = Path.Combine(basePath, $"data\\RebuildGeoJson\\{savaName}.geojson");
                 await File.WriteAllTextAsync(savePath, json);
                 return true;
             }

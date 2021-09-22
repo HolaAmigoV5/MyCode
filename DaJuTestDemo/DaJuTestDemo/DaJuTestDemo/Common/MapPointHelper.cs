@@ -30,6 +30,11 @@ namespace DaJuTestDemo.Common
         {
             _trajectories = trajectories;
         }
+
+        /// <summary>
+        /// 开始纠偏
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Trajectory>> LoadDataAndTransfer()
         {
             var spatial = new GeographySpatialOperation();
@@ -49,8 +54,11 @@ namespace DaJuTestDemo.Common
 
             var matcher = new Matcher<MatcherCandidate, MatcherTransition, MatcherSample>(
                 map, router, Costs.TimePriorityCost, spatial);
-            matcher.MaxDistance = 500; // set maximum searching distance between two GPS points to 1000 meters.
-            matcher.MaxRadius = 20; // sets maximum radius for candidate selection to 200 meters
+            matcher.MaxDistance = 20; // set maximum searching distance between two GPS points to 1000 meters.
+            matcher.MaxRadius = 10; // sets maximum radius for candidate selection to 200 meters
+
+            //matcher.MaxDistance = 1000; // set maximum searching distance between two GPS points to 1000 meters.
+            //matcher.MaxRadius = 200; // sets maximum radius for candidate selection to 200 meters
 
 
             Debug.WriteLine("Loading GPS samples...");
@@ -86,6 +94,10 @@ namespace DaJuTestDemo.Common
             }
         }
 
+        /// <summary>
+        /// 读取路网数据
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Trajectory>> ReadRoadsAndRender()
         {
             var json = await File.ReadAllTextAsync(Path.Combine(s_dataDir, @"road.geojson"));
@@ -101,7 +113,7 @@ namespace DaJuTestDemo.Common
                 foreach (var item in coordinates)
                 {
                     var nextTime = time.AddSeconds(2);
-                    res.Add(new Trajectory { Longitude = item.X, Latitude = item.Y, Altitude = item.Z, Speed = 30.0, Time = nextTime.ToString() });
+                    res.Add(new Trajectory { LongitudeWgs84 = item.X, LatitudeWgs84 = item.Y, Altitude = item.Z, Velocity = 30.0, GPSTime = nextTime });
                     time = nextTime;
                 }
             }
@@ -128,11 +140,11 @@ namespace DaJuTestDemo.Common
 
         private IEnumerable<MatcherSample> ReadSamples(IList<Trajectory> trajectories)
         {
-            var timeFormat = "yyyy-MM-dd HH:mm:ss";
+            var timeFormat = "yyyy/MM/dd HH:mm:ss";
             foreach (Trajectory item in trajectories)
             {
-                var coord2D = new Coordinate2D(item.Longitude, item.Latitude);
-                var timeStr = item.Time;
+                var coord2D = new Coordinate2D(item.LongitudeWgs84, item.LatitudeWgs84);
+                var timeStr = item.GPSTime.ToString("yyyy/MM/dd HH:mm:ss");
                 var time = DateTimeOffset.ParseExact(timeStr, timeFormat, CultureInfo.InvariantCulture);
                 var longTime = time.ToUnixTimeMilliseconds();
                 yield return new MatcherSample(longTime, time, coord2D);
@@ -173,11 +185,11 @@ namespace DaJuTestDemo.Common
                 var coord = cand.Point.Coordinate; // GPS position (on the road)
                 csvLines.Add(new Trajectory()
                 {
-                    Time = cand.Sample.Time.ToString(),
-                    Location = 314.2,
-                    Speed = 30,
-                    Longitude = coord.X,
-                    Latitude = coord.Y
+                    GPSTime=cand.Sample.Time.DateTime,
+                    Location = "314.2",
+                    Velocity = 30,
+                    LongitudeWgs84 = coord.X,
+                    LatitudeWgs84 = coord.Y
                 });
 
                 if (cand.HasTransition)

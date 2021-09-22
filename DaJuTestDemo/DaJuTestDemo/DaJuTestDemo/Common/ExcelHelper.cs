@@ -142,8 +142,8 @@ namespace DaJuTestDemo
                                     CellType.Blank => "",       //空白
                                     _ => "ERROR",
                                 };
-                                if (fields[j].ToLower() == "time")
-                                    typeof(T).GetProperty(fields[j]).SetValue(t, cell.DateCellValue.ToString("yyyy-MM-dd HH:mm:ss"), null);
+                                if (fields[j] == "GPSTime")
+                                    typeof(T).GetProperty(fields[j]).SetValue(t, cell.DateCellValue, null);
                                 else
                                     typeof(T).GetProperty(fields[j]).SetValue(t, cellValue, null);
                             }

@@ -1,0 +1,17 @@
+
+TestResults/
+MolesAssemblies/
+bin/
+obj/
+packages/
+*.suo
+*.Cache
+*.g.cs
+*.VisualState.xml
+TestResult.xml
+SharpRTSP.FxCop.xml
+RTSP.Tests/cover.xml
+RTSP.Tests/TestResult.xml
+RTSP.Tests/Coverage/
+.vs/
+*.TMP

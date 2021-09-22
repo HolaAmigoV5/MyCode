@@ -17,7 +17,10 @@ namespace WPFTestDemo
         }
 
 
-        
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            WindowHelp.RemoveIcon(this);
+        }
 
         private void btn_click(object sender, RoutedEventArgs e)
         {

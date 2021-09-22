@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WindowHelp.cs" />
     <Page Include="LiveCharts\DefaultLegend.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

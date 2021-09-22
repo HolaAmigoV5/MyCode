@@ -289,7 +289,7 @@ namespace I3DMapOperation
                         foreach (Trajectory trajectory in traceInfos)
                         {
                             IVector3 position = new Vector3();
-                            position.Set(trajectory.Longitude, trajectory.Latitude, 1);
+                            position.Set(trajectory.LongitudeWgs84, trajectory.LatitudeWgs84, 1);
                             point.Position = position;
                             point.SpatialCRS = _spatialCRS;
 
@@ -301,9 +301,9 @@ namespace I3DMapOperation
                             rPoint.ViewingDistance = 50;
 
                             AppendGuidToStringBuilder(rPoint.Guid);
-                            _axRenderControl.Camera.FlyToObject(rPoint.Guid, i3dActionCode.i3dActionFollowBehindAndAbove);
+                            //_axRenderControl.Camera.FlyToObject(rPoint.Guid, i3dActionCode.i3dActionFollowBehindAndAbove);
                         }
-                        tracePolyline = _axRenderControl.ObjectManager.CreateRenderPolyline(line, new CurveSymbol { Color = 0xFFFFFF00, Width = 0.5f });
+                        tracePolyline = _axRenderControl.ObjectManager.CreateRenderPolyline(line, new CurveSymbol { Color = 0xFFFFFF00, Width = -2 });
                         tracePolyline.VisibleMask = i3dViewportMask.i3dViewAllNormalView;
                         tracePolyline.MaxVisibleDistance = 12500;
                         tracePolyline.HeightStyle = i3dHeightStyle.i3dHeightAbsolute;
@@ -322,7 +322,7 @@ namespace I3DMapOperation
                     for (int i = 0; i < traceInfos.Count; i++)
                     {
                         traceDynamicObj.GetWaypoint2(i, out IPoint point, out double speed);
-                        traceDynamicObj.ModifyWaypoint2(i, point, (double)traceInfos[i].Speed * speedTimes);
+                        traceDynamicObj.ModifyWaypoint2(i, point, 30);
                     }
                 }
 
@@ -353,21 +353,23 @@ namespace I3DMapOperation
 
                 foreach (Trajectory trajectory in traceInfos)
                 {
-                    point.SetCoords(trajectory.Longitude, trajectory.Latitude, 1, 0, 1);
+                    point.SetCoords(trajectory.LongitudeWgs84, trajectory.LatitudeWgs84, 1, 0, 0);
                     point.SpatialCRS = _spatialCRS;
 
                     line.AppendPoint(point);
                     var rPoint = _axRenderControl.ObjectManager.CreateRenderPoint(point, symbol);
-                    rPoint.MaxVisibleDistance = 1000;
-                    rPoint.ViewingDistance = 50;
+                    rPoint.MaxVisibleDistance = 100000;
+                    rPoint.ViewingDistance = 500000;
                     AppendGuidToStringBuilder(rPoint.Guid);
                 }
+                //lineColor = 0xFF0CE6E5;
                 tracePolyline = _axRenderControl.ObjectManager.CreateRenderPolyline(line, new CurveSymbol { Color = lineColor, Width = -2 });
                 tracePolyline.VisibleMask = i3dViewportMask.i3dViewAllNormalView;
-                tracePolyline.MaxVisibleDistance = 1000;
+                tracePolyline.MaxVisibleDistance = 100000;
                 tracePolyline.HeightStyle = i3dHeightStyle.i3dHeightAbsolute;
 
                 AppendGuidToStringBuilder(tracePolyline.Guid);
+                //_axRenderControl.Camera.FlyToObject(tracePolyline.Guid, i3dActionCode.i3dActionFollowAbove);
                 #endregion
             }
             catch (Exception ex)

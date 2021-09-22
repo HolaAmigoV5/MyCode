@@ -1,0 +1,24 @@
+﻿<Window x:Class="VideoDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VideoDemo"
+        xmlns:wpf="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <wpf:VlcControl Grid.Row="0" x:Name="myControl" Panel.ZIndex="-1"/>
+
+        <!--<Grid x:Name="overlayGrid" HorizontalAlignment="Stretch" Height="25" Margin="0,0,0,0" VerticalAlignment="Bottom">
+            <Rectangle Fill="Black" HorizontalAlignment="Stretch" Margin="0,0,0,0" Stroke="Black" VerticalAlignment="Stretch" IsHitTestVisible="False" Opacity="0.5"/>
+        </Grid>-->
+        
+        <Button x:Name="btnPlay" Width="120" Height="30" Grid.Row="1" Content="Play" Click="btn_click"/>
+    </Grid>
+</Window>

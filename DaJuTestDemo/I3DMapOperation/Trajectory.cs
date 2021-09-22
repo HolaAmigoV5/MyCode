@@ -4,11 +4,12 @@ namespace I3DMapOperation
 {
     public class Trajectory
     {
-        public string Time { get; set; }
-        public double Location { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        public string Location { get; set; }
+        public double LongitudeWgs84 { get; set; }
+        public double LatitudeWgs84 { get; set; }
         public double Altitude { get; set; }
-        public double Speed { get; set; }
+        public DateTime GPSTime { get; set; }
+        public double Velocity { get; set; }
+        public double Mileage { get; set; }
     }
 }
