@@ -1,0 +1,187 @@
+﻿<Window x:Class="WPF3DDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF3DDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        
+        <Viewport3D>
+            <Viewport3D.Camera>
+                <PerspectiveCamera Position="0 10 0" LookDirection="0 -10 0" UpDirection="0 0 1" FieldOfView="30"/>
+            </Viewport3D.Camera>
+
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <AmbientLight Color="White" />
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+
+            <!--<ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <GeometryModel3D>
+                        <GeometryModel3D.Geometry>
+                            <MeshGeometry3D Positions="
+                                            0 0 0
+                                            0 0 1 
+                                            1 0 1 
+                                            1 0 0" 
+                                            TriangleIndices="0,1,3  3,1,2"/>
+                        </GeometryModel3D.Geometry>
+
+                        <GeometryModel3D.Material>
+                            <DiffuseMaterial Brush="Blue"/>
+                        </GeometryModel3D.Material>
+
+                        <GeometryModel3D.BackMaterial>
+                            <DiffuseMaterial Brush="Red"/>
+                        </GeometryModel3D.BackMaterial>
+                    </GeometryModel3D>
+                </ModelVisual3D.Content>
+                <ModelVisual3D.Transform>
+                    <Transform3DGroup>
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="1 0 0" Angle="{Binding ElementName=sliX, Path=Value}"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+
+                        <RotateTransform3D CenterX="1" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0 1 0" Angle="{Binding ElementName=sliY, Path=Value}"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0 0 1" Angle="{Binding ElementName=sliZ, Path=Value}"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                    </Transform3DGroup>
+                </ModelVisual3D.Transform>
+            </ModelVisual3D>-->
+
+            <!--正方体-->
+            <ModelVisual3D>
+                <!--旋转-->
+                <ModelVisual3D.Transform>
+                    <Transform3DGroup>
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="1 0 0" Angle="{Binding ElementName=sliX, Path=Value}"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+
+                        <RotateTransform3D CenterX="1" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0 1 0" Angle="{Binding ElementName=sliY, Path=Value}"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+
+                        <RotateTransform3D CenterX="0" CenterY="0" CenterZ="0">
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Axis="0 0 1" Angle="{Binding ElementName=sliZ, Path=Value}"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                    </Transform3DGroup>
+                </ModelVisual3D.Transform>
+                
+                <ModelVisual3D.Content>
+                    <Model3DGroup>
+                        <!--底面-->
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="0 0 0 0 0 1 1 0 1 1 0 0" TriangleIndices="0 1 3 3 1 2"/>
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial Brush="Blue" />
+                            </GeometryModel3D.Material>
+
+                            <GeometryModel3D.BackMaterial>
+                                <DiffuseMaterial Brush="Red"/>
+                            </GeometryModel3D.BackMaterial>
+                        </GeometryModel3D>
+                            
+                        <!--顶面-->
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="0 1 0 0 1 1 1 1 1 1 1 0" TriangleIndices="0 1 3 3 1 2"/>
+                            </GeometryModel3D.Geometry>
+
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial Brush="Yellow" />
+                            </GeometryModel3D.Material>
+                        </GeometryModel3D>
+                            
+                        <!--左面-->
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="0 0 0 0 1 0 0 1 1 0 0 1" TriangleIndices="0 3 2 0 2 1"/>
+                            </GeometryModel3D.Geometry>
+
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial Brush="Gray"/>
+                            </GeometryModel3D.Material>
+                            <GeometryModel3D.BackMaterial>
+                                <DiffuseMaterial Brush="Gray"/>
+                            </GeometryModel3D.BackMaterial>
+                        </GeometryModel3D>
+                            
+                        <!--右面-->
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="1 0 0 1 0 1 1 1 1 1 1 0" TriangleIndices="0 3 2 0 2 1"/>
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial Brush="Green"/>
+                            </GeometryModel3D.Material>
+
+                            <GeometryModel3D.BackMaterial>
+                                <DiffuseMaterial Brush="Green"/>
+                            </GeometryModel3D.BackMaterial>
+                        </GeometryModel3D>
+                        
+                        <!--前面-->
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="0 0 1 0 1 1 1 1 1 1 0 1" TriangleIndices="0 1 2 0 2 3"/>
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial Brush="Cyan"/>
+                            </GeometryModel3D.Material>
+
+                            <GeometryModel3D.BackMaterial>
+                                <DiffuseMaterial Brush="Cyan"/>
+                            </GeometryModel3D.BackMaterial>
+                        </GeometryModel3D>
+
+                        <!--后面-->
+                        <GeometryModel3D>
+                            <GeometryModel3D.Geometry>
+                                <MeshGeometry3D Positions="0 0 0 1 0 0 1 1 0 0 1 0" TriangleIndices="0 1 2 0 2 3"/>
+                            </GeometryModel3D.Geometry>
+                            <GeometryModel3D.Material>
+                                <DiffuseMaterial Brush="Pink"/>
+                            </GeometryModel3D.Material>
+                            <GeometryModel3D.BackMaterial>
+                                <DiffuseMaterial Brush="Pink"/>
+                            </GeometryModel3D.BackMaterial>
+                        </GeometryModel3D>
+                    </Model3DGroup>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+        </Viewport3D>
+
+        <StackPanel Grid.Column="1">
+            <Slider x:Name="sliX" Maximum="360" Minimum="-360" Value="0" SmallChange="1" SnapsToDevicePixels="True" Margin="5"/>
+            <Slider x:Name="sliY" Maximum="360" Minimum="-360" Value="0" SmallChange="1" SnapsToDevicePixels="True" Margin="5"/>
+            <Slider x:Name="sliZ" Maximum="360" Minimum="-360" Value="0" SmallChange="1" SnapsToDevicePixels="True" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>
