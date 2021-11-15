@@ -55,7 +55,7 @@ namespace DaJuTestDemo.Common
             var matcher = new Matcher<MatcherCandidate, MatcherTransition, MatcherSample>(
                 map, router, Costs.TimePriorityCost, spatial);
             matcher.MaxDistance = 20; // set maximum searching distance between two GPS points to 1000 meters.
-            matcher.MaxRadius = 10; // sets maximum radius for candidate selection to 200 meters
+            matcher.MaxRadius = 15; // sets maximum radius for candidate selection to 200 meters
 
             //matcher.MaxDistance = 1000; // set maximum searching distance between two GPS points to 1000 meters.
             //matcher.MaxRadius = 200; // sets maximum radius for candidate selection to 200 meters
@@ -148,6 +148,27 @@ namespace DaJuTestDemo.Common
                 var time = DateTimeOffset.ParseExact(timeStr, timeFormat, CultureInfo.InvariantCulture);
                 var longTime = time.ToUnixTimeMilliseconds();
                 yield return new MatcherSample(longTime, time, coord2D);
+            }
+        }
+
+        private static void OnlineMatch(
+            Matcher<MatcherCandidate, MatcherTransition, MatcherSample> matcher,
+            IReadOnlyList<MatcherSample> samples)
+        {
+            // Create initial (empty) state memory
+            var kstate = new MatcherKState();
+
+            // Iterate over sequence (stream) of samples
+            foreach (var sample in samples)
+            {
+                // Execute matcher with single sample and update state memory
+                var vector = kstate.Vector();
+                vector = matcher.Execute(vector, kstate.Sample, sample);
+                kstate.Update(vector, sample);
+
+                // Access map matching result: estimate for most recent sample
+                var estimated = kstate.Estimate();
+                Console.WriteLine("RoadID={0}", estimated.Point.Edge.RoadInfo.Id); // The id of the road in your map
             }
         }
 

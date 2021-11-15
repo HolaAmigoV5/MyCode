@@ -120,7 +120,7 @@ namespace DaJuTestDemo.ViewModels
         #region Methods
         private void GenerateTrajectoryName()
         {
-            TrajectoryName = new ObservableCollection<string>() { "沪EA0838", "沪ET2601", "沪FA2377", "轨迹1" };
+            TrajectoryName = new ObservableCollection<string>() { "沪EA0838", "沪ET2601", "沪FA2377", "轨迹1", "沪LS1214", "沪LS1214-2", "沪LS1210" };
 
             //for (int i = 0; i < 7; i++)
             //{
