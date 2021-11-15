@@ -1,17 +1,17 @@
-﻿<Window x:Class="WPF3DDemo.Circle3D"
+﻿<Window x:Class="WPF3DDemo.Cone3D"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF3DDemo"
         mc:Ignorable="d"
-        Title="Circle3D" Height="450" Width="800">
+        Title="Cone3D" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        
+
         <Viewport3D>
             <Viewport3D.Camera>
                 <PerspectiveCamera Position="1 0 40" LookDirection="-1 0 -40" UpDirection="0 0 1" FieldOfView="60">
@@ -44,7 +44,7 @@
                     <AmbientLight Color="White" />
                 </ModelVisual3D.Content>
             </ModelVisual3D>
-            
+
             <ModelVisual3D x:Name="my3D"/>
         </Viewport3D>
 
