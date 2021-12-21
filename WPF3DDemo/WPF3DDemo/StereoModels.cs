@@ -413,5 +413,42 @@ namespace WPF3DDemo
             return qViewport;
         }
         #endregion
+
+        #region 绘制3D折线图
+
+        public static Model3D DrawTransparentBox(int yStep, int yMaxValue)
+        {
+            GeometryModel3D gmd=new GeometryModel3D();
+            // 绘制底面
+            var positions = GetChartBottomPlist(100,20,100);
+            var bottom = DrawGeometry3D(positions, new Int32Collection() { 0, 1, 2, 2, 3, 0 }, Brushes.Transparent, Brushes.Red);
+            Model3DGroup mdg = new();
+            mdg.Children.Add(bottom);
+
+            // 绘制左面
+            //Point3DCollection left=new Point3DCollection();
+            //left.Add(new Point3D(0, 0, 0));
+            //left.Add(new Point3D());
+            // 绘制后面
+
+            return gmd;
+        }
+
+        private static Point3DCollection GetChartBottomPlist(int length, int width, int height)
+        {
+            Point3DCollection pl = new();
+            pl.Add(new Point3D(0, 0, 0));
+            pl.Add(new Point3D(0, width, 0));
+            pl.Add(new Point3D(length, width, 0));
+            pl.Add(new Point3D(length, 0, 0));
+            return pl;
+        }
+
+        //private static Int32Collection GetChartBottomNlist(int length, int width, int height)
+        //{
+        //    Int32Collection pl = new Int32Collection();
+        //    pl.Add();
+        //}
+        #endregion
     }
 }

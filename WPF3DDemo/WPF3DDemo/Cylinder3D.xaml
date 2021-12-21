@@ -14,7 +14,7 @@
 
         <Viewport3D>
             <Viewport3D.Camera>
-                <PerspectiveCamera Position="1 0 40" LookDirection="-1 0 -40" UpDirection="0 1 0" FieldOfView="60">
+                <PerspectiveCamera Position="1 0 40" LookDirection="-1 0 -40" UpDirection="0 0 1" FieldOfView="60">
                     <PerspectiveCamera.Transform>
                         <Transform3DGroup>
                             <RotateTransform3D >
@@ -50,8 +50,11 @@
 
         <StackPanel Grid.Column="1">
             <Slider x:Name="sliX" Maximum="360" Minimum="-360" Value="0" SmallChange="1" SnapsToDevicePixels="True" Margin="5"/>
+            <TextBlock Text="{Binding ElementName=sliX, Path=Value}" FontSize="12" Foreground="Red" HorizontalAlignment="Center"/>
             <Slider x:Name="sliY" Maximum="360" Minimum="-360" Value="0" SmallChange="1" SnapsToDevicePixels="True" Margin="5"/>
+            <TextBlock Text="{Binding ElementName=sliY, Path=Value}" FontSize="12" Foreground="Red" HorizontalAlignment="Center"/>
             <Slider x:Name="sliZ" Maximum="360" Minimum="-360" Value="0" SmallChange="1" SnapsToDevicePixels="True" Margin="5"/>
+            <TextBlock Text="{Binding ElementName=sliZ, Path=Value}" FontSize="12" Foreground="Red" HorizontalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </Window>

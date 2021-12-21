@@ -66,7 +66,17 @@ namespace DrawPointToolForMeiDu
             {
                 var json = File.ReadAllText(savePath);
                 roadPoints = JsonConvert.DeserializeObject<RoadPoints>(json);
+
+
+
                 richTextBox1.Text = json;
+
+                //foreach (var item in roadPoints.features)
+                //{
+                //    var gid = int.Parse(item.properties.Gid);
+                //    item.properties.Gid = (gid + 250).ToString();
+                //}
+                //richTextBox1.Text = JsonConvert.SerializeObject(roadPoints);
 
                 RendPolylinesAndPoints();
             }
