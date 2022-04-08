@@ -1,3 +1,7 @@
+
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HolaAmigoV5&repo=MyCode)](https://github.com/HolaAmigoV5/MyCode)
+
 # MyCode
 
 ## AlgorithmAndDataStructure
