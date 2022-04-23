@@ -4,9 +4,9 @@
 
 数据结构和算法作为计算机基础，还比较重要。虽然挺难，但是实际总结学习后，还是颇有收获。AlgorithmAndDataStructure和PractiseLeetCode存放了我所有刷LeetCode练习代码，囊括了所有基本的数据结构经典题目，使用C#语言编写。
 
-**算法与数据结构详细**：[数据结构与算法](/PractiseLeetCode/algorithm012/README.md)
+**算法与数据结构详细**：[数据结构与算法](/PractiseLeetCode/README.md)
 
-![AAD](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/数据结构和算法2.png)
+![AAD](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/DataStructure/DataStructure.png)
 
 ## CLR_Via_CSharp
 
