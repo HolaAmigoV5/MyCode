@@ -24,5 +24,29 @@ namespace BlendDemo
         {
             InitializeComponent();
         }
+
+        private void MinBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void MaxBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                body.Margin = new Thickness(0);
+                WindowState = WindowState.Normal;
+            }
+            else
+            {
+                body.Margin = new Thickness(7);
+                WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

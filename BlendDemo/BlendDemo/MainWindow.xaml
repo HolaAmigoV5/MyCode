@@ -5,29 +5,193 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlendDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
-    <Grid>
+        WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True"
+        Title="MainWindow" Height="500" Width="1024">
+
+    <Window.Resources>
+        <Style x:Key="IconTxtStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="/BlendDemo;component/fonts/#FontAwesome"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="FontFamily" Value="/BlendDemo;component/fonts/#FontAwesome"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightCyan"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="FontFamily" Value="/BlendDemo;component/fonts/#FontAwesome"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="border" Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightCyan"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Content" Value="&#xf039;" TargetName="contentPresenter"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter Property="Content" Value="&#xf060;" TargetName="contentPresenter"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="OnChecked1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBlock">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="50"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnUnchecked1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBlock">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="toggleButton">
+            <BeginStoryboard x:Name="OnChecked1_BeginStoryboard" Storyboard="{StaticResource OnChecked1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="toggleButton">
+            <BeginStoryboard x:Name="OnUnchecked1_BeginStoryboard" Storyboard="{StaticResource OnUnchecked1}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="50" x:Name="wc" CornerRadius="5" GlassFrameThickness="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid x:Name="body">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="1">
+        <Grid x:Name="grid" Width="200">
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="{Binding ElementName=wc, Path=CaptionHeight}"/>
                 <RowDefinition />
-                <RowDefinition/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <local:MyProgessBar/>
-            <!--<local:JsonAnimation Grid.Row="1"/>-->
-            <local:CustomizeBehavior Grid.Row="2"/>
-        </Grid>
-        
-        <local:ExpanderDemo/>
 
-        <local:BreathWords Grid.ColumnSpan="2"/>
+            <!--左上区域-->
+            <Grid Background="#333942">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="&#xf270;" Margin="0 0 10 0" Style="{DynamicResource IconTxtStyle}"/>
+                    <TextBlock x:Name="textBlock" Text="Admin Pro" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+
+            <!--左下菜单区域-->
+            <local:ExpanderDemo Grid.Row="1"/>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding ElementName=wc, Path=CaptionHeight}"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--右上区域-->
+            <Grid Background="#e8e8e8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+
+                <ToggleButton x:Name="toggleButton" Content="&#xf060;" Style="{DynamicResource ToggleButtonStyle}"/>
+                <Grid Grid.Column="1" HorizontalAlignment="Right">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border CornerRadius="20" Background="White" Padding="0 0 30 0" Height="40">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border CornerRadius="20" Width="40" Background="#929292">
+                                <TextBlock Text="&#xf007;" Style="{DynamicResource IconTxtStyle}" />
+                            </Border>
+                            <TextBlock Grid.Column="1" Text="管理员"  Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="Bold" />
+                        </Grid>
+                    </Border>
+
+                    <Button Grid.Column="1" Content="&#xf068;" Click="MinBtn_Click" Style="{DynamicResource ButtonStyle}"/>
+                    <Button Grid.Column="2" Content="&#xf0b2;" Click="MaxBtn_Click" Style="{DynamicResource ButtonStyle}"/>
+                    <Button Grid.Column="3" Content="&#xf00d;" Click="CloseBtn_Click" Style="{DynamicResource ButtonStyle}"/>
+                </Grid>
+            </Grid>
+
+            <!--右下内容区域-->
+            <Grid Grid.Row="1" Background="#f2f2f2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition />
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <local:MyProgessBar/>
+                <!--<local:JsonAnimation Grid.Row="1"/>-->
+                <local:CustomizeBehavior Grid.Row="2"/>
+            </Grid>
+        </Grid>
+        <!--<local:BreathWords Grid.ColumnSpan="2"/>-->
     </Grid>
 
     <!--<Grid>

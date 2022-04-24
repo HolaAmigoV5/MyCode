@@ -44,7 +44,7 @@
                                 <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
 
-                                <TextBlock Grid.Column="1"  Text="&#xf104;" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="FontAwesome" />
+                                <TextBlock Grid.Column="1"  Text="&#xf031;" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/BlendDemo;component/fonts/#FontAwesome" />
                             </Grid>
                            
                         </Border>
@@ -62,7 +62,7 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Background" Value="#FF4E5465"/>
-            <Setter Property="FontFamily" Value="FontAwesome"/>
+            <Setter Property="FontFamily" Value="/BlendDemo;component/fonts/#FontAwesome"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="IsExpanded" Value="False"/>
             <Setter Property="Template">
@@ -98,7 +98,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="{Binding StringIcon}" FontFamily="FontAwesome" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" />
+                        <TextBlock Text="{Binding StringIcon}" FontFamily="/BlendDemo;component/fonts/#FontAwesome" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" />
                         <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Text="{Binding ItemTitle}"/>
                     </Grid>
                 </Button.Content>
@@ -116,7 +116,7 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <StackPanel HorizontalAlignment="Stretch" Background="#FF4E5465" VerticalAlignment="Stretch">
+    <StackPanel HorizontalAlignment="Stretch" Background="#23272f" VerticalAlignment="Stretch">
         <ItemsControl ItemsSource="{Binding MenuItems}" ItemTemplateSelector="{StaticResource ItemDataTemplateSelector}" />
     </StackPanel>
 </UserControl>
