@@ -187,6 +187,7 @@
                 </Grid.RowDefinitions>
 
                 <local:MyProgessBar/>
+                <local:Searcher Grid.Row="1"/>
                 <!--<local:JsonAnimation Grid.Row="1"/>-->
                 <local:CustomizeBehavior Grid.Row="2"/>
             </Grid>
