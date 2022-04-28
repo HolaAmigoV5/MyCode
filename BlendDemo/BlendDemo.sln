@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Blend for Visual Studio Version 17
-VisualStudioVersion = 17.1.32328.378
+# Blend for Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlendDemo", "BlendDemo\BlendDemo.csproj", "{030F063B-6B4A-4B07-84AA-1CD429CF42AF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlendControls", "BlendControls\BlendControls.csproj", "{3AC58862-30B7-4CDB-8113-5091613CCAEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{030F063B-6B4A-4B07-84AA-1CD429CF42AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{030F063B-6B4A-4B07-84AA-1CD429CF42AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{030F063B-6B4A-4B07-84AA-1CD429CF42AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AC58862-30B7-4CDB-8113-5091613CCAEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3AC58862-30B7-4CDB-8113-5091613CCAEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3AC58862-30B7-4CDB-8113-5091613CCAEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3AC58862-30B7-4CDB-8113-5091613CCAEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

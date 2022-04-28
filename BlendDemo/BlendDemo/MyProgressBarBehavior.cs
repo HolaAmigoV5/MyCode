@@ -17,7 +17,7 @@ namespace BlendDemo
         {
             base.OnAttached();
 
-            var pb=AssociatedObject as ProgressBar;
+            var pb = AssociatedObject;
             pb.ValueChanged += Pb_ValueChanged;
         }
 
@@ -40,7 +40,7 @@ namespace BlendDemo
         {
             base.OnDetaching();
 
-            var pb=AssociatedObject as ProgressBar;
+            var pb = AssociatedObject;
             pb.ValueChanged -= Pb_ValueChanged;
         }
     }

@@ -118,11 +118,6 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <!--<ControlTemplate.Triggers>
-                            <DataTrigger Value="" Binding="{Binding RelativeSource={RelativeSource Self}, Path=Text}">
-                                <Setter TargetName="tag" Property="Visibility" Value="Visible" />
-                            </DataTrigger>
-                        </ControlTemplate.Triggers>-->
                         <Border Name="border" BorderBrush="White" BorderThickness="1" CornerRadius="13" Background="{TemplateBinding Background}">
                             <Grid>
                                 <ScrollViewer Name="PART_ContentHost" BorderThickness="0" IsTabStop="False" Margin="10 0 0 0" VerticalAlignment="Stretch" Background="{x:Null}" />

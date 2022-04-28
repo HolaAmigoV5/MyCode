@@ -17,19 +17,19 @@ namespace BlendDemo
                 new MenuItemModel()
                 {
                     ItemTitle="一级菜单栏1" ,
-                    StringIcon="\f13d",
+                    StringIcon="\uf13d",
                     Data=new ObservableCollection<MenuItemModel>()
                     {
                         new MenuItemModel()
                         {
                             ItemTitle="二级菜单栏",
-                            StringIcon="\f206",
-                            Data=new ObservableCollection<MenuItemModel>(){new MenuItemModel() { ItemTitle="三级菜单栏", StringIcon= "\f1b9" } }
+                            StringIcon="\uf206",
+                            Data=new ObservableCollection<MenuItemModel>(){new MenuItemModel() { ItemTitle="三级菜单栏", StringIcon= "\uf1b9" } }
                         }
                     }
                 },
-                new MenuItemModel(){ItemTitle="一级菜单栏2",StringIcon="\f1ae" },
-                new MenuItemModel(){ItemTitle="一级菜单栏3", StringIcon="\f1cb"}
+                new MenuItemModel(){ItemTitle="一级菜单栏2",StringIcon="\uf1ae" },
+                new MenuItemModel(){ItemTitle="一级菜单栏3", StringIcon="\uf1cb"}
             };
         }
 
