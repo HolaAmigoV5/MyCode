@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\28.png" />
+    <None Remove="Assets\back.jpg" />
+    <None Remove="Assets\mv1.png" />
+    <None Remove="Assets\mv2.png" />
+    <None Remove="Assets\mv3.png" />
+    <None Remove="Assets\mv4.png" />
+    <None Remove="Assets\mv5.png" />
+    <None Remove="Assets\mv6.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\28.png" />
+    <Resource Include="Assets\back.jpg" />
+    <Resource Include="Assets\mv1.png" />
+    <Resource Include="Assets\mv2.png" />
+    <Resource Include="Assets\mv3.png" />
+    <Resource Include="Assets\mv4.png" />
+    <Resource Include="Assets\mv5.png" />
+    <Resource Include="Assets\mv6.png" />
+  </ItemGroup>
+
+</Project>
