@@ -6,9 +6,9 @@ namespace DropDownMenu
     /// <summary>
     /// ResponsiveHorizontalListView.xaml 的交互逻辑
     /// </summary>
-    public partial class ResponsiveHorizontalListView : UserControl
+    public partial class ShoesStore : UserControl
     {
-        public ResponsiveHorizontalListView()
+        public ShoesStore()
         {
             InitializeComponent();
 

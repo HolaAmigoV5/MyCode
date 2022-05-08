@@ -302,7 +302,7 @@
                     <Grid.Effect>
                         <DropShadowEffect BlurRadius="20" Color="#FFEEEEEE" ShadowDepth="1"/>
                     </Grid.Effect>
-                    <Image Source="Assets/mv1.png" Stretch="UniformToFill"/>
+                    <Image Source="Assets/mv1.jpg" Stretch="UniformToFill"/>
                     <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <materialDesign:PackIcon Kind="Heart" Foreground="#FFFBFBFB"/>
                         <TextBlock Text="25" Foreground="#FFFBFBFB"/>
@@ -312,7 +312,7 @@
                     <Grid.Effect>
                         <DropShadowEffect BlurRadius="20" Color="#FFEEEEEE" ShadowDepth="1"/>
                     </Grid.Effect>
-                    <Image Source="Assets/mv2.png" Stretch="UniformToFill"/>
+                    <Image Source="Assets/mv2.jpg" Stretch="UniformToFill"/>
                     <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <materialDesign:PackIcon Kind="Heart" Foreground="#FFFBFBFB"/>
                         <TextBlock Text="44" Foreground="#FFFBFBFB"/>
@@ -322,7 +322,7 @@
                     <Grid.Effect>
                         <DropShadowEffect BlurRadius="20" Color="#FFEEEEEE" ShadowDepth="1"/>
                     </Grid.Effect>
-                    <Image Source="Assets/mv3.png" Stretch="UniformToFill"/>
+                    <Image Source="Assets/mv3.jpg" Stretch="UniformToFill"/>
                     <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <materialDesign:PackIcon Kind="Heart" Foreground="#FFFBFBFB"/>
                         <TextBlock Text="99" Foreground="#FFFBFBFB"/>
@@ -333,7 +333,7 @@
                     <Grid.Effect>
                         <DropShadowEffect BlurRadius="20" Color="#FFEEEEEE" ShadowDepth="1"/>
                     </Grid.Effect>
-                    <Image Source="Assets/mv4.png" Stretch="UniformToFill"/>
+                    <Image Source="Assets/mv4.jpg" Stretch="UniformToFill"/>
                     <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <materialDesign:PackIcon Kind="Heart" Foreground="#FFFBFBFB"/>
                         <TextBlock Text="99" Foreground="#FFFBFBFB"/>
@@ -343,7 +343,7 @@
                     <Grid.Effect>
                         <DropShadowEffect BlurRadius="20" Color="#FFEEEEEE" ShadowDepth="1"/>
                     </Grid.Effect>
-                    <Image Source="Assets/mv5.png" Stretch="UniformToFill"/>
+                    <Image Source="Assets/mv5.jpg" Stretch="UniformToFill"/>
                     <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <materialDesign:PackIcon Kind="Heart" Foreground="#FFFBFBFB"/>
                         <TextBlock Text="99" Foreground="#FFFBFBFB"/>
@@ -353,7 +353,7 @@
                     <Grid.Effect>
                         <DropShadowEffect BlurRadius="20" Color="#FFEEEEEE" ShadowDepth="1"/>
                     </Grid.Effect>
-                    <Image Source="Assets/mv6.png" Stretch="UniformToFill"/>
+                    <Image Source="Assets/mv6.jpg" Stretch="UniformToFill"/>
                     <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <materialDesign:PackIcon Kind="Heart" Foreground="#FFFBFBFB"/>
                         <TextBlock Text="99" Foreground="#FFFBFBFB"/>

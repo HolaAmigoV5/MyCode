@@ -8,8 +8,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <materialDesign:PackIcon Kind="{Binding Icon}" Width="15" Height="15" Margin="10 16" Foreground="White"/>
-        <TextBlock x:Name="ListViewItemMenu" Text="{Binding Header}" Padding="37 14" FontSize="15" Foreground="White" />
+        <materialDesign:PackIcon Kind="{Binding Icon}" Width="20" Height="20" Margin="10 14" Foreground="White"/>
+        <TextBlock x:Name="ListViewItemMenu" Text="{Binding Header}" Padding="35 14" FontSize="15" Foreground="White" />
         <Expander x:Name="ExpanderMenu" Header="{Binding Header}" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
             <ListView x:Name="ListViewMenu" ItemsSource="{Binding SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
                 <ListView.ItemTemplate>

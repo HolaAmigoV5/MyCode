@@ -17,9 +17,9 @@ namespace DropDownMenu
 
             var menuRegister = new List<SubItem>
             {
-                new SubItem("Customer", new UserControlCustomers()),
+                new SubItem("Customer", new Dashboard()),
                 new SubItem("Providers", new UserControlProviders()),
-                new SubItem("Employees", new ResponsiveHorizontalListView()),
+                new SubItem("Shoes", new ShoesStore()),
                 new SubItem("Products")
             };
 
@@ -105,6 +105,11 @@ namespace DropDownMenu
 
             Storyboard sb = FindResource("OpenMenu") as Storyboard;
             sb.Begin();
+        }
+
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

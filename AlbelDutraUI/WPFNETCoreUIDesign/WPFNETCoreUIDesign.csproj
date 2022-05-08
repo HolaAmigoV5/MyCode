@@ -8,7 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\home.png" />
+    <None Remove="Assets\92886_179403_1.jpg" />
+    <None Remove="Assets\92886_179403_2.jpg" />
+    <None Remove="Assets\92886_179403_3.jpg" />
+    <None Remove="Assets\92886_179403_4.jpg" />
+    <None Remove="Assets\92886_179403_5.jpg" />
+    <None Remove="Assets\92886_179403_6.jpg" />
+    <None Remove="Assets\back.jpg" />
+    <None Remove="Assets\p1.jpg" />
+    <None Remove="Assets\p2.jpg" />
+    <None Remove="Assets\photo.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +25,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\home.png" />
+    <Resource Include="Assets\92886_179403_1.jpg" />
+    <Resource Include="Assets\92886_179403_2.jpg" />
+    <Resource Include="Assets\92886_179403_3.jpg" />
+    <Resource Include="Assets\92886_179403_4.jpg" />
+    <Resource Include="Assets\92886_179403_5.jpg" />
+    <Resource Include="Assets\92886_179403_6.jpg" />
+    <Resource Include="Assets\back.jpg" />
+    <Resource Include="Assets\p1.jpg" />
+    <Resource Include="Assets\p2.jpg" />
+    <Resource Include="Assets\photo.jpg" />
   </ItemGroup>
 
 </Project>

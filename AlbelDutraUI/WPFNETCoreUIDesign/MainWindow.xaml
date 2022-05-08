@@ -5,21 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFNETCoreUIDesign"
         mc:Ignorable="d"
-        xmlns:materalDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MainWindow" Height="550" MinWidth="900">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown"
+        Title="MainWindow" Height="650" MinWidth="900">
 
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
     <Window.Resources>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="60"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
 
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Width)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
@@ -33,36 +37,82 @@
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
         </EventTrigger>
     </Window.Triggers>
-    
+
     <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <materialDesign:DialogHost>
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Width="300" Height="150" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="15">
+                        <materialDesign:PackIcon Kind="InfoCircle" Width="50" Height="50" Foreground="Red"/>
+                        <TextBlock Text="对不起，这里没有任何信息，请重新选择！" Width="200" Margin="15 5" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                        <Button Content="确定" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" Margin="4" VerticalAlignment="Center"/>
+                        <Button Content="取消" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" Margin="4" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Grid x:Name="grid" Width="200" Background="#FF6C6C8D" RenderTransformOrigin="0.5, 0.5">
-                <ToggleButton x:Name="button" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Style="{StaticResource MaterialDesignFlatButton}">
-                    <materalDesign:PackIcon Kind="Menu" Foreground="White"/>
-                </ToggleButton>
-            </Grid>
+                <Grid x:Name="grid" Width="250" RenderTransformOrigin="0.5, 0.5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-            <Grid Height="100" Background="#FFEEEEEE" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10" Grid.Column="1">
-                <UniformGrid Columns="4">
-                    <Border BorderBrush="White" BorderThickness="0 0 1 0">
-                        <TextBlock FontSize="30" Text="R$ 123,123" Foreground="Black" Margin="15"/>
-                    </Border>
-                    <Border BorderBrush="White" BorderThickness="0 0 1 0">
-                        <TextBlock FontSize="30" Text="R$ 78,03" Foreground="Black" Margin="15"/>
-                    </Border>
-                    <Border BorderBrush="White" BorderThickness="0 0 1 0">
-                        <TextBlock FontSize="30" Text="R$ 13,313" Foreground="Black" Margin="15"/>
-                    </Border>
-                    <Border BorderBrush="White" BorderThickness="0 0 1 0">
-                        <TextBlock FontSize="30" Text="R$ 1,123" Foreground="Black" Margin="15"/>
-                    </Border>
-                </UniformGrid>
+                    <Grid>
+                        <Image Source="Assets/back.jpg" Stretch="UniformToFill"/>
+                        <ToggleButton x:Name="button" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFlatButton}">
+                            <materialDesign:PackIcon Kind="Menu" FontSize="20" />
+                        </ToggleButton>
+                    </Grid>
+
+
+                    <StackPanel Grid.Row="1" Background="#FF472076">
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" Click="BtnShop_Click" >
+                            <StackPanel Orientation="Horizontal" Height="30" Width="170" HorizontalAlignment="Left">
+                                <materialDesign:PackIcon Kind="Shop" Width="20" Height="20" VerticalAlignment="Center" />
+                                <TextBlock Text="ShoppingCart" Margin="20 0" FontSize="15" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" Click="BtnMusic_Click" >
+                            <StackPanel Orientation="Horizontal" Height="30" Width="170" HorizontalAlignment="Left">
+                                <materialDesign:PackIcon Kind="Music" Width="20" Height="20" VerticalAlignment="Center" />
+                                <TextBlock Text="MusicPlayer" Margin="20 0" FontSize="15" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" Click="BtnMap_Click" >
+                            <StackPanel Orientation="Horizontal" Height="30" Width="170" HorizontalAlignment="Left">
+                                <materialDesign:PackIcon Kind="Map" Width="20" Height="20" VerticalAlignment="Center" />
+                                <TextBlock Text="BingMaps" Margin="20 0" FontSize="15" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="btnAlarm" Click="btnAlarm_Click">
+                            <StackPanel Orientation="Horizontal" Height="30" Width="170" HorizontalAlignment="Left">
+                                <materialDesign:PackIcon Kind="Alarm" Width="20" Height="20" VerticalAlignment="Center"/>
+                                <TextBlock Text="TransitionsAlarms" Margin="20 0" FontSize="15" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
+                            <StackPanel Orientation="Horizontal" Height="30" Width="170" HorizontalAlignment="Left">
+                                <materialDesign:PackIcon Kind="About" Width="20" Height="20" VerticalAlignment="Center" />
+                                <TextBlock Text="About" Margin="20 0" FontSize="15" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+
+                <Grid  x:Name="mainGrid" Background="#EEEEEE"  Margin="10" Grid.Column="1" />
             </Grid>
-        </Grid>
+        </materialDesign:DialogHost>
     </Grid>
 </Window>

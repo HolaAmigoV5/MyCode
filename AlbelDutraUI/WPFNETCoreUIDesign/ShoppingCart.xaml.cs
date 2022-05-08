@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DropDownMenu
+namespace WPFNETCoreUIDesign
 {
     /// <summary>
-    /// UserControlDashboard.xaml 的交互逻辑
+    /// Home.xaml 的交互逻辑
     /// </summary>
-    public partial class UserControlCustomers : UserControl
+    public partial class ShoppingCart : UserControl
     {
-        public UserControlCustomers()
+        public ShoppingCart()
         {
             InitializeComponent();
         }

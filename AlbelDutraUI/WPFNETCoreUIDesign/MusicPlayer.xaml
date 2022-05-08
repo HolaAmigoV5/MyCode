@@ -1,14 +1,15 @@
-﻿<Window x:Class="MusicPlayer.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MusicPlayer"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" MouseDown="Window_MouseDown"
-        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Foreground="LightSteelBlue"
-        Title="PLAYER" Height="500" Width="300">
-    <Window.Resources>
+﻿<UserControl x:Class="WPFNETCoreUIDesign.MusicPlayer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFNETCoreUIDesign"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Height="500" Width="300"
+             d:DesignHeight="500" d:DesignWidth="300">
+    
+    <UserControl.Resources>
         <ResourceDictionary>
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
@@ -86,7 +87,7 @@
                 </Setter>
             </Style>
         </ResourceDictionary>
-    </Window.Resources>
+    </UserControl.Resources>
     
     <Grid Background="Black">
         <Grid VerticalAlignment="Top" Background="#44444444" Margin="10" Height="300">
@@ -291,4 +292,4 @@
             </ListViewItem>
         </ListView>
     </Grid>
-</Window>
+</UserControl>
