@@ -1,0 +1,37 @@
+﻿@page "/student/add"
+
+@using BlazorWASM.Model
+
+@inject HttpClient Http
+@inject NavigationManager NavManager
+
+<h1>Add</h1>
+
+<Edit OnSaveCallback="OnSaveAsync"></Edit>
+
+<div class="text-danger">
+    @_errmsg
+</div>
+
+@code {
+    private Student? Student { get; set; }
+    private string? _errmsg;
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+    private async Task OnSaveAsync(Student student)
+    {
+        Student = student;
+        var result = await Http.PostAsJsonAsync("/student", Student);
+        if (result.IsSuccessStatusCode)
+        {
+            NavManager.NavigateTo("/student/list");
+        }
+        else
+        {
+            _errmsg = "保存失败";
+        }
+    }
+}
