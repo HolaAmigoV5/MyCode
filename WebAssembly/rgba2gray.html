@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<title>rgba => gray</title>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Show me the answer</title>
+	</head>
+
+	<body onload="body_onload()">
+		<canvas id="myCanvas" width="400" height="300" >show image</canvas>
+		
+		<script>
+			function body_onload(){
+				var canvas =document.getElementById("myCanvas");
+				var ctx=canvas.getContext('2d');
+				var imgd=ctx.getImageData(0,0,canvas.width, canvas.height);
+				
+				var m=new Image();
+				m.src='./five.png';
+				m.onload=function(){
+					ctx.drawImage(m,0,0,canvas.wider,canvas.height);
+					rgba2gray(imgd.data,canvas.width,canvas.height);
+				}
+				
+			}
+			
+			function rgba2gray(pix,width,height){
+				//console.assert(pix instanceofUint8Array || pix instanceofUint8ClampedArray)
+				console.assert(width>0)
+				console.assert(height>0)
+				console.assert(pix.length>=width*height*4)
+				
+				for(var y=0;y<height; y++){
+					for(var x=0; x<width; x++){
+						var off=(y*width+x)*4;
+						
+						var R=pix[off+0];
+						var G=pix[off+1];
+						var B=pix[off+1];
+						var gray=(R+G+B)/3;
+						
+						pix[off+0]=gray;
+						pix[off+1]=gray;
+						pix[off+2]=gray;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
