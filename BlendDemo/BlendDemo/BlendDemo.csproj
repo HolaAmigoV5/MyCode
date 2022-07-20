@@ -179,6 +179,9 @@
     <None Include="Assets\Hello World.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Assets\imgs.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Assets\loading...json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

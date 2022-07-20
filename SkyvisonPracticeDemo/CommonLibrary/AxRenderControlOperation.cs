@@ -4,6 +4,7 @@ using i3dFdeCore;
 using i3dFdeGeometry;
 using i3dMath;
 using i3dRenderEngine;
+using i3dResource;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,7 +20,7 @@ namespace CommonLibrary
         #region Members and ctors
         private AxRenderControl _axRenderControl = null;
         private ISkyBox skybox = null;
-        private readonly string tmpSkyboxPath = @"C:\Program Files\LunCeTX\SkySceneryX64\skybox\";   //天空盒图片位置（SkyScenery安装位置）
+        private readonly string tmpSkyboxPath = @"C:\Program Files\LC\SkySceneryX64\skybox\";   //天空盒图片位置（SkyScenery安装位置）
 
         private Dictionary<IFeatureDataSet, List<IFeatureClass>> featureDataSetMapping;
         private Dictionary<IFeatureClass, List<string>> featureClassMapping;
@@ -31,7 +32,7 @@ namespace CommonLibrary
         ConnectionInfo ci = null;
 
         private readonly string rootPath = Path.GetFullPath(@"..//..//..");
-        private const string tmpFDBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\3dm\1.3DM";
+        private const string tmpFDBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\3dm\JD.3DM";
         //private i3dObjectType TYPE;
 
         private ISpatialCRS crs = null;
@@ -39,7 +40,7 @@ namespace CommonLibrary
         public AxRenderControlOperation(AxRenderControl axRenderControl)
         {
             _axRenderControl = axRenderControl;
-        } 
+        }
         #endregion
 
         #region Propertys
@@ -88,7 +89,11 @@ namespace CommonLibrary
 
         public void SetI3dObjectType()
         {
-            crs = new CRSFactory().CreateFromWKT(_axRenderControl.GetCurrentCrsWKT()) as ISpatialCRS;
+            string wkt =
+                "PROJCS[\"WenZhou\",GEOGCS[\"GCS_Beijing_1954\",DATUM[\"D_Beijing_1954\",SPHEROID[\"Krasovsky_1940\",6378245.0,298.3]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Gauss_Kruger\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",120.6666666666667],PARAMETER[\"Scale_Factor\",1.0],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]";
+
+            //crs = new CRSFactory().CreateFromWKT(_axRenderControl.GetCurrentCrsWKT()) as ISpatialCRS;
+            crs = new CRSFactory().CreateFromWKT(wkt) as ISpatialCRS;
 
             //if (crs.CrsType == i3dCoordinateReferenceSystemType.i3dCrsGeographic)
             //    TYPE = i3dObjectType.i3dObjectTerrain;
@@ -122,6 +127,13 @@ namespace CommonLibrary
                     SetInteractMode(i3dInteractMode.i3dInteractNormal);
                     break;
             }
+        }
+
+        public void SetInteractSelect()
+        {
+            _axRenderControl.InteractMode = i3dInteractMode.i3dInteractSelect;
+            _axRenderControl.MouseSelectMode = i3dMouseSelectMode.i3dMouseSelectClick;
+            _axRenderControl.MouseSelectObjectMask = i3dMouseSelectObjectMask.i3dSelectFeatureLayer;
         }
 
         public void SetRenderParamColor(uint color)
@@ -182,7 +194,7 @@ namespace CommonLibrary
         /// </summary>
         /// <param name="featureDataSet"></param>
         /// <param name="node"></param>
-        public void AppendFeatureClassToTreeNode(IFeatureDataSet featureDataSet , TreeNode node)
+        public void AppendFeatureClassToTreeNode(IFeatureDataSet featureDataSet, TreeNode node)
         {
             string[] fcnames = (string[])featureDataSet.GetNamesByType(i3dDataSetType.i3dDataSetFeatureClassTable);
             if (fcnames == null || fcnames.Length == 0) return;
@@ -380,7 +392,116 @@ namespace CommonLibrary
         {
             _axRenderControl.RcMouseClickSelect += axRenderControl1_RcMouseClickSelect;
             _axRenderControl.RcMouseDragSelect += axRenderControl1_RcMouseDragSelect;
-            _axRenderControl.MouseSelectObjectMask = i3dMouseSelectObjectMask.i3dSelectFeatureLayer;
+            //_axRenderControl.MouseSelectObjectMask = i3dMouseSelectObjectMask.i3dSelectFeatureLayer;
+        }
+
+        // OSG动画
+        IPoint selectPoint;
+        public void ShowAnimationOSG(string osgName)
+        {
+            try
+            {
+                if (selectPoint == null)
+                    return;
+
+                // 创建模型
+                if (gfactory == null)
+                    gfactory = new GeometryFactory();
+
+                string osgPath = Path.Combine(rootPath, @"data\OSG\", osgName);
+
+                #region C++ 翻译代码
+                IResourceFactory pResFactory = new ResourceFactory();
+                pResFactory.CreateModelAndImageFromFileEx(osgPath, out IPropertySet pProset, out _, out IModel pModel, out IMatrix pMaxtrx);
+                //pResFactory = null;
+
+                //IVector3 pcenter = pMaxtrx.GetTranslate();
+                //pcenter.Set(selectPoint.X, selectPoint.Y, selectPoint.Z);
+                //pMaxtrx.SetTranslate(pcenter);
+
+                //IVector3 pscale = new Vector3();
+                //pscale.Set(100, 100, 100);
+                //pMaxtrx.SetScale(pscale);
+
+                IModelPoint pModelPoint = gfactory.CreateGeometry(i3dGeometryType.i3dGeometryModelPoint, 
+                    i3dVertexAttribute.i3dVertexAttributeZ) as IModelPoint;
+                //pModelPoint.SpatialCRS = crs;
+                pModelPoint.SetCoords(selectPoint.X, selectPoint.Y, selectPoint.Z, 0, 0);
+                pModelPoint.ModelName = "123";
+                pModelPoint.FromMatrix(pMaxtrx);
+
+                IRenderModelPoint rmp = _axRenderControl.ObjectManager.CreateRenderModelPoint(pModelPoint, null);
+                rmp.MaxVisibleDistance = 50000;
+                #endregion
+
+
+                //string osgPath = Path.Combine(rootPath, @"data\OSG\", osgName);
+                //把模型和贴图加到内存中
+                //IResourceFactory resFactory = new ResourceFactory();
+                //IPropertySet propertySet;
+                //resFactory.CreateModelAndImageFromFileEx(osgPath, out propertySet, out _, out var model, out _);
+
+                //IObjectManager objManager = _axRenderControl.ObjectManager;
+                //objManager.AddModel(osgName, model);
+                //string[] names = (string[])propertySet.GetAllKeys();
+                //for (int i = 0; i < names.Length; i++)
+                //{
+                //    string name = names[i];
+                //    IImage image = propertySet.GetProperty(name) as IImage;
+                //    if (image.ImageType == i3dImageType.i3dImageDynamic)
+                //    {
+                //        image.FrameInterval = 1000 / 6;
+                //    }
+                //    objManager.AddImage(name, image);
+                //}
+
+                //创建RenderModelPoint
+                //IModelPoint modelPoint = (IModelPoint)gfactory.CreateGeometry(i3dGeometryType.i3dGeometryModelPoint, i3dVertexAttribute.i3dVertexAttributeZ);
+                //modelPoint.ModelName = osgName;
+                //modelPoint.SetCoords(selectPoint.X, selectPoint.Y, selectPoint.Z, 0, 0);
+                //modelPoint.SpatialCRS = crs;
+                ////modelPoint.ModelEnvelope = model.Envelope;   //envelope最好设下，不然可能cull不正确
+                ////_ = objManager.CreateRenderModelPoint(modelPoint, null);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void ShowAnimationOSG2(string osgName)
+        {
+            try
+            {
+                // 创建模型
+                if (gfactory == null)
+                    gfactory = new GeometryFactory();
+
+                string osgPath = Path.Combine(rootPath, @"data\OSG\", osgName);
+
+                #region C++ 翻译代码
+                IResourceFactory pResFactory = new ResourceFactory();
+                pResFactory.CreateModelAndImageFromFileEx(osgPath, out IPropertySet pProset, out _, out IModel pModel, out IMatrix pMaxtrx);
+
+                IModelPoint pModelPoint = gfactory.CreateGeometry(i3dGeometryType.i3dGeometryModelPoint,
+                    i3dVertexAttribute.i3dVertexAttributeZ) as IModelPoint;
+                pModelPoint.SpatialCRS = crs;
+                pModelPoint.SetCoords(31.71, -49.74, 0.8, 0, 0);
+                pModelPoint.ModelName = osgName;
+                pModelPoint.FromMatrix(pMaxtrx);
+                pModelPoint.ModelEnvelope = pModel.Envelope;
+
+                IRenderModelPoint rmp = _axRenderControl.ObjectManager.CreateRenderModelPoint(pModelPoint, null);
+                rmp.MaxVisibleDistance = 50000;
+                _axRenderControl.Camera.FlyToObject(rmp.Guid, i3dActionCode.i3dActionFlyTo);
+
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         #region 视频相关
@@ -426,7 +547,7 @@ namespace CommonLibrary
         private void _axRenderControl_RcVideoExportEnd(object sender, _IRenderControlEvents_RcVideoExportEndEvent e)
         {
             throw new NotImplementedException();
-        } 
+        }
         #endregion
 
         private void FeatureLayerVisualize()
@@ -498,7 +619,7 @@ namespace CommonLibrary
                 throw ex;
             }
         }
-        
+
         private void FieldinfoMapToGeometryDef()
         {
             fieldInfoMapping = new Dictionary<IFieldInfo, IGeometryDef>();
@@ -623,7 +744,11 @@ namespace CommonLibrary
             UnhighlightFeature(pickResult);
 
             if (selectedModel == i3dMouseSelectMode.i3dMouseSelectClick)
-                FeaturePickOrCreate(pickResult, position);
+            {
+                //FeaturePickOrCreate(pickResult, position);
+                selectPoint = position;
+                ShowAnimationOSG2("蝴蝶1.OSG");
+            }
         }
 
         /// <summary>
@@ -636,7 +761,7 @@ namespace CommonLibrary
                 return;
 
             string msg = string.Empty;
-            HighlightFeature(pr);
+            //HighlightFeature(pr);
             switch (pr)
             {
                 case ILabelPickResult label:
@@ -678,6 +803,8 @@ namespace CommonLibrary
                     break;
                 case CreateObjType.CreateRenderPolygon:
                     CreateRenderPolygon(point);
+                    break;
+                case CreateObjType.CreateFixedBillboard:
                     break;
                 default:
                     break;
@@ -726,7 +853,7 @@ namespace CommonLibrary
             if (gfactory == null)
                 gfactory = new GeometryFactory();
 
-            string tmpOSGPath = Environment.CurrentDirectory + @"\TrashCar\GLJCHE01.osg";
+            string tmpOSGPath = Path.Combine(rootPath, @"data\OSG\JGRW006w.OSG");
             //string tmpOSGPath = Environment.CurrentDirectory + @"\Apartment\Apartment.osg";
             fde_modelpoint = gfactory.CreateGeometry(i3dGeometryType.i3dGeometryModelPoint, i3dVertexAttribute.i3dVertexAttributeZ) as IModelPoint;
             fde_modelpoint.SpatialCRS = crs;
@@ -736,10 +863,10 @@ namespace CommonLibrary
             rmodelpoint = _axRenderControl.ObjectManager.CreateRenderModelPoint(fde_modelpoint, null);
             rmodelpoint.MaxVisibleDistance = double.MaxValue;
             rmodelpoint.MinVisiblePixels = 0;
-            IEulerAngle angle = new EulerAngle();
-            angle.Set(0, -20, 0);
+            //IEulerAngle angle = new EulerAngle();
+            //angle.Set(0, -20, 0);
 
-            _axRenderControl.Camera.LookAt2(point, 100, angle);
+            //_axRenderControl.Camera.LookAt2(point, 100, angle);
         }
 
 
@@ -755,9 +882,11 @@ namespace CommonLibrary
             fde_point.SpatialCRS = crs;
             fde_point.SetCoords(point.X, point.Y, point.Z, 0, 0);
 
-            pointSymbol = new SimplePointSymbolClass();
-            pointSymbol.FillColor = 0xff0000ff;
-            pointSymbol.Size = 10;
+            pointSymbol = new SimplePointSymbolClass
+            {
+                FillColor = 0xff0000ff,
+                Size = 10
+            };
             rpoint = _axRenderControl.ObjectManager.CreateRenderPoint(fde_point, pointSymbol);
 
             _axRenderControl.Camera.FlyToObject(rpoint.Guid, i3dActionCode.i3dActionFlyTo);

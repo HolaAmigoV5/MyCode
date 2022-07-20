@@ -74,12 +74,6 @@
     <Reference Include="AxInterop.i3dRenderEngine">
       <HintPath>..\CommonDLL\AxInterop.i3dRenderEngine.dll</HintPath>
     </Reference>
-    <Reference Include="System.Windows.Forms">
-      <HintPath>..\CommonDLL\System.Windows.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="WindowsFormsIntegration">
-      <HintPath>..\CommonDLL\WindowsFormsIntegration.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

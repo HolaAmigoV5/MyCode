@@ -54,8 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.i3dRenderEngine">
-      <HintPath>..\bin\AxInterop.i3dRenderEngine.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\CommonDLL\AxInterop.i3dRenderEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

@@ -27,7 +27,7 @@ namespace BootstrapperShell.ViewModels
 
         private void Regions_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-           if(e.Action== NotifyCollectionChangedAction.Add)
+            if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 var region = (IRegion)e.NewItems[0];
                 region.Views.CollectionChanged += Views_CollectionChanged;

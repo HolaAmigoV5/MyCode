@@ -178,7 +178,7 @@
             </Grid>
 
             <!--右下内容区域-->
-            <Grid Grid.Row="1" Background="#f2f2f2">
+            <!--<Grid Grid.Row="1" Background="#f2f2f2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition />
@@ -188,9 +188,11 @@
 
                 <local:MyProgessBar/>
                 <local:Searcher Grid.Row="1"/>
-                <!--<local:JsonAnimation Grid.Row="1"/>-->
+                --><!--<local:JsonAnimation Grid.Row="1"/>--><!--
                 <local:CustomizeBehavior Grid.Row="2"/>
-            </Grid>
+            </Grid>-->
+
+            <local:ImgAnimation Grid.Row="1"/>
         </Grid>
         <!--<local:BreathWords Grid.ColumnSpan="2"/>-->
     </Grid>
