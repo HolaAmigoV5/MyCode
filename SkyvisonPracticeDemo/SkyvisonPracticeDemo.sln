@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGAmimationMap", "OSGAmima
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonMapLib", "CommonMapLib\CommonMapLib.csproj", "{27532FDA-E247-40EF-A7EC-52B0BCBB68A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarModelPath", "CarModelPath\CarModelPath.csproj", "{E1F59710-ED0B-4702-B574-B08EE43E2E1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrajectoryMonitor", "TrajectoryMonitor\TrajectoryMonitor.csproj", "{3E876E92-EEDE-4653-80C9-6F016B4597C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{27532FDA-E247-40EF-A7EC-52B0BCBB68A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27532FDA-E247-40EF-A7EC-52B0BCBB68A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27532FDA-E247-40EF-A7EC-52B0BCBB68A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1F59710-ED0B-4702-B574-B08EE43E2E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F59710-ED0B-4702-B574-B08EE43E2E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F59710-ED0B-4702-B574-B08EE43E2E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F59710-ED0B-4702-B574-B08EE43E2E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E876E92-EEDE-4653-80C9-6F016B4597C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E876E92-EEDE-4653-80C9-6F016B4597C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E876E92-EEDE-4653-80C9-6F016B4597C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E876E92-EEDE-4653-80C9-6F016B4597C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

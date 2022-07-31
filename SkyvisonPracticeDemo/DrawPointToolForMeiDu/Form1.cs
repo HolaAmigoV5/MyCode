@@ -327,8 +327,8 @@ namespace DrawPointToolForMeiDu
 
             for (int i = 1; i < step; i++)
             {
-                x = offSetDis * i * (endPoint.X - startPoint.X) / r + startPoint.X;
-                y = offSetDis * i * (endPoint.Y - startPoint.Y) / r + startPoint.Y;
+                x = (offSetDis * i * (endPoint.X - startPoint.X) / r) + startPoint.X;
+                y = (offSetDis * i * (endPoint.Y - startPoint.Y) / r) + startPoint.Y;
 
                 //Debug.WriteLine($"Point: {x}, {y}, OffSetDis: {offSetDis}");
                 temPont.SetCoords(x, y, temPont.Z, temPont.M, temPont.Id);
