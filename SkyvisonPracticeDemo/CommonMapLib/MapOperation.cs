@@ -24,7 +24,8 @@ namespace CommonMapLib
 
         private readonly string rootPath = Path.GetFullPath(@"../../../data/Model/");
         //private const string tmpFDBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\3dm\JD.3DM";
-        private const string carBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\TrashCar\WetRubbishVehicle.osg";
+        //private const string carBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\TrashCar\WetRubbishVehicle.osg";
+        private const string carBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\osg\WetRubbishVehicle.osg";
         private readonly string tmpSkyboxPath = @"C:\Program Files\LC\SkySceneryX64\skybox\";   //天空盒图片位置（SkyScenery安装位置）
         private const string WKT = "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]]," +
     "PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433],AUTHORITY[\"EPSG\",4326]]";
@@ -45,7 +46,7 @@ namespace CommonMapLib
             _axRenderControl = axRenderControl;
             gfactory = new GeometryFactory();
             notationDic = new Dictionary<string, IDynamicObject>();
-            posOffSet = new Vector3() { X = 0, Y = 0, Z = 0 };
+            posOffSet = new Vector3() { X = 0, Y = 0, Z = 1.8 };
             symbol = new SimplePointSymbolClass() { FillColor = 0xAA0000FF, Size = 10 };
 
             scale = new Vector3();//创建向量
@@ -82,6 +83,8 @@ namespace CommonMapLib
 
             //初始化三维窗口。isPlanarTerrain（true:平面地形，false：地球形）, params（配置参数）
             _axRenderControl.Initialize(false, ps);
+
+            //_axRenderControl.Initialize(true, ps);
 
             _axRenderControl.Camera.FlyTime = 3;
         }
@@ -351,8 +354,8 @@ namespace CommonMapLib
                 //将创建的模型捆绑到运动路径上
                 carModelPoint.Position = new Vector3() { X = coordinates[0][0], Y = coordinates[0][1], Z = 0 };
                 IMotionable m = carModelPoint as IMotionable;//使模型可移动
-                m.Bind(motionPath, posOffSet, 0, 0, 0);//将模型绑定到路径上
-                //m.Bind2(dynamicObj, posOffSet, 0, 0, 0);
+                //m.Bind(motionPath, posOffSet, 0, 0, 0);//将模型绑定到路径上
+                m.Bind2(dynamicObj, posOffSet, 0, 0, 0);
 
                 ICurveSymbol cur = new CurveSymbol
                 {
@@ -365,8 +368,8 @@ namespace CommonMapLib
                 _axRenderControl.Camera.FlyToObject(carModelPoint.Guid, i3dActionCode.i3dActionFollowBehind);
 
                 //动画播放方法
-                motionPath.Play();  //根据路径播放动画
-                //dynamicObj.Play();
+                //motionPath.Play();  //根据路径播放动画
+                dynamicObj.Play();
             }
         }
 
@@ -407,13 +410,13 @@ namespace CommonMapLib
             IPoint point = gfactory.CreatePoint(i3dVertexAttribute.i3dVertexAttributeZ);
 
             //创建运动路径
-            motionPath = _axRenderControl.ObjectManager.CreateMotionPath();//创建运动路径
-            motionPath.CrsWKT = WKT;
+            //motionPath = _axRenderControl.ObjectManager.CreateMotionPath();//创建运动路径
+            //motionPath.CrsWKT = WKT;
 
-            //dynamicObj = _axRenderControl.ObjectManager.CreateDynamicObject();
-            //dynamicObj.CrsWKT = WKT;
-            //dynamicObj.AutoRepeat = true;
-            //dynamicObj.TurnSpeed = 200;
+            dynamicObj = _axRenderControl.ObjectManager.CreateDynamicObject();
+            dynamicObj.CrsWKT = WKT;
+            dynamicObj.AutoRepeat = true;
+            dynamicObj.TurnSpeed = 200;
 
             double[] currentPoint;
             double[] nextPoint;
@@ -427,11 +430,11 @@ namespace CommonMapLib
 
                 //dynamicObj.AddWaypoint2(point, i % 100 == 0 ? 0 : 20);
 
-                //dynamicObj.AddWaypoint2(point, 20);
+                dynamicObj.AddWaypoint2(point, 20);
 
                 line.AppendPoint(point);
 
-                motionPath.AddWaypoint2(point, angle, scale, i * 0.1);//添加运动路径节点
+                //motionPath.AddWaypoint2(point, angle, scale, i * 0.1);//添加运动路径节点
             }
         }
 
@@ -460,15 +463,28 @@ namespace CommonMapLib
         }
 
         IRenderModelPoint carModelPoint;
-        public void LoadCarModel()
+        double z = 1.8;
+        public void LoadCarModel(string name)
         {
             //加载模型
+            if (string.IsNullOrEmpty(name))
+                name = "WetRubbishVehicle.osg";
+
+            string path = Path.GetFullPath($@"../../../data/TrashCar/{name}");
             IGeometryFactory geoFac = new GeometryFactory();//创建几何工厂
             IModelPoint modelpoint = geoFac.CreateGeometry(i3dGeometryType.i3dGeometryModelPoint, i3dVertexAttribute.i3dVertexAttributeZ) as IModelPoint;// 构造ModelPoint
-            modelpoint.ModelName = carBPath;   //将模型绑定到ModelPoint上
+            modelpoint.ModelName = path;   //将模型绑定到ModelPoint上
+            //modelpoint.SelfScale(0.1,0.1,0.1);
             modelpoint.SpatialCRS = crs;
             IVector3 pos1 = new Vector3();
-            pos1.Set(121.29864020314436, 31.18334045401004, 1.8);
+            if (name == "WetRubbishVehicle_s.osg")
+                z = 0;
+            else
+                z = 1.8;
+            if (selectPoint != null)
+                pos1.Set(selectPoint.X, selectPoint.Y, z);
+            else
+                pos1.Set(121.29864020314436, 31.18334045401004, z);
             modelpoint.Position = pos1;//模型起始位置
             carModelPoint = _axRenderControl.ObjectManager.CreateRenderModelPoint(modelpoint, null);//显示模型
             _axRenderControl.Camera.FlyToObject(carModelPoint.Guid, i3dActionCode.i3dActionFollowAbove);
@@ -544,7 +560,7 @@ namespace CommonMapLib
                 obj.AutoRepeat = autoRepeat;
                 obj.CrsWKT = WKT;
                 obj.TurnSpeed = 200;
-                //obj.MotionStyle = i3dDynamicMotionStyle.i3dDynamicMotionGroundVehicle;
+                obj.MotionStyle = i3dDynamicMotionStyle.i3dDynamicMotionGroundVehicle;
             }
         }
 

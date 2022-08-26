@@ -40,6 +40,7 @@ namespace CarModelPath
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.axRenderControl1 = new Axi3dRenderEngine.AxRenderControl();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -68,6 +69,7 @@ namespace CarModelPath
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button5);
@@ -86,7 +88,7 @@ namespace CarModelPath
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1043, 24);
+            this.button2.Location = new System.Drawing.Point(1218, 24);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 34);
             this.button2.TabIndex = 0;
@@ -96,7 +98,7 @@ namespace CarModelPath
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1214, 24);
+            this.button3.Location = new System.Drawing.Point(1389, 24);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(107, 34);
             this.button3.TabIndex = 0;
@@ -156,7 +158,7 @@ namespace CarModelPath
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(886, 24);
+            this.button1.Location = new System.Drawing.Point(1061, 24);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 34);
             this.button1.TabIndex = 0;
@@ -172,6 +174,19 @@ namespace CarModelPath
             this.axRenderControl1.Name = "axRenderControl1";
             this.axRenderControl1.Size = new System.Drawing.Size(1508, 739);
             this.axRenderControl1.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "WetRubbishVehicle.osg",
+            "WetRubbishVehicle_s.osg",
+            "WashSweepVehicle.osg",
+            "WashSweepVehicle_s.osg"});
+            this.comboBox1.Location = new System.Drawing.Point(793, 31);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(212, 26);
+            this.comboBox1.TabIndex = 1;
             // 
             // Form1
             // 
@@ -204,6 +219,7 @@ namespace CarModelPath
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

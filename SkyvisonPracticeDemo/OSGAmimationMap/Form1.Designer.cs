@@ -31,13 +31,13 @@ namespace OSGAmimationMap
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.axRenderControl1 = new Axi3dRenderEngine.AxRenderControl();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -78,6 +78,58 @@ namespace OSGAmimationMap
             this.panel1.Size = new System.Drawing.Size(1741, 127);
             this.panel1.TabIndex = 0;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "22.osg",
+            "JGRW004p.OSG",
+            "JGRW006w.OSG",
+            "蝴蝶1.OSG",
+            "蝴蝶2.OSG",
+            "蝴蝶3.OSG",
+            "red.osg"});
+            this.comboBox1.Location = new System.Drawing.Point(455, 45);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(228, 26);
+            this.comboBox1.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1000, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(188, 18);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "请输入骨骼动画名称：";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(287, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(152, 18);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "请输入模型名称：";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(1194, 42);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(216, 28);
+            this.textBox2.TabIndex = 1;
+            this.textBox2.Text = "wrj.X";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(804, 33);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(130, 48);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "加载骨骼动画";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(91, 33);
@@ -96,58 +148,6 @@ namespace OSGAmimationMap
             this.axRenderControl1.Name = "axRenderControl1";
             this.axRenderControl1.Size = new System.Drawing.Size(1741, 876);
             this.axRenderControl1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(287, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 18);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "请输入模型名称：";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(804, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 48);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "加载骨骼动画";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(1194, 42);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 28);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "wrj.X";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1000, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(188, 18);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "请输入骨骼动画名称：";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "22.osg",
-            "JGRW004p.OSG",
-            "JGRW006w.OSG",
-            "蝴蝶1.OSG",
-            "蝴蝶2.OSG",
-            "蝴蝶3.OSG",
-            "red.osg"});
-            this.comboBox1.Location = new System.Drawing.Point(455, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(228, 26);
-            this.comboBox1.TabIndex = 3;
             // 
             // Form1
             // 

@@ -40,6 +40,8 @@ namespace CarModelPath
             {
                 features = new List<Feature>()
             };
+
+            this.comboBox1.SelectedIndex = 0;
         }
 
         // 开始播放轨迹
@@ -92,13 +94,15 @@ namespace CarModelPath
 
         private void button6_Click(object sender, EventArgs e)
         {
-            controlOperation.LoadCarModel();
+            controlOperation.LoadCarModel(comboBox1.Text);
         }
 
         // 漫游模式
+        bool normal = false;
         private void button7_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractNormal;
+            axRenderControl1.InteractMode = normal == true ? i3dInteractMode.i3dInteractNormal : i3dInteractMode.i3dInteractSelect;
+            normal = !normal;
         }
 
         // 初始化位置
