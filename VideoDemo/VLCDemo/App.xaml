@@ -1,0 +1,12 @@
+﻿<Application x:Class="VLCDemo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:VLCDemo"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ImageBrush ImageSource=".\Images\icon_close.png" x:Key="img_close" />
+        <ImageBrush ImageSource=".\Images\icon_fangda.png" x:Key="img_Max" />
+        <ImageBrush ImageSource=".\Images\icon_reload.png" x:Key="img_reload" />
+        <ImageBrush ImageSource=".\Images\reload.png" x:Key="img_load" />
+    </Application.Resources>
+</Application>

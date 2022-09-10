@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\icon_close.png" />
+    <None Remove="Images\icon_fangda.png" />
+    <None Remove="Images\icon_reload.png" />
+    <None Remove="Images\loading.gif" />
+    <None Remove="Images\reload.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LibVLCSharp.WPF" Version="3.6.6" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.17.4" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\icon_close.png" />
+    <Resource Include="Images\icon_fangda.png" />
+    <Resource Include="Images\icon_reload.png" />
+    <Resource Include="Images\loading.gif" />
+    <Resource Include="Images\reload.png" />
+  </ItemGroup>
+
+</Project>
