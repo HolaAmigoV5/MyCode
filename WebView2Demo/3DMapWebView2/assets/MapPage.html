@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>网页测试</title>
+
+</head>
+<body>
+    <div id="container" style="width:500px; text-align:center;">
+        <input type="button" value="建筑显隐" onclick="buttonClick();" />
+        <input type="button" value="复位" onclick="Initlization();" style="cursor:pointer" />
+        <input type="text" />
+    </div>
+
+    <script type="text/javascript">
+        var showState = true;
+        async function buttonClick() {
+            showState = !showState;
+            var hostObject = window.chrome.webview.hostObjects.customWebView2HostObject;
+            var res = await hostObject.BuildingVisiable(showState);
+            alert("后台方法调用返回信息为：" + res);
+        }
+
+        async function Initlization() {
+            var hostObject = window.chrome.webview.hostObjects.customWebView2HostObject;
+            var res = await hostObject.InitlizationPos();
+            alert("后台方法调用返回信息为：" + res);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<Window x:Class="WebView2Authentication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WebView2Authentication"
+        xmlns:wv="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        mc:Ignorable="d" WindowState="Maximized" d:Height="450" d:Width="800" Title="MainWindow" >
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="NavigationCommands.GoToPage" Executed="GoToPageCmdExecuted" CanExecute="GoToPageCmdCanExecute"/>
+    </Window.CommandBindings>
+
+    <DockPanel>
+        <DockPanel x:Name="dockPanel" DockPanel.Dock="Top">
+            <Button DockPanel.Dock="Right" Command="NavigationCommands.GoToPage" CommandParameter="{Binding ElementName=url,Path=Text}">Go</Button>
+
+            <TextBox x:Name="url" Text="{Binding ElementName=webView, Path=Source, Mode=OneWay}">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Return" Command="NavigationCommands.GoToPage" CommandParameter="{Binding ElementName=url,Path=Text}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+        </DockPanel>
+
+        <Grid x:Name="Layout" DockPanel.Dock="Bottom">
+            <wv:WebView2 x:Name="webView" Source="http://122.228.13.28:2002/" />
+        </Grid>
+    </DockPanel>
+
+</Window>

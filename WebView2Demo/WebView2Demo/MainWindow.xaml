@@ -1,0 +1,20 @@
+﻿<Window x:Class="WebView2Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WebView2Demo"
+        xmlns:wv="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        mc:Ignorable="d" WindowState="Maximized"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Button x:Name="ButtonGo" DockPanel.Dock="Right" Click="ButtonGo_Click" Content="GO" Margin="5"/>
+            <Button x:Name="ButtonCheck" DockPanel.Dock="Right" Click="ButtonCheck_Click" Content="检测环境" Margin="5"/>
+            <Button x:Name="ButtonGet" DockPanel.Dock="Right" Click="ButtonGet_Click" Content="获取所有版本" Margin="5"/>
+            <TextBox x:Name="addressBar" Text="http://122.228.13.28:2002/"/>
+        </DockPanel>
+        
+        <wv:WebView2 Name="webView" Source="https://www.baidu.com "/>
+    </DockPanel>
+</Window>
