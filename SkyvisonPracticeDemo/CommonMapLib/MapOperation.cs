@@ -274,7 +274,8 @@ namespace CommonMapLib
                 pModelPoint.ModelEnvelope = pModel.Envelope;
 
                 IRenderModelPoint rmp = objManager.CreateRenderModelPoint(pModelPoint, null);
-                rmp.MaxVisibleDistance = 50000;
+                if (rmp != null)
+                    rmp.MaxVisibleDistance = 50000;
                 _axRenderControl.Camera.FlyToObject(rmp.Guid, i3dActionCode.i3dActionFlyTo);
 
                 pResFactory = null;
@@ -468,9 +469,9 @@ namespace CommonMapLib
         {
             //加载模型
             if (string.IsNullOrEmpty(name))
-                name = "WetRubbishVehicle.osg";
+                name = "hddk07car015.osg";
 
-            string path = Path.GetFullPath($@"../../../data/TrashCar/{name}");
+            string path = Path.GetFullPath($@"../../../data/CarMDB/{name}");
             IGeometryFactory geoFac = new GeometryFactory();//创建几何工厂
             IModelPoint modelpoint = geoFac.CreateGeometry(i3dGeometryType.i3dGeometryModelPoint, i3dVertexAttribute.i3dVertexAttributeZ) as IModelPoint;// 构造ModelPoint
             modelpoint.ModelName = path;   //将模型绑定到ModelPoint上

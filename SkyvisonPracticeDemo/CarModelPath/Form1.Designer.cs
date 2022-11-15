@@ -31,6 +31,7 @@ namespace CarModelPath
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@ namespace CarModelPath
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.axRenderControl1 = new Axi3dRenderEngine.AxRenderControl();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -85,6 +85,35 @@ namespace CarModelPath
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "操作";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "hddk07car015.osg",
+            "hddk07car017.osg",
+            "hddk07car018.osg",
+            "hddk07car019.osg",
+            "hddk07car020.osg",
+            "hddk07car021.osg",
+            "hddk07car022.osg",
+            "hddk07car023.osg",
+            "hddk07car024.osg",
+            "hddk07car025.osg",
+            "hddk07car026.osg",
+            "hddk07car027.osg",
+            "hddk07car028.osg",
+            "hddk07car029.osg",
+            "hddk07car030.osg",
+            "hddk07car031.osg",
+            "hddk07car032.osg",
+            "hddk07car033.osg",
+            "hddk07car034.osg",
+            "hddk07car035.osg"});
+            this.comboBox1.Location = new System.Drawing.Point(793, 31);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(212, 26);
+            this.comboBox1.TabIndex = 1;
             // 
             // button2
             // 
@@ -174,19 +203,6 @@ namespace CarModelPath
             this.axRenderControl1.Name = "axRenderControl1";
             this.axRenderControl1.Size = new System.Drawing.Size(1508, 739);
             this.axRenderControl1.TabIndex = 0;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "WetRubbishVehicle.osg",
-            "WetRubbishVehicle_s.osg",
-            "WashSweepVehicle.osg",
-            "WashSweepVehicle_s.osg"});
-            this.comboBox1.Location = new System.Drawing.Point(793, 31);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(212, 26);
-            this.comboBox1.TabIndex = 1;
             // 
             // Form1
             // 
