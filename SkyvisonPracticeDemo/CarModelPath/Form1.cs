@@ -221,6 +221,12 @@ namespace CarModelPath
             File.WriteAllText(savePath, JsonConvert.SerializeObject(roadPoints));
         }
 
+        // 拾取地图元素
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void CreateRenderPoint(IPoint point)
         {
             var rPoint = axRenderControl1.ObjectManager.CreateRenderPoint(point, symbol);

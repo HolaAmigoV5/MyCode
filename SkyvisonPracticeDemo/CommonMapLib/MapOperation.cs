@@ -7,6 +7,7 @@ using i3dRenderEngine;
 using i3dResource;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 
@@ -171,8 +172,48 @@ namespace CommonMapLib
 
             if (selectedModel == i3dMouseSelectMode.i3dMouseSelectClick)
             {
+                FeaturePickOrCreate(pickResult, position);
                 selectPoint = position;
                 //ShowAnimationOSG2("蝴蝶1.OSG");
+            }
+        }
+
+        private void FeaturePickOrCreate(IPickResult pr, IPoint position)
+        {
+            if (pr == null)
+                return;
+
+            string msg = string.Empty;
+            switch (pr)
+            {
+                case ILabelPickResult label:
+                    msg = "拾取到" + label.Type + "类型，内容为" + label.Label.Text;
+                    break;
+                case IRenderModelPointPickResult model:
+                    msg = "拾取到" + model.Type + "类型，模型名称为" + model.ModelPoint.ModelName;
+                    break;
+                case IRenderPointPickResult point:
+                    msg = "拾取到" + point.Type + "类型，大小为" + point.Point.Symbol.Size;
+                    break;
+                case IRenderPolylinePickResult polyLine:
+                    msg = "拾取到" + polyLine.Type + "类型，GUID为" + polyLine.Polyline.Guid;
+                    break;
+                case IRenderPolygonPickResult polygon:
+                    msg = "拾取到" + polygon.Type + "类型，GUID为" + polygon.Polygon.Guid;
+                    break;
+                case IFeatureLayerPickResult featureLayer:
+                    var aa = featureLayer.FeatureLayer;
+
+                    var a1 = aa.GetGeometryRender();
+                    var a2 = aa.Guid;
+                    var a3 = aa.ClientData;
+                    aa.Highlight(0xffff0000);
+                    var bb = featureLayer.Type;
+                    var cc = featureLayer.FeatureId;
+                    carModelPoint = pr as IRenderModelPoint;
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -475,6 +516,7 @@ namespace CommonMapLib
             IGeometryFactory geoFac = new GeometryFactory();//创建几何工厂
             IModelPoint modelpoint = geoFac.CreateGeometry(i3dGeometryType.i3dGeometryModelPoint, i3dVertexAttribute.i3dVertexAttributeZ) as IModelPoint;// 构造ModelPoint
             modelpoint.ModelName = path;   //将模型绑定到ModelPoint上
+            
             //modelpoint.SelfScale(0.1,0.1,0.1);
             modelpoint.SpatialCRS = crs;
             IVector3 pos1 = new Vector3();
@@ -485,9 +527,18 @@ namespace CommonMapLib
             if (selectPoint != null)
                 pos1.Set(selectPoint.X, selectPoint.Y, z);
             else
+            {
                 pos1.Set(121.29864020314436, 31.18334045401004, z);
+                //pos1.Set(483728.30192234676, 3451679.6690112567, z);
+            }
+                
             modelpoint.Position = pos1;//模型起始位置
+
+            if (name == "hddk07car020.osg")
+                modelpoint.Matrix33 = new float[9] { -0.6038073f, -0.7971303f, 0, 0.7971303f, -0.6038073f, 0, 0, 0, 1 };
+
             carModelPoint = _axRenderControl.ObjectManager.CreateRenderModelPoint(modelpoint, null);//显示模型
+
             _axRenderControl.Camera.FlyToObject(carModelPoint.Guid, i3dActionCode.i3dActionFollowAbove);
         }
 

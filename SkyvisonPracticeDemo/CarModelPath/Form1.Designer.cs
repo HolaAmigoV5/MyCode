@@ -31,6 +31,7 @@ namespace CarModelPath
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -63,12 +64,13 @@ namespace CarModelPath
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.axRenderControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1508, 840);
+            this.splitContainer1.Size = new System.Drawing.Size(1798, 846);
             this.splitContainer1.SplitterDistance = 97;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button9);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button3);
@@ -81,15 +83,33 @@ namespace CarModelPath
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1508, 97);
+            this.groupBox1.Size = new System.Drawing.Size(1798, 97);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "操作";
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(1535, 23);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(107, 34);
+            this.button9.TabIndex = 2;
+            this.button9.Text = "拾取";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "Box001.osg",
+            "Box002.osg",
+            "Box003.osg",
+            "Box004.osg",
+            "Box005.osg",
+            "Box006.osg",
+            "Box007.osg",
+            "Box008.osg",
             "hddk07car015.osg",
             "hddk07car017.osg",
             "hddk07car018.osg",
@@ -201,14 +221,14 @@ namespace CarModelPath
             this.axRenderControl1.Enabled = true;
             this.axRenderControl1.Location = new System.Drawing.Point(0, 0);
             this.axRenderControl1.Name = "axRenderControl1";
-            this.axRenderControl1.Size = new System.Drawing.Size(1508, 739);
+            this.axRenderControl1.Size = new System.Drawing.Size(1798, 745);
             this.axRenderControl1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1508, 840);
+            this.ClientSize = new System.Drawing.Size(1798, 846);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -236,6 +256,7 @@ namespace CarModelPath
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button9;
     }
 }
 

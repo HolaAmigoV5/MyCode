@@ -65,7 +65,7 @@ namespace InteractMode
                 // 加载本地数据
                 ci.ConnectionType = i3dConnectionType.i3dConnectionFireBird2x;
 
-                string tmpFDBPath = Path.Combine(rootPath, "data\\3dm\\1.3DM");
+                string tmpFDBPath = Path.Combine(rootPath, "data\\3dm\\JD.3DM");
                 ci.Database = tmpFDBPath;
             }
             else

@@ -745,9 +745,9 @@ namespace CommonLibrary
 
             if (selectedModel == i3dMouseSelectMode.i3dMouseSelectClick)
             {
-                //FeaturePickOrCreate(pickResult, position);
+                FeaturePickOrCreate(pickResult, position);
                 selectPoint = position;
-                ShowAnimationOSG2("蝴蝶1.OSG");
+                //ShowAnimationOSG2("蝴蝶1.OSG");
             }
         }
 

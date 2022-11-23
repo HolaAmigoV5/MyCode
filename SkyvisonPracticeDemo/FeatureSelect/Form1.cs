@@ -19,7 +19,7 @@ namespace FeatureSelect
         }
 
         private void toolStripUnHightLight_Click(object sender, System.EventArgs e)
-        {
+        { 
             controlOperation.UnhighlightAll();
         }
 
