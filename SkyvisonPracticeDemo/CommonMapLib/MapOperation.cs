@@ -57,7 +57,7 @@ namespace CommonMapLib
             InitializeRenderControl();
 
             // 设置天空盒
-            SetSkyBox(SkyBoxType.BTXY);
+            //SetSkyBox(SkyBoxType.BTXY);
 
             // 设置连接信息
             SetConnectionInfo(_3dmname);
@@ -265,8 +265,12 @@ namespace CommonMapLib
 
         public void InitlizedCameraPosition(bool flag = false)
         {
-            double tilt = flag ? -90 : -33.85;
-            SetCameraValues(121.30204548415803, 31.18139334303109, 331.7257668711245, heading: 317.2000527037274, tilt: tilt, isLookAt: false);
+            // 美都3dm初始位置
+            //double tilt = flag ? -90 : -33.85;
+            //SetCameraValues(121.30204548415803, 31.18139334303109, 331.7257668711245, heading: 317.2000527037274, tilt: tilt, isLookAt: false);
+
+            // 国科大3dm初始位置
+            SetCameraValues(116.245185436104, 39.9071683998616, 4.65836078487337, 100.630121481486, -12.3758727789334, 0, 2000, false);
         }
 
         public void SetCameraValues(double x, double y, double z, double heading = 0, double tilt = -60, double roll = 0, double distance = 2000, bool isLookAt = true)
@@ -359,6 +363,60 @@ namespace CommonMapLib
             obj.MinVisiblePixels = 1;
 
             _axRenderControl.Camera.FlyToObject(obj.Guid, i3dActionCode.i3dActionFlyTo);
+        }
+
+        // 显示视频投射
+        ITerrainVideo video = null;
+        IPoint videoPoint = null;
+        IEulerAngle videoAngle = null;
+        public string ShowVideoProjection(double x, double y, double z, double heading,
+            double tilt, double roll, double farClip, double aspectRadio, double fieldOfView, double vPos)
+        {
+            if (video == null)
+            {
+                var vUrl = Path.GetFullPath(@"../../../data/JiaDing.mp4");
+                videoAngle = new EulerAngle();
+
+                videoPoint = gfactory.CreatePoint(i3dVertexAttribute.i3dVertexAttributeZ);
+                SetIPoint(videoPoint, x, y, z);
+                video = _axRenderControl.ObjectManager.CreateTerrainVideo(videoPoint);
+
+                video.PlayVideoOnStartup = true;
+                video.ShowProjectionLines = true;
+                video.ShowProjector = true;
+                video.VideoFileName = vUrl;
+            }
+            else
+            {
+                SetIPoint(videoPoint, x, y, z);
+                video.Position = videoPoint;
+            }
+
+            video.FarClip = farClip;
+            videoAngle.Set(heading, tilt, roll);
+            video.Angle = videoAngle;
+
+            video.AspectRatio = aspectRadio;
+            video.VideoPosition = vPos;
+            video.FieldOfView = fieldOfView;
+
+            var a = video.AspectRatio;
+            var b = video.VideoPosition;
+            var c = video.FieldOfView;
+
+            string res = $"AspectRatio = {a}, FieldOfView = {c}, VideoPosition = {b}";
+            return res;
+        }
+
+        /// <summary>
+        /// 获取当前相机位置
+        /// </summary>
+        /// <returns></returns>
+        public Position GetCameraPosition()
+        {
+            _axRenderControl.Camera.GetCamera(out IVector3 vector3, out IEulerAngle angle);
+            Position position = new Position() { X = vector3.X, Y = vector3.Y, Z = vector3.Z, Heading = angle.Heading, Tilt = angle.Tilt, Roll = angle.Roll };
+            return position;
         }
 
         #region 轨迹相关
@@ -516,7 +574,7 @@ namespace CommonMapLib
             IGeometryFactory geoFac = new GeometryFactory();//创建几何工厂
             IModelPoint modelpoint = geoFac.CreateGeometry(i3dGeometryType.i3dGeometryModelPoint, i3dVertexAttribute.i3dVertexAttributeZ) as IModelPoint;// 构造ModelPoint
             modelpoint.ModelName = path;   //将模型绑定到ModelPoint上
-            
+
             //modelpoint.SelfScale(0.1,0.1,0.1);
             modelpoint.SpatialCRS = crs;
             IVector3 pos1 = new Vector3();
@@ -531,7 +589,7 @@ namespace CommonMapLib
                 pos1.Set(121.29864020314436, 31.18334045401004, z);
                 //pos1.Set(483728.30192234676, 3451679.6690112567, z);
             }
-                
+
             modelpoint.Position = pos1;//模型起始位置
 
             if (name == "hddk07car020.osg")
@@ -616,7 +674,7 @@ namespace CommonMapLib
             }
         }
 
-       
+
         public void RenderPointInMap(Trajectory notationDto)
         {
             if (gfactory == null)
@@ -627,7 +685,7 @@ namespace CommonMapLib
         }
 
         IPoint rPoint;
-        
+
         private void SetRenderPoint(double x, double y, double z)
         {
             if (rPoint == null)
@@ -654,5 +712,16 @@ namespace CommonMapLib
             rPolyline.HeightStyle = i3dHeightStyle.i3dHeightAbsolute;
         }
         #endregion
+    }
+
+    public class Position
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Z { get; set; }
+        public double Heading { get; set; }
+        public double Tilt { get; set; }
+        public double Roll { get; set; }
+        public double Second { get; set; } = 5;
     }
 }
