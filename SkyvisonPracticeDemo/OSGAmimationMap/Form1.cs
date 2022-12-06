@@ -1,4 +1,5 @@
-﻿using CommonMapLib;
+﻿using Axi3dRenderEngine;
+using CommonMapLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,13 +15,20 @@ namespace OSGAmimationMap
     public partial class Form1 : Form
     {
         MapOperation controlOperation = null;
+        AxRenderControl axRenderControl;
 
         public Form1()
         {
             InitializeComponent();
 
+            axRenderControl = new AxRenderControl();
+            axRenderControl.BeginInit();
+            axRenderControl.Dock = DockStyle.Fill;
+            splitContainer1.Panel2.Controls.Add(axRenderControl);
+            axRenderControl.EndInit();
+
             controlOperation = new MapOperation();
-            controlOperation.InitializationMapControl(axRenderControl1);
+            controlOperation.InitializationMapControl(axRenderControl, isPlanarTerrain: true);
             comboBox1.SelectedIndex = 0;
         }
 

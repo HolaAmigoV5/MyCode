@@ -10,7 +10,7 @@ namespace FeatureSelect
         {
             InitializeComponent();
 
-            controlOperation = new AxRenderControlOperation(this.axRenderControl1);
+            controlOperation = new AxRenderControlOperation(axRenderControl1);
             controlOperation.InitializationAxRenderControl();
             controlOperation.RegisterRcSelectEvent();
 

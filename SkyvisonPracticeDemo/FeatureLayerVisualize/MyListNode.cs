@@ -11,7 +11,7 @@ namespace FeatureLayerVisualize
         {
             name = n;
             layer = fl;
-            this.Text = n;
+            Text = n;
         }
     }
 }

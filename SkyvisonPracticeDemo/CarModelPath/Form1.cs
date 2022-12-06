@@ -41,7 +41,7 @@ namespace CarModelPath
                 features = new List<Feature>()
             };
 
-            this.comboBox1.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
         }
 
         // 开始播放轨迹
@@ -222,9 +222,19 @@ namespace CarModelPath
         }
 
         // 拾取地图元素
+        bool isNormal = false;
         private void button9_Click(object sender, EventArgs e)
         {
-
+            isNormal = !isNormal;
+            if (isNormal)
+            {
+                axRenderControl1.InteractMode = i3dInteractMode.i3dInteractNormal;
+            }
+            else
+            {
+                axRenderControl1.InteractMode = i3dInteractMode.i3dInteractMeasurement;
+                axRenderControl1.MeasurementMode = i3dMeasurementMode.i3dMeasureCoordinate;
+            }
         }
 
         private void CreateRenderPoint(IPoint point)

@@ -135,8 +135,7 @@ namespace FeatureLayerVisualize
                 List<string> geoNames = (List<string>)fcMap[fc];
                 foreach (string geoName in geoNames)
                 {
-                    IFeatureLayer featureLayer = this.axRenderControl1.ObjectManager.CreateFeatureLayer(
-                    fc, geoName, null, null);
+                    IFeatureLayer featureLayer = axRenderControl1.ObjectManager.CreateFeatureLayer(fc, geoName, null, null);
 
                     // 添加节点到界面控件上
                     MyListNode item = new MyListNode(string.Format("{0}_{1}_{2}", sourceName, fc.Name, featureLayer.MaxVisibleDistance.ToString()), featureLayer)
@@ -158,7 +157,7 @@ namespace FeatureLayerVisualize
                     if (!hasfly)
                     {
                         angle.Set(0, -20, 0);
-                        this.axRenderControl1.Camera.LookAt(env.Center, 1000, angle);
+                        axRenderControl1.Camera.LookAt(env.Center, 100, angle);
                     }
                     hasfly = true;
                 }
@@ -172,7 +171,7 @@ namespace FeatureLayerVisualize
                 skyVal = "0" + skyVal;
 
             // 获取天空盒
-            skybox = this.axRenderControl1.ObjectManager.GetSkyBox(0);
+            skybox = axRenderControl1.ObjectManager.GetSkyBox(0);
             skybox.SetImagePath(i3dSkyboxImageIndex.i3dSkyboxImageBack, Path.Combine(tmpSkyboxPath, skyVal + "_BK.jpg"));
             skybox.SetImagePath(i3dSkyboxImageIndex.i3dSkyboxImageBottom, Path.Combine(tmpSkyboxPath, skyVal + "_DN.jpg"));
             skybox.SetImagePath(i3dSkyboxImageIndex.i3dSkyboxImageFront, Path.Combine(tmpSkyboxPath, skyVal + "_FR.jpg"));
@@ -183,17 +182,17 @@ namespace FeatureLayerVisualize
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (this.listView1.SelectedItems.Count == 0) return;
-            MyListNode item = (MyListNode)this.listView1.SelectedItems[0];
+            if (listView1.SelectedItems.Count == 0) return;
+            MyListNode item = (MyListNode)listView1.SelectedItems[0];
             item.Checked = true;
 
-            //this.axRenderControl1.Camera.LookAtEnvelope(item.layer.Envelope);
+            axRenderControl1.Camera.LookAtEnvelope(item.layer.Envelope);
 
-            IEnvelope env = (IEnvelope)layerEnvelopeMap[item.layer];
-            if (env == null || (env.MaxX == 0.0 && env.MaxY == 0.0 && env.MaxZ == 0.0 &&
-                env.MinX == 0.0 && env.MinY == 0.0 && env.MinZ == 0.0))
-                return;
-            this.axRenderControl1.Camera.LookAt(env.Center, 1000, angle);
+            //IEnvelope env = (IEnvelope)layerEnvelopeMap[item.layer];
+            //if (env == null || (env.MaxX == 0.0 && env.MaxY == 0.0 && env.MaxZ == 0.0 &&
+            //    env.MinX == 0.0 && env.MinY == 0.0 && env.MinZ == 0.0))
+            //    return;
+            //axRenderControl1.Camera.LookAt(env.Center, 100, angle);
         }
 
         private void listView1_ItemChecked(object sender, ItemCheckedEventArgs e)

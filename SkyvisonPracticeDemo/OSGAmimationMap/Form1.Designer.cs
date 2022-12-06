@@ -37,13 +37,10 @@ namespace OSGAmimationMap
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.axRenderControl1 = new Axi3dRenderEngine.AxRenderControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axRenderControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -56,10 +53,6 @@ namespace OSGAmimationMap
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.panel1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.axRenderControl1);
             this.splitContainer1.Size = new System.Drawing.Size(1741, 1007);
             this.splitContainer1.SplitterDistance = 127;
             this.splitContainer1.TabIndex = 0;
@@ -140,15 +133,6 @@ namespace OSGAmimationMap
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // axRenderControl1
-            // 
-            this.axRenderControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axRenderControl1.Enabled = true;
-            this.axRenderControl1.Location = new System.Drawing.Point(0, 0);
-            this.axRenderControl1.Name = "axRenderControl1";
-            this.axRenderControl1.Size = new System.Drawing.Size(1741, 876);
-            this.axRenderControl1.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -158,12 +142,10 @@ namespace OSGAmimationMap
             this.Name = "Form1";
             this.Text = "Form1";
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axRenderControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,7 +154,6 @@ namespace OSGAmimationMap
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panel1;
-        private Axi3dRenderEngine.AxRenderControl axRenderControl1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

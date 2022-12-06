@@ -1,4 +1,5 @@
-﻿using CommonLibrary;
+﻿using Axi3dRenderEngine;
+using CommonLibrary;
 using i3dCommon;
 using i3dFdeCore;
 using i3dMath;
@@ -18,6 +19,7 @@ namespace InteractMode
         private readonly string tmpSkyboxPath = @"C:\Program Files\LunCeTX\SkySceneryX64\skybox\";   //天空盒图片位置（SkyScenery安装位置）
         private Hashtable fcMap = null;             //IFeatureClass, List<string> 存储dataset里featureclass及对应的空间列名
         EulerAngle angle = new EulerAngle();
+        AxRenderControl axRenderControl;
 
         public Form1()
         {
@@ -36,11 +38,17 @@ namespace InteractMode
         // 初始化RenderControl控件
         private void InitializeRenderControl()
         {
+            axRenderControl = new AxRenderControl();
+            axRenderControl.BeginInit();
+            axRenderControl.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Controls.Add(axRenderControl);
+            axRenderControl.EndInit();
+
             PropertySet ps = new PropertySet();
             ps.SetProperty("RenderSystem", i3dRenderSystem.i3dRenderOpenGL);
 
             //初始化三维窗口。isPlanarTerrain（true:平面地形，false：地球形）, params（配置参数）
-            axRenderControl1.Initialize(true, ps);
+            axRenderControl.Initialize(true, ps);
         }
 
         /// <summary>
@@ -81,7 +89,7 @@ namespace InteractMode
 
             // 注册地形
             string tmpTedPath = Path.Combine(rootPath, "data\\2021_04_07\\Hebei_aster_gdem_30m.tif");
-            axRenderControl1.Terrain.RegisterTerrain(tmpTedPath, "");
+            axRenderControl.Terrain.RegisterTerrain(tmpTedPath, "");
         }
 
         private void FeatureLayerVisualize(ConnectionInfo ci, bool needfly, string sourceName)
@@ -134,7 +142,7 @@ namespace InteractMode
                     if (!geoName.Equals("Geometry"))
                         continue;
 
-                    IFeatureLayer featureLayer = this.axRenderControl1.ObjectManager.CreateFeatureLayer(
+                    IFeatureLayer featureLayer = this.axRenderControl.ObjectManager.CreateFeatureLayer(
                     fc, geoName, null, null);
 
                     if (!hasfly)
@@ -148,7 +156,7 @@ namespace InteractMode
                             continue;
                         EulerAngle angle = new EulerAngle();
                         angle.Set(0, -20, 0);
-                        this.axRenderControl1.Camera.LookAt(env.Center, 1000, angle);
+                        this.axRenderControl.Camera.LookAt(env.Center, 1000, angle);
                     }
                     hasfly = true;
                 }
@@ -162,7 +170,7 @@ namespace InteractMode
                 skyVal = "0" + skyVal;
 
             // 获取天空盒
-            skybox = this.axRenderControl1.ObjectManager.GetSkyBox(0);
+            skybox = this.axRenderControl.ObjectManager.GetSkyBox(0);
             skybox.SetImagePath(i3dSkyboxImageIndex.i3dSkyboxImageBack, Path.Combine(tmpSkyboxPath, skyVal + "_BK.jpg"));
             skybox.SetImagePath(i3dSkyboxImageIndex.i3dSkyboxImageBottom, Path.Combine(tmpSkyboxPath, skyVal + "_DN.jpg"));
             skybox.SetImagePath(i3dSkyboxImageIndex.i3dSkyboxImageFront, Path.Combine(tmpSkyboxPath, skyVal + "_FR.jpg"));
@@ -174,18 +182,18 @@ namespace InteractMode
         #region 交互方式
         private void toolStripNormal_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractNormal;
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteractNormal;
 
             Text = "当前处于漫游模式";
         }
 
         private void toolStripSelect_Click(object sender, EventArgs e)
         {
-            this.axRenderControl1.InteractMode = i3dInteractMode.i3dInteractSelect;
-            this.axRenderControl1.MouseSelectObjectMask = i3dMouseSelectObjectMask.i3dSelectAll;
-            this.axRenderControl1.MouseSelectMode = i3dMouseSelectMode.i3dMouseSelectClick;
-            this.axRenderControl1.RcMouseClickSelect -= axRenderControl1_RcMouseClickSelect;
-            this.axRenderControl1.RcMouseClickSelect += axRenderControl1_RcMouseClickSelect;
+            this.axRenderControl.InteractMode = i3dInteractMode.i3dInteractSelect;
+            this.axRenderControl.MouseSelectObjectMask = i3dMouseSelectObjectMask.i3dSelectAll;
+            this.axRenderControl.MouseSelectMode = i3dMouseSelectMode.i3dMouseSelectClick;
+            this.axRenderControl.RcMouseClickSelect -= axRenderControl1_RcMouseClickSelect;
+            this.axRenderControl.RcMouseClickSelect += axRenderControl1_RcMouseClickSelect;
 
             this.Text = "当前处于选择模式";
         }
@@ -197,85 +205,85 @@ namespace InteractMode
 
         private void toolStripCoordinate_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractMeasurement;
-            axRenderControl1.MeasurementMode = i3dMeasurementMode.i3dMeasureCoordinate;
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteractMeasurement;
+            axRenderControl.MeasurementMode = i3dMeasurementMode.i3dMeasureCoordinate;
 
             Text = "当前处于拾取坐标模式";
         }
 
         private void toolStripAerialDistance_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractMeasurement;
-            axRenderControl1.MeasurementMode = i3dMeasurementMode.i3dMeasureAerialDistance;
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteractMeasurement;
+            axRenderControl.MeasurementMode = i3dMeasurementMode.i3dMeasureAerialDistance;
 
             Text = "当前处于直线测距模式";
         }
 
         private void toolStripHorizontalDistance_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractMeasurement;
-            axRenderControl1.MeasurementMode = i3dMeasurementMode.i3dMeasureHorizontalDistance;
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteractMeasurement;
+            axRenderControl.MeasurementMode = i3dMeasurementMode.i3dMeasureHorizontalDistance;
 
             Text = "当前处于水平测距模式";
         }
 
         private void toolStripVerticalDistance_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractMeasurement;
-            axRenderControl1.MeasurementMode = i3dMeasurementMode.i3dMeasureVerticalDistance;
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteractMeasurement;
+            axRenderControl.MeasurementMode = i3dMeasurementMode.i3dMeasureVerticalDistance;
 
             Text = "当前处于垂直测距模式";
         }
 
         private void toolStripGroundDistance_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractMeasurement;
-            axRenderControl1.MeasurementMode = i3dMeasurementMode.i3dMeasureGroundDistance;
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteractMeasurement;
+            axRenderControl.MeasurementMode = i3dMeasurementMode.i3dMeasureGroundDistance;
 
             Text = "当前处于地表距离测量模式";
         }
 
         private void toolStripArea_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractMeasurement;
-            axRenderControl1.MeasurementMode = i3dMeasurementMode.i3dMeasureArea;
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteractMeasurement;
+            axRenderControl.MeasurementMode = i3dMeasurementMode.i3dMeasureArea;
 
             Text = "当前处于投影面积测量模式";
         }
 
         private void toolStripGroundArea_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractMeasurement;
-            axRenderControl1.MeasurementMode = i3dMeasurementMode.i3dMeasureGroundArea;
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteractMeasurement;
+            axRenderControl.MeasurementMode = i3dMeasurementMode.i3dMeasureGroundArea;
 
             Text = "当前处于地表面积测量模式";
         }
 
         private void toolStripGroupSightLine_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractMeasurement;
-            axRenderControl1.MeasurementMode = i3dMeasurementMode.i3dMeasureGroupSightLine;
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteractMeasurement;
+            axRenderControl.MeasurementMode = i3dMeasurementMode.i3dMeasureGroupSightLine;
 
             Text = "当前处于地形通视分析测量模式";
         }
 
         private void toolStripWalk_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractWalk;
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteractWalk;
             Text = "当前处于步行模式";
-            axRenderControl1.Focus();  //三维控件取得焦点，以便步行模式键盘有效
+            axRenderControl.Focus();  //三维控件取得焦点，以便步行模式键盘有效
         }
 
         private void toolStripDisable_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteractDisable;
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteractDisable;
             Text = "当前处于禁止交互模式";
         }
 
         private void toolStrip2DMap_Click(object sender, EventArgs e)
         {
-            axRenderControl1.InteractMode = i3dInteractMode.i3dInteract2DMap;
-            axRenderControl1.Terrain.FlyTo();
+            axRenderControl.InteractMode = i3dInteractMode.i3dInteract2DMap;
+            axRenderControl.Terrain.FlyTo();
             Text = "当前处于二维地图模式";
         } 
         #endregion

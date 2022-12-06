@@ -42,9 +42,16 @@ namespace CommonMapLib
             set { _CTRL = value; }
         }
 
-        public void InitializationMapControl(AxRenderControl axRenderControl, string _3dmname = "JD.3DM")
+        /// <summary>
+        /// 在WinForm中初始化地图
+        /// </summary>
+        /// <param name="axRenderControl">地图展现控件</param>
+        /// <param name="_3dmname">3DM名称</param>
+        /// <param name="isPlanarTerrain">true:平面地形，false：地球形（默认）</param>
+        public void InitializationMapControl(AxRenderControl axRenderControl, string _3dmname = "JD.3DM", bool isPlanarTerrain = false)
         {
-            _axRenderControl = axRenderControl;
+            _axRenderControl = axRenderControl ?? new AxRenderControl();
+
             gfactory = new GeometryFactory();
             notationDic = new Dictionary<string, IDynamicObject>();
             posOffSet = new Vector3() { X = 0, Y = 0, Z = 1.8 };
@@ -54,10 +61,10 @@ namespace CommonMapLib
             scale.Set(1, 1, 1);//设置模型比例尺
 
             // 初始化RenderControl控件
-            InitializeRenderControl();
+            InitializeRenderControl(isPlanarTerrain);
 
             // 设置天空盒
-            //SetSkyBox(SkyBoxType.BTXY);
+            SetSkyBox(SkyBoxType.BTXY);
 
             // 设置连接信息
             SetConnectionInfo(_3dmname);
@@ -68,25 +75,28 @@ namespace CommonMapLib
             // 设置选择模式
             SetSelectModeAndRegisterEvent();
 
-            SetI3dObjectType();
+            SetSpatialCRS(isPlanarTerrain);
 
         }
 
-        private void SetI3dObjectType()
+        private void SetSpatialCRS(bool isPlanarTerrain)
         {
-            crs = new CRSFactory().CreateFromWKT(WKT) as ISpatialCRS;
+            CRSFactory crsFactory = new CRSFactory();
+            crs = isPlanarTerrain == false ? crsFactory.CreateWGS84() :
+                crsFactory.CreateCRS(i3dCoordinateReferenceSystemType.i3dCrsUnknown) as ISpatialCRS;
         }
 
-        private void InitializeRenderControl()
+        /// <summary>
+        /// 初始化三维窗口
+        /// </summary>
+        /// <param name="isPlanarTerrain">true:平面地形，false：地球形</param>
+        private void InitializeRenderControl(bool isPlanarTerrain)
         {
             PropertySet ps = new PropertySet();
             ps.SetProperty("RenderSystem", i3dRenderSystem.i3dRenderOpenGL);
 
             //初始化三维窗口。isPlanarTerrain（true:平面地形，false：地球形）, params（配置参数）
-            _axRenderControl.Initialize(false, ps);
-
-            //_axRenderControl.Initialize(true, ps);
-
+            _axRenderControl.Initialize(isPlanarTerrain, ps);
             _axRenderControl.Camera.FlyTime = 3;
         }
 
@@ -137,7 +147,8 @@ namespace CommonMapLib
             IFeatureClass fc = dataSet.OpenFeatureClass(fcname);
             IFeatureLayer featureLayer = _axRenderControl.ObjectManager.CreateFeatureLayer(fc, "Geometry", null, null);
             SetLookAt(fc);
-            featureLayer.MaxVisibleDistance = 50000;
+            if (featureLayer != null)
+                featureLayer.MaxVisibleDistance = 50000;
         }
 
         private void SetLookAt(IFeatureClass fc)
@@ -161,6 +172,24 @@ namespace CommonMapLib
             _axRenderControl.RcMouseClickSelect += _axRenderControl_RcMouseClickSelect; ;
         }
 
+        public void SetMapModel(bool isNormal)
+        {
+            _axRenderControl.InteractMode = isNormal ? i3dInteractMode.i3dInteractNormal : i3dInteractMode.i3dInteractSelect;
+        }
+
+        public void MeasureCoordinate(bool isNormal)
+        {
+            if (isNormal)
+            {
+                _axRenderControl.InteractMode = i3dInteractMode.i3dInteractNormal;
+            }
+            else
+            {
+                _axRenderControl.InteractMode = i3dInteractMode.i3dInteractMeasurement;
+                _axRenderControl.MeasurementMode = i3dMeasurementMode.i3dMeasureCoordinate;
+            }
+        }
+
         private void _axRenderControl_RcMouseClickSelect(object sender, _IRenderControlEvents_RcMouseClickSelectEvent e)
         {
             FeatureLayerPick(e.pickResult, e.intersectPoint, e.eventSender);
@@ -178,6 +207,14 @@ namespace CommonMapLib
             }
         }
 
+        public event Action<string> CallbackMsg;
+
+        public virtual void RaiseCallbackMsg(string msg)
+        {
+            CallbackMsg?.Invoke(msg);
+        }
+
+        public CreateObjType ObjType { get; set; } = CreateObjType.CreateLabel;
         private void FeaturePickOrCreate(IPickResult pr, IPoint position)
         {
             if (pr == null)
@@ -201,21 +238,191 @@ namespace CommonMapLib
                 case IRenderPolygonPickResult polygon:
                     msg = "拾取到" + polygon.Type + "类型，GUID为" + polygon.Polygon.Guid;
                     break;
-                case IFeatureLayerPickResult featureLayer:
-                    var aa = featureLayer.FeatureLayer;
+                default:
+                    CreateObjectOnRenderControl(ObjType, position);
+                    break;
+            }
+            RaiseCallbackMsg(msg);
+        }
 
-                    var a1 = aa.GetGeometryRender();
-                    var a2 = aa.Guid;
-                    var a3 = aa.ClientData;
-                    aa.Highlight(0xffff0000);
-                    var bb = featureLayer.Type;
-                    var cc = featureLayer.FeatureId;
-                    carModelPoint = pr as IRenderModelPoint;
+        private void CreateObjectOnRenderControl(CreateObjType type, IPoint point)
+        {
+            switch (type)
+            {
+                case CreateObjType.CreateLabel:
+                    CreateLabel(point);
+                    break;
+                case CreateObjType.CreateRenderModelPoint:
+                    CreateRenderModelPoint(point);
+                    break;
+                case CreateObjType.CreateRenderPoint:
+                    CreateRenderPoint(point);
+                    break;
+                case CreateObjType.CreateRenderPolyline:
+                    CreateRenderPolyline(point);
+                    break;
+                case CreateObjType.CreateRenderPolygon:
+                    CreateRenderPolygon(point);
+                    break;
+                case CreateObjType.CreateFixedBillboard:
                     break;
                 default:
                     break;
             }
         }
+
+        #region 创建地图对象
+        private ILabel label = null;
+        private ITextSymbol textSymbol = null;
+        private TextAttribute textAttribute = null;
+        private void CreateLabel(IPoint point)
+        {
+            // 创建文本
+            if (label == null)
+                label = _axRenderControl.ObjectManager.CreateLabel();
+
+            label.Text = $"X = {point.X}, Y = {point.Y}, Z = {point.Z}";
+            label.Position = point;
+
+            if (textAttribute == null)
+                textAttribute = new TextAttribute();
+
+            textAttribute.TextColor = 0xffffff00;
+            textAttribute.TextSize = 15;
+            textAttribute.Underline = true;
+            textAttribute.Font = "楷体";
+
+            if (textSymbol == null)
+                textSymbol = new TextSymbol();
+            textSymbol.TextAttribute = textAttribute;
+            textSymbol.VerticalOffset = 10;
+            textSymbol.DrawLine = true;
+            textSymbol.MarginColor = 0x8800ffff;
+
+            label.TextSymbol = textSymbol;
+            _axRenderControl.Camera.FlyToObject(label.Guid, i3dActionCode.i3dActionFlyTo);
+        }
+
+
+        private IModelPoint fde_modelpoint = null;
+        private IRenderModelPoint rmodelpoint = null;
+        private void CreateRenderModelPoint(IPoint point)
+        {
+            // 创建模型
+            if (gfactory == null)
+                gfactory = new GeometryFactory();
+
+            //string tmpOSGPath = Path.Combine(rootPath, @"data\OSG\JGRW006w.OSG");
+            string tmpOSGPath = Path.GetFullPath(@"../../../data/Apartment/Apartment.osg");
+            //string tmpOSGPath = Environment.CurrentDirectory + @"\Apartment\Apartment.osg";
+            fde_modelpoint = gfactory.CreateGeometry(i3dGeometryType.i3dGeometryModelPoint, i3dVertexAttribute.i3dVertexAttributeZ) as IModelPoint;
+            fde_modelpoint.SpatialCRS = crs;
+            fde_modelpoint.SetCoords(point.X, point.Y, point.Z, 0, 0);
+            fde_modelpoint.ModelName = tmpOSGPath;
+
+            rmodelpoint = _axRenderControl.ObjectManager.CreateRenderModelPoint(fde_modelpoint, null);
+            rmodelpoint.MaxVisibleDistance = double.MaxValue;
+            rmodelpoint.MinVisiblePixels = 0;
+            //IEulerAngle angle = new EulerAngle();
+            //angle.Set(0, -20, 0);
+
+            //_axRenderControl.Camera.LookAt2(point, 100, angle);
+        }
+
+
+        private IPoint fde_point = null;
+        private ISimplePointSymbol pointSymbol = null;
+        private IRenderPoint rpoint = null;
+        private void CreateRenderPoint(IPoint point)
+        {
+            if (gfactory == null)
+                gfactory = new GeometryFactory();
+
+            fde_point = (IPoint)gfactory.CreateGeometry(i3dGeometryType.i3dGeometryPoint, i3dVertexAttribute.i3dVertexAttributeZ);
+            fde_point.SpatialCRS = crs;
+            fde_point.SetCoords(point.X, point.Y, point.Z, 0, 0);
+
+            pointSymbol = new SimplePointSymbolClass
+            {
+                FillColor = 0xff0000ff,
+                Size = 10
+            };
+            rpoint = _axRenderControl.ObjectManager.CreateRenderPoint(fde_point, pointSymbol);
+
+            _axRenderControl.Camera.FlyToObject(rpoint.Guid, i3dActionCode.i3dActionFlyTo);
+        }
+
+
+        private IPolyline fde_polyline = null;
+        private IRenderPolyline rpolyline = null;
+        //private CurveSymbolClass lineSymbol = null;
+        private void CreateRenderPolyline(IPoint point)
+        {
+            if (gfactory == null)
+                gfactory = new GeometryFactory();
+
+            fde_polyline = (IPolyline)gfactory.CreateGeometry(i3dGeometryType.i3dGeometryPolyline, i3dVertexAttribute.i3dVertexAttributeZ);
+            fde_polyline.SpatialCRS = crs;
+
+            fde_point = (IPoint)gfactory.CreateGeometry(i3dGeometryType.i3dGeometryPoint, i3dVertexAttribute.i3dVertexAttributeZ);
+            fde_point.SpatialCRS = crs;
+
+            fde_point.SetCoords(point.X, point.Y, point.Z, 0, 0);
+            fde_polyline.AppendPoint(fde_point);
+
+            fde_point.SetCoords(point.X + 20, point.Y, point.Z, 0, 0);
+            fde_polyline.AppendPoint(fde_point);
+
+            fde_point.SetCoords(point.X + 20, point.Y + 20, point.Z, 0, 0);
+            fde_polyline.AppendPoint(fde_point);
+
+            fde_point.SetCoords(point.X + 20, point.Y + 20, point.Z + 20, 0, 0);
+            fde_polyline.AppendPoint(fde_point);
+
+            lineSymbol = new CurveSymbolClass
+            {
+                Color = 0xffff00ff  // 紫红色
+            };
+
+            rpolyline = _axRenderControl.ObjectManager.CreateRenderPolyline(fde_polyline, lineSymbol);
+
+            _axRenderControl.Camera.FlyToObject(rpolyline.Guid, i3dActionCode.i3dActionFlyTo);
+        }
+
+
+        private IPolygon fde_polygon = null;
+        private IRenderPolygon rpolygon = null;
+        private ISurfaceSymbol surfaceSymbol = null;
+        private void CreateRenderPolygon(IPoint point)
+        {
+            if (gfactory == null)
+                gfactory = new GeometryFactory();
+
+            fde_polygon = (IPolygon)gfactory.CreateGeometry(i3dGeometryType.i3dGeometryPolygon, i3dVertexAttribute.i3dVertexAttributeZ);
+            fde_polygon.SpatialCRS = crs;
+
+            fde_point = (IPoint)gfactory.CreateGeometry(i3dGeometryType.i3dGeometryPoint, i3dVertexAttribute.i3dVertexAttributeZ);
+
+            fde_point.SetCoords(point.X, point.Y, point.Z, 0, 0);
+            fde_polygon.ExteriorRing.AppendPoint(fde_point);
+
+            fde_point.SetCoords(point.X + 10, point.Y, point.Z, 0, 0);
+            fde_polygon.ExteriorRing.AppendPoint(fde_point);
+
+            fde_point.SetCoords(point.X + 10, point.Y + 10, point.Z, 0, 0);
+            fde_polygon.ExteriorRing.AppendPoint(fde_point);
+
+            fde_point.SetCoords(point.X, point.Y + 10, point.Z, 0, 0);
+            fde_polygon.ExteriorRing.AppendPoint(fde_point);
+
+            surfaceSymbol = new SurfaceSymbolClass();
+            surfaceSymbol.Color = 0xFF0000FF;  // 蓝色
+
+            rpolygon = _axRenderControl.ObjectManager.CreateRenderPolygon(fde_polygon, surfaceSymbol);
+
+            _axRenderControl.Camera.FlyToObject(rpolygon.Guid, i3dActionCode.i3dActionFlyTo);
+        }
+        #endregion
 
         private void UnhighlightFeature(object obj, i3dModKeyMask modKeyMask = i3dModKeyMask.i3dModKeyDblClk)
         {
@@ -266,11 +473,17 @@ namespace CommonMapLib
         public void InitlizedCameraPosition(bool flag = false)
         {
             // 美都3dm初始位置
-            //double tilt = flag ? -90 : -33.85;
-            //SetCameraValues(121.30204548415803, 31.18139334303109, 331.7257668711245, heading: 317.2000527037274, tilt: tilt, isLookAt: false);
+            double tilt = flag ? -90 : -33.85;
+            SetCameraValues(121.30204548415803, 31.18139334303109, 331.7257668711245, heading: 317.2000527037274, tilt: tilt, isLookAt: false);
+        }
 
+        public void InitlizedGKDCameraPosition()
+        {
             // 国科大3dm初始位置
-            SetCameraValues(116.245185436104, 39.9071683998616, 4.65836078487337, 100.630121481486, -12.3758727789334, 0, 2000, false);
+            SetCameraValues(116.24467033505763, 39.9067384367435, 3.2176464665681124, 8.8422702994738636, 0, 0, 2000, false);
+
+            // 国科大广告牌位置
+            //SetCameraValues(116.245185436104, 39.9071683998616, 4.65836078487337, 100.630121481486, -12.3758727789334, 0, 2000, false);
         }
 
         public void SetCameraValues(double x, double y, double z, double heading = 0, double tilt = -60, double roll = 0, double distance = 2000, bool isLookAt = true)
@@ -320,8 +533,10 @@ namespace CommonMapLib
 
                 IRenderModelPoint rmp = objManager.CreateRenderModelPoint(pModelPoint, null);
                 if (rmp != null)
+                {
                     rmp.MaxVisibleDistance = 50000;
-                _axRenderControl.Camera.FlyToObject(rmp.Guid, i3dActionCode.i3dActionFlyTo);
+                    _axRenderControl.Camera.FlyToObject(rmp.Guid, i3dActionCode.i3dActionFlyTo);
+                }
 
                 pResFactory = null;
                 objManager = null;
@@ -335,6 +550,9 @@ namespace CommonMapLib
 
         public void ShowSkeletonAmimation(string xName)
         {
+            if (selectPoint == null)
+                return;
+
             string fullPath = Path.Combine(rootPath, xName);
 
             if (gfactory == null)
@@ -419,6 +637,34 @@ namespace CommonMapLib
             return position;
         }
 
+        /// <summary>
+        /// 生成gif动画
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        public void CreateRenderGif(Gif gif)
+        {
+            var point = gfactory.CreatePoint(i3dVertexAttribute.i3dVertexAttributeZ);
+            SetIPoint(point, gif.X, gif.Y, gif.Z);
+            IVector3 widthvec = new Vector3() { X = gif.WidthVecX, Y = gif.WidthVecY, Z = gif.WidthVecZ };
+            IVector3 heightvec = new Vector3() { X = gif.HeightVecX, Y = gif.HeightVecY, Z = gif.HeightVecZ };
+            CurveSymbol boundary = new CurveSymbol()
+            {
+                Color = 0x00FFFFFF
+            };
+            ISurfaceSymbol symbol = new SurfaceSymbol
+            {
+                Color = 0xDDFFFFFF,
+                BoundarySymbol = boundary,
+                ImageName = Path.GetFullPath($@"../../../data/GIF/{gif.GifName}"),
+            };
+            //var render = _axRenderControl.ObjectManager.CreateRenderTextureQuad(point, widthvec, heightvec, symbol);
+            //render.MaxVisibleDistance = 500;
+            //render.VisibleMask = i3dViewportMask.i3dViewAllNormalView;
+            //render.ForceCullMode = true;
+            //render.CullMode = i3dCullFaceMode.i3dCullNone; // 关闭背面裁剪
+        }
         #region 轨迹相关
 
         private IRenderPolyline renderPolyline;
@@ -428,7 +674,7 @@ namespace CommonMapLib
             set => renderPolyline = value;
         }
 
-        ICurveSymbol lineSymbol;
+        ICurveSymbol lineSymbol = null;
         public void CreatePolyline()
         {
             var line = (IPolyline)gfactory.CreateGeometry(i3dGeometryType.i3dGeometryPolyline, i3dVertexAttribute.i3dVertexAttributeZ);
@@ -497,7 +743,7 @@ namespace CommonMapLib
                 dynamicObj.Play();
         }
 
-        IMotionPath motionPath;
+        IMotionPath motionPath = null;
         IDynamicObject dynamicObj;
         IPolyline line;
         private void AddPointToMotionPath(List<double[]> coordinates)
@@ -722,6 +968,46 @@ namespace CommonMapLib
         public double Heading { get; set; }
         public double Tilt { get; set; }
         public double Roll { get; set; }
-        public double Second { get; set; } = 5;
+    }
+
+    public class Gif
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Z { get; set; }
+        public string GifName { get; set; }
+        public double WidthVecX { get; set; }
+        public double WidthVecY { get; set; }
+        public double WidthVecZ { get; set; }
+        public double HeightVecX { get; set; }
+        public double HeightVecY { get; set; }
+        public double HeightVecZ { get; set; }
+    }
+
+    /// <summary>
+    /// 创建类型
+    /// </summary>
+    public enum CreateObjType
+    {
+        [Description("创建文本")]
+        CreateLabel,
+
+        [Description("创建模型")]
+        CreateRenderModelPoint,
+
+        [Description("创建点")]
+        CreateRenderPoint,
+
+        [Description("创建线")]
+        CreateRenderPolyline,
+
+        [Description("创建多边形")]
+        CreateRenderPolygon,
+
+        [Description("创建POI")]
+        CreateRenderPOI,
+
+        [Description("创建固定广告牌")]
+        CreateFixedBillboard
     }
 }

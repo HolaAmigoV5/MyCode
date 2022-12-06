@@ -1,4 +1,5 @@
-﻿using CommonMapLib;
+﻿using Axi3dRenderEngine;
+using CommonMapLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,12 +17,20 @@ namespace TrajectoryMonitor
         MapOperation controlOperation = null;
         BaseRequestService service;
         string Url = "http://47.101.51.219:10000/api/Carrier/RealtimePositon";
+        AxRenderControl axRenderControl;
+
         public Form1()
         {
             InitializeComponent();
 
+            axRenderControl = new AxRenderControl();
+            axRenderControl.BeginInit();
+            axRenderControl.Dock = DockStyle.Fill;
+            splitContainer1.Panel2.Controls.Add(axRenderControl);
+            axRenderControl.EndInit();
+
             controlOperation = new MapOperation();
-            controlOperation.InitializationMapControl(axRenderControl1, "SH.3DM");
+            controlOperation.InitializationMapControl(axRenderControl, "SH.3DM");
             controlOperation.InitlizedCameraPosition();
 
             dateTimePicker1.Value = DateTime.Today.AddDays(-1);

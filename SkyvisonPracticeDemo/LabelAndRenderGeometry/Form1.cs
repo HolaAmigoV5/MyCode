@@ -1,4 +1,5 @@
-﻿using CommonLibrary;
+﻿using Axi3dRenderEngine;
+using CommonLibrary;
 using System;
 using System.Windows.Forms;
 
@@ -9,11 +10,19 @@ namespace LabelAndRenderGeometry
         AxRenderControlOperation controlOperation = null;
         private CheckBox check = null;
         private CheckBox checkShowOutline = null;
+        AxRenderControl axRenderControl;
 
         public Form1()
         {
             InitializeComponent();
-            controlOperation = new AxRenderControlOperation(this.axRenderControl1);
+
+            axRenderControl = new AxRenderControl();
+            axRenderControl.BeginInit();
+            axRenderControl.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Controls.Add(axRenderControl);
+            axRenderControl.EndInit();
+
+            controlOperation = new AxRenderControlOperation(axRenderControl);
             controlOperation.InitializationAxRenderControl();
             controlOperation.SetI3dObjectType();
             controlOperation.SetSelectMode("仅点选");

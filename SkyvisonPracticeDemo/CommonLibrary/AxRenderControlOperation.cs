@@ -89,11 +89,11 @@ namespace CommonLibrary
 
         public void SetI3dObjectType()
         {
-            string wkt =
-                "PROJCS[\"WenZhou\",GEOGCS[\"GCS_Beijing_1954\",DATUM[\"D_Beijing_1954\",SPHEROID[\"Krasovsky_1940\",6378245.0,298.3]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Gauss_Kruger\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",120.6666666666667],PARAMETER[\"Scale_Factor\",1.0],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]";
+            //string wkt =
+            //    "PROJCS[\"WenZhou\",GEOGCS[\"GCS_Beijing_1954\",DATUM[\"D_Beijing_1954\",SPHEROID[\"Krasovsky_1940\",6378245.0,298.3]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Gauss_Kruger\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",120.6666666666667],PARAMETER[\"Scale_Factor\",1.0],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]";
 
-            //crs = new CRSFactory().CreateFromWKT(_axRenderControl.GetCurrentCrsWKT()) as ISpatialCRS;
-            crs = new CRSFactory().CreateFromWKT(wkt) as ISpatialCRS;
+            crs = new CRSFactory().CreateFromWKT(_axRenderControl.GetCurrentCrsWKT()) as ISpatialCRS;
+            //crs = new CRSFactory().CreateFromWKT(wkt) as ISpatialCRS;
 
             //if (crs.CrsType == i3dCoordinateReferenceSystemType.i3dCrsGeographic)
             //    TYPE = i3dObjectType.i3dObjectTerrain;
@@ -853,7 +853,7 @@ namespace CommonLibrary
             if (gfactory == null)
                 gfactory = new GeometryFactory();
 
-            string tmpOSGPath = Path.Combine(rootPath, @"data\OSG\JGRW006w.OSG");
+            string tmpOSGPath = Path.Combine(rootPath, @"data\Model\JGRW006w.OSG");
             //string tmpOSGPath = Environment.CurrentDirectory + @"\Apartment\Apartment.osg";
             fde_modelpoint = gfactory.CreateGeometry(i3dGeometryType.i3dGeometryModelPoint, i3dVertexAttribute.i3dVertexAttributeZ) as IModelPoint;
             fde_modelpoint.SpatialCRS = crs;
@@ -889,7 +889,8 @@ namespace CommonLibrary
             };
             rpoint = _axRenderControl.ObjectManager.CreateRenderPoint(fde_point, pointSymbol);
 
-            _axRenderControl.Camera.FlyToObject(rpoint.Guid, i3dActionCode.i3dActionFlyTo);
+            if (rpoint != null)
+                _axRenderControl.Camera.FlyToObject(rpoint.Guid, i3dActionCode.i3dActionFlyTo);
         }
 
 

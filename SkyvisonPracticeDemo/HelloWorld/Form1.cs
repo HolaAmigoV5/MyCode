@@ -21,7 +21,7 @@ namespace HelloWorld
         private ISpatialCRS datasetCRS = null;
         private IGeometryFactory geoFactory = null;
 
-        private readonly string tmpSkyboxPath = @"C:\Program Files\LunCeTX\SkySceneryX64\skybox\";   //天空盒图片位置
+        private readonly string tmpSkyboxPath = @"C:\Program Files\LC\SkySceneryX64\skybox\";   //天空盒图片位置（SkyScenery安装位置）
         private ISkyBox skybox = null;
         #endregion
         public Form1()
@@ -83,7 +83,7 @@ namespace HelloWorld
                 if (setnames.Length == 0)
                     return;
                 IFeatureDataSet dataset = ds.OpenFeatureDataset(setnames[0]);
-                datasetCRS = dataset.SpatialReference;
+                //datasetCRS = dataset.SpatialReference;
                 string[] fcnames = (string[])dataset.GetNamesByType(i3dDataSetType.i3dDataSetFeatureClassTable);
                 if (fcnames.Length == 0)
                     return;
