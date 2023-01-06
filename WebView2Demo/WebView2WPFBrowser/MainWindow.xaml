@@ -197,7 +197,7 @@
                 <ImageBrush ImageSource="/assets/AppstartPageBackground.png"/>
             </Grid.Background>
 
-            <wv:WebView2 x:Name="webView" CreationProperties="{StaticResource EvergreenWebView2CreationProperties}" Source="https://www.bing.com/"/>
+            <wv:WebView2 x:Name="webView" CreationProperties="{StaticResource EvergreenWebView2CreationProperties}" Source="http://123.60.13.203:18080/#/login"/>
         </Grid>
     </DockPanel>
 </Window>

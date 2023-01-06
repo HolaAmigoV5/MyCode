@@ -73,7 +73,7 @@ namespace InteractMode
                 // 加载本地数据
                 ci.ConnectionType = i3dConnectionType.i3dConnectionFireBird2x;
 
-                string tmpFDBPath = Path.Combine(rootPath, "data\\3dm\\JD.3DM");
+                string tmpFDBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\3dm\JD.3dm";
                 ci.Database = tmpFDBPath;
             }
             else

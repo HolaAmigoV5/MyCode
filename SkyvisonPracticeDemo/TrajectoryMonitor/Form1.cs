@@ -43,7 +43,7 @@ namespace TrajectoryMonitor
         bool isLoadCar = false;
         private void button1_Click(object sender, EventArgs e)
         {
-            controlOperation.LoadCarModel("WetRubbishVehicle.osg");
+            controlOperation.LoadCarModel("");
             isLoadCar = true;
         }
 

@@ -38,8 +38,8 @@ namespace ShowVideoProjection
         {
             isNormal = !isNormal;
             button1.Text = isNormal ? "坐标拾取" : "漫游";
-            controlOperation.MeasureCoordinate(isNormal);
-            //controlOperation.SetMapModel(isNormal);
+            //controlOperation.MeasureCoordinate(isNormal);
+            controlOperation.SetMapModel(isNormal);
         }
 
         // 视频投射
@@ -78,7 +78,7 @@ namespace ShowVideoProjection
                 GifName = "hongqi.gif",
                 HeightVecX = 0,
                 HeightVecY = 0,
-                HeightVecZ = 10,
+                HeightVecZ = 8,
                 WidthVecX = 3.7,
                 WidthVecY = 0,
                 WidthVecZ = 0
@@ -87,16 +87,16 @@ namespace ShowVideoProjection
 
             Gif gif1 = new Gif()
             {
-                X = 116.2445039,
-                Y = 39.907048,
-                Z = 0.20545,
+                X = 116.244867995,
+                Y = 39.90684529,
+                Z = 0,
                 GifName = "g1.gif",
-                WidthVecX = 3.98,
+                WidthVecX = 2,
                 WidthVecY = 0,
                 WidthVecZ = 0,
                 HeightVecX = 0,
                 HeightVecY = 0,
-                HeightVecZ = 6.39
+                HeightVecZ = 3.2
             };
             controlOperation.CreateRenderGif(gif1);
 
@@ -104,14 +104,14 @@ namespace ShowVideoProjection
             {
                 X = 116.2448101,
                 Y = 39.90693597,
-                Z = 0.20545,
+                Z = 0,
                 GifName = "g2.gif",
-                WidthVecX = 4.78,
+                WidthVecX = 2.4,
                 WidthVecY = 0,
                 WidthVecZ = 0,
                 HeightVecX = 0,
                 HeightVecY = 0,
-                HeightVecZ = 7.3
+                HeightVecZ = 3.7
             };
             controlOperation.CreateRenderGif(gif2);
 
@@ -119,14 +119,14 @@ namespace ShowVideoProjection
             {
                 X = 116.24446902,
                 Y = 39.90699069,
-                Z = 0.20545,
+                Z = 0,
                 GifName = "g3.gif",
-                WidthVecX = 5.79,
+                WidthVecX = 2.9,
                 WidthVecY = 0,
                 WidthVecZ = 0,
                 HeightVecX = 0,
                 HeightVecY = 0,
-                HeightVecZ = 6.13
+                HeightVecZ = 3.07
             };
             controlOperation.CreateRenderGif(gif3);
         }

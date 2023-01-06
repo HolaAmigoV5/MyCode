@@ -659,11 +659,11 @@ namespace CommonMapLib
                 BoundarySymbol = boundary,
                 ImageName = Path.GetFullPath($@"../../../data/GIF/{gif.GifName}"),
             };
-            //var render = _axRenderControl.ObjectManager.CreateRenderTextureQuad(point, widthvec, heightvec, symbol);
-            //render.MaxVisibleDistance = 500;
-            //render.VisibleMask = i3dViewportMask.i3dViewAllNormalView;
-            //render.ForceCullMode = true;
-            //render.CullMode = i3dCullFaceMode.i3dCullNone; // 关闭背面裁剪
+            var render = _axRenderControl.ObjectManager.CreateRenderTextureQuad(point, widthvec, heightvec, symbol);
+            render.MaxVisibleDistance = 500;
+            render.VisibleMask = i3dViewportMask.i3dViewAllNormalView;
+            render.ForceCullMode = true;
+            render.CullMode = i3dCullFaceMode.i3dCullNone; // 关闭背面裁剪
         }
         #region 轨迹相关
 
