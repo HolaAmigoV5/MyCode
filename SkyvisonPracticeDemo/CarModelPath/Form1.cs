@@ -33,6 +33,7 @@ namespace CarModelPath
 
             axRenderControl1.RcObjectEditing += AxRenderControl1_RcObjectEditing;
             axRenderControl1.RcObjectEditFinish += AxRenderControl1_RcObjectEditFinish;
+            controlOperation.CallbackMsg += ControlOperation_CallbackMsg;
 
             symbol = new SimplePointSymbolClass() { FillColor = 0xAA0000FF, Size = 10 };
             offSetDis = Math.Sqrt(Math.Pow(xOffset, 2) + Math.Pow(yOffset, 2));
@@ -42,6 +43,11 @@ namespace CarModelPath
             };
 
             comboBox1.SelectedIndex = 0;
+        }
+
+        private void ControlOperation_CallbackMsg(string obj)
+        {
+            textBox1.Text = obj.Trim();
         }
 
         // 开始播放轨迹
@@ -95,6 +101,11 @@ namespace CarModelPath
         private void button6_Click(object sender, EventArgs e)
         {
             controlOperation.LoadCarModel(comboBox1.Text);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            controlOperation.AttachPlate(comboBox1.Text, "京A00001");
         }
 
         // 漫游模式
@@ -226,15 +237,12 @@ namespace CarModelPath
         private void button9_Click(object sender, EventArgs e)
         {
             isNormal = !isNormal;
-            if (isNormal)
-            {
-                axRenderControl1.InteractMode = i3dInteractMode.i3dInteractNormal;
-            }
-            else
-            {
-                axRenderControl1.InteractMode = i3dInteractMode.i3dInteractMeasurement;
-                axRenderControl1.MeasurementMode = i3dMeasurementMode.i3dMeasureCoordinate;
-            }
+            controlOperation.MeasureCoordinate(isNormal);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            controlOperation.IsGetPlatePos = checkBox1.Checked;
         }
 
         private void CreateRenderPoint(IPoint point)

@@ -1,14 +1,16 @@
 ﻿using BasicNavigation;
 using BootstrapperShell.Views;
+using Microsoft.Practices.Unity.Configuration;
 using ModuleA;
 using ModuleC;
 using ModuleD;
 using ModulePerson;
-using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
+using Prism.Unity;
 using PrismAndWPF.Core;
+using System.Configuration;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -23,6 +25,10 @@ namespace BootstrapperShell
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            // 引用Unity.Configuration 使用配置文件方式注入服务
+            UnityConfigurationSection section = (UnityConfigurationSection)ConfigurationManager.GetSection("unity");
+            section.Configure(containerRegistry.GetContainer());
+
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
         }
 

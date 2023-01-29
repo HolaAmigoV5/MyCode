@@ -244,7 +244,7 @@ namespace ShowVideoProjection
             this.tBoxY.Name = "tBoxY";
             this.tBoxY.Size = new System.Drawing.Size(184, 28);
             this.tBoxY.TabIndex = 9;
-            this.tBoxY.Text = "39.90721";
+            this.tBoxY.Text = "39.90681";
             // 
             // tBoxX
             // 
@@ -252,7 +252,7 @@ namespace ShowVideoProjection
             this.tBoxX.Name = "tBoxX";
             this.tBoxX.Size = new System.Drawing.Size(184, 28);
             this.tBoxX.TabIndex = 8;
-            this.tBoxX.Text = "116.245358";
+            this.tBoxX.Text = "116.2446769";
             // 
             // label4
             // 

@@ -129,6 +129,21 @@ namespace ShowVideoProjection
                 HeightVecZ = 3.07
             };
             controlOperation.CreateRenderGif(gif3);
+
+            Gif gif4 = new Gif()
+            {
+                X = 116.24462036,
+                Y = 39.90691804,
+                Z = 0,
+                GifName = "d2.gif",
+                WidthVecX = 5,
+                WidthVecY = 0,
+                WidthVecZ = 0,
+                HeightVecX = 0,
+                HeightVecY = 0,
+                HeightVecZ = 5
+            };
+            controlOperation.CreateRenderGif(gif4);
         }
     }
 }

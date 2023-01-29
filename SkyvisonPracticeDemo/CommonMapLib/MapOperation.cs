@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace CommonMapLib
 {
@@ -24,9 +25,6 @@ namespace CommonMapLib
         IVector3 scale;
 
         private readonly string rootPath = Path.GetFullPath(@"../../../data/Model/");
-        //private const string tmpFDBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\3dm\JD.3DM";
-        //private const string carBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\TrashCar\WetRubbishVehicle.osg";
-        private const string carBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\osg\WetRubbishVehicle.osg";
         private readonly string tmpSkyboxPath = @"C:\Program Files\LC\SkySceneryX64\skybox\";   //天空盒图片位置（SkyScenery安装位置）
         private const string WKT = "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]]," +
     "PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433],AUTHORITY[\"EPSG\",4326]]";
@@ -50,40 +48,46 @@ namespace CommonMapLib
         /// <param name="isPlanarTerrain">true:平面地形，false：地球形（默认）</param>
         public void InitializationMapControl(AxRenderControl axRenderControl, string _3dmname = "JD.3DM", bool isPlanarTerrain = false)
         {
-            _axRenderControl = axRenderControl ?? new AxRenderControl();
+            try
+            {
+                _axRenderControl = axRenderControl ?? new AxRenderControl();
 
-            gfactory = new GeometryFactory();
-            notationDic = new Dictionary<string, IDynamicObject>();
-            posOffSet = new Vector3() { X = 0, Y = 0, Z = 1.8 };
-            symbol = new SimplePointSymbolClass() { FillColor = 0xAA0000FF, Size = 10 };
+                gfactory = new GeometryFactory();
+                notationDic = new Dictionary<string, IDynamicObject>();
+                posOffSet = new Vector3() { X = 0, Y = 0, Z = 1.8 };
+                symbol = new SimplePointSymbolClass() { FillColor = 0xAA0000FF, Size = 10 };
 
-            scale = new Vector3();//创建向量
-            scale.Set(1, 1, 1);//设置模型比例尺
+                scale = new Vector3();//创建向量
+                scale.Set(1, 1, 1);//设置模型比例尺
 
-            // 初始化RenderControl控件
-            InitializeRenderControl(isPlanarTerrain);
+                // 初始化RenderControl控件
+                InitializeRenderControl(isPlanarTerrain);
 
-            // 设置天空盒
-            SetSkyBox(SkyBoxType.BTXY);
+                // 设置连接信息
+                SetConnectionInfo(_3dmname);
 
-            // 设置连接信息
-            SetConnectionInfo(_3dmname);
+                // 连接3DM并创建图层
+                Open3DMAndCreateFeatureLayer();
 
-            // 连接3DM并创建图层
-            Open3DMAndCreateFeatureLayer();
+                // 设置选择模式
+                SetSelectModeAndRegisterEvent();
 
-            // 设置选择模式
-            SetSelectModeAndRegisterEvent();
+                // 设置天空盒
+                SetSkyBox(SkyBoxType.BTXY);
 
-            SetSpatialCRS(isPlanarTerrain);
-
+                SetSpatialCRS(isPlanarTerrain);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void SetSpatialCRS(bool isPlanarTerrain)
         {
             CRSFactory crsFactory = new CRSFactory();
             crs = isPlanarTerrain == false ? crsFactory.CreateWGS84() :
-                crsFactory.CreateCRS(i3dCoordinateReferenceSystemType.i3dCrsUnknown) as ISpatialCRS;
+                crsFactory.CreateCRS(i3dCoordinateReferenceSystemType.i3dCrsProject) as ISpatialCRS;
         }
 
         /// <summary>
@@ -214,6 +218,8 @@ namespace CommonMapLib
             CallbackMsg?.Invoke(msg);
         }
 
+        public bool IsGetPlatePos { get; set; } = false;
+
         public CreateObjType ObjType { get; set; } = CreateObjType.CreateLabel;
         private void FeaturePickOrCreate(IPickResult pr, IPoint position)
         {
@@ -227,7 +233,8 @@ namespace CommonMapLib
                     msg = "拾取到" + label.Type + "类型，内容为" + label.Label.Text;
                     break;
                 case IRenderModelPointPickResult model:
-                    msg = "拾取到" + model.Type + "类型，模型名称为" + model.ModelPoint.ModelName;
+                    msg = IsGetPlatePos ? $"X={position.X - carVec.X}, Y={position.Y - carVec.Y}, Z={position.Z - carVec.Z}" :
+                        $"拾取到{model.Type}类型，模型名称为{model.ModelPoint.ModelName}";
                     break;
                 case IRenderPointPickResult point:
                     msg = "拾取到" + point.Type + "类型，大小为" + point.Point.Symbol.Size;
@@ -592,7 +599,8 @@ namespace CommonMapLib
         {
             if (video == null)
             {
-                var vUrl = Path.GetFullPath(@"../../../data/JiaDing.mp4");
+                //var vUrl = Path.GetFullPath(@"../../../data/JiaDing.mp4");
+                var vUrl = Path.GetFullPath(@"../../../data/Persion.mp4");
                 videoAngle = new EulerAngle();
 
                 videoPoint = gfactory.CreatePoint(i3dVertexAttribute.i3dVertexAttributeZ);
@@ -809,9 +817,14 @@ namespace CommonMapLib
         }
 
         IRenderModelPoint carModelPoint;
+        Guid currentCarGuid;
         double z = 1.8;
+        IVector3 carVec= new Vector3();
         public void LoadCarModel(string name)
         {
+            if (currentCarGuid != null)
+                _axRenderControl.ObjectManager.DeleteObject(currentCarGuid);
+
             //加载模型
             if (string.IsNullOrEmpty(name))
                 name = "hddk07car015.osg";
@@ -823,27 +836,77 @@ namespace CommonMapLib
 
             //modelpoint.SelfScale(0.1,0.1,0.1);
             modelpoint.SpatialCRS = crs;
-            IVector3 pos1 = new Vector3();
+            
             if (name == "WetRubbishVehicle_s.osg")
                 z = 0;
-            else
-                z = 1.8;
+
             if (selectPoint != null)
-                pos1.Set(selectPoint.X, selectPoint.Y, z);
+                carVec.Set(selectPoint.X, selectPoint.Y, z);
             else
             {
-                pos1.Set(121.29864020314436, 31.18334045401004, z);
+                carVec.Set(121.29864020314436, 31.18334045401004, z);
                 //pos1.Set(483728.30192234676, 3451679.6690112567, z);
             }
 
-            modelpoint.Position = pos1;//模型起始位置
+            modelpoint.Position = carVec;//模型起始位置
 
             if (name == "hddk07car020.osg")
                 modelpoint.Matrix33 = new float[9] { -0.6038073f, -0.7971303f, 0, 0.7971303f, -0.6038073f, 0, 0, 0, 1 };
 
             carModelPoint = _axRenderControl.ObjectManager.CreateRenderModelPoint(modelpoint, null);//显示模型
+            currentCarGuid = carModelPoint.Guid;
+            _axRenderControl.Camera.FlyToObject(currentCarGuid, i3dActionCode.i3dActionFollowAbove);
+        }
 
-            _axRenderControl.Camera.FlyToObject(carModelPoint.Guid, i3dActionCode.i3dActionFollowAbove);
+        /// <summary>
+        /// 设置车牌号码和车牌位置
+        /// </summary>
+        public void AttachPlate(string carName,string carNum)
+        {
+            string path = Path.GetFullPath($@"../../../data/CarMDB/{carName}");
+            IGeometryFactory geoFac = new GeometryFactory();//创建几何工厂
+            IModelPoint modelpoint = geoFac.CreateGeometry(i3dGeometryType.i3dGeometryModelPoint, i3dVertexAttribute.i3dVertexAttributeZ) as IModelPoint;// 构造ModelPoint
+            modelpoint.ModelName = path;   //将模型绑定到ModelPoint上
+            modelpoint.SpatialCRS = crs;
+            IVector3 pos1 = new Vector3();
+            pos1.Set(121.29864020314436, 31.18334045401004, z);
+            modelpoint.Position = pos1;
+
+            IRenderCar rcar = _axRenderControl.ObjectManager.CreateRenderCar(modelpoint, null);
+            rcar.CarNumber = carNum;
+            rcar.CarPlateStyle = i3dCarPlateStyle.i3dLargeCarPlate;
+            var frontPlate = SetCarFlontPlateABCPointVector();
+            var backPlate = SetCarBackPlateABCPointVector();
+            rcar.AttachPlate(frontPlate.Item1, frontPlate.Item2, frontPlate.Item3, backPlate.Item1, backPlate.Item2, backPlate.Item3);
+            _axRenderControl.Camera.FlyToObject(rcar.Guid, i3dActionCode.i3dActionFollowCockpit);
+        }
+
+        private (IVector3,IVector3,IVector3) SetCarFlontPlateABCPointVector()
+        {
+            IVector3 frontPlateA= new Vector3();
+            frontPlateA.Set(0.5, 1, -0.2);
+
+            IVector3 frontPlateB = new Vector3();
+            frontPlateB.Set(0.5, 1, 0.3);
+
+            IVector3 frontPlateC = new Vector3();
+            frontPlateC.Set(-0.5, 1, -0.2);
+
+            return (frontPlateA, frontPlateB, frontPlateC);
+        }
+
+        private (IVector3, IVector3, IVector3) SetCarBackPlateABCPointVector()
+        {
+            IVector3 backPlateA = new Vector3();
+            backPlateA.Set(-0.5, -8, -0.2);
+
+            IVector3 backPlateB = new Vector3();
+            backPlateB.Set(-0.5, -8, 0.3);
+
+            IVector3 backPlateC = new Vector3();
+            backPlateC.Set(0.5, -8, -0.2);
+
+            return (backPlateA, backPlateB, backPlateC);
         }
 
         // 实时轨迹

@@ -5,7 +5,7 @@ namespace Wby.Demo.Shared.HttpContact.Request
     /// <summary>
     /// 用户组模板信息请求
     /// </summary>
-    public class GroupModuleRequest:BaseRequest
+    public class GroupModuleRequest : BaseRequest
     {
         public override string Route { get => "api/Group/GetMenuModules"; }
     }

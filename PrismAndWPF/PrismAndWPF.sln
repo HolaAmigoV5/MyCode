@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33103.201
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33214.272
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetEasyCloudMusic", "NetEasyCloudMusic\NetEasyCloudMusic.csproj", "{92D950D6-1F92-4E6E-B12E-EBA37A30FB84}"
 EndProject
@@ -45,7 +45,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerListView", "Custome
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CEFWebBrowser", "CEFWebBrowser\CEFWebBrowser.csproj", "{22CCFDFF-CFDA-45CA-A2B2-CD8A955E9740}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpClientFactoryInWPF", "HttpClientFactoryInWPF\HttpClientFactoryInWPF.csproj", "{C675DDA0-4FF8-4766-955D-7C4EA80ADB8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpClientFactoryInWPF", "HttpClientFactoryInWPF\HttpClientFactoryInWPF.csproj", "{C675DDA0-4FF8-4766-955D-7C4EA80ADB8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismDemo.Services", "PrismDemo.Services\PrismDemo.Services.csproj", "{714A3837-22F0-4D57-B426-FFACA8E637E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -137,6 +139,10 @@ Global
 		{C675DDA0-4FF8-4766-955D-7C4EA80ADB8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C675DDA0-4FF8-4766-955D-7C4EA80ADB8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C675DDA0-4FF8-4766-955D-7C4EA80ADB8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714A3837-22F0-4D57-B426-FFACA8E637E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714A3837-22F0-4D57-B426-FFACA8E637E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714A3837-22F0-4D57-B426-FFACA8E637E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{714A3837-22F0-4D57-B426-FFACA8E637E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,6 +156,7 @@ Global
 		{0A67E11E-956D-4CC5-820F-83BF8208DD31} = {B08FD1EC-0233-4D6C-809A-6F2FC748C79A}
 		{D4588BD6-6C2F-48FD-B29C-09A71B0CD772} = {B08FD1EC-0233-4D6C-809A-6F2FC748C79A}
 		{5187967A-2CDF-43EE-9E90-49D89E6892D4} = {B08FD1EC-0233-4D6C-809A-6F2FC748C79A}
+		{714A3837-22F0-4D57-B426-FFACA8E637E5} = {B08FD1EC-0233-4D6C-809A-6F2FC748C79A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0151A483-812E-41F0-9234-E82D3F419841}

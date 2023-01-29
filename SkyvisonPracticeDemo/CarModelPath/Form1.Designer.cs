@@ -39,9 +39,13 @@ namespace CarModelPath
             this.button8 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.axRenderControl1 = new Axi3dRenderEngine.AxRenderControl();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -65,11 +69,14 @@ namespace CarModelPath
             // 
             this.splitContainer1.Panel2.Controls.Add(this.axRenderControl1);
             this.splitContainer1.Size = new System.Drawing.Size(1798, 846);
-            this.splitContainer1.SplitterDistance = 97;
+            this.splitContainer1.SplitterDistance = 164;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.button9);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.button2);
@@ -78,12 +85,13 @@ namespace CarModelPath
             this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.button10);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1798, 97);
+            this.groupBox1.Size = new System.Drawing.Size(1798, 164);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "操作";
@@ -102,6 +110,9 @@ namespace CarModelPath
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "WashSweepVehicle_Ele.osg",
+            "WashSweepVehicle.osg",
+            "WetRubbishVehicle.osg",
             "Box001.osg",
             "Box002.osg",
             "Box003.osg",
@@ -195,9 +206,19 @@ namespace CarModelPath
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(49, 99);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(126, 34);
+            this.button10.TabIndex = 0;
+            this.button10.Text = "加载车牌模型";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(660, 24);
+            this.button6.Location = new System.Drawing.Point(660, 23);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(107, 34);
             this.button6.TabIndex = 0;
@@ -221,8 +242,35 @@ namespace CarModelPath
             this.axRenderControl1.Enabled = true;
             this.axRenderControl1.Location = new System.Drawing.Point(0, 0);
             this.axRenderControl1.Name = "axRenderControl1";
-            this.axRenderControl1.Size = new System.Drawing.Size(1798, 745);
+            this.axRenderControl1.Size = new System.Drawing.Size(1798, 678);
             this.axRenderControl1.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(369, 99);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(910, 28);
+            this.textBox1.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(265, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 18);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "车牌坐标：";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(1389, 102);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(142, 22);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "拾取车牌坐标";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Form1
             // 
@@ -237,6 +285,7 @@ namespace CarModelPath
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axRenderControl1)).EndInit();
             this.ResumeLayout(false);
 
@@ -257,6 +306,10 @@ namespace CarModelPath
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
