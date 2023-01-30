@@ -34,48 +34,6 @@ DotNetCore作为全新一套.Net框架，众多优点不必多说。跟着学就
 
 **DotNetCore详情**：[Asp.Net Core](NetCoreDevPractice/ASP.NetCore.md)
 
-## PrismAndWPF
-
-Prism框架和WPF的复习学习代码。跟着痕迹大神做了几个Demo。直接上图吧。
-
-![WPF](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WPF.png)
-
-![Prism](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/Prism.png)
-
-![WPFDemo1](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WPFDemo1.png)
-
-![WPFDemo2](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WPFDemo2.png)
-
-![WPFDemo3](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WPFDemo3.png)
-
-![WPFDemo4](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WPFDemo4.png)
-
-![WPFDemo5](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WPFDemo5.png)
-
-![WPFDemo6](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WPFDemo6.png)
-
-![WPFDemo7](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WPFDemo7.png)
-
-![ToDo](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/ToDo.png)
-
-## Wby.Demo
-
-这是一个实战项目。涉及到的技术有DotNet 5，WebApi，EFCore，WPF，Prism，MaterialDesign，MS.ToolkitMvvm，Autofac，Unity，NLog等。依然参考的是痕迹大神的开源项目，使用Prism框架进行了重构，而且通过使用一个自定义控件实现模板页设计，极大的简化了代码结构。
-
-**个人感悟**：使用Prism框架可以使代码结构更清晰，对比MvvmLight虽然轻量，但是需要做的事情更多。使用自定义控件实现一个通用的模板界面还是一件很爽的事情，极大的减少了代码量，代码复用是一种很好的偷懒方式。
-
-### 界面设计图
-
-![WbyDemoLogin](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WbyDemoLogin.png)
-
-![WbyDemoMain](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WbyDemoMain.gif)
-
-![WbyDemoAuth](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WbyDemoAuth.gif)
-
-![WbyDemoOther](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WbyDemoOther.gif)
-
-![WbyDemoLogOut](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WbyDemoLogOut.png)
-
 ### UML设计图
 
 **登录模块**
