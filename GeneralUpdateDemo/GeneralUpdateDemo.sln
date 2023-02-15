@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33318.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralUpdateDemo.AspNetCore", "GeneralUpdateDemo.AspNetCore\GeneralUpdateDemo.AspNetCore.csproj", "{7E409C82-591C-4B16-8C52-33F4579935E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneralUpdateDemo.AspNetCore", "GeneralUpdateDemo.AspNetCore\GeneralUpdateDemo.AspNetCore.csproj", "{7E409C82-591C-4B16-8C52-33F4579935E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralUpdateDemo.Client", "GeneralUpdateDemo.Client\GeneralUpdateDemo.Client.csproj", "{4D7AC264-65E8-421F-B1AA-E26D307F6EEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneralUpdateDemo.Client", "GeneralUpdateDemo.Client\GeneralUpdateDemo.Client.csproj", "{4D7AC264-65E8-421F-B1AA-E26D307F6EEE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneralUpdateDemo.PacketTool", "GeneralUpdateDemo.PacketTool\GeneralUpdateDemo.PacketTool.csproj", "{326DE6B9-4C42-4ADC-8ABB-D39802F7DB85}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneralUpdateDemo.Infrastructure", "GeneralUpdateDemo.Infrastructure\GeneralUpdateDemo.Infrastructure.csproj", "{C3A0DB88-B91B-4990-99CF-E6D76D0C4552}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneralUpdateDemo.Domain", "GeneralUpdateDemo.Domain\GeneralUpdateDemo.Domain.csproj", "{DDD460BC-1540-4EBF-8EC5-DECD50B87BB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralUpdateDemo.Upgrade", "GeneralUpdateDemo.Upgrade\GeneralUpdateDemo.Upgrade.csproj", "{8F4F26FC-7069-4F61-93F4-240E831BE5D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,22 @@ Global
 		{4D7AC264-65E8-421F-B1AA-E26D307F6EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D7AC264-65E8-421F-B1AA-E26D307F6EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D7AC264-65E8-421F-B1AA-E26D307F6EEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{326DE6B9-4C42-4ADC-8ABB-D39802F7DB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{326DE6B9-4C42-4ADC-8ABB-D39802F7DB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{326DE6B9-4C42-4ADC-8ABB-D39802F7DB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{326DE6B9-4C42-4ADC-8ABB-D39802F7DB85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3A0DB88-B91B-4990-99CF-E6D76D0C4552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A0DB88-B91B-4990-99CF-E6D76D0C4552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A0DB88-B91B-4990-99CF-E6D76D0C4552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A0DB88-B91B-4990-99CF-E6D76D0C4552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDD460BC-1540-4EBF-8EC5-DECD50B87BB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDD460BC-1540-4EBF-8EC5-DECD50B87BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDD460BC-1540-4EBF-8EC5-DECD50B87BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDD460BC-1540-4EBF-8EC5-DECD50B87BB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F4F26FC-7069-4F61-93F4-240E831BE5D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F4F26FC-7069-4F61-93F4-240E831BE5D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F4F26FC-7069-4F61-93F4-240E831BE5D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F4F26FC-7069-4F61-93F4-240E831BE5D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

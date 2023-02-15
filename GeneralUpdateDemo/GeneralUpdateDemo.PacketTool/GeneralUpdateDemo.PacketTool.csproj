@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+	  <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\p1.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GeneralUpdate.Differential" Version="1.3.2" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GeneralUpdateDemo.Domain\GeneralUpdateDemo.Domain.csproj" />
+    <ProjectReference Include="..\GeneralUpdateDemo.Infrastructure\GeneralUpdateDemo.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\p1.jpg" />
+  </ItemGroup>
+
+</Project>

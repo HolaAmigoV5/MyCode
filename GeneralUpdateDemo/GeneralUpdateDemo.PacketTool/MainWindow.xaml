@@ -1,0 +1,84 @@
+﻿<Window x:Class="GeneralUpdateDemo.PacketTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Title="MainWindow" Height="600" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Image Source="Images/p1.jpg" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <TextBlock Text="Source path :" VerticalAlignment="Center" Width="80" />
+            <TextBox Width="400" Height="30" Margin="3 0 3 0" Text="{Binding SourcePath}"  materialDesign:HintAssist.Hint="旧版本文件夹目录" />
+            <Button Width="110" Height="25" Content="选择文件夹" Command="{Binding SelectFolderCommand}" CommandParameter="Source"/>
+            <TextBlock Text="*" Foreground="Red" VerticalAlignment="Center" ToolTip="必填项"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <TextBlock Text="Target path :" VerticalAlignment="Center" Width="80" />
+            <TextBox Width="400" Height="30" Margin="3 0 3 0" Text="{Binding TargetPath}" materialDesign:HintAssist.Hint="新版本文件夹目录"/>
+            <Button Width="110" Height="25" Content="选择文件夹" Command="{Binding SelectFolderCommand}" CommandParameter="Target"/>
+            <TextBlock Text="*" Foreground="Red" VerticalAlignment="Center" ToolTip="必填项"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <TextBlock Text="Patch  path :" VerticalAlignment="Center"  Width="80" />
+            <TextBox Width="400" Height="30" Margin="3 0 3 0" Text="{Binding PatchPath}" materialDesign:HintAssist.Hint="补丁文件夹目录"/>
+            <Button Width="110" Height="25" Content="选择文件夹" Command="{Binding SelectFolderCommand}" CommandParameter="Patch"/>
+            <TextBlock Text="*" Foreground="Red" VerticalAlignment="Center" ToolTip="必填项"/>
+        </StackPanel>
+        <StackPanel Margin="0 0 120 0" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Packet name :" VerticalAlignment="Center"/>
+            <TextBox Width="400" Height="30" Margin="9 0 3 0" Text="{Binding PacketName, Mode=TwoWay}" />
+            <TextBlock Text="*" Foreground="Red" VerticalAlignment="Center" ToolTip="必填项"/>
+        </StackPanel>
+        <StackPanel Margin="0 0 85 0" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Format :" VerticalAlignment="Center"/>
+            <ComboBox Width="400" Height="30" Margin="9 0 3 0" ItemsSource="{Binding Formats}" SelectedItem="{Binding CurrentFormat}"/>
+            <TextBlock Text="*" Foreground="Red" VerticalAlignment="Center" ToolTip="必填项"/>
+        </StackPanel>
+        <StackPanel Margin="0 0 100 0" Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Encoding :" VerticalAlignment="Center"/>
+            <ComboBox Width="400" Height="30" Margin="9 0 3 0" SelectedIndex="0" ItemsSource="{Binding Encodings}" SelectedItem="{Binding CurrentEncoding}"/>
+            <TextBlock Text="*" Foreground="Red" VerticalAlignment="Center" ToolTip="必填项"/>
+        </StackPanel>
+        <StackPanel Margin="0 0 135 0" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Client app key :" VerticalAlignment="Center"/>
+            <TextBox Width="400" Height="30" Margin="9 0 3 0" Text="{Binding CurrentClientAppKey}" />
+        </StackPanel>
+        <StackPanel Margin="0 0 115 0" Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Client type :" VerticalAlignment="Center"/>
+            <ComboBox Width="400" Height="30" Margin="9 0 3 0" ItemsSource="{Binding AppTypes}" SelectedItem="{Binding CurrnetAppType}"/>
+        </StackPanel>
+        <StackPanel Margin="0 0 110 0" Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Server url :" VerticalAlignment="Center"/>
+            <TextBox Width="400" Height="30" Margin="9 0 3 0" Text="{Binding Url}" IsEnabled="{Binding ElementName=ckb, Path=IsChecked}"/>
+        </StackPanel>
+        <StackPanel Margin="0 0 145 0" Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Currnet version :" VerticalAlignment="Center"/>
+            <TextBox Width="400" Height="30" Margin="9 0 3 0" Text="{Binding CurrentVersion}" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="11" Orientation="Horizontal">
+            <Button HorizontalAlignment="Center" Content="Build" Width="110" Height="35" Command="{Binding BuildCommand}" CommandParameter="{Binding ElementName=sb, Path=MessageQueue}"/>
+            <CheckBox x:Name="ckb" Margin="10 0 0 0" Content="Publish" IsChecked="{Binding IsPublish}"/>
+        </StackPanel>
+
+        <materialDesign:Snackbar x:Name="sb" MessageQueue="{materialDesign:MessageQueue}" Grid.Row="11" />
+
+    </Grid>
+</Window>

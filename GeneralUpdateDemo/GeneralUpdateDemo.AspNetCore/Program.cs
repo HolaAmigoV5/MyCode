@@ -109,7 +109,7 @@ namespace GeneralUpdateDemo.AspNetCore
 
             string GetAppSecretKey()
             {
-                return "B8A7FADD-386C-46B0-B283-C9F963420C7C";
+                return "41A54379-C7D6-4920-8768-21A3468572E5";
             }
         }
     }

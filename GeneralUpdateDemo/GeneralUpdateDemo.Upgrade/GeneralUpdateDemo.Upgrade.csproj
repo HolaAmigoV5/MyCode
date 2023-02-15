@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GeneralUpdate.ClientCore" Version="2.8.10" />
+    <None Remove="Images\backgroundImg.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GeneralUpdate.Core" Version="4.11.20" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\backgroundImg.png" />
   </ItemGroup>
 
 </Project>

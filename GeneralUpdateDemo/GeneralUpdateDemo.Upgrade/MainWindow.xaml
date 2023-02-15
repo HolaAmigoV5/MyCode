@@ -1,0 +1,35 @@
+﻿<Window x:Class="GeneralUpdateDemo.Upgrade.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GeneralUpdateDemo.Upgrade"
+        mc:Ignorable="d"
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Title="MainWindow" Height="300" Width="500" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ImageBrush ImageSource="Images\backgroundImg.png" x:Key="img_bg" />
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="{DynamicResource img_bg}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderThickness="0 0 0 2" BorderBrush="White">
+            <TextBlock Padding="10 0 0 0" FontSize="20"  Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" Text="升级程序" />
+        </Border>
+
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                  Text="{Binding MainText}" Foreground="{Binding MainTextColor}"
+                                  FontSize="30"/>
+        <StackPanel Grid.Row="2">
+            <ProgressBar  Value="{Binding HandledCount}" Height="3" Maximum="{Binding TotalCount}" />
+            <TextBlock Margin="2,4" TextTrimming="CharacterEllipsis" Foreground="Coral" Text="{Binding HandleText}" />
+        </StackPanel>
+    </Grid>
+</Window>
