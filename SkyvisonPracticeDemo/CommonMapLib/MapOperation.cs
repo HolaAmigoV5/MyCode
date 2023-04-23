@@ -1,6 +1,7 @@
 ﻿using Axi3dRenderEngine;
 using i3dCommon;
 using i3dFdeCore;
+using i3dFdeDataInterop;
 using i3dFdeGeometry;
 using i3dMath;
 using i3dRenderEngine;
@@ -8,8 +9,11 @@ using i3dResource;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace CommonMapLib
@@ -26,11 +30,19 @@ namespace CommonMapLib
 
         private readonly string rootPath = Path.GetFullPath(@"../../../data/Model/");
         private readonly string tmpSkyboxPath = @"C:\Program Files\LC\SkySceneryX64\skybox\";   //天空盒图片位置（SkyScenery安装位置）
-        private const string WKT = "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]]," +
-    "PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433],AUTHORITY[\"EPSG\",4326]]";
+        //private const string WKT = "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]]," +
+    //"PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433],AUTHORITY[\"EPSG\",4326]]";
 
+        private const string WKT = "PROJCS[\"CGCS2000_3_degree_Gauss_Kruger_CM_114E\",GEOGCS[\"GCS_China_Geodetic_Coordinate_System_2000\",DATUM[\"D_unknown\",SPHEROID[\"unretrievable_using_WGS84\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"false_easting\",500000.0],PARAMETER[\"false_northing\",0.0],PARAMETER[\"central_meridian\",114.0],PARAMETER[\"scale_factor\",1.0],PARAMETER[\"latitude_of_origin\",0.0],UNIT[\"Meter\",1.0]]";
+        private const uint modifyColor = 0xff191919;
         private bool _CTRL = false;
 
+        private Dictionary<string, IFeatureLayer> fls = new Dictionary<string, IFeatureLayer>();
+        public Dictionary<string, IFeatureLayer> Fls
+        {
+            get { return fls; }
+            set { fls=value; }
+        }
         /// <summary>
         /// 标记拾取时是否支持“ctrl”键用于多选
         /// </summary>
@@ -85,9 +97,12 @@ namespace CommonMapLib
 
         private void SetSpatialCRS(bool isPlanarTerrain)
         {
-            CRSFactory crsFactory = new CRSFactory();
+            var crsFactory = new CRSFactory();
+            //crs = isPlanarTerrain == false ? crsFactory.CreateWGS84() :
+            //    crsFactory.CreateCRS(i3dCoordinateReferenceSystemType.i3dCrsProject) as ISpatialCRS;
+
             crs = isPlanarTerrain == false ? crsFactory.CreateWGS84() :
-                crsFactory.CreateCRS(i3dCoordinateReferenceSystemType.i3dCrsProject) as ISpatialCRS;
+               crsFactory.CreateFromWKT(WKT) as ISpatialCRS;
         }
 
         /// <summary>
@@ -118,25 +133,30 @@ namespace CommonMapLib
             return Path.Combine(@"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\3dm", mapname);
         }
 
+        IDataSource ds;
+        string dsName;
         private void Open3DMAndCreateFeatureLayer()
         {
             try
             {
                 var dsFactory = new DataSourceFactory();
-                var ds = dsFactory.OpenDataSource(_ci);
+                ds = dsFactory.OpenDataSource(_ci);
 
                 string[] setnames = (string[])ds.GetFeatureDatasetNames();
                 if (setnames == null || setnames.Length == 0) return;
 
                 foreach (string name in setnames)
                 {
+                    dsName = name;
                     var dataSet = ds.OpenFeatureDataset(name);
                     var fcnames = (string[])dataSet.GetNamesByType(i3dDataSetType.i3dDataSetFeatureClassTable);
                     if (fcnames == null || fcnames.Length == 0) continue;
 
                     foreach (string fcname in fcnames)
                     {
-                        ReadFieldAndDrawMap(dataSet, fcname);
+                        var fc = dataSet.OpenFeatureClass(fcname);
+                        DrawMapByFc(fc, fcname);
+                        SetLookAt(fc);
                     }
                 }
             }
@@ -146,13 +166,14 @@ namespace CommonMapLib
             }
         }
 
-        private void ReadFieldAndDrawMap(IFeatureDataSet dataSet, string fcname)
+        private void DrawMapByFc(IFeatureClass fc, string fcname, string geoField = "Geometry")
         {
-            IFeatureClass fc = dataSet.OpenFeatureClass(fcname);
-            IFeatureLayer featureLayer = _axRenderControl.ObjectManager.CreateFeatureLayer(fc, "Geometry", null, null);
-            SetLookAt(fc);
+            var featureLayer = _axRenderControl.ObjectManager.CreateFeatureLayer(fc, geoField, null, null);
             if (featureLayer != null)
                 featureLayer.MaxVisibleDistance = 50000;
+
+            if (!fls.ContainsKey(fcname))
+                fls.Add(fcname, featureLayer);
         }
 
         private void SetLookAt(IFeatureClass fc)
@@ -1021,6 +1042,524 @@ namespace CommonMapLib
             rPolyline.HeightStyle = i3dHeightStyle.i3dHeightAbsolute;
         }
         #endregion
+
+        #region Shp文件相关
+        public (int, string) UpLoadShapFile(string shpPath)
+        {
+            int count = 0;
+            if (!File.Exists(shpPath) || ds == null)
+                return (count, $"不存在{shpPath}文件！");
+            var di = GetConnection(shpPath);
+            if (di == null)
+                return (count, $"执行方法{nameof(GetConnection)}错误！");
+
+            string fileName = Path.GetFileNameWithoutExtension(shpPath);
+            ILayerInfo layer = di.LayersInfo[0];
+            IFieldInfo geoField = layer.FieldInfos.Get(layer.FieldInfos.IndexOf("Geometry"));
+            if (geoField == null || geoField.GeometryDef == null)
+                return (count, $"执行方法{nameof(UpLoadShapFile)}错误！");
+
+            try
+            {
+                var fcList = ImportFC(di, ds, dsName, fileName);
+                return fcList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void PullupBlock(string fcName, string fieldName)
+        {
+            if (HasFeatureClass(ds, dsName, fcName, out IFeatureClass fc))
+            {
+                IFieldInfo fi = new FieldInfoClass()
+                {
+                    Name = "ColumnsVectorModel",
+                    FieldType = i3dFieldType.i3dFieldGeometry,
+                    Length = 200,
+                    RegisteredRenderIndex = true,
+                    GeometryDef = new GeometryDefClass()
+                    {
+                        HasZ = true,
+                        GeometryColumnType = i3dGeometryColumnType.i3dGeometryColumnModelPoint
+                    }
+                };
+
+                // 先删除一下
+                _axRenderControl.ObjectManager.DeleteObject(Fls[fcName].Guid);
+
+                AddFieldToFeatureClass(fc, "ColumnsVectorModel", fi);
+
+                _axRenderControl.PauseRendering(false);
+                fc.SetRenderIndexEnabled("ColumnsVectorModel", false);
+                fc.SetRenderIndexEnabled("Geometry", true);
+
+                ds.StartEditing();
+                FillFieldValueToFeatureClass(fc, fieldName);
+                ds.StopEditing(true);
+                //fc.RebuildRenderIndex("ColumnsVectorModel", i3dRenderIndexRebuildType.i3dRenderIndexRebuildWithData);
+                _axRenderControl.ResumeRendering();
+                _axRenderControl.FeatureManager.RefreshFeatureClass(fc);
+
+                // 地图重绘
+                DrawMapByFc(fc, fc.AliasName, "ColumnsVectorModel");
+            }
+        }
+
+        public void CreateTerrainLayers(string path)
+        {
+            if (File.Exists(path))
+            {
+                bool b = _axRenderControl.Terrain.RegisterTerrain(path, "");
+            }
+        }
+
+        /// <summary>
+        /// 绑定刷新listView
+        /// </summary>
+        /// <param name="listView"></param>
+        public void RebindingListView(ListView listView)
+        {
+            if (fls != null && listView != null)
+            {
+                if (listView.Items.Count > 0)
+                    listView.Items.Clear();
+                foreach (var item in fls.Keys)
+                {
+                    listView.Items.Add(new ListNode(item, fls[item]) { Checked = true });
+                }
+            }
+        }
+
+        public void LookAtEnvelope(ListNode item)
+        {
+            if (item != null && item.layer != null)
+                _axRenderControl.Camera.LookAtEnvelope(item.layer.Envelope);
+        }
+
+        private void FillFieldValueToFeatureClass(IFeatureClass fc, string floorName)
+        {
+            var cursor = fc.Update(new QueryFilterClass());
+            var res = fc.FeatureDataSet as IResourceManager;
+            IRowBuffer row;
+            var floorNumIndex = fc.GetFields().IndexOf(floorName);
+            if (floorNumIndex < 0)
+                return;
+
+            int posModelPoint = fc.GetFields().IndexOf("ColumnsVectorModel");
+            while ((row = cursor.NextRow()) != null)
+            {
+                try
+                {
+                    int nPose = fc.GetFields().IndexOf("Geometry");
+                    var geo = (IGeometry)row.GetValue(nPose);
+                    if (geo == null)
+                        continue;
+
+                    var type = geo.GeometryType;
+                    if (type == i3dGeometryType.i3dGeometryPolygon)
+                    {
+                        var polygon = geo as IPolygon;
+                        var floorNum = int.Parse(row.GetValue(floorNumIndex).ToString() ?? "0");
+                        var _geoConvert = new GeometryConvertorClass();
+                        _geoConvert.ExtrudePolygonToModel(polygon, floorNum, 3, 0, i3dRoofType.i3dRoofFlat,
+                            string.Empty, string.Empty, out IModelPoint modelPoint, out IModel model);
+
+                        //UpdateModelColor(model);
+                        modelPoint.Z = 100;
+                        if (modelPoint != null)
+                            row.SetValue(posModelPoint, modelPoint);
+
+                        cursor.UpdateRow(row);
+                        
+                        res.AddModel(modelPoint.ModelName, model, null);
+                        System.Diagnostics.Debug.WriteLine($"更新位置{modelPoint.ModelName}成功！\r\n");
+                    }
+                }
+                catch (COMException ex)
+                {
+                    throw ex;
+                }
+            }
+            if (cursor != null)
+            {
+                Marshal.ReleaseComObject(cursor);
+            }
+        }
+
+
+        private void UpdateModelColor(IModel model)
+        {
+            if (model != null)
+            {
+                for (int i = 0; i < model.GroupCount; i++)
+                {
+                    var gdg = model.GetGroup(i);
+                    if(gdg!=null && gdg.PrimitiveCount > 0)
+                    {
+                        for (int j = 0; j < gdg.PrimitiveCount; j++)
+                        {
+                            var gdp = gdg.GetPrimitive(j);
+                            gdp.Material.DiffuseColor = modifyColor;
+                            gdp.Material.EnableLight = true;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        private IDataInterop GetConnection(string filePath)
+        {
+            if (!File.Exists(filePath))
+                return null;
+            PropertySet ps = new PropertySet();
+            DataInteropFactory factory = new DataInteropFactory();
+            IDataInterop di = null;
+            string exten = Path.GetExtension(filePath).ToLower();
+            if (exten == ".shp")
+            {
+                ps.SetProperty("FILENAME", filePath);
+                di = factory.CreateDataInterop(i3dDataConnectionType.i3dOgrConnectionShp, ps);
+            }
+            return di;
+        }
+
+        private (int,string) ImportFC(IDataInterop di, IDataSource ds,string dsName, string fileName)
+        {
+            int nCount = 0;
+            string msg = "成功！";
+            try
+            {
+                //string dsWkt = crs.AsWKT();
+                ILayerInfoCollection layerInfos = di.LayersInfo;
+                for (int i = 0; i < layerInfos.Count; i++)
+                {
+                    var layer = layerInfos[i];
+                    //// 检查空间参考是否一致
+                    //if (!CompareCRS(layer.CrsWKT, dsWkt))
+                    //{
+                    //    msg = "导入的shp文件空间参考与3dm不一致！";
+                    //    break;
+                    //}
+
+                    string fcName = $"UP_{DateTime.Now.Millisecond}_{fileName}";
+                    var fc = CreateFeatureClass(ds, dsName, fcName, layer.FieldInfos);
+                    if (fc != null)
+                    {
+                        fc.AliasName = layer.Name;
+                        // 开始导入
+                        fc.LockType = i3dLockType.i3dLockExclusiveSchema;
+                        int n = di.ImportLayer(fc, "Geometry", null);
+                        fc.LockType = i3dLockType.i3dLockSharedSchema;
+
+                        // 添加渲染索引
+                        //BuildRenderIndex(fc, "Geometry", 500);
+                        nCount += n;
+
+                        // 地图重绘
+                        DrawMapByFc(fc, fcName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return (nCount, msg);
+        }
+
+        /// <summary>
+        /// 添加指定名称字段
+        /// </summary>
+        /// <param name="fc">要素类</param>
+        /// <param name="fieldName">字段名称</param>
+        /// <param name="fieldType">字段类型</param>
+        /// <param name="defaultValue">默认值</param>
+        /// <param name="nullable">是否可空</param>
+        /// <param name="registeredRenderIndex">是否注册渲染索引</param>
+        private void AddFieldToFetureClass(IFeatureClass fc, string fieldName, IFieldInfo field)
+        {
+            if (fc == null)
+                return;
+
+            // 如果存在则先删除
+            if (fc.GetFields().IndexOf(fieldName) != -1)
+                fc.DeleteField(fieldName);
+
+            fc.AddField(field);
+        }
+
+        /// <summary>
+        /// 添加指定名称字段
+        /// </summary>
+        /// <param name="fc">要素类</param>
+        /// <param name="fieldName">字段名称</param>
+        /// <param name="fi">要添加的字段</param>
+        private void AddFieldToFeatureClass(IFeatureClass fc, string fieldName, IFieldInfo fi)
+        {
+            if (fc == null)
+                return;
+
+            try
+            {
+                // 如果存在则不添加
+                if (fc.GetFields().IndexOf(fieldName) != -1)
+                    return;
+
+                fc.LockType = i3dLockType.i3dLockExclusiveSchema;
+                fc.AddField(fi);
+                fc.LockType = i3dLockType.i3dLockSharedSchema;
+
+                //BuildSpatialIndexIfNotHas(fc, fieldName);
+                //BuildRenderIndexIfNotHas(fc, fieldName);
+
+            }
+            catch (COMException ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void BuildSpatialIndexIfNotHas(IFeatureClass fc, string fieldName)
+        {
+            var gridCollection = fc.GetSpatialIndexInfos();
+            if (gridCollection != null && gridCollection.Count > 0)
+            {
+                bool hasGrid = false;
+                for (int i = 0; i < gridCollection.Count; i++)
+                {
+                    var index = gridCollection[i];
+                    if (index.IndexType == i3dIndexType.i3dIndexGrid)
+                    {
+                        if ((index as IGridIndexInfo).GeoColumnName == fieldName)
+                        {
+                            hasGrid = true;
+                            break;
+                        }
+                    }
+                }
+
+                // 如果空间列没有空间索引，则创建
+                if (!hasGrid)
+                {
+                    BuildSpatialIndex(fc, fieldName);
+                }
+            }
+            else
+                BuildSpatialIndex(fc, fieldName);
+        }
+
+        private void BuildSpatialIndex(IFeatureClass fc, string fieldName)
+        {
+            if (fc == null)
+                return;
+
+            fc.AddSpatialIndex(new GridIndexInfo
+            {
+                L1 = 500,
+                L2 = 2000,
+                L3 = 10000,
+                GeoColumnName = fieldName
+            });
+        }
+
+
+        private void BuildRenderIndexIfNotHas(IFeatureClass fc, string fieldName)
+        {
+            //判断footPrint是否建立渲染索引，没有则创建
+            var renderCollection = fc.GetRenderIndexInfos();
+            if (renderCollection != null && renderCollection.Count > 0)
+            {
+                bool hasRender = false;
+                for (int i = 0; i < renderCollection.Count; i++)
+                {
+                    IIndexInfo index = renderCollection[i];
+                    if (index.IndexType == i3dIndexType.i3dIndexRender)
+                    {
+                        if ((index as IRenderIndexInfo).GeoColumnName == fieldName)
+                        {
+                            hasRender = true;
+                            break;
+                        }
+                    }
+                }
+                if (!hasRender)
+                {
+                    BuildRenderIndex(fc, fieldName, 500);
+                }
+            }
+            else
+            {
+                BuildRenderIndex(fc, fieldName, 500);
+            }
+        }
+
+        /// <summary>
+        /// 添加渲染索引
+        /// </summary>
+        /// <param name="fc"></param>
+        /// <param name="geoColumnName"></param>
+        /// <param name="l1"></param>
+        private void BuildRenderIndex(IFeatureClass fc, string geoColumnName, double l1)
+        {
+            if (fc == null)
+                return;
+            fc.AddRenderIndex(new RenderIndexInfo()
+            {
+                GeoColumnName = geoColumnName,
+                L1 = l1
+            });
+        }
+
+        /// <summary>
+        /// 创建要素类
+        /// </summary>
+        /// <param name="ds">数据源</param>
+        /// <param name="dsName">数据集名称</param>
+        /// <param name="fcName">要素名称</param>
+        /// <param name="fields">字段集</param>
+        /// <returns></returns>
+        private IFeatureClass CreateFeatureClass(IDataSource ds, string dsName, string fcName, IFieldInfoCollection fields)
+        {
+            IFeatureDataSet dataSet = null;
+            try
+            {
+                if (ds == null || !HasDataSet(ds, dsName, out dataSet) || dataSet == null)
+                    return null;
+                IFeatureClass fc = dataSet.CreateFeatureClass(fcName, fields);
+                return fc;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            finally
+            {
+                if (dataSet != null)
+                {
+                    Marshal.ReleaseComObject(dataSet);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 数据源是否存在指定名称的数据集
+        /// </summary>
+        /// <param name="ds">数据源</param>
+        /// <param name="dsName">数据集名称</param>
+        /// <param name="dataSet">数据集</param>
+        /// <returns></returns>
+        private bool HasDataSet(IDataSource ds, string dsName, out IFeatureDataSet dataSet)
+        {
+            dataSet = null;
+            if (ds == null)
+                return false;
+            try
+            {
+                string[] arrDsNames = (string[])ds.GetFeatureDatasetNames();
+                if (arrDsNames == null || Array.IndexOf(arrDsNames, dsName) == -1)
+                    return false;
+                dataSet = ds.OpenFeatureDataset(dsName);
+                return dataSet != null;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 数据源中是否有指定要素类
+        /// </summary>
+        /// <param name="ds">数据源</param>
+        /// <param name="dsName">数据集名称</param>
+        /// <param name="fcname">要素名称</param>
+        /// <param name="fc">要素类</param>
+        /// <returns></returns>
+        private bool HasFeatureClass(IDataSource ds, string dsName, string fcname, out IFeatureClass fc)
+        {
+            fc = null;
+            IFeatureDataSet dataSet = null;
+            if (ds == null)
+                return false;
+            try
+            {
+                if (!HasDataSet(ds, dsName, out dataSet) || dataSet == null)
+                    return false;
+                string[] arrFcName = (string[])dataSet.GetNamesByType(i3dDataSetType.i3dDataSetFeatureClassTable);
+                if (arrFcName == null || Array.IndexOf(arrFcName, fcname) == -1)
+                    return false;
+                fc = dataSet.OpenFeatureClass(fcname);
+                return fc != null;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                if (dataSet != null)
+                {
+                    Marshal.ReleaseComObject(dataSet);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 比较两个坐标系是否一致
+        /// </summary>
+        /// <param name="wkt1">坐标系1</param>
+        /// <param name="wkt2">坐标系2</param>
+        /// <returns></returns>
+        private bool CompareCRS(string wkt1, string wkt2)
+        {
+            try
+            {
+                ICRSFactory cRSFactory = new CRSFactoryClass();
+                var gcrs1= cRSFactory.CreateFromWKT(wkt1);
+                var gcrs2 = cRSFactory.CreateFromWKT(wkt2);
+                return gcrs1.IsSame(gcrs2);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private void CreateFeatureLayer(IFeatureClass fc)
+        {
+            if (fc == null) return;
+            var geometry = new SimpleGeometryRender
+            {
+                HeightOffset = 0d,
+                RenderGroupField = fc.SubTypeFieldName
+            };
+            var featureLayer = _axRenderControl.ObjectManager.CreateFeatureLayer(fc, "Geometry", null, geometry);
+            SetLookAt(fc);
+            if (featureLayer != null)
+                featureLayer.MaxVisibleDistance = 50000;
+        }
+
+        private string GetGeometryColumn(IFeatureClass fc)
+        {
+            if (fc == null) return string.Empty;
+
+            var fields = fc.GetFields();
+            int num = fields.Count;
+            IFieldInfo field;
+            for (int i = 0; i < num; i++)
+            {
+                field = fields.Get(i);
+                if (field.FieldType == i3dFieldType.i3dFieldGeometry)
+                    return field.Name;
+            }
+            return "Geometry";
+        }
+        #endregion
     }
 
     public class Position
@@ -1072,5 +1611,17 @@ namespace CommonMapLib
 
         [Description("创建固定广告牌")]
         CreateFixedBillboard
+    }
+
+    public class ListNode : ListViewItem
+    {
+        public string name;
+        public IFeatureLayer layer;
+        public ListNode(string n, IFeatureLayer fl)
+        {
+            name = n;
+            layer = fl;
+            Text = n;
+        }
     }
 }

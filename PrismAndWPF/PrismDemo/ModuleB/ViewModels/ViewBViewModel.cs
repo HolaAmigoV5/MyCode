@@ -14,6 +14,7 @@ namespace ModuleB.ViewModels
     public class ViewBViewModel : BindableBase
     {
         IEventAggregator _ea;
+
         private ObservableCollection<string> _messages;
         public ObservableCollection<string> Messages
         {

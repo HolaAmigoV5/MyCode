@@ -23,9 +23,8 @@ namespace EncryptAndDecrypt
                 {
                     byte[] toEncrypt = Encoding.UTF8.GetBytes(text);
                     cStream.Write(toEncrypt, 0, toEncrypt.Length);
+                    return Convert.ToBase64String(mStream.ToArray(), 0, (int)mStream.Length);
                 }
-
-                return Convert.ToBase64String(mStream.ToArray(), 0, (int)mStream.Length);
             }
             catch (CryptographicException e)
             {

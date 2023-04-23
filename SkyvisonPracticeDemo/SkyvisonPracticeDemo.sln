@@ -29,7 +29,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrajectoryMonitor", "Trajec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowVideoProjection", "ShowVideoProjection\ShowVideoProjection.csproj", "{9EC210FC-DEAE-410A-8E84-46B7C21E4074}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncryptAndDecrypt", "EncryptAndDecrypt\EncryptAndDecrypt.csproj", "{704291C4-BB11-44A4-8255-4C81FA0265A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EncryptAndDecrypt", "EncryptAndDecrypt\EncryptAndDecrypt.csproj", "{704291C4-BB11-44A4-8255-4C81FA0265A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadShapFile", "LoadShapFile\LoadShapFile.csproj", "{BFEAED34-5A5D-48E9-B6ED-47784BF1CCC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -151,6 +153,14 @@ Global
 		{704291C4-BB11-44A4-8255-4C81FA0265A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{704291C4-BB11-44A4-8255-4C81FA0265A6}.Release|x64.ActiveCfg = Release|Any CPU
 		{704291C4-BB11-44A4-8255-4C81FA0265A6}.Release|x64.Build.0 = Release|Any CPU
+		{BFEAED34-5A5D-48E9-B6ED-47784BF1CCC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEAED34-5A5D-48E9-B6ED-47784BF1CCC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEAED34-5A5D-48E9-B6ED-47784BF1CCC9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BFEAED34-5A5D-48E9-B6ED-47784BF1CCC9}.Debug|x64.Build.0 = Debug|Any CPU
+		{BFEAED34-5A5D-48E9-B6ED-47784BF1CCC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEAED34-5A5D-48E9-B6ED-47784BF1CCC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFEAED34-5A5D-48E9-B6ED-47784BF1CCC9}.Release|x64.ActiveCfg = Release|Any CPU
+		{BFEAED34-5A5D-48E9-B6ED-47784BF1CCC9}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
