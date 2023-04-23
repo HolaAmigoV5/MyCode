@@ -246,7 +246,7 @@ namespace DrawPointToolForMeiDu
             }
         }
 
-        CurveSymbolClass lineSymbol;
+        CurveSymbolClass lineSymbol = null;
 
         private IRenderPolyline renderPolyline;
         public IRenderPolyline RenderPolyline

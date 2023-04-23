@@ -1,7 +1,6 @@
 ﻿using Axi3dRenderEngine;
 using CommonMapLib;
 using System;
-using System.Net.Sockets;
 using System.Windows.Forms;
 
 namespace LoadShapFile
@@ -22,7 +21,7 @@ namespace LoadShapFile
             axRenderControl.EndInit();
 
             controlOperation = new MapOperation();
-            controlOperation.InitializationMapControl(axRenderControl, "Base.3dm", true);
+            controlOperation.InitializationMapControl(axRenderControl, "SHBM.3dm", true);
 
             controlOperation.RebindingListView(listView1);
         }

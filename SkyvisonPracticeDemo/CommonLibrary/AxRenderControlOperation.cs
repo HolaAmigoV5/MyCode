@@ -32,7 +32,6 @@ namespace CommonLibrary
         ConnectionInfo ci = null;
 
         private readonly string rootPath = Path.GetFullPath(@"..//..//..");
-        private const string tmpFDBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\3dm\JD.3DM";
         //private i3dObjectType TYPE;
 
         private ISpatialCRS crs = null;
@@ -68,17 +67,23 @@ namespace CommonLibrary
         /// <summary>
         /// 初始化
         /// </summary>
+        /// <param name="mapName">三维地图名称</param>
+        /// <param name="isPlanarTerrain">true:平面地形，false：地球形</param>
         /// <returns></returns>
-        public bool InitializationAxRenderControl(string i3dmPath = tmpFDBPath)
+        public bool InitializationAxRenderControl(string mapName, bool isPlanarTerrain = true)
         {
+            string mapPath = GetPathByName(mapName);
+            if (string.IsNullOrEmpty(mapPath))
+                return false;
+
             // 初始化RenderControl控件
-            InitializeRenderControl();
+            InitializeRenderControl(isPlanarTerrain);
 
             // 设置默认天空盒
             SetDefaultSkyBox();
 
             // 加载数据
-            LoadData(i3dmPath);
+            CreateConnInfo(mapPath);
 
             // 图层创建
             FeatureLayerVisualize();
@@ -332,15 +337,16 @@ namespace CommonLibrary
 
         #region 初始化
         /// <summary>
-        ///  初始化RenderControl控件
+        /// 初始化RenderControl控件
         /// </summary>
-        private void InitializeRenderControl()
+        /// <param name="isPlanarTerrain">isPlanarTerrain（true:平面地形，false：地球形）</param>
+        private void InitializeRenderControl(bool isPlanarTerrain)
         {
             PropertySet ps = new PropertySet();
             ps.SetProperty("RenderSystem", i3dRenderSystem.i3dRenderOpenGL);
 
             //初始化三维窗口。isPlanarTerrain（true:平面地形，false：地球形）, params（配置参数）
-            _axRenderControl.Initialize(true, ps);
+            _axRenderControl.Initialize(isPlanarTerrain, ps);
 
             _axRenderControl.Camera.FlyTime = 1;
         }
@@ -353,11 +359,20 @@ namespace CommonLibrary
             SetSkyBox(SkyBoxType.JSCX);
         }
 
+        private string GetPathByName(string name)
+        {
+            string mapPath = Path.Combine(rootPath, name);
+            if (File.Exists(mapPath))
+                return mapPath;
+            return string.Empty;
+        }
+
         /// <summary>
-        /// 加载数据
+        /// 创建连接
         /// </summary>
-        /// <param name="localData"></param>
-        public void LoadData(string i3dmFilePath, bool localData = true)
+        /// <param name="i3dmFilePath">文件路径</param>
+        /// <param name="localData">是否是本地文件</param>
+        public void CreateConnInfo(string i3dmFilePath, bool localData = true)
         {
             ci = new ConnectionInfo();
             if (localData)

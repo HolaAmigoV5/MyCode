@@ -130,7 +130,7 @@ namespace CommonMapLib
 
         private string GetFullMapPath(string mapname)
         {
-            return Path.Combine(@"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\3dm", mapname);
+            return $"{Path.GetFullPath(@"../../../data/3dm/")}{mapname}";
         }
 
         IDataSource ds;
@@ -141,6 +141,9 @@ namespace CommonMapLib
             {
                 var dsFactory = new DataSourceFactory();
                 ds = dsFactory.OpenDataSource(_ci);
+                //var aa = ds.GetTableNames(true);
+                var t1= ds.OpenTable("FDB_FEATUREDATESET");  //FDB_FEATUREDATESET,FDB_OBJECTCLASSES,FDB_COLUMN_REGISTRY,FDB_GEOCOLUMN,FDB_GRIDINDEX,FDB_ITEMS,FDB_ITEMTYPES,
+                // B1,B2,B3,D2,D
 
                 string[] setnames = (string[])ds.GetFeatureDatasetNames();
                 if (setnames == null || setnames.Length == 0) return;
@@ -155,7 +158,7 @@ namespace CommonMapLib
                     foreach (string fcname in fcnames)
                     {
                         var fc = dataSet.OpenFeatureClass(fcname);
-                        DrawMapByFc(fc, fcname);
+                        DrawMapByFc(fc, fcname, geoField);
                         SetLookAt(fc);
                     }
                 }
@@ -1070,13 +1073,14 @@ namespace CommonMapLib
             }
         }
 
+        string geoField = "ColumnsVectorModel";
         public void PullupBlock(string fcName, string fieldName)
         {
             if (HasFeatureClass(ds, dsName, fcName, out IFeatureClass fc))
             {
                 IFieldInfo fi = new FieldInfoClass()
                 {
-                    Name = "ColumnsVectorModel",
+                    Name = geoField,
                     FieldType = i3dFieldType.i3dFieldGeometry,
                     Length = 200,
                     RegisteredRenderIndex = true,
@@ -1090,21 +1094,21 @@ namespace CommonMapLib
                 // 先删除一下
                 _axRenderControl.ObjectManager.DeleteObject(Fls[fcName].Guid);
 
-                AddFieldToFeatureClass(fc, "ColumnsVectorModel", fi);
+                AddFieldToFeatureClass(fc, geoField, fi);
 
                 _axRenderControl.PauseRendering(false);
-                fc.SetRenderIndexEnabled("ColumnsVectorModel", false);
+                fc.SetRenderIndexEnabled(geoField, false);
                 fc.SetRenderIndexEnabled("Geometry", true);
 
                 ds.StartEditing();
                 FillFieldValueToFeatureClass(fc, fieldName);
                 ds.StopEditing(true);
-                //fc.RebuildRenderIndex("ColumnsVectorModel", i3dRenderIndexRebuildType.i3dRenderIndexRebuildWithData);
-                _axRenderControl.ResumeRendering();
-                _axRenderControl.FeatureManager.RefreshFeatureClass(fc);
+
+                //_axRenderControl.ResumeRendering();
+                //_axRenderControl.FeatureManager.RefreshFeatureClass(fc);
 
                 // 地图重绘
-                DrawMapByFc(fc, fc.AliasName, "ColumnsVectorModel");
+                DrawMapByFc(fc, fc.AliasName, geoField);
             }
         }
 
@@ -1148,7 +1152,8 @@ namespace CommonMapLib
             if (floorNumIndex < 0)
                 return;
 
-            int posModelPoint = fc.GetFields().IndexOf("ColumnsVectorModel");
+            int posModelPoint = fc.GetFields().IndexOf(geoField);
+            
             while ((row = cursor.NextRow()) != null)
             {
                 try
@@ -1168,7 +1173,8 @@ namespace CommonMapLib
                             string.Empty, string.Empty, out IModelPoint modelPoint, out IModel model);
 
                         //UpdateModelColor(model);
-                        modelPoint.Z = 100;
+                        //modelPoint.Z = 100;
+                        var z = modelPoint.Z;
                         if (modelPoint != null)
                             row.SetValue(posModelPoint, modelPoint);
 
@@ -1314,8 +1320,8 @@ namespace CommonMapLib
                 fc.AddField(fi);
                 fc.LockType = i3dLockType.i3dLockSharedSchema;
 
-                //BuildSpatialIndexIfNotHas(fc, fieldName);
-                //BuildRenderIndexIfNotHas(fc, fieldName);
+                BuildSpatialIndexIfNotHas(fc, fieldName);
+                BuildRenderIndexIfNotHas(fc, fieldName);
 
             }
             catch (COMException ex)

@@ -9,15 +9,15 @@ namespace FeatureClassQuery
 {
     public partial class MainForm : Form
     {
-        AxRenderControlOperation controlOperation = null;
+        readonly AxRenderControlOperation controlOperation = null;
         private TreeNode selectNode = null;  //标记treeView控件中当前被选中的节点
 
         public MainForm()
         {
             InitializeComponent();
 
-            controlOperation = new AxRenderControlOperation(this.axRenderControl1);
-            controlOperation.InitializationAxRenderControl();
+            controlOperation = new AxRenderControlOperation(axRenderControl1);
+            controlOperation.InitializationAxRenderControl("JD.3DM");
             MyTreeNode treeNodes = controlOperation.BindDataToCatalogTree();
 
             SetTreeNodeWithContextMenuStrip(treeNodes.Nodes);

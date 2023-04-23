@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.i3dRenderEngine">
-      <HintPath>..\..\..\..\Work\Code\Skyversation.MyColor\CommonDLL\AxInterop.i3dRenderEngine.dll</HintPath>
+      <HintPath>..\CommonDLL\AxInterop.i3dRenderEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

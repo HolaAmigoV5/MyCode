@@ -23,7 +23,7 @@ namespace LabelAndRenderGeometry
             axRenderControl.EndInit();
 
             controlOperation = new AxRenderControlOperation(axRenderControl);
-            controlOperation.InitializationAxRenderControl();
+            controlOperation.InitializationAxRenderControl("JD.3DM");
             controlOperation.SetI3dObjectType();
             controlOperation.SetSelectMode("仅点选");
             controlOperation.RegisterRcSelectEvent();

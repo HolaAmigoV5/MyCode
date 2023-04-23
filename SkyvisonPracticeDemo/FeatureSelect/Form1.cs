@@ -11,7 +11,7 @@ namespace FeatureSelect
             InitializeComponent();
 
             controlOperation = new AxRenderControlOperation(axRenderControl1);
-            controlOperation.InitializationAxRenderControl();
+            controlOperation.InitializationAxRenderControl("JD.3DM");
             controlOperation.RegisterRcSelectEvent();
 
             // 设置控件默认值
