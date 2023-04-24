@@ -66,14 +66,14 @@ namespace InteractMode
         private void LoadData(bool localData = true)
         {
             ConnectionInfo ci = new ConnectionInfo();
-            string rootPath = Path.GetFullPath(@"..//..//..");
+            string rootPath = Path.GetFullPath(@"../../../data");
 
             if (localData)
             {
                 // 加载本地数据
                 ci.ConnectionType = i3dConnectionType.i3dConnectionFireBird2x;
 
-                string tmpFDBPath = @"D:\GitHub\MyCode\SkyvisonPracticeDemo\data\3dm\JD.3dm";
+                string tmpFDBPath = Path.Combine(rootPath, "3dm\\JD.3dm");
                 ci.Database = tmpFDBPath;
             }
             else
@@ -88,7 +88,7 @@ namespace InteractMode
             FeatureLayerVisualize(ci, true, "point");
 
             // 注册地形
-            string tmpTedPath = Path.Combine(rootPath, "data\\2021_04_07\\Hebei_aster_gdem_30m.tif");
+            string tmpTedPath = Path.Combine(rootPath, "data\\XJYP.TDF");
             axRenderControl.Terrain.RegisterTerrain(tmpTedPath, "");
         }
 

@@ -141,9 +141,6 @@ namespace CommonMapLib
             {
                 var dsFactory = new DataSourceFactory();
                 ds = dsFactory.OpenDataSource(_ci);
-                //var aa = ds.GetTableNames(true);
-                var t1= ds.OpenTable("FDB_FEATUREDATESET");  //FDB_FEATUREDATESET,FDB_OBJECTCLASSES,FDB_COLUMN_REGISTRY,FDB_GEOCOLUMN,FDB_GRIDINDEX,FDB_ITEMS,FDB_ITEMTYPES,
-                // B1,B2,B3,D2,D
 
                 string[] setnames = (string[])ds.GetFeatureDatasetNames();
                 if (setnames == null || setnames.Length == 0) return;
@@ -182,7 +179,8 @@ namespace CommonMapLib
         private void SetLookAt(IFeatureClass fc)
         {
             IFieldInfoCollection fieldinfos = fc.GetFields();
-            IFieldInfo fieldinfo = fieldinfos.Get(fieldinfos.IndexOf("Geometry"));
+            //IFieldInfo fieldinfo = fieldinfos.Get(fieldinfos.IndexOf("Geometry"));
+            IFieldInfo fieldinfo = fieldinfos.Get(fieldinfos.IndexOf(geoField));
             IGeometryDef geometryDef = fieldinfo.GeometryDef;
             IEnvelope env = geometryDef.Envelope;
             if (env == null || (env.MaxX == 0.0 && env.MaxY == 0.0 && env.MaxZ == 0.0 && env.MinX == 0.0 && env.MinY == 0.0 && env.MinZ == 0.0))
@@ -1091,6 +1089,7 @@ namespace CommonMapLib
                     }
                 };
 
+
                 // 先删除一下
                 _axRenderControl.ObjectManager.DeleteObject(Fls[fcName].Guid);
 
@@ -1109,6 +1108,15 @@ namespace CommonMapLib
 
                 // 地图重绘
                 DrawMapByFc(fc, fc.AliasName, geoField);
+            }
+        }
+
+        public void DeleteGeometry(string fcName)
+        {
+            if(HasFeatureClass(ds, dsName, fcName, out IFeatureClass fc))
+            {
+                fc.DeleteField("Geometry");
+                
             }
         }
 

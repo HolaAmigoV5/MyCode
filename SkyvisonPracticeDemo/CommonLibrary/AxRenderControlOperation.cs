@@ -361,7 +361,7 @@ namespace CommonLibrary
 
         private string GetPathByName(string name)
         {
-            string mapPath = Path.Combine(rootPath, name);
+            string mapPath = Path.Combine(rootPath, @"data\3dm\", name);
             if (File.Exists(mapPath))
                 return mapPath;
             return string.Empty;
@@ -396,7 +396,7 @@ namespace CommonLibrary
         /// </summary>
         public void RegisterTerrain()
         {
-            string tmpTedPath = Path.Combine(rootPath, @"data\2021_04_07\Hebei_aster_gdem_30m.tif");
+            string tmpTedPath = Path.Combine(rootPath, @"data\XJYP.TDF");
             _axRenderControl.Terrain.RegisterTerrain(tmpTedPath, "");
         }
 

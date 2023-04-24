@@ -111,5 +111,18 @@ namespace LoadShapFile
         {
 
         }
+
+        /// <summary>
+        /// 删除指定字段
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (selectNode != null)
+                controlOperation.DeleteGeometry(selectNode.name);
+            else
+                MessageBox.Show("请选择一个文件再删除！");
+        }
     }
 }
