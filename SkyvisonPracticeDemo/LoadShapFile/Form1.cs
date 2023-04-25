@@ -16,8 +16,8 @@ namespace LoadShapFile
 
             axRenderControl = new AxRenderControl();
             axRenderControl.BeginInit();
-            axRenderControl.Dock = DockStyle.Fill;
             splitContainer2.Panel2.Controls.Add(axRenderControl);
+            axRenderControl.Dock = DockStyle.Fill;
             axRenderControl.EndInit();
 
             controlOperation = new MapOperation();

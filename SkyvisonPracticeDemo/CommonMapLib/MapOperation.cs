@@ -34,7 +34,8 @@ namespace CommonMapLib
     //"PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433],AUTHORITY[\"EPSG\",4326]]";
 
         private const string WKT = "PROJCS[\"CGCS2000_3_degree_Gauss_Kruger_CM_114E\",GEOGCS[\"GCS_China_Geodetic_Coordinate_System_2000\",DATUM[\"D_unknown\",SPHEROID[\"unretrievable_using_WGS84\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"false_easting\",500000.0],PARAMETER[\"false_northing\",0.0],PARAMETER[\"central_meridian\",114.0],PARAMETER[\"scale_factor\",1.0],PARAMETER[\"latitude_of_origin\",0.0],UNIT[\"Meter\",1.0]]";
-        private const uint modifyColor = 0xff191919;
+        private const uint modifyColor = 1694498815;
+        //1694498815
         private bool _CTRL = false;
 
         private Dictionary<string, IFeatureLayer> fls = new Dictionary<string, IFeatureLayer>();
@@ -155,7 +156,7 @@ namespace CommonMapLib
                     foreach (string fcname in fcnames)
                     {
                         var fc = dataSet.OpenFeatureClass(fcname);
-                        DrawMapByFc(fc, fcname, geoField);
+                        DrawMapByFc(fc, fcname);
                         SetLookAt(fc);
                     }
                 }
@@ -179,8 +180,8 @@ namespace CommonMapLib
         private void SetLookAt(IFeatureClass fc)
         {
             IFieldInfoCollection fieldinfos = fc.GetFields();
-            //IFieldInfo fieldinfo = fieldinfos.Get(fieldinfos.IndexOf("Geometry"));
-            IFieldInfo fieldinfo = fieldinfos.Get(fieldinfos.IndexOf(geoField));
+            IFieldInfo fieldinfo = fieldinfos.Get(fieldinfos.IndexOf("Geometry"));
+            //IFieldInfo fieldinfo = fieldinfos.Get(fieldinfos.IndexOf(geoField));
             IGeometryDef geometryDef = fieldinfo.GeometryDef;
             IEnvelope env = geometryDef.Envelope;
             if (env == null || (env.MaxX == 0.0 && env.MaxY == 0.0 && env.MaxZ == 0.0 && env.MinX == 0.0 && env.MinY == 0.0 && env.MinZ == 0.0))
@@ -1091,7 +1092,7 @@ namespace CommonMapLib
 
 
                 // 先删除一下
-                _axRenderControl.ObjectManager.DeleteObject(Fls[fcName].Guid);
+                //_axRenderControl.ObjectManager.DeleteObject(Fls[fcName].Guid);
 
                 AddFieldToFeatureClass(fc, geoField, fi);
 
@@ -1103,7 +1104,7 @@ namespace CommonMapLib
                 FillFieldValueToFeatureClass(fc, fieldName);
                 ds.StopEditing(true);
 
-                //_axRenderControl.ResumeRendering();
+                _axRenderControl.ResumeRendering();
                 //_axRenderControl.FeatureManager.RefreshFeatureClass(fc);
 
                 // 地图重绘
@@ -1116,7 +1117,6 @@ namespace CommonMapLib
             if(HasFeatureClass(ds, dsName, fcName, out IFeatureClass fc))
             {
                 fc.DeleteField("Geometry");
-                
             }
         }
 
@@ -1180,7 +1180,7 @@ namespace CommonMapLib
                         _geoConvert.ExtrudePolygonToModel(polygon, floorNum, 3, 0, i3dRoofType.i3dRoofFlat,
                             string.Empty, string.Empty, out IModelPoint modelPoint, out IModel model);
 
-                        //UpdateModelColor(model);
+                        UpdateModelColor(model);
                         //modelPoint.Z = 100;
                         var z = modelPoint.Z;
                         if (modelPoint != null)
@@ -1328,8 +1328,8 @@ namespace CommonMapLib
                 fc.AddField(fi);
                 fc.LockType = i3dLockType.i3dLockSharedSchema;
 
-                BuildSpatialIndexIfNotHas(fc, fieldName);
-                BuildRenderIndexIfNotHas(fc, fieldName);
+                //BuildSpatialIndexIfNotHas(fc, fieldName);
+                //BuildRenderIndexIfNotHas(fc, fieldName);
 
             }
             catch (COMException ex)
@@ -1542,20 +1542,6 @@ namespace CommonMapLib
             {
                 return false;
             }
-        }
-
-        private void CreateFeatureLayer(IFeatureClass fc)
-        {
-            if (fc == null) return;
-            var geometry = new SimpleGeometryRender
-            {
-                HeightOffset = 0d,
-                RenderGroupField = fc.SubTypeFieldName
-            };
-            var featureLayer = _axRenderControl.ObjectManager.CreateFeatureLayer(fc, "Geometry", null, geometry);
-            SetLookAt(fc);
-            if (featureLayer != null)
-                featureLayer.MaxVisibleDistance = 50000;
         }
 
         private string GetGeometryColumn(IFeatureClass fc)
