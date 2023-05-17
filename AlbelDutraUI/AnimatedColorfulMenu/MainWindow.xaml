@@ -55,6 +55,7 @@
             <materialDesign:PackIcon Kind="Menu" Foreground="#313131"/>
         </Button>
 
+        <Button x:Name="aa" Width="150" Height="50" Content="点我啊" Click="aa_Click"/>
 
         <Grid x:Name="GridMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" Background="White" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>

@@ -1092,7 +1092,7 @@ namespace CommonMapLib
 
 
                 // 先删除一下
-                //_axRenderControl.ObjectManager.DeleteObject(Fls[fcName].Guid);
+                _axRenderControl.ObjectManager.DeleteObject(Fls[fcName].Guid);
 
                 AddFieldToFeatureClass(fc, geoField, fi);
 

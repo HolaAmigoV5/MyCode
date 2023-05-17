@@ -195,7 +195,7 @@ namespace InteractMode
             this.axRenderControl.RcMouseClickSelect -= axRenderControl1_RcMouseClickSelect;
             this.axRenderControl.RcMouseClickSelect += axRenderControl1_RcMouseClickSelect;
 
-            this.Text = "当前处于选择模式";
+            this.Text = "当前处于拾取模式";
         }
 
         void axRenderControl1_RcMouseClickSelect(object sender, Axi3dRenderEngine._IRenderControlEvents_RcMouseClickSelectEvent e)
