@@ -173,6 +173,8 @@ namespace CommonMapLib
             if (featureLayer != null)
                 featureLayer.MaxVisibleDistance = 50000;
 
+            
+
             if (!fls.ContainsKey(fcname))
                 fls.Add(fcname, featureLayer);
         }
