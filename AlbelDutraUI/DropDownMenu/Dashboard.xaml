@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:DropDownMenu"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:MetroChart="clr-namespace:MetroChart.WPF;assembly=MetroChart.WPF"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -115,12 +114,12 @@
                 </Grid.OpacityMask>
                 <Border x:Name="BorderG2" CornerRadius="15" Background="#FF340051"/>
 
-                <MetroChart:RadialGaugeChart Background="{x:Null}" ChartTitle="Consumo" ChartSubTitle="" Foreground="LightGray" >
+                <!--<MetroChart:RadialGaugeChart Background="{x:Null}" ChartTitle="Consumo" ChartSubTitle="" Foreground="LightGray" >
                     <MetroChart:RadialGaugeChart.Series>
                         <MetroChart:ChartSeries DisplayMember="Titulo" ItemsSource="{Binding Path=Consumo}" SeriesTitle="Consumo"
                                     ValueMember="Porcentagem" HorizontalAlignment="Center"/>
                     </MetroChart:RadialGaugeChart.Series>
-                </MetroChart:RadialGaugeChart>
+                </MetroChart:RadialGaugeChart>-->
             </Grid>
         </Grid>
     </Grid>
