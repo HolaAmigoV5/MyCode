@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33214.272
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.33920.267
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetEasyCloudMusic", "NetEasyCloudMusic\NetEasyCloudMusic.csproj", "{92D950D6-1F92-4E6E-B12E-EBA37A30FB84}"
 EndProject
@@ -47,7 +47,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CEFWebBrowser", "CEFWebBrow
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpClientFactoryInWPF", "HttpClientFactoryInWPF\HttpClientFactoryInWPF.csproj", "{C675DDA0-4FF8-4766-955D-7C4EA80ADB8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismDemo.Services", "PrismDemo.Services\PrismDemo.Services.csproj", "{714A3837-22F0-4D57-B426-FFACA8E637E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrismDemo.Services", "PrismDemo.Services\PrismDemo.Services.csproj", "{714A3837-22F0-4D57-B426-FFACA8E637E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeGrid", "TreeGrid\TreeGrid.csproj", "{861CF6D3-AABD-4965-85E5-144E197309EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -143,6 +145,10 @@ Global
 		{714A3837-22F0-4D57-B426-FFACA8E637E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{714A3837-22F0-4D57-B426-FFACA8E637E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{714A3837-22F0-4D57-B426-FFACA8E637E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{861CF6D3-AABD-4965-85E5-144E197309EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{861CF6D3-AABD-4965-85E5-144E197309EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{861CF6D3-AABD-4965-85E5-144E197309EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{861CF6D3-AABD-4965-85E5-144E197309EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

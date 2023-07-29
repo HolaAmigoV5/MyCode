@@ -110,7 +110,7 @@
 
         <Image x:Name="img" Source="Assets/mountains.jpg" Width="200" Height="100" VerticalAlignment="Bottom" Margin="0 0 0 -100" RenderTransformOrigin="0,0">
             <Image.RenderTransform>
-                <TranslateTransform/>
+                <TranslateTransform X="0" Y="-100"/>
             </Image.RenderTransform>
         </Image>
     </Grid>
