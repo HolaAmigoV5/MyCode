@@ -75,13 +75,7 @@ namespace OSGAmimationMap
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "22.osg",
-            "JGRW004p.OSG",
-            "JGRW006w.OSG",
-            "蝴蝶1.OSG",
-            "蝴蝶2.OSG",
-            "蝴蝶3.OSG",
-            "red.osg"});
+            "22.OSG"});
             this.comboBox1.Location = new System.Drawing.Point(455, 45);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(228, 26);

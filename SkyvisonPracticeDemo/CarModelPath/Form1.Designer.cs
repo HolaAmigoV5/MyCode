@@ -31,6 +31,9 @@ namespace CarModelPath
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -43,9 +46,6 @@ namespace CarModelPath
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.axRenderControl1 = new Axi3dRenderEngine.AxRenderControl();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -96,6 +96,33 @@ namespace CarModelPath
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "操作";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(1389, 102);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(142, 22);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "拾取车牌坐标";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(265, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 18);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "车牌坐标：";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(369, 99);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(910, 28);
+            this.textBox1.TabIndex = 3;
+            // 
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(1535, 23);
@@ -112,35 +139,7 @@ namespace CarModelPath
             this.comboBox1.Items.AddRange(new object[] {
             "WashSweepVehicle_Ele.osg",
             "WashSweepVehicle.osg",
-            "WetRubbishVehicle.osg",
-            "Box001.osg",
-            "Box002.osg",
-            "Box003.osg",
-            "Box004.osg",
-            "Box005.osg",
-            "Box006.osg",
-            "Box007.osg",
-            "Box008.osg",
-            "hddk07car015.osg",
-            "hddk07car017.osg",
-            "hddk07car018.osg",
-            "hddk07car019.osg",
-            "hddk07car020.osg",
-            "hddk07car021.osg",
-            "hddk07car022.osg",
-            "hddk07car023.osg",
-            "hddk07car024.osg",
-            "hddk07car025.osg",
-            "hddk07car026.osg",
-            "hddk07car027.osg",
-            "hddk07car028.osg",
-            "hddk07car029.osg",
-            "hddk07car030.osg",
-            "hddk07car031.osg",
-            "hddk07car032.osg",
-            "hddk07car033.osg",
-            "hddk07car034.osg",
-            "hddk07car035.osg"});
+            "WetRubbishVehicle.osg"});
             this.comboBox1.Location = new System.Drawing.Point(793, 31);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(212, 26);
@@ -244,33 +243,6 @@ namespace CarModelPath
             this.axRenderControl1.Name = "axRenderControl1";
             this.axRenderControl1.Size = new System.Drawing.Size(1798, 678);
             this.axRenderControl1.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(369, 99);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(910, 28);
-            this.textBox1.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(265, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 18);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "车牌坐标：";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(1389, 102);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(142, 22);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "拾取车牌坐标";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Form1
             // 

@@ -61,7 +61,7 @@ namespace CarModelPath
         private List<double[]> ReadGeoJson()
         {
             if (string.IsNullOrEmpty(savePath))
-                savePath = Path.Combine(Environment.CurrentDirectory, "data\\road.geojson");
+                savePath = Path.Combine(Environment.CurrentDirectory, "road.geojson");
             if (File.Exists(savePath))
             {
                 var json = File.ReadAllText(savePath);
@@ -228,7 +228,9 @@ namespace CarModelPath
         RoadPoints roadPoints;
         private void Save()
         {
-            savePath = Path.Combine(Environment.CurrentDirectory, "data\\road.geojson");
+            savePath = Path.Combine(Environment.CurrentDirectory, "road.geojson");
+            if (!File.Exists(savePath))
+                File.Create(savePath);
             File.WriteAllText(savePath, JsonConvert.SerializeObject(roadPoints));
         }
 
@@ -255,7 +257,8 @@ namespace CarModelPath
 
         private void AddDataToDic()
         {
-            dic.Add(controlOperation.RenderPolyline.Guid, sb.ToString().Substring(0, sb.Length - 1));
+            if (sb.Length > 0)
+                dic.Add(controlOperation.RenderPolyline.Guid, sb.ToString().Substring(0, sb.Length - 1));
         }
 
         private void SetInteractNormal()

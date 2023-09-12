@@ -13,7 +13,7 @@ namespace DrawPointToolForMeiDu
 {
     public partial class Form1 : Form
     {
-        private string i3dmPath = Environment.CurrentDirectory + "\\data\\XJJD.3DM";
+        private string i3dmPath = Path.GetFullPath(@"../../../data/3dm/") + "SH.3DM";
         MapOperation mapOperation;
         IPolyline tempPolyline;
         IPolyline polyline;

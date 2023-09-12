@@ -74,7 +74,7 @@ namespace HelloWorld
                     ConnectionType = i3dConnectionType.i3dConnectionFireBird2x
                 };
                 string rootPath = Path.GetFullPath(@"..//..//..");
-                string tmpFDBPath = Path.Combine(rootPath, "data\\3dm\\1.3DM");
+                string tmpFDBPath = Path.Combine(rootPath, "data\\3dm\\JD.3DM");
 
                 ci.Database = tmpFDBPath;
                 IDataSourceFactory dsFactory = new DataSourceFactory();

@@ -852,7 +852,7 @@ namespace CommonMapLib
 
             //加载模型
             if (string.IsNullOrEmpty(name))
-                name = "hddk07car015.osg";
+                name = "CleanUpVehicle.osg";
 
             string path = Path.GetFullPath($@"../../../data/CarMDB/{name}");
             IGeometryFactory geoFac = new GeometryFactory();//创建几何工厂
