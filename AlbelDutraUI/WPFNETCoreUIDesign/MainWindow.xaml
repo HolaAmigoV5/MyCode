@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown"
-        Title="MainWindow" Height="650" MinWidth="900">
+        Title="MainWindow" Height="650" MinWidth="900" Width="1220">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0"/>

@@ -1,8 +1,46 @@
 # MyCode
 
+​	工作多年的代码宝库，全部开源。其中包括WPF控件库，Blazor，MQTT，Prism，RabbitMQ，Singnal，TCP, 3D GIS，TCP，WebView2，Blend，数据结构和算法等。
+
+## WPF
+
+![Animation](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/Animation.gif)
+
+
+
+![MenuAnimation](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/MenuAnimation.gif)
+
+
+
+![Invoice](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/Invoice.gif)
+
+
+
+![Auth](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WbyDemoAuth.gif)
+
+
+
+![Auth](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WbyDemoMain.gif)
+
+
+
+![Auth](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WbyDemoOther.gif)
+
+
+
+![WPFDemo3](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WPFDemo3.png)
+
+
+
+![WPF](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/WPF.png)
+
+
+
+![Prism](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/Prism.png)
+
 ## AlgorithmAndDataStructure
 
-数据结构和算法作为计算机基础，还比较重要。虽然挺难，但是实际总结学习后，还是颇有收获。AlgorithmAndDataStructure和PractiseLeetCode存放了我所有刷LeetCode练习代码，囊括了所有基本的数据结构经典题目，使用C#语言编写。
+​	数据结构和算法作为计算机基础，还比较重要。虽然挺难，但是实际总结学习后，还是颇有收获。AlgorithmAndDataStructure和PractiseLeetCode存放了我所有刷LeetCode练习代码，囊括了所有基本的数据结构经典题目，使用C#语言编写。
 
 **算法与数据结构详细**：[数据结构与算法](/PractiseLeetCode/README.md)
 
@@ -53,3 +91,6 @@ DotNetCore作为全新一套.Net框架，众多优点不必多说。跟着学就
 ### 重构后UML设计图
 
 ![Re_UserClassDiagram](https://cdn.jsdelivr.net/gh/HolaAmigoV5/Images/WPF/Re_UserClassDiagram.png)
+
+
+

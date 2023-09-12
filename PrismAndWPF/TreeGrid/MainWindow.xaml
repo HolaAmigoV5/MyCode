@@ -17,7 +17,7 @@
     <Grid>
         <!--主表-->
         <DataGrid x:Name="master" Margin="5" ItemsSource="{Binding Students}" AutoGenerateColumns="False" CanUserAddRows="False"
-                  ColumnWidth="*" IsReadOnly="True" RowHeaderWidth="0" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionMode="Extended">
+                  ColumnWidth="*" IsReadOnly="True" RowHeaderWidth="0" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="编号" Width="50">
                     <DataGridTemplateColumn.CellTemplate>
