@@ -21,7 +21,6 @@ namespace ProxyPatternDemo
         public abstract void BuyProduct();
     }
 
-
     /// <summary>
     /// 真实主题角色
     /// </summary>
@@ -41,10 +40,13 @@ namespace ProxyPatternDemo
         public override void BuyProduct()
         {
             Console.WriteLine("通过代理类访问真实实体对象的方法");
+            PreBuyProduct();
             if (realSubject == null)
+            {
                 realSubject = new RealBuyPerson();
-
-            
+            }
+            realSubject.BuyProduct();
+            PostBuyProduct();
         }
 
         //代理角色执行操作：买之前列清单
@@ -60,6 +62,4 @@ namespace ProxyPatternDemo
             Console.WriteLine("终于买完了，现在要对东西分一下，相机是张三的；iPhone是李四的");
         }
     }
-
-
 }

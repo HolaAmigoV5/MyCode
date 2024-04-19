@@ -2,6 +2,7 @@
 
 namespace AdapterPatternDemo2
 {
+    // 对象适配器模式实现
     class AdapterPatternObject
     {
         static void Main()

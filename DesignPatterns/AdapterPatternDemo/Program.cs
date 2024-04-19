@@ -7,7 +7,7 @@ namespace AdapterPatternDemo
     {
         static void Main(string[] args)
         {
-            //现在客户端可以通过电话配要使用2个孔的插头了
+            //现在客户端可以通过适配器使用2个孔的插头了
             IThreeHole threeHole = new PowerAdapter();
             threeHole.Request();
             Console.ReadLine();
